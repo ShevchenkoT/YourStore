@@ -21,12 +21,32 @@
     align-items: center;
     justify-content: flex-start;
     padding: 1rem 0.5rem;
+
     & .main-products_list__product {
-      background-color: #000;
+      background-color: black;
       margin: 1rem 0.5rem;
       width: 250px;
       height: 400px;
+      text-align: center;
+
+      & .main-products_list__product___photo {
+
+        width: 94%;
+        height: 75%;
+
+        margin: 0.5rem ;
+        & img {
+          margin: 1rem auto;
+          size: 100%;
+        }
+      }
+
+
+      span {
+        margin: 0 0 0 20px;
+      }
     }
   }
+
 
 }

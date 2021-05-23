@@ -3,14 +3,21 @@
 
   </div>
   <div class="main-products_list">
-    <div class="main-products_list__product"></div>
-    <div class="main-products_list__product"></div>
-    <div class="main-products_list__product"></div>
-    <div class="main-products_list__product"></div>
-    <div class="main-products_list__product"></div>
-    <div class="main-products_list__product"></div>
-    <div class="main-products_list__product"></div>
-    <div class="main-products_list__product"></div>
+
+    <div *ngFor="let p of products" class="main-products_list__product">
+      <div class="main-products_list__product___photo">
+        <img title="Details {{p.phoneName}}" class="main-products_list__product___photo" src="{{p.pictureUrl}}" alt="">
+      </div>
+
+      <p>{{p.phoneName }} {{p.memory}}</p>
+      <P>({{p.phoneColor}})</P>
+
+      <div class="main-product_list__product___price">
+        <span class="usd">{{p.phonePriceUsd | currency : 'USD':'symbol':'3.0'}}</span>
+        <span class="uah">{{ p.phonePriceUsd*28}} Грн</span>
+      </div>
+
+    </div>
 
   </div>
 </div>
