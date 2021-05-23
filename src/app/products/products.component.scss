@@ -6,7 +6,6 @@
   border: 2px outset rgba($color: #550f0fbd, $alpha: 0.2);
   display: flex;
   padding: 3rem;
-
   justify-content: space-between;
 
   & .main-products_search {
@@ -21,12 +20,12 @@
     flex-wrap: wrap;
     align-items: center;
     justify-content: flex-start;
-
+    padding: 1rem 0.5rem;
     & .main-products_list__product {
       background-color: #000;
-      margin: 1rem 1rem;
-      width: 350px;
-      height: 500px;
+      margin: 1rem 0.5rem;
+      width: 250px;
+      height: 400px;
     }
   }
 

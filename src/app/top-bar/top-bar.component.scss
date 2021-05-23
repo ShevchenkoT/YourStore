@@ -4,9 +4,11 @@
   height: 90px;
   width: 100%;
   display: flex;
-  justify-content: space-between;
+  justify-content: space-around;
   align-items: center;
   position: sticky;
+  top: 0;
+
 
   .top-bar_tittle {
 
@@ -21,16 +23,20 @@
     }
   }
 
-  .top-bar_element {
-    width: 50px;
-    height: 50px;
-    margin: 0 10px;
+  .top-bar_icons {
+    display: flex;
 
-    & img {
-      width: 80%;
+    & .top-bar_element {
+      width: 50px;
+      height: 50px;
+      margin: 0 10px;
+
+      & img {
+        width: 80%;
+      }
+
+      text-align: center;
+
     }
-
-    text-align: center;
-
   }
 }
