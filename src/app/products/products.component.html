@@ -4,7 +4,7 @@
   </div>
   <div class="main-products_list">
 
-    <div *ngFor="let p of products" class="main-products_list__product">
+    <div *ngFor="let p of products" class="main-products_list__product" appHoverPhone>
       <div class="main-products_list__product___photo">
         <img title="Details {{p.phoneName}}" class="main-products_list__product___photo" src="{{p.pictureUrl}}" alt="">
       </div>
