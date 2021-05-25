@@ -5,14 +5,23 @@
   <div class="main-products_list">
 
     <div *ngFor="let p of products" class="main-products_list__product" appHoverPhone>
+
+
       <div class="main-products_list__product___photo">
+        <a href="https://www.google.com.ua/" target="_blank" class="main-products_list__product__link-detail"></a>
         <img title="Details {{p.phoneName}}" class="main-products_list__product___photo" src="{{p.pictureUrl}}" alt="">
       </div>
 
       <p>{{p.phoneName }} {{p.memory}}</p>
       <P>({{p.phoneColor}})</P>
 
+      <div class="main-products_list__product___button">
+        <button class="btn">Add to cart</button>
+        <button class="btn btn_another_prop">Add to favorites</button>
+      </div>
+
       <div class="main-product_list__product___price">
+
         <span class="usd">{{p.phonePriceUsd | currency : 'USD':'symbol':'3.0'}}</span>
         <span class="uah">{{ p.phonePriceUsd*28}} Грн</span>
       </div>
