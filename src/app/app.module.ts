@@ -7,6 +7,7 @@ import { TopBarComponent } from './top-bar/top-bar.component';
 import { ProductsComponent } from './products/products.component';
 import { HoverPhoneDirective } from './directives/hover-phone.directive';
 import { FormsModule } from '@angular/forms';
+import { FilterChecksPipe } from './pipes/filter-checks.pipe';
 
 @NgModule({
   declarations: [
@@ -14,6 +15,7 @@ import { FormsModule } from '@angular/forms';
     TopBarComponent,
     ProductsComponent,
     HoverPhoneDirective,
+    FilterChecksPipe,
 
   ],
   imports: [

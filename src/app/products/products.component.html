@@ -1,18 +1,49 @@
 <div class="main-products">
   <div class="main-products_search">
 
+
+    <div class="test">
+      <p>Phone name</p>
+      <div class="main-products_search__check" *ngFor="let p of products |filterChecks: 'phoneName' ">
+        <input type="checkbox" name="{{p}}" id={{p}}>
+        <label for={{p}}>{{p}}</label>
+      </div>
+    </div>
+
+    <div class="test">
+      <p>Memory</p>
+      <div class="main-products_search__check" *ngFor="let p of products |filterChecks: 'memory' ">
+        <input type="checkbox" name="{{p}}" id={{p}}>
+        <label for={{p}}>{{p}}</label>
+      </div>
+    </div>
+
+    <div class="test">
+      <p>Color</p>
+      <div class="main-products_search__check" *ngFor="let p of products |filterChecks: 'phoneColor' ">
+        <input type="checkbox" name="{{p}}" id={{p}}>
+        <label for={{p}}>{{p}}</label>
+      </div>
+    </div>
+
+
+
+
+
+
   </div>
+
   <div class="main-products_list">
 
     <div *ngFor="let p of products" class="main-products_list__product" appHoverPhone>
 
-
       <div class="main-products_list__product___photo">
-        <a href="https://www.google.com.ua/" target="_blank" class="main-products_list__product__link-detail"></a>
+        <a title="Detail {{p.phoneName}}" href="https://www.google.com.ua/" target="_blank"
+          class="main-products_list__product__link-detail"></a>
         <img title="Details {{p.phoneName}}" class="main-products_list__product___photo" src="{{p.pictureUrl}}" alt="">
       </div>
 
-      <p>{{p.phoneName }} {{p.memory}}</p>
+      <p>{{p.phoneName }} {{p.memory}}GB </p>
       <P>({{p.phoneColor}})</P>
 
       <div class="main-products_list__product___button">

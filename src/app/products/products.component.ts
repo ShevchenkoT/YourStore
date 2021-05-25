@@ -10,10 +10,13 @@ export class ProductsComponent implements OnInit {
 
 
   products = products
+
+  //phoneNames:Array<string> =[]
   constructor() { }
 
   ngOnInit(): void {
-    console.log(this.products)
+    // this.phoneNames = this.products.map((produckt) => produckt.phoneName)
+    // console.log(this.phoneNames)
   }
 
 
