@@ -12,8 +12,9 @@
 
     <div class="test">
       <p>Memory</p>
-      <div class="main-products_search__check" *ngFor="let p of products |filterChecks: 'memory' ">
-        <input type="checkbox" name="{{p}}" id={{p}}>
+      <div class="main-products_search__check" *ngFor="let p of products |filterChecks: 'memory'">
+        <input type="checkbox" name="{{p}}" id={{p}} [(ngModel)]="memoryCheck[p]" [ngModelOptions]="{standalone: false}"
+          (click)=" test()">
         <label for={{p}}>{{p}}</label>
       </div>
     </div>
@@ -21,21 +22,17 @@
     <div class="test">
       <p>Color</p>
       <div class="main-products_search__check" *ngFor="let p of products |filterChecks: 'phoneColor' ">
-        <input type="checkbox" name="{{p}}" id={{p}}>
-        <label for={{p}}>{{p}}</label>
+        <input type="checkbox" name="{{p}}" value="newsletter" id={{p}}>
+        <label for={{p}}>{{p}} </label>
       </div>
     </div>
-
-
-
-
 
 
   </div>
 
   <div class="main-products_list">
 
-    <div *ngFor="let p of products" class="main-products_list__product" appHoverPhone>
+    <div *ngFor="let p of products | filterPhones :memoryCheck" class="main-products_list__product" appHoverPhone>
 
       <div class="main-products_list__product___photo">
         <a title="Detail {{p.phoneName}}" href="https://www.google.com.ua/" target="_blank"

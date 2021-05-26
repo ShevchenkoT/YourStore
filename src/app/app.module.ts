@@ -8,6 +8,7 @@ import { ProductsComponent } from './products/products.component';
 import { HoverPhoneDirective } from './directives/hover-phone.directive';
 import { FormsModule } from '@angular/forms';
 import { FilterChecksPipe } from './pipes/filter-checks.pipe';
+import { FilterPhonesPipe } from './pipes/filter-phones.pipe';
 
 @NgModule({
   declarations: [
@@ -16,6 +17,7 @@ import { FilterChecksPipe } from './pipes/filter-checks.pipe';
     ProductsComponent,
     HoverPhoneDirective,
     FilterChecksPipe,
+    FilterPhonesPipe,
 
   ],
   imports: [

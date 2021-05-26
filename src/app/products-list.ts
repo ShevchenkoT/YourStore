@@ -79,4 +79,5 @@ export const products = [
     phonePriceUsd: 599,
     pictureUrl:"assets/img/phones/SEWhite.png"
   },
+  
 ]
