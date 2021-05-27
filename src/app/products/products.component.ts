@@ -24,7 +24,7 @@ export class ProductsComponent implements OnInit  {
 
   test() {
     //console.log("Change", this.memoryCheck) //,this.memoryCheck)
-
+    //console.log(products.filter((product) => {return product.memory == 64 }))
   }
 
 }
