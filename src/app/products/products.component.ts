@@ -12,19 +12,14 @@ export class ProductsComponent implements OnInit  {
 
 
   products = products
-  //memoryCheck: Array<any> = []
+  nameCheck: Array<Object> = []
   memoryCheck: Array<Object> = []
+  colorCheck: Array<Object> = []
 
   constructor() { }
 
   ngOnInit(): void {
 
-  }
-
-
-  test() {
-    //console.log("Change", this.memoryCheck) //,this.memoryCheck)
-    //console.log(products.filter((product) => {return product.memory == 64 }))
   }
 
 }

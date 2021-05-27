@@ -7,15 +7,12 @@ import { Pipe, PipeTransform } from '@angular/core';
 })
 export class FilterPhonesPipe implements PipeTransform {
 
-  transform(products: Array<Object>, memoryCheck: Array<Object>): any{
-
-    if (memoryCheck.includes(true)) {
-
-      let trueMemory = Object.keys(memoryCheck).filter((key: any) => memoryCheck[key]);
+  transform(products: Array<Object>, propertyCheck: Array<Object>, key:string ): any{
+    let trueCheck = Object.keys(propertyCheck).filter((key: any) => propertyCheck[key]);
+    if (trueCheck.length) {
       return products.filter((product: any) => {
-        return trueMemory.includes(product.memory.toString())
+        return trueCheck.includes(product[key].toString())
       })
-      
     }
     return products
   }
