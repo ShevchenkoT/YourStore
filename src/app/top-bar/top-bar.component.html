@@ -1,22 +1,24 @@
 <div class="top-bar">
   <div class="top-bar_tittle">
-    <h1><span>Your</span> Store</h1>
-    <p>The best apple shop </p>
+    <a routerLink="/">
+      <h1><span>Your</span> Store</h1>
+      <p>The best apple shop </p>
+    </a>
   </div>
 
   <div class="top-bar_icons">
     <div class="top-bar_element">
-      <a title="Search"><img src="assets/img/ico/search.png" alt=""></a>
+      <a routerLink="['/']" title="Search"><img src="assets/img/ico/search.png" alt=""></a>
       <small>Search</small>
     </div>
 
     <div class="top-bar_element">
-      <a title="My wish list"><img src="assets/img/ico/wishlist.png" alt=""></a>
+      <a routerLink="/wish-list" title="My wish list"><img src="assets/img/ico/wishlist.png" alt=""></a>
       <small>Wish list</small>
     </div>
 
     <div class="top-bar_element">
-      <a title="My Cart"><img src="assets/img/ico/cart.png" alt=""></a>
+      <a routerLink='/card' title="My Cart"><img src="assets/img/ico/card.png" alt=""></a>
       <small>My Cart</small>
     </div>
   </div>

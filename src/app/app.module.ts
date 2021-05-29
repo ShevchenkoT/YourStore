@@ -1,7 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
-import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { TopBarComponent } from './top-bar/top-bar.component';
 import { ProductsComponent } from './products/products.component';
@@ -9,6 +8,10 @@ import { HoverPhoneDirective } from './directives/hover-phone.directive';
 import { FormsModule } from '@angular/forms';
 import { FilterChecksPipe } from './pipes/filter-checks.pipe';
 import { FilterPhonesPipe } from './pipes/filter-phones.pipe';
+import { CardComponent } from './card/card.component';
+import { WishListComponent } from './wish-list/wish-list.component';
+import { ProductDetailComponent } from './product-detail/product-detail.component';
+import { AppRoutingModule } from './app-routing.module';
 
 @NgModule({
   declarations: [
@@ -18,12 +21,15 @@ import { FilterPhonesPipe } from './pipes/filter-phones.pipe';
     HoverPhoneDirective,
     FilterChecksPipe,
     FilterPhonesPipe,
+    CardComponent,
+    WishListComponent,
+    ProductDetailComponent,
 
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule,
     FormsModule,
+    AppRoutingModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
