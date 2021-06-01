@@ -1,31 +1,30 @@
-<div class="main-products">
-  <div class="main-products_search">
+<div class="main-panel">
+  <div class="main-products_filter">
 
-    <div class="test">
+    <div class="main-products_filter__properties">
       <p>Phone name</p>
-      <div class="main-products_search__check" *ngFor="let p of products |filterChecks: 'phoneName' ">
+      <div class="main-products_filter__properties___property" *ngFor="let p of products |filterChecks: 'phoneName' ">
         <input type="checkbox" name="{{p}}" id={{p}} [(ngModel)]="nameCheck[p]" [ngModelOptions]="{standalone: false}">
         <label for={{p}}>{{p}}</label>
       </div>
     </div>
 
-    <div class="test">
+    <div class="main-products_filter__properties">
       <p>Memory</p>
-      <div class="main-products_search__check" *ngFor="let p of products |filterChecks: 'memory'">
+      <div class="main-products_filter__properties___property" *ngFor="let p of products |filterChecks: 'memory'">
         <input type="checkbox" name="{{p}}" id={{p}} [(ngModel)]="memoryCheck[p]"
           [ngModelOptions]="{standalone: false}">
         <label for={{p}}>{{p}}</label>
       </div>
     </div>
 
-    <div class="test">
+    <div class="main-products_filter__properties">
       <p>Color</p>
-      <div class="main-products_search__check" *ngFor="let p of products |filterChecks: 'phoneColor' ">
+      <div class="main-products_filter__properties___property" *ngFor="let p of products |filterChecks: 'phoneColor' ">
         <input type="checkbox" name="{{p}}" id={{p}} [(ngModel)]="colorCheck[p]" [ngModelOptions]="{standalone: false}">
         <label for={{p}}>{{p}} </label>
       </div>
     </div>
-
 
   </div>
 
@@ -36,7 +35,7 @@
       class="main-products_list__product" appHoverPhone>
 
       <div class="main-products_list__product___photo">
-        <a routerLink='/product-detail' title="Detail {{p.phoneName}}"
+        <a [routerLink]="['/product-detail',p.id]" title="Detail {{p.phoneName}}"
           class="main-products_list__product__link-detail"></a>
         <img title="Details {{p.phoneName}}" class="main-products_list__product___photo" src="{{p.pictureUrl}}" alt="">
       </div>
@@ -45,8 +44,8 @@
       <P>({{p.phoneColor}})</P>
 
       <div class="main-products_list__product___button">
-        <button class="btn">Add to cart</button>
-        <button class="btn btn_another_prop">Add to favorites</button>
+        <button (click)="cardWishService.addOneProductToCard(p)" class="btn">Add to cart</button>
+        <button (click)="cardWishService.addOneProductToWish(p)" class=" btn btn_another_prop">Add to favorites</button>
       </div>
 
       <div class="main-product_list__product___price">

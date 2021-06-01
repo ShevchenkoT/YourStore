@@ -1,0 +1,29 @@
+.main-panel {
+  justify-content: space-evenly;
+
+  & .info-about-product {
+    display: flex;
+    height: 350px;
+    flex-direction: column;
+    justify-content: space-evenly;
+     
+    .buttons {
+      margin-top: 5rem;
+      & :first-child {
+        background: #c42a2c;
+
+        &:hover {
+          background: #811b1d;
+        }
+      }
+
+      & :last-child {
+        background: #215bb1;
+
+        &:hover {
+          background: #153b74;
+        }
+      }
+    }
+  }
+}

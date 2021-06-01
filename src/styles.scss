@@ -116,3 +116,17 @@ body {
   margin: 0 0.5rem;
   transition: all 0.3s ease;
 }
+
+.main-panel {
+  background-color: rgba($color: #550f0fbd, $alpha: 0.2);
+  width: 80%;
+  min-height: 100%;
+  margin: 0 auto;
+  border: 2px outset rgba($color: #550f0fbd, $alpha: 0.2);
+  display: flex;
+  padding: 3rem;
+  justify-content: space-between;
+  align-items: flex-start;
+}
+
+
