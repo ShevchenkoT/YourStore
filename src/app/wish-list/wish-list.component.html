@@ -2,7 +2,7 @@
   <div class="wish-list_products">
     <div class="wish-list_products__product" *ngFor="let product of wishService.wishItem">
 
-      <img src={{product.pictureUrl}}>
+      <img class="productPicture" src={{product.pictureUrl}}>
 
       <div class="info-about-product">
         <h2>{{product.phoneName}} <span>{{product.memory}}GB</span></h2>
@@ -15,8 +15,33 @@
 
       <div class="wish-list_products__product___buttons">
 
+        <div class="wish-list_products__product___buttons___circle-button">
+          <button class="circle-button">
+            <span>-</span>
+          </button>
+
+          <span>1</span>
+          <button class="circle-button">
+            <span>+</span>
+          </button>
+        </div>
+
+        <div class="wish-list_products__product___buttons___delete-add-button">
+          <button title="Delete product" class=" btn delete-product-button ">
+            <img src="assets/img/ico/delete.png">
+          </button>
+
+          <button class="add-to-card-button btn" title="Add to Card">
+            Add to Card
+          </button>
+        </div>
+
+
+
+
+
       </div>
     </div>
   </div>
-  <button (click)="wishService.clearProductInWish()" class="btn">Clear Wish List</button>
+  <button (click)="wishService.clearProductInWish()" class="btn wish-list_button">Clear Wish List</button>
 </div>

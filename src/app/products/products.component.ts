@@ -11,7 +11,8 @@ import { products} from '../products-list'
 
 })
 export class ProductsComponent implements OnInit  {
-
+  minPrice :number = 0
+  maxPrice :number = 1000
 
   products = products
   nameCheck: Array<Object> = []
