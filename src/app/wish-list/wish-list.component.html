@@ -1,1 +1,22 @@
-<div class="main-panel"></div>
+<div class="main-panel">
+  <div class="wish-list_products">
+    <div class="wish-list_products__product" *ngFor="let product of wishService.wishItem">
+
+      <img src={{product.pictureUrl}}>
+
+      <div class="info-about-product">
+        <h2>{{product.phoneName}} <span>{{product.memory}}GB</span></h2>
+        <span>({{product.phoneColor}})</span>
+        <p>
+          <span>{{product.phonePriceUsd | currency : 'USD':'symbol':'3.0'}}</span>
+          {{ product.phonePriceUsd*28}} Грн
+        </p>
+      </div>
+
+      <div class="wish-list_products__product___buttons">
+
+      </div>
+    </div>
+  </div>
+  <button (click)="wishService.clearProductInWish()" class="btn">Clear Wish List</button>
+</div>

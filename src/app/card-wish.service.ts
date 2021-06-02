@@ -6,11 +6,18 @@ import { products } from './products-list';
   providedIn: 'root'
 })
 export class CardWishService {
-  counterWishProduct: number = 0
-  wishItem: Array<object>= []
+  counterWishProduct: number = 1
+  wishItem: Array<any> = [{
+    id:4,
+    phoneName: "Iphone 12 Pro",
+    memory: 512,
+    phoneColor: "Gold",
+    phonePriceUsd: 1299,
+    pictureUrl:"assets/img/phones/12ProGold.png"
+  }]
 
   counterCardProduct: number = 0
-  cardItem: Array<Object> = []
+  cardItem: Array<any> = []
 
   addOneProductToWish(product: object) {
     this.wishItem.unshift(product)
@@ -18,7 +25,7 @@ export class CardWishService {
 
     console.log(this.wishItem)//!
   }
-  clearCounterProductInWish() {
+  clearProductInWish() {
     this.wishItem = []
     this.counterWishProduct = 0
   }

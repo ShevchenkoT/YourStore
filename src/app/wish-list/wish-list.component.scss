@@ -1,0 +1,20 @@
+.wish-list_products {
+  display: flex;
+  flex-direction: column;
+
+
+  & .wish-list_products__product {
+    margin-top: 1rem;
+    width: 600px;
+    height: 250px;
+    background: gray;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+
+    & img {
+      width: 200px;
+      height: 200px;
+    }
+}
+}
