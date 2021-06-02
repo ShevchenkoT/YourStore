@@ -27,11 +27,13 @@
         </div>
 
         <div class="wish-list_products__product___buttons___delete-add-button">
-          <button title="Delete product" class=" btn delete-product-button ">
+          <button title="Delete product" class=" btn delete-product-button "
+            (click)="wishService.deleteProductFromWishes(product)">
             <img src="assets/img/ico/delete.png">
           </button>
 
-          <button class="add-to-card-button btn" title="Add to Card">
+          <button class="add-to-card-button btn" title="Add to Card"
+            (click)="wishService.deleteProductFromWishes(product); wishService.addOneProductToCard(product)">
             Add to Card
           </button>
         </div>
