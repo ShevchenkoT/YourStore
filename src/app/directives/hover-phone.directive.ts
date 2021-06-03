@@ -1,4 +1,4 @@
-import { Directive, ElementRef, HostListener, Input, Output ,EventEmitter} from '@angular/core';
+import { Directive, ElementRef, HostListener, Input, Output, EventEmitter } from '@angular/core';
 
 
 
@@ -8,7 +8,7 @@ import { Directive, ElementRef, HostListener, Input, Output ,EventEmitter} from 
 })
 export class HoverPhoneDirective {
 
-  constructor(private el:ElementRef) { }
+  constructor(private el: ElementRef) { }
 
   @HostListener("mouseenter", ["$event.target"]) onEnter() {
     this.el.nativeElement.style.outline = "2px solid gray"

@@ -1,6 +1,7 @@
 <div class="main-panel">
   <div class="wish-list_products">
-    <div class="wish-list_products__product" *ngFor="let product of wishService.wishItem">
+    <div class="wish-list_products__product" *ngFor="let product of wishService.wishItem ">
+      <!-- | filterWishList"> -->
 
       <img class="productPicture" src={{product.pictureUrl}}>
 
@@ -16,14 +17,16 @@
       <div class="wish-list_products__product___buttons">
 
         <div class="wish-list_products__product___buttons___circle-button">
-          <button class="circle-button">
+          <div (click)="wishService.deleteOneProductInWish(product)" class="circle-button">
             <span>-</span>
-          </button>
+          </div>
 
-          <span>1</span>
-          <button class="circle-button">
+          <span> {{product.numberOfProducts}}</span>
+
+          <div (click)="wishService.addOneProductToWish(product)" class="circle-button">
             <span>+</span>
-          </button>
+          </div>
+
         </div>
 
         <div class="wish-list_products__product___buttons___delete-add-button">
@@ -37,11 +40,6 @@
             Add to Card
           </button>
         </div>
-
-
-
-
-
       </div>
     </div>
   </div>

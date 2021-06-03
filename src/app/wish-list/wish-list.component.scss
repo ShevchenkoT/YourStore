@@ -35,14 +35,37 @@
   align-items: center;
   height: 90%;
   justify-content: space-around;
+
 }
 
-.circle-button {
-  width: 25px;
-  height: 25px;
-  border-radius: 50%;
-  font-size: 24px;
-  margin: 0 4px ;
+
+.wish-list_products__product___buttons___circle-button {
+  color: #000;
+  display: flex;
+  width: 100px;
+  align-items: center;
+
+  & .circle-button {
+    width: 25px;
+    height: 25px;
+    border-radius: 5px;
+    font-size: 24px;
+    margin: 0 5px;
+    border: 2px solid black;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    background-color: rgba($color: #000000, $alpha: 0);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    &:hover {
+      Background-color: rgba($color: #000000, $alpha: 0.2);
+    }
+
+  }
+
+
 }
 
 .delete-product-button {
@@ -70,6 +93,6 @@
 }
 
 
-.wish-list_products__product___buttons___delete-add-button{
+.wish-list_products__product___buttons___delete-add-button {
   display: flex;
 }

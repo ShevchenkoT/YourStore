@@ -1,1 +1,44 @@
-<div class="main-panel"></div>
+<div class="main-panel">
+  <div class="wish-list_products">
+    <div class="wish-list_products__product" *ngFor="let product of cardService.cardItem">
+
+      <img class="productPicture" src={{product.pictureUrl}}>
+
+      <div class="info-about-product">
+        <h2>{{product.phoneName}} <span>{{product.memory}}GB</span></h2>
+        <span>({{product.phoneColor}})</span>
+        <p>
+          <span>{{product.phonePriceUsd | currency : 'USD':'symbol':'3.0'}}</span>
+          {{ product.phonePriceUsd*28}} Грн
+        </p>
+      </div>
+
+      <div class="wish-list_products__product___buttons">
+
+        <div class="wish-list_products__product___buttons___circle-button">
+          <div (click)="cardService.deleteOneProductInCard(product)" class="circle-button">
+            <span>-</span>
+          </div>
+
+          <span> {{product.numberOfProducts}}</span>
+
+          <div (click)="cardService.addOneProductToCard(product)" class="circle-button">
+            <span>+</span>
+          </div>
+
+        </div>
+
+        <div class="wish-list_products__product___buttons___delete-add-button">
+          <button title="Delete product" class=" btn delete-product-button "
+            (click)="cardService.deleteProductFromCard(product)">
+            <img src="assets/img/ico/delete.png">
+          </button>
+
+
+        </div>
+      </div>
+    </div>
+  </div>
+  <button (click)="cardService.clearProductInCard()" class="btn wish-list_button">Clear Wish List</button>
+
+</div>

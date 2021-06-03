@@ -8,10 +8,9 @@ import { CardWishService } from '../card-wish.service';
 })
 export class WishListComponent implements OnInit {
 
-  constructor(public wishService:CardWishService) { }
+  constructor(public wishService: CardWishService) { }
 
   ngOnInit(): void {
-    console.log(this.wishService.wishItem);
 
   }
 
