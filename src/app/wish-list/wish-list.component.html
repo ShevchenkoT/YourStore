@@ -8,8 +8,8 @@
         <h2>{{product.phoneName}} <span>{{product.memory}}GB</span></h2>
         <span>({{product.phoneColor}})</span>
         <p>
-          <span>{{product.phonePriceUsd | currency : 'USD':'symbol':'3.0'}}</span>
-          {{ product.phonePriceUsd*28}} Грн
+          {{product.phonePriceUsd | currency : 'USD':'symbol':'3.0'}}
+          <span>{{ product.phonePriceUsd*28}} Грн</span>
         </p>
       </div>
 
