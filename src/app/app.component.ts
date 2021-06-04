@@ -1,6 +1,6 @@
 
 import { Component, OnInit } from '@angular/core';
-import { CardFavoritesService } from './card-Favorites.service';
+import { CartFavoritesService } from './cart-favorites.service';
 
 
 @Component({
@@ -11,7 +11,7 @@ import { CardFavoritesService } from './card-Favorites.service';
 export class AppComponent implements OnInit {
 
 
-  constructor(public cardFavoriteService: CardFavoritesService
+  constructor(public cartFavoriteService: CartFavoritesService
 
   ) { }
 

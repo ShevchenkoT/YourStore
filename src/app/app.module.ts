@@ -7,11 +7,12 @@ import { HoverPhoneDirective } from './directives/hover-phone.directive';
 import { FormsModule } from '@angular/forms';
 import { FilterChecksPipe } from './pipes/filter-checks.pipe';
 import { FilterPhonesPipe } from './pipes/filter-phones.pipe';
-import { CardComponent } from './card/card.component';
+
 import { WishListComponent } from './wish-list/wish-list.component';
 import { ProductDetailComponent } from './product-detail/product-detail.component';
 import { AppRoutingModule } from './app-routing.module';
 import { ErrorPageComponent } from './error-page/error-page.component';
+import { CartComponent } from './cart/cart.component';
 
 @NgModule({
   declarations: [
@@ -20,10 +21,10 @@ import { ErrorPageComponent } from './error-page/error-page.component';
     HoverPhoneDirective,
     FilterChecksPipe,
     FilterPhonesPipe,
-    CardComponent,
     WishListComponent,
     ProductDetailComponent,
     ErrorPageComponent,
+    CartComponent,
   ],
   imports: [
     BrowserModule,

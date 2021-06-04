@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { CardFavoritesService } from '../card-Favorites.service';
+import { CartFavoritesService } from '../cart-favorites.service';
 
 import { products } from '../products-list'
 
@@ -19,7 +19,7 @@ export class ProductsComponent implements OnInit {
   memoryCheck: Array<Object> = []
   colorCheck: Array<Object> = []
 
-  constructor(public cardFavoritesService: CardFavoritesService) { }
+  constructor(public cartFavoritesService: CartFavoritesService) { }
 
   ngOnInit(): void {
 

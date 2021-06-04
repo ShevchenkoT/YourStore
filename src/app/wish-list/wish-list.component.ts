@@ -1,5 +1,5 @@
 import { Component, DoCheck, OnInit } from '@angular/core';
-import { CardFavoritesService } from '../card-Favorites.service';
+import { CartFavoritesService } from '../cart-favorites.service';
 
 @Component({
   selector: 'app-wish-list',
@@ -7,7 +7,7 @@ import { CardFavoritesService } from '../card-Favorites.service';
   styleUrls: ['./wish-list.component.scss']
 })
 export class WishListComponent implements OnInit {
-  constructor(public favoriteService: CardFavoritesService) { }
+  constructor(public favoriteService: CartFavoritesService) { }
 
   ngOnInit(): void {
 

@@ -15,12 +15,12 @@ export interface Products {
 @Injectable({
   providedIn: 'root'
 })
-export class CardFavoritesService {
+export class CartFavoritesService {
   numberOfFavorites: number = 0
   favoriteItems: Array<any> = []
 
-  numberOfCard: number = 0
-  cardItem: Array<any> = []
+  numberOfCart: number = 0
+  cartItem: Array<any> = []
 
   addToFavorites(product: any) {
     if (!this.favoriteItems.map((prod) => prod.id).includes(product.id)) {
@@ -38,35 +38,35 @@ export class CardFavoritesService {
   }
 
 
-  addToCard(product: any) {
-    if (!this.cardItem.map((prod) => prod.id).includes(product.id)) {
+  addToCart(product: any) {
+    if (!this.cartItem.map((prod) => prod.id).includes(product.id)) {
       product.numberOfProducts = 1
-      this.cardItem.unshift(product)
+      this.cartItem.unshift(product)
     } else {
-      this.cardItem.map((prod) => prod.id === product.id ? ++prod.numberOfProducts : prod)
+      this.cartItem.map((prod) => prod.id === product.id ? ++prod.numberOfProducts : prod)
     }
-    this.numberOfCard = this.findNumberOfCard()
+    this.numberOfCart = this.findNumberOfCart()
   }
-  deleteInCard(product: any) {
-    this.cardItem = this.cardItem.filter((prod) => prod.id !== product.id)
-    this.numberOfCard = this.findNumberOfCard()
+  deleteInCart(product: any) {
+    this.cartItem = this.cartItem.filter((prod) => prod.id !== product.id)
+    this.numberOfCart = this.findNumberOfCart()
   }
-  addOneProductToCard(product: any) {
+  addOneProductToCart(product: any) {
     product.numberOfProducts++
-    this.numberOfCard = this.findNumberOfCard()
+    this.numberOfCart = this.findNumberOfCart()
   }
-  deleteOneProductToCard(product: any) {
+  deleteOneProductInCart(product: any) {
     if (product.numberOfProducts > 1) {
       product.numberOfProducts--
-      this.numberOfCard = this.findNumberOfCard()
+      this.numberOfCart = this.findNumberOfCart()
     }
   }
-  clearCardList() {
-    this.numberOfCard = 0
-    this.cardItem = []
+  clearCartList() {
+    this.numberOfCart = 0
+    this.cartItem = []
   }
 
-  findNumberOfCard = (): number => this.cardItem.length !== 0 ? this.cardItem.map((prod) => prod.numberOfProducts).reduce((a, b) => a + b) : 0
+  findNumberOfCart = (): number => this.cartItem.length !== 0 ? this.cartItem.map((prod) => prod.numberOfProducts).reduce((a, b) => a + b) : 0
 
 
 }

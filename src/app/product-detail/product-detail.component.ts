@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Params } from '@angular/router';
-import { CardFavoritesService } from '../card-Favorites.service';
+import { CartFavoritesService } from '../cart-favorites.service';
 
 import { products } from '../products-list'
 @Component({
@@ -13,7 +13,7 @@ export class ProductDetailComponent implements OnInit {
   product!: any
   constructor(
     private route: ActivatedRoute,
-    public cardFavoriteService: CardFavoritesService,
+    public cartFavoriteService: CartFavoritesService,
   ) { }
 
   ngOnInit(): void {

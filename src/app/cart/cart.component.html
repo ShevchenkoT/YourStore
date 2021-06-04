@@ -1,6 +1,6 @@
 <div class="main-panel">
   <div class="cart-wish_products">
-    <div class="cart-wish_products__product" *ngFor="let product of favoriteService.favoriteItems">
+    <div class="cart-wish_products__product" *ngFor="let product of cartService.cartItem">
 
       <img class="cart-wish_products__product___picture" src={{product.pictureUrl}}>
 
@@ -15,20 +15,31 @@
 
       <div class="cart-wish_products__product___buttons">
 
+        <div class="cart-wish_products__product___buttons___circle-button">
+          <button (click)="cartService.deleteOneProductInCart(product)" class="circle-button">
+            <span>-</span>
+          </button>
+
+          <span> {{product.numberOfProducts}}</span>
+
+          <button (click)="cartService.addOneProductToCart(product)" class="circle-button">
+            <span>+</span>
+          </button>
+
+        </div>
 
         <div class="cart-wish_products__product___buttons___delete-add-button">
           <button title="Delete product" class=" btn delete-product-button "
-            (click)="favoriteService.deleteInFavorites(product)">
+            (click)="cartService.deleteInCart(product)">
             <img src="assets/img/ico/delete.png">
           </button>
 
-          <button class="add-to-cart-button btn" title="Add to Cart"
-            (click)="favoriteService.addToCart(product); favoriteService.deleteInFavorites(product)">
-            Add to Cart
-          </button>
+
         </div>
       </div>
     </div>
   </div>
-  <button (click)="favoriteService.clearFavoriteList()" class="btn wish-list_button">Clear Wish List</button>
+
+  <button (click)="cartService.clearCartList()" class="btn wish-list_button">Clear Wish List</button>
+
 </div>

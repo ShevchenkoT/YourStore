@@ -7,8 +7,8 @@
     <p><span>{{product.phonePriceUsd | currency : 'USD':'symbol':'3.0'}}</span>
       {{ product.phonePriceUsd*28}} Грн</p>
     <div class="buttons">
-      <button (click)="cardFavoriteService.addToCard(product)" class="btn">Add to cart</button>
-      <button (click)="cardFavoriteService.addToFavorites(product)" class="btn btn_another_prop">Add to
+      <button (click)="cartFavoriteService.addToCart(product)" class="btn">Add to cart</button>
+      <button (click)="cartFavoriteService.addToFavorites(product)" class="btn btn_another_prop">Add to
         favorites</button>
     </div>
   </div>
