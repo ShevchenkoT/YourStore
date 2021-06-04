@@ -1,10 +1,10 @@
 <div class="main-panel">
-  <div class="wish-list_products">
-    <div class="wish-list_products__product" *ngFor="let product of cardService.cardItem">
+  <div class="card-wish_products">
+    <div class="card-wish_products__product" *ngFor="let product of cardService.cardItem">
 
-      <img class="productPicture" src={{product.pictureUrl}}>
+      <img class="card-wish_products__product___picture" src={{product.pictureUrl}}>
 
-      <div class="info-about-product">
+      <div class="card-wish_products__product___info">
         <h2>{{product.phoneName}} <span>{{product.memory}}GB</span></h2>
         <span>({{product.phoneColor}})</span>
         <p>
@@ -13,24 +13,24 @@
         </p>
       </div>
 
-      <div class="wish-list_products__product___buttons">
+      <div class="card-wish_products__product___buttons">
 
-        <div class="wish-list_products__product___buttons___circle-button">
-          <div (click)="cardService.deleteOneProductInCard(product)" class="circle-button">
+        <div class="card-wish_products__product___buttons___circle-button">
+          <button (click)="cardService.deleteOneProductToCard(product)" class="circle-button">
             <span>-</span>
-          </div>
+          </button>
 
           <span> {{product.numberOfProducts}}</span>
 
-          <div (click)="cardService.addOneProductToCard(product)" class="circle-button">
+          <button (click)="cardService.addOneProductToCard(product)" class="circle-button">
             <span>+</span>
-          </div>
+          </button>
 
         </div>
 
-        <div class="wish-list_products__product___buttons___delete-add-button">
+        <div class="card-wish_products__product___buttons___delete-add-button">
           <button title="Delete product" class=" btn delete-product-button "
-            (click)="cardService.deleteProductFromCard(product)">
+            (click)="cardService.deleteInCard(product)">
             <img src="assets/img/ico/delete.png">
           </button>
 
@@ -39,6 +39,7 @@
       </div>
     </div>
   </div>
-  <button (click)="cardService.clearProductInCard()" class="btn wish-list_button">Clear Wish List</button>
+
+  <button (click)="cardService.clearCardList()" class="btn wish-list_button">Clear Wish List</button>
 
 </div>

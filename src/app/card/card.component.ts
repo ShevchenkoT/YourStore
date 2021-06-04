@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { CardWishService } from '../card-wish.service';
+import { CardFavoritesService } from '../card-Favorites.service';
 
 @Component({
   selector: 'app-card',
@@ -8,10 +8,10 @@ import { CardWishService } from '../card-wish.service';
 })
 export class CardComponent implements OnInit {
 
-  constructor(public cardService: CardWishService) { }
+  constructor(public cardService: CardFavoritesService) { }
 
   ngOnInit(): void {
-    console.log(this.cardService.cardItem)
+    //console.log("this is card", this.cardService.cardItem)
   }
 
 }

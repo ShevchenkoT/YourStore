@@ -1,7 +1,7 @@
-import { Route } from '@angular/compiler/src/core';
+
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
-import { CardWishService } from './card-wish.service';
+import { CardFavoritesService } from './card-Favorites.service';
+
 
 @Component({
   selector: 'app-root',
@@ -11,7 +11,7 @@ import { CardWishService } from './card-wish.service';
 export class AppComponent implements OnInit {
 
 
-  constructor(public cardWishService:CardWishService
+  constructor(public cardFavoriteService: CardFavoritesService
 
   ) { }
 

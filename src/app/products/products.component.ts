@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { CardWishService } from '../card-wish.service';
+import { CardFavoritesService } from '../card-Favorites.service';
 
-import { products} from '../products-list'
+import { products } from '../products-list'
 
 
 @Component({
@@ -10,16 +10,16 @@ import { products} from '../products-list'
   styleUrls: ['./products.component.scss'],
 
 })
-export class ProductsComponent implements OnInit  {
-  minPrice :number = 0
-  maxPrice :number = 1000
+export class ProductsComponent implements OnInit {
+  minPrice: number = 0
+  maxPrice: number = 1000
 
   products = products
   nameCheck: Array<Object> = []
   memoryCheck: Array<Object> = []
   colorCheck: Array<Object> = []
 
-  constructor(public cardWishService:CardWishService) { }
+  constructor(public cardFavoritesService: CardFavoritesService) { }
 
   ngOnInit(): void {
 
