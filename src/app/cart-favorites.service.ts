@@ -16,22 +16,24 @@ export interface Products {
   providedIn: 'root'
 })
 export class CartFavoritesService {
-  //numberOfFavorites: number = 0
-  //favoriteItems: Array<any> = []
+  numberOfFavorites: number = 0
+  favoriteItems: Array<any> = []
 
-  numberOfFavorites: number = 1
-  favoriteItems: Array<any> = [{
+  numberOfCart: number = 1
+  cartItem: Array<any> = [{
     id: 4,
     phoneName: "Iphone 12 Pro",
     memory: 512,
     phoneColor: "Gold",
     phonePriceUsd: 1299,
-    pictureUrl: "assets/img/phones/12ProGold.png"
+    pictureUrl: "assets/img/phones/12ProGold.png",
+    numberOfProducts: 1
   }]
 
-  numberOfCart: number = 0
-  cartItem: Array<any> = []
+  //numberOfCart: number = 0
+  //cartItem: Array<any> = []
   totalPrice: number = 0
+
   addToFavorites(product: any) {
     if (!this.favoriteItems.map((prod) => prod.id).includes(product.id)) {
       this.favoriteItems.unshift(product)

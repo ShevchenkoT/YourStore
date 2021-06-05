@@ -1,0 +1,30 @@
+.cart-wish_form {
+  margin: 0 5rem 0 0;
+
+  .form-control {
+    label {
+      margin: 1rem 0 0 0;
+      display: block;
+      font-size: 1.5rem;
+
+
+    }
+
+    input {
+      padding: 0 0 0 5px;
+      font-size: 1.4rem;
+      height: 30px;
+      width: 300px;
+
+      &.ng-invalid.ng-touched {
+        border-bottom: 3px solid red;
+      }
+
+      &.ng-touched.ng-valid {
+        border-bottom: 3px solid green;
+      }
+    }
+
+
+  }
+}

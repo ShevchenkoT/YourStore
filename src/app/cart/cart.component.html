@@ -40,7 +40,59 @@
     </div>
   </div>
 
-  <div>
+  <div class="cart-wish_form">
+    <form [formGroup]="form" (ngSubmit)="onSubmit()">
+      <div class="form-control">
+        <label>Email</label>
+        <input type="Email" formControlName="email" placeholder="Email"><span></span>
+
+        <div *ngIf="form.get('email')?.invalid && form.get('email')?.touched">
+          <small *ngIf="form.get('email')?.errors?.required">
+            Email field cannot be empty
+          </small>
+          <small *ngIf="form.get('email')?.errors?.email">
+            Please enter a valid email address
+          </small>
+        </div>
+      </div>
+
+      <div class=" form-control">
+        <label>Phone Number</label>
+        <input type="tel" formControlName="phoneNumber" inputmode="numeric" placeholder="PhoneNumber*">
+
+
+        <div *ngIf=" form.get('phoneNumber')?.invalid && form.get('phoneNumber')?.touched">
+          <small>
+            Smt wrong!!
+          </small>
+        </div>
+      </div>
+
+
+
+      <div class="form-control">
+        <div class="form-control">
+          <label>Full name</label>
+          <input type="text" formControlName='fullName'>
+
+          <div *ngIf="form.get('fullName')?.invalid && form.get('fullName')?.touched">
+            <small>
+              Smt wrong!!
+            </small>
+          </div>
+        </div>
+      </div>
+      <div class="">
+        <h2>Address</h2>
+        <div class="form-control"></div>
+
+      </div>
+
+
+      <button class="btn" type="submit" [disabled]="form.invalid">Submit</button>
+    </form>
+
+
     <button (click)="cartService.clearCartList()" class="btn wish-list_button">Clear Wish List</button>
     <p>Total price: {{cartService.totalPrice | currency : 'USD':'symbol':'3.0'}}</p>
   </div>
