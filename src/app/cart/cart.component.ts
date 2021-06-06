@@ -18,14 +18,17 @@ export class CartComponent implements OnInit {
       email: new FormControl('', [Validators.email, Validators.required]),
       phoneNumber: new FormControl(null, [Validators.required, Validators.minLength(10)]),
       fullName: new FormControl('', [Validators.required,]),
-      products: new FormArray([])
     })
   }
 
   onSubmit() {
-    console.log(this.form);
-    let formData = { ...this.form.value }
-    console.log(formData)
-    this.form.reset()
+    if (this.cartService.cartItem.length) {
+      console.log(this.form);
+      let formData = { ...this.form.value }
+      formData.products = this.cartService.cartItem
+      console.log(formData)
+      this.form.reset()
+      this.cartService.clearCartList()
+    }
   }
 }

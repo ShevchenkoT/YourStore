@@ -10,6 +10,9 @@
 
     }
 
+
+
+    select,
     input {
       padding: 0 0 0 5px;
       font-size: 1.4rem;
@@ -27,4 +30,8 @@
 
 
   }
+}
+
+.errors {
+  color: red;
 }
