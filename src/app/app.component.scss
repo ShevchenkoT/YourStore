@@ -13,6 +13,10 @@
   .top-bar_tittle {
     cursor: pointer;
     text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+
 
     & a {
       & h1 {
@@ -24,9 +28,11 @@
         }
       }
 
-      & p {
-        color: #fff;
-      }
+
+    }
+
+    & p {
+      color: #fff;
     }
   }
 
