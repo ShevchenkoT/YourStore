@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import { Injectable, OnInit } from '@angular/core';
 
 
 export interface Products {
@@ -33,6 +33,7 @@ export class CartFavoritesService {
   //numberOfCart: number = 0
   //cartItem: Array<any> = []
   totalPrice: number = 0
+
 
   addToFavorites(product: any) {
     if (!this.favoriteItems.map((prod) => prod.id).includes(product.id)) {

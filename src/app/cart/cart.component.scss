@@ -2,15 +2,13 @@
   margin: 0 5rem 0 0;
 
   .form-control {
+    height: 60px;
+
     label {
       margin: 1rem 0 0 0;
       display: block;
       font-size: 1.5rem;
-
-
     }
-
-
 
     select,
     input {
@@ -20,15 +18,51 @@
       width: 300px;
 
       &.ng-invalid.ng-touched {
-        border-bottom: 3px solid red;
+        border: 1px solid #a70000;
+        box-shadow: 0px 0px 4px 1px #a70000;
       }
 
       &.ng-touched.ng-valid {
-        border-bottom: 3px solid green;
+        border: 1px solid #08f700;
+        box-shadow: 0px 0px 4px 1px #08f700;
       }
     }
+  }
+
+  .form-control_buttons {
+    width: 300px;
+    height: 50px;
+    display: flex;
+    justify-content: space-between;
+    margin: 1rem 0 0 0;
+
+    & :first-child {
+      &:disabled {
+        color: #555455;
+        background-color: #302e30;
+
+        cursor: not-allowed;
+      }
+
+      &:enabled {
+        background-color: #89216b;
+
+        &:hover {
+          background: #661950;
+        }
+
+        &:active {
+          border: 2px solid #bb2d93;
+        }
+      }
 
 
+    }
+  }
+
+  .form-control_price {
+    margin: 1rem auto;
+    font-size: 24px;
   }
 }
 

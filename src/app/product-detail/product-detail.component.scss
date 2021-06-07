@@ -7,8 +7,32 @@
     flex-direction: column;
     justify-content: space-evenly;
 
+    h2 {
+      font-size: 28px;
+      font-weight: bold;
+      text-align: center;
+
+    }
+
+    >span {
+      text-align: center;
+      font-size: 20px;
+    }
+
+    p {
+      font-size: 24px;
+      text-align: center;
+
+      span {
+        padding: 0 0 0 6rem;
+      }
+    }
+
     .buttons {
       margin-top: 5rem;
+      display: flex;
+      width: 300px;
+      justify-content: space-between;
 
       & :first-child {
         background: #c42a2c;

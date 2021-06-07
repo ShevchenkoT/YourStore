@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { FormArray, FormControl, FormGroup, Validators } from '@angular/forms';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
+
 import { CartFavoritesService } from '../cart-favorites.service';
+import { MyValidators } from '../my.validators';
 
 @Component({
   selector: 'app-cart',
@@ -16,13 +18,14 @@ export class CartComponent implements OnInit {
   ngOnInit(): void {
     this.form = new FormGroup({
       email: new FormControl('', [Validators.email, Validators.required]),
-      phoneNumber: new FormControl(null, [Validators.required, Validators.minLength(10)]),
+      phoneNumber: new FormControl(null, [Validators.required, Validators.minLength(10), MyValidators.ifInt]),
       fullName: new FormControl('', [Validators.required,]),
+      sending: new FormControl('', [Validators.required])
     })
   }
 
   onSubmit() {
-    if (this.cartService.cartItem.length) {
+    if (this.cartService.cartItem.length || this.cartService.cartItem.length !== 0) {
       console.log(this.form);
       let formData = { ...this.form.value }
       formData.products = this.cartService.cartItem

@@ -58,18 +58,22 @@
 
       <div class=" form-control">
         <label>Phone Number</label>
-        <input type="tel" formControlName="phoneNumber" inputmode="numeric" placeholder="PhoneNumber*">
+        <input type="tel" formControlName="phoneNumber" inputmode="numeric" placeholder="Like this: 0963332211">
 
 
         <div class="errors" *ngIf=" form.get('phoneNumber')?.invalid && form.get('phoneNumber')?.touched">
 
-          <small *ngIf="form.get('phoneNumber')?.errors?.minlength">
-            you entered {{form.get('phoneNumber')?.errors?.minlength?.actualLength}} characters requiring
-            <p>Minimum of {{form.get('phoneNumber')?.errors?.minlength?.requiredLength}} characters</p>
+          <small *ngIf="form.get('phoneNumber')?.errors?.minlength && !form.get('phoneNumber')?.errors?.isNotInteger">
+            Enter {{form.get('phoneNumber')?.errors?.minlength?.requiredLength}} digits now:
+            {{form.get('phoneNumber')?.errors?.minlength?.actualLength}}
+
           </small>
 
-          <small *ngIf="form.get('phoneNumber')?.errors?.required">
+          <small *ngIf="form.get('phoneNumber')?.errors?.required ">
             Phone Number field cannot be empty
+          </small>
+          <small *ngIf="form.get('phoneNumber')?.errors?.isNotInteger">
+            Enter only numbers
           </small>
         </div>
       </div>
@@ -79,7 +83,7 @@
 
       <div class="form-control">
         <label>Full name</label>
-        <input type="text" formControlName='fullName'>
+        <input type="text" formControlName='fullName' placeholder="Enter your name">
 
         <div class="errors" *ngIf="form.get('fullName')?.invalid && form.get('fullName')?.touched">
           <small>
@@ -89,21 +93,30 @@
       </div>
 
       <div class="form-control">
-        <label>Address</label>
-        <select name="" id="">
-          <option value="">Self-pickup</option>
-          <option value="">Delivery by courier</option>
-          <option value="">Delivery by mail</option>
+        <label>Type of sending</label>
+        <select formControlName="sending">
+          <option value="Self-pickup">Self-pickup</option>
+          <option value="Courier">Delivery by courier</option>
+          <option value="Mail">Delivery by mail</option>
         </select>
 
       </div>
 
 
-      <button class="btn" type="submit" [disabled]="form.invalid">Submit</button>
+      <div class="form-control_buttons">
+        <button class="btn" type="submit" [disabled]="form.invalid">Submit</button>
+
+        <button (click)="cartService.clearCartList()" class="btn wish-list_button">Clear Wish List</button>
+      </div>
+      <div class="errors" *ngIf="!form.invalid && cartService.cartItem.length === 0">
+        <small>
+          Add any product
+        </small>
+      </div>
+
     </form>
+    <p class="form-control_price">Total price: {{cartService.totalPrice | currency : 'USD':'symbol':'3.0'}}</p>
 
 
-    <button (click)="cartService.clearCartList()" class="btn wish-list_button">Clear Wish List</button>
-    <p>Total price: {{cartService.totalPrice | currency : 'USD':'symbol':'3.0'}}</p>
   </div>
 </div>
