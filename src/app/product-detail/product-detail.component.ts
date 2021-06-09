@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Params } from '@angular/router';
-import { CartFavoritesService } from '../cart-favorites.service';
+import { CartFavoritesService, Product } from '../cart-favorites.service';
 
 import { products } from '../products-list'
 @Component({
@@ -9,7 +9,7 @@ import { products } from '../products-list'
   styleUrls: ['./product-detail.component.scss']
 })
 export class ProductDetailComponent implements OnInit {
-  products = products
+  products: Product[] = products
   product!: any
   constructor(
     private route: ActivatedRoute,

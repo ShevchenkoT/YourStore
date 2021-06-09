@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { CartFavoritesService } from '../cart-favorites.service';
+import { CartFavoritesService, Product } from '../cart-favorites.service';
 
 import { products } from '../products-list'
 
@@ -14,10 +14,10 @@ export class ProductsComponent implements OnInit {
   minPrice: number = 0
   maxPrice: number = 1000
 
-  products = products
-  nameCheck: Array<Object> = []
-  memoryCheck: Array<Object> = []
-  colorCheck: Array<Object> = []
+  products: Product[] = products
+  nameCheck: Product[] = []
+  memoryCheck: Product[] = []
+  colorCheck: Product[] = []
 
   constructor(public cartFavoritesService: CartFavoritesService) { }
 

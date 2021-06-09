@@ -1,4 +1,5 @@
 import { Pipe, PipeTransform } from '@angular/core';
+import { Product } from '../cart-favorites.service';
 
 
 @Pipe({
@@ -7,7 +8,7 @@ import { Pipe, PipeTransform } from '@angular/core';
 })
 export class FilterPhonesPipe implements PipeTransform {
 
-  transform(products: Array<Object>, propertyCheck: Array<Object>, key:string ): any{
+  transform(products: Product[], propertyCheck: Array<Object>, key: string): Product[] {
     let trueCheck = Object.keys(propertyCheck).filter((key: any) => propertyCheck[key]);
     if (trueCheck.length) {
       return products.filter((product: any) => {

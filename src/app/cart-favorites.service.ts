@@ -1,14 +1,14 @@
-import { Injectable, OnInit } from '@angular/core';
+import { Injectable } from '@angular/core';
 
 
-export interface Products {
+export interface Product {
   id: number,
   phoneName: string,
   memory: number,
   phoneColor: string,
   phonePriceUsd: number,
   pictureUrl: string,
-  numberOfProducts: number
+  numberOfProducts?: number
 }
 
 
@@ -17,20 +17,20 @@ export interface Products {
 })
 export class CartFavoritesService {
   numberOfFavorites: number = 0
-  favoriteItems: Array<any> = []
+  favoriteItems: Product[] = []
 
   numberOfCart: number = 0
-  cartItem: Array<any> = []
+  cartItem: Product[] = []
   totalPrice: number = 0
 
 
-  addToFavorites(product: any) {
+  addToFavorites(product: Product) {
     if (!this.favoriteItems.map((prod) => prod.id).includes(product.id)) {
       this.favoriteItems.unshift(product)
       this.numberOfFavorites = this.favoriteItems.length
     }
   }
-  deleteInFavorites(product: any) {
+  deleteInFavorites(product: Product) {
     this.favoriteItems = this.favoriteItems.filter((prod) => prod.id !== product.id)
     this.numberOfFavorites = this.favoriteItems.length
   }
@@ -40,29 +40,29 @@ export class CartFavoritesService {
   }
 
 
-  addToCart(product: any) {
+  addToCart(product: Product) {
     if (!this.cartItem.map((prod) => prod.id).includes(product.id)) {
       product.numberOfProducts = 1
       this.cartItem.unshift(product)
     } else {
-      this.cartItem.map((prod) => prod.id === product.id ? ++prod.numberOfProducts : prod)
+      this.cartItem.map((prod) => prod.id === product.id ? ++prod.numberOfProducts! : prod)
     }
     this.numberOfCart = this.findNumberOfCart()
     this.totalPrice = this.totalPriceOfCart()
   }
-  deleteInCart(product: any) {
+  deleteInCart(product: Product) {
     this.cartItem = this.cartItem.filter((prod) => prod.id !== product.id)
     this.numberOfCart = this.findNumberOfCart()
     this.totalPrice = this.totalPriceOfCart()
   }
-  addOneProductToCart(product: any) {
-    product.numberOfProducts++
+  addOneProductToCart(product: Product) {
+    product.numberOfProducts!++
     this.numberOfCart = this.findNumberOfCart()
     this.totalPrice = this.totalPriceOfCart()
   }
-  deleteOneProductInCart(product: any) {
-    if (product.numberOfProducts > 1) {
-      product.numberOfProducts--
+  deleteOneProductInCart(product: Product) {
+    if (product.numberOfProducts! > 1) {
+      product.numberOfProducts!--
       this.numberOfCart = this.findNumberOfCart()
       this.totalPrice = this.totalPriceOfCart()
     }
@@ -72,10 +72,10 @@ export class CartFavoritesService {
     this.cartItem = []
   }
 
-  findNumberOfCart = (): number => this.cartItem.length !== 0 ? this.cartItem.map((p) => p.numberOfProducts).reduce((a, b) => a + b) : 0
+  findNumberOfCart = (): number => this.cartItem.length !== 0 ? this.cartItem.map((p) => p.numberOfProducts!).reduce((a, b) => a + b) : 0
 
   totalPriceOfCart(): number {
-    return this.cartItem.length !== 0 ? this.cartItem.map((p) => p.phonePriceUsd * p.numberOfProducts).reduce((a, b) => a + b) : 0
+    return this.cartItem.length !== 0 ? this.cartItem.map((p) => p.phonePriceUsd * p.numberOfProducts!).reduce((a, b) => a + b) : 0
   }
 
 }
