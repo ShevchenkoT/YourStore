@@ -19,7 +19,6 @@ export class CartFavoritesService {
   numberOfFavorites: number = 0
   favoriteItems: Array<any> = []
 
-
   numberOfCart: number = 0
   cartItem: Array<any> = []
   totalPrice: number = 0
