@@ -32,6 +32,7 @@ export class CartComponent implements OnInit {
       console.log(formData)
       this.form.reset()
       this.cartService.clearCartList()
+      this.cartService.totalPrice = 0;
     }
   }
 }
