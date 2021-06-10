@@ -1,18 +1,20 @@
 <div class="main-panel">
 
-  <img src={{product.pictureUrl}}>
-  <div class="info-about-product">
-    <h2>{{product.phoneName}} <span>{{product.memory}}GB</span></h2>
-    <span>({{product.phoneColor}})</span>
-    <p>{{product.phonePriceUsd | currency : 'USD':'symbol':'3.0'}}
+  <div class="product-detail" *ngIf="product">
+    <img [src]='product?.pictureUrl'>
+    <div class="info-about-product">
+      <h2>{{product?.phoneName}} <span>{{product?.memory}}GB</span></h2>
+      <span>({{product?.phoneColor}})</span>
+      <p>{{product?.phonePriceUsd | currency : 'USD':'symbol':'3.0'}}
 
-      <span>
-        {{ product.phonePriceUsd*28}} Грн </span>
-    </p>
-    <div class="buttons">
-      <button (click)="cartFavoriteService.addToCart(product)" class="btn">Add to cart</button>
-      <button (click)="cartFavoriteService.addToFavorites(product)" class="btn btn_another_prop">Add to
-        favorites</button>
+        <span>
+          {{ product?.phonePriceUsd*28}} Грн </span>
+      </p>
+      <div class="buttons">
+        <button (click)="cartFavoriteService.addToCart(product)" class="btn">Add to cart</button>
+        <button (click)="cartFavoriteService.addToFavorites(product)" class="btn btn_another_prop">Add to
+          favorites</button>
+      </div>
     </div>
   </div>
 </div>
