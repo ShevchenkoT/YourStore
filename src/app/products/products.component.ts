@@ -23,7 +23,7 @@ export class ProductsComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    this.appComponent.http.get<Product[]>('/assets/products-list.json').subscribe((todos) => this.products = todos)
+    this.appComponent.http.get<Product[]>('/assets/mock-data/products.json').subscribe((todos) => this.products = todos)
   }
 
 }

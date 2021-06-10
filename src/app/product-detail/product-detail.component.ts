@@ -22,7 +22,7 @@ export class ProductDetailComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    this.appComponent.http.get<Product[]>('/assets/products-list.json').subscribe((todos) => {
+    this.appComponent.http.get<Product[]>('/assets/mock-data/products.json').subscribe((todos) => {
       this.route.params.subscribe((params: Params) => {
         this.product = todos.find((p) => p.id === +params.id)
       })
