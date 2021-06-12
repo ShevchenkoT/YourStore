@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Params } from '@angular/router';
-import { AppComponent } from '../app.component';
-import { CartFavoritesService, Product, } from '../cart-favorites.service';
+import { CartFavoritesService, } from '../cart-favorites.service';
+import { TodoService } from '../todo.service';
 
 
 @Component({
@@ -12,20 +12,20 @@ import { CartFavoritesService, Product, } from '../cart-favorites.service';
 export class ProductDetailComponent implements OnInit {
   products: any[] = []
   product!: any
-
+  error: string = ''
 
 
   constructor(
     private route: ActivatedRoute,
     public cartFavoriteService: CartFavoritesService,
-    private appComponent: AppComponent,
+    private todoService: TodoService
   ) { }
 
   ngOnInit(): void {
-    this.appComponent.http.get<Product[]>('/assets/mock-data/products.json').subscribe((todos) => {
+    this.todoService.addTodos().subscribe((todos) => {
       this.route.params.subscribe((params: Params) => {
         this.product = todos.find((p) => p.id === +params.id)
-      })
+      }, (error) => { console.log('error', error) })
     })
   }
 }

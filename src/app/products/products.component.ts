@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { AppComponent } from '../app.component';
 import { CartFavoritesService, Product } from '../cart-favorites.service';
+import { TodoService } from '../todo.service';
 
 @Component({
   selector: 'app-products',
@@ -17,13 +17,14 @@ export class ProductsComponent implements OnInit {
   memoryCheck: Product[] = []
   colorCheck: Product[] = []
 
+  error: string = ""
   constructor(
     public cartFavoritesService: CartFavoritesService,
-    private appComponent: AppComponent
+    private todoService: TodoService
   ) { }
 
   ngOnInit(): void {
-    this.appComponent.http.get<Product[]>('/assets/mock-data/products.json').subscribe((todos) => this.products = todos)
+    this.todoService.addTodos().subscribe((todos) => { return this.products = todos }, (error) => { this.error = error.message })
   }
 
 }

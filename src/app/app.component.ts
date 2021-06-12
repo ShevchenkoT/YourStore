@@ -1,6 +1,6 @@
-import { HttpClient } from '@angular/common/http';
+
 import { Component, OnInit } from '@angular/core';
-import { CartFavoritesService, Product } from './cart-favorites.service';
+import { CartFavoritesService } from './cart-favorites.service';
 
 
 
@@ -12,12 +12,7 @@ import { CartFavoritesService, Product } from './cart-favorites.service';
 })
 export class AppComponent implements OnInit {
 
-  products: Product[] = []
-
-  constructor(public cartFavoriteService: CartFavoritesService,
-    public http: HttpClient
-
-  ) { }
+  constructor(public cartFavoriteService: CartFavoritesService) { }
 
   ngOnInit() {
 

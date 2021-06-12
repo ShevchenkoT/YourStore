@@ -1,6 +1,13 @@
 <div class="main-panel">
-  <div class="main-products_filter">
-    <!--
+  <div *ngIf="error else TodoEmpty">
+    <p class="product-error">Error 404, products is not found</p>
+  </div>
+
+  <ng-template #TodoEmpty>
+
+
+    <div class="main-products_filter">
+      <!--
     <div class="main-products_filter__price">
       <p>Price</p>
       <div class="range-slider">
@@ -10,62 +17,70 @@
       <p>{{minPrice}}</p>
     </div> -->
 
-    <div class="main-products_filter__properties">
-      <p>Phone name</p>
-      <div class="main-products_filter__properties___property" *ngFor="let p of products |filterChecks: 'phoneName' ">
-        <input type="checkbox" name="{{p}}" id={{p}} [(ngModel)]="nameCheck[p]" [ngModelOptions]="{standalone: false}">
-        <label for={{p}}>{{p}}</label>
-      </div>
-    </div>
-
-    <div class="main-products_filter__properties">
-      <p>Memory</p>
-      <div class="main-products_filter__properties___property" *ngFor="let p of products |filterChecks: 'memory'">
-        <input type="checkbox" name="{{p}}" id={{p}} [(ngModel)]="memoryCheck[p]"
-          [ngModelOptions]="{standalone: false}">
-        <label for={{p}}>{{p}}</label>
-      </div>
-    </div>
-
-    <div class="main-products_filter__properties">
-      <p>Color</p>
-      <div class="main-products_filter__properties___property" *ngFor="let p of products |filterChecks: 'phoneColor' ">
-        <input type="checkbox" name="{{p}}" id={{p}} [(ngModel)]="colorCheck[p]" [ngModelOptions]="{standalone: false}">
-        <label for={{p}}>{{p}} </label>
-      </div>
-    </div>
-
-
-
-  </div>
-
-  <div class="main-products_list">
-
-    <div
-      *ngFor="let p of products | filterPhones :nameCheck :'phoneName'| filterPhones :memoryCheck :'memory' | filterPhones :colorCheck :'phoneColor' "
-      class="main-products_list__product" appHoverPhone>
-
-      <div class="main-products_list__product___photo">
-        <a [routerLink]="['/product-detail',p.id]" title="Detail {{p.phoneName}}"
-          class="main-products_list__product__link-detail"></a>
-        <img title="Details {{p.phoneName}}" class="main-products_list__product___photo" src="{{p.pictureUrl}}" alt="">
+      <div class="main-products_filter__properties">
+        <p>Phone name</p>
+        <div class="main-products_filter__properties___property" *ngFor="let p of products |filterChecks: 'phoneName' ">
+          <input type="checkbox" name="{{p}}" id={{p}} [(ngModel)]="nameCheck[p]"
+            [ngModelOptions]="{standalone: false}">
+          <label for={{p}}>{{p}}</label>
+        </div>
       </div>
 
-      <p>{{p.phoneName }} {{p.memory}}GB </p>
-      <P>({{p.phoneColor}})</P>
-
-      <div class="main-products_list__product___button">
-        <button (click)="cartFavoritesService.addToCart(p)" class="btn">Add to cart</button>
-        <button (click)="cartFavoritesService.addToFavorites(p)" class=" btn btn_another_prop">Add to favorites</button>
+      <div class="main-products_filter__properties">
+        <p>Memory</p>
+        <div class="main-products_filter__properties___property" *ngFor="let p of products |filterChecks: 'memory'">
+          <input type="checkbox" name="{{p}}" id={{p}} [(ngModel)]="memoryCheck[p]"
+            [ngModelOptions]="{standalone: false}">
+          <label for={{p}}>{{p}}</label>
+        </div>
       </div>
 
-      <div class="main-product_list__product___price">
-
-        <span class="usd">{{p.phonePriceUsd | currency : 'USD':'symbol':'3.0'}}</span>
-        <span class="uah">{{ p.phonePriceUsd*28}} Грн</span>
+      <div class="main-products_filter__properties">
+        <p>Color</p>
+        <div class="main-products_filter__properties___property"
+          *ngFor="let p of products |filterChecks: 'phoneColor' ">
+          <input type="checkbox" name="{{p}}" id={{p}} [(ngModel)]="colorCheck[p]"
+            [ngModelOptions]="{standalone: false}">
+          <label for={{p}}>{{p}} </label>
+        </div>
       </div>
+
+
 
     </div>
 
-  </div>
+    <div class="main-products_list">
+
+      <div
+        *ngFor="let p of products | filterPhones :nameCheck :'phoneName'| filterPhones :memoryCheck :'memory' | filterPhones :colorCheck :'phoneColor' "
+        class="main-products_list__product" appHoverPhone>
+
+
+        <div class="main-products_list__product___photo">
+          <a [routerLink]="['/product-detail',p.id]" title="Detail {{p.phoneName}}"
+            class="main-products_list__product__link-detail"></a>
+          <img title="Details {{p.phoneName}}" class="main-products_list__product___photo" src="{{p.pictureUrl}}"
+            alt="">
+        </div>
+
+        <p>{{p.phoneName }} {{p.memory}}GB </p>
+        <P>({{p.phoneColor}})</P>
+
+        <div class="main-products_list__product___button">
+          <button (click)="cartFavoritesService.addToCart(p)" class="btn">Add to cart</button>
+          <button (click)="cartFavoritesService.addToFavorites(p)" class=" btn btn_another_prop">Add to
+            favorites</button>
+        </div>
+
+        <div class="main-product_list__product___price">
+
+          <span class="usd">{{p.phonePriceUsd | currency : 'USD':'symbol':'3.0'}}</span>
+          <span class="uah">{{ p.phonePriceUsd*28}} Грн</span>
+        </div>
+
+      </div>
+
+    </div>
+  </ng-template>
+
 </div>
