@@ -1,8 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
-
-import { CartFavoritesService } from '../cart-favorites.service';
 import { MyValidators } from '../my.validators';
+import { CartFavoritesService } from '../shared/service/cart-favorites.service';
 
 @Component({
   selector: 'app-cart',

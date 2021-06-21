@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { CartFavoritesService, Product } from '../cart-favorites.service';
-import { TodoService } from '../todo.service';
+import { CartFavoritesService, Product } from '../shared/service/cart-favorites.service';
+import { TodoService } from '../shared/service/todo.service';
 
 @Component({
   selector: 'app-products',

@@ -4,10 +4,10 @@ import { HttpClientModule } from '@angular/common/http';
 
 import { AppComponent } from './app.component';
 import { ProductsComponent } from './products/products.component';
-import { HoverPhoneDirective } from './directives/hover-phone.directive';
+import { HoverPhoneDirective } from './shared/directives/hover-phone.directive';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { FilterChecksPipe } from './pipes/filter-checks.pipe';
-import { FilterPhonesPipe } from './pipes/filter-phones.pipe';
+import { FilterChecksPipe } from './shared/pipes/filter-checks.pipe';
+import { FilterPhonesPipe } from './shared/pipes/filter-phones.pipe';
 
 import { WishListComponent } from './wish-list/wish-list.component';
 import { ProductDetailComponent } from './product-detail/product-detail.component';

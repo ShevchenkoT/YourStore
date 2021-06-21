@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { CartFavoritesService } from '../cart-favorites.service';
+import { CartFavoritesService } from '../shared/service/cart-favorites.service';
 
 @Component({
   selector: 'app-wish-list',

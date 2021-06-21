@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Params } from '@angular/router';
-import { CartFavoritesService, } from '../cart-favorites.service';
-import { TodoService } from '../todo.service';
+import { CartFavoritesService } from '../shared/service/cart-favorites.service';
+import { TodoService } from '../shared/service/todo.service';
 
 
 @Component({
