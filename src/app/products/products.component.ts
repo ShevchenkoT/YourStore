@@ -9,22 +9,22 @@ import { TodoService } from '../todo.service';
 
 })
 export class ProductsComponent implements OnInit {
-  minPrice: number = 0
-  maxPrice: number = 1000
+  minPrice = 0;
+  maxPrice = 1000;
 
-  products: Product[] = []//products
-  nameCheck: Product[] = []
-  memoryCheck: Product[] = []
-  colorCheck: Product[] = []
+  products: Product[] = [];
+  nameCheck: Product[] = [];
+  memoryCheck: Product[] = [];
+  colorCheck: Product[] = [];
 
-  error: string = ""
+  error = '';
   constructor(
     public cartFavoritesService: CartFavoritesService,
     private todoService: TodoService
   ) { }
 
   ngOnInit(): void {
-    this.todoService.addTodos().subscribe((todos) => { return this.products = todos }, (error) => { this.error = error.message })
+    this.todoService.addTodos().subscribe((todos) => this.products = todos, (error) => { this.error = error.message; });
   }
 
 }

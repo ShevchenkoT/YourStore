@@ -11,7 +11,7 @@ import { MyValidators } from '../my.validators';
 })
 export class CartComponent implements OnInit {
 
-  form!: FormGroup
+  form!: FormGroup;
 
   constructor(public cartService: CartFavoritesService) { }
 
@@ -21,17 +21,16 @@ export class CartComponent implements OnInit {
       phoneNumber: new FormControl(null, [Validators.required, Validators.minLength(10), MyValidators.ifInt]),
       fullName: new FormControl('', [Validators.required,]),
       sending: new FormControl('', [Validators.required])
-    })
+    });
   }
 
-  onSubmit() {
+  onSubmit(): void {
     if (this.cartService.cartItem.length || this.cartService.cartItem.length !== 0) {
-      console.log(this.form);
-      let formData = { ...this.form.value }
-      formData.products = this.cartService.cartItem
-      console.log(formData)
-      this.form.reset()
-      this.cartService.clearCartList()
+      const formData = { ...this.form.value };
+      formData.products = this.cartService.cartItem;
+      console.log(formData);
+      this.form.reset();
+      this.cartService.clearCartList();
       this.cartService.totalPrice = 0;
     }
   }

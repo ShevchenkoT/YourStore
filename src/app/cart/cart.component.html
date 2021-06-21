@@ -106,7 +106,7 @@
       <div class="form-control_buttons">
         <button class="btn" type="submit" [disabled]="form.invalid">Submit</button>
 
-        <button (click)="cartService.clearCartList()" class="btn wish-list_button">Clear Wish List</button>
+        <button (click)="cartService.clearCartList()" class="btn wish-list_button">Clear Card</button>
       </div>
       <div class="errors" *ngIf="!form.invalid && cartService.cartItem.length === 0">
         <small>

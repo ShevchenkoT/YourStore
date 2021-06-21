@@ -10,9 +10,9 @@ import { TodoService } from '../todo.service';
   styleUrls: ['./product-detail.component.scss']
 })
 export class ProductDetailComponent implements OnInit {
-  products: any[] = []
-  product!: any
-  error: string = ''
+  products: any[] = [];
+  product!: any;
+  error = '';
 
 
   constructor(
@@ -24,8 +24,8 @@ export class ProductDetailComponent implements OnInit {
   ngOnInit(): void {
     this.todoService.addTodos().subscribe((todos) => {
       this.route.params.subscribe((params: Params) => {
-        this.product = todos.find((p) => p.id === +params.id)
-      }, (error) => { console.log('error', error) })
-    })
+        this.product = todos.find((p) => p.id === +params.id);
+      }, (error) => { console.log('error', error); });
+    });
   }
 }

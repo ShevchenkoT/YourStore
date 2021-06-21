@@ -11,6 +11,6 @@ export class TodoService {
   constructor(public http: HttpClient) { }
 
   addTodos(): Observable<Product[]> {
-    return this.http.get<Product[]>('/assets/mock-data/products.json')
+    return this.http.get<Product[]>('/assets/mock-data/products.json');
   }
 }

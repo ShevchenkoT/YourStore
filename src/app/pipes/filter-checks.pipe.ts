@@ -6,9 +6,9 @@ import { Pipe, PipeTransform } from '@angular/core';
 export class FilterChecksPipe implements PipeTransform {
 
   transform(obj: Array<any>, key: string): Array<any> {
-    let arr: Array<string> = Array.from(new Set(obj.map((produckt) => {
-      return typeof (produckt[key]) == 'string' ? produckt[key].trim() : produckt[key]
-    })))
-    return typeof (arr[0]) ? arr.sort((a: any, b: any) => { return a - b }) : arr.sort()
+    const arr: Array<string> = Array.from(new Set(obj.map((product) => {
+      return typeof (product[key]) === 'string' ? product[key].trim() : product[key];
+    })));
+    return typeof (arr[0]) ? arr.sort((a: any, b: any) => a - b) : arr.sort();
   }
 }
