@@ -14,6 +14,8 @@ import { ProductDetailComponent } from './product-detail/product-detail.componen
 import { AppRoutingModule } from './app-routing.module';
 import { ErrorPageComponent } from './error-page/error-page.component';
 import { CartComponent } from './cart/cart.component';
+import { SharedModule, } from './shared/shared.module';
+import { LoginPageComponent } from './login-page/login-page.component';
 
 @NgModule({
   declarations: [
@@ -26,15 +28,15 @@ import { CartComponent } from './cart/cart.component';
     ProductDetailComponent,
     ErrorPageComponent,
     CartComponent,
-
+    LoginPageComponent
   ],
   imports: [
     BrowserModule,
     FormsModule,
     AppRoutingModule,
     ReactiveFormsModule,
-    HttpClientModule
-
+    HttpClientModule,
+    SharedModule
   ],
   providers: [],
   bootstrap: [AppComponent]
