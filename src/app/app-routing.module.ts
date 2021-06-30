@@ -27,7 +27,7 @@ const routes2: Routes = [
       { path: 'wish-list', component: WishListComponent },
       { path: 'login', component: LoginPageComponent },
       { path: 'error', component: ErrorPageComponent },
-      //{ path: '**', redirectTo: '/error' },
+      { path: '**', redirectTo: '/error' },
     ]
   },
   {

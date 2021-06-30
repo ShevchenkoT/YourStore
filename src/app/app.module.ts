@@ -38,7 +38,6 @@ import { MainLayoutComponent } from './shared/components/main-layout/main-layout
     FormsModule,
     AppRoutingModule,
     ReactiveFormsModule,
-    HttpClientModule,
     SharedModule
   ],
   providers: [],

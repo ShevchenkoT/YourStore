@@ -105,28 +105,54 @@ body {
   line-height: 1.2;
 }
 
+:root {
+  --first-color: #191919; //;#f0f2f5
+  --second-color: #272727; //#ffffff;
+  --text-color: #fff; // #000;
+}
+
+.main-container {
+  width: 100%;
+  height: 100%;
+}
+
+.main-panel {
+  background-color: var(--first-color);
+  width: 80%;
+  min-height: 100%;
+  margin: 6rem auto;
+  border: 2px outset var(--first-color);
+  display: flex;
+  padding: 3rem;
+  justify-content: space-between;
+  align-items: flex-start;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 .btn {
   width: 110px;
   height: 35px;
   border: 1px solid black;
   border-radius: 4px;
   cursor: pointer;
-  color: #ffff;
+  color: var(--text-color);
   margin: 0 0.5rem;
   transition: all 0.3s ease;
 }
 
-.main-panel {
-  background-color: rgba($color: #323232, $alpha: 0.5);
-  width: 80%;
-  min-height: 100%;
-  margin: 6rem auto;
-  border: 2px outset rgba($color: #323232, $alpha: 0.5);
-  display: flex;
-  padding: 3rem;
-  justify-content: space-between;
-  align-items: flex-start;
-}
+
 
 
 /////////////wish-list and cart syle
@@ -139,7 +165,7 @@ body {
     margin-top: 1rem;
     width: 600px;
     height: 250px;
-    background: #272727;
+    background: #313131;
     display: flex;
     align-items: center;
     justify-content: space-around;

@@ -1,5 +1,5 @@
 .top-bar {
-  background-color: #272727;
+  background-color: var(--second-color);
   padding: 0.5rem;
   height: 90px;
   width: 100%;
@@ -9,6 +9,7 @@
   position: fixed;
   top: 0;
   z-index: 100;
+  color: var(--text-color);
 
   .top-bar_tittle {
     cursor: pointer;
@@ -21,7 +22,7 @@
     & a {
       & h1 {
         font-size: 45px;
-        color: #fff;
+        color: var(--text-color);
 
         & span {
           color: red
@@ -31,13 +32,6 @@
 
     }
 
-    & p {
-      color: #fff;
-
-      span {
-        color: #fff;
-      }
-    }
   }
 
   .top-bar_icons {

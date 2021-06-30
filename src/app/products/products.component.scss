@@ -6,8 +6,9 @@ p {
 }
 
 .main-products_filter {
-  background-color: #272727;
+  background-color: var(--second-color);
   width: 22%;
+  color: var(--text-color);
 
   .main-products_filter__properties {
     margin: 2rem 0 2rem 0;
@@ -32,17 +33,16 @@ p {
 }
 
 .main-products_list {
-  background-color: rgba($color: #747474, $alpha: 0.0);
   width: 75%;
   display: flex;
   flex-wrap: wrap;
   align-items: center;
   justify-content: flex-start;
-
+  color: var(--text-color);
 
   & .main-products_list__product {
 
-    background-color: #272727;
+    background-color: var(--second-color);
     margin: 0 0.5rem 1rem;
     width: 250px;
     height: 400px;
@@ -91,6 +91,7 @@ p {
     overflow: hidden;
     height: 0px;
     position: relative;
+    color: var(--text-color);
 
     & :first-child {
       background: #c42a2c;
