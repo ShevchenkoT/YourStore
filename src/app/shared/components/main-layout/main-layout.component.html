@@ -1,3 +1,38 @@
 <p>
   main-layout works!
 </p>
+<div class="top-bar">
+
+  <div class="top-bar_tittle">
+    <a routerLink="/">
+      <h1><span>Your</span> Store</h1>
+
+    </a>
+
+  </div>
+
+  <div class="top-bar_icons">
+
+    <div class="top-bar_element">
+      <a routerLink="['/']" title="Search"><img src="assets/img/ico/search.png" alt=""></a>
+      <small>Search</small>
+    </div>
+
+    <div class="top-bar_element">
+
+      <a routerLink="/wish-list" title="My wish list"><img src="assets/img/ico/wishlist.png" alt=""></a>
+      <div class="counter">{{cartFavoriteService.numberOfFavorites}}</div>
+      <small>Wish list</small>
+    </div>
+
+    <div class="top-bar_element">
+
+      <a routerLink='/cart' title="My Cart"><img src="assets/img/ico/card.png" alt=""></a>
+      <div class="counter">{{cartFavoriteService.numberOfCart}}</div>
+      <small>My Cart</small>
+    </div>
+
+  </div>
+</div>
+
+<router-outlet></router-outlet>

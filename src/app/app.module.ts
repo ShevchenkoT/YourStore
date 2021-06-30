@@ -16,19 +16,22 @@ import { ErrorPageComponent } from './error-page/error-page.component';
 import { CartComponent } from './cart/cart.component';
 import { SharedModule, } from './shared/shared.module';
 import { LoginPageComponent } from './login-page/login-page.component';
+import { MainLayoutComponent } from './shared/components/main-layout/main-layout.component';
 
 @NgModule({
   declarations: [
     AppComponent,
+    MainLayoutComponent,
+    LoginPageComponent,
     ProductsComponent,
-    HoverPhoneDirective,
-    FilterChecksPipe,
-    FilterPhonesPipe,
-    WishListComponent,
     ProductDetailComponent,
-    ErrorPageComponent,
     CartComponent,
-    LoginPageComponent
+    WishListComponent,
+    ErrorPageComponent,
+
+    FilterPhonesPipe,
+    FilterChecksPipe,
+    HoverPhoneDirective,
   ],
   imports: [
     BrowserModule,

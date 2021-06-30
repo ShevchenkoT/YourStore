@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { CartFavoritesService } from '../../service/cart-favorites.service';
 
 @Component({
   selector: 'app-main-layout',
@@ -7,7 +8,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class MainLayoutComponent implements OnInit {
 
-  constructor() { }
+  constructor(public cartFavoriteService: CartFavoritesService) { }
 
   ngOnInit() {
   }
