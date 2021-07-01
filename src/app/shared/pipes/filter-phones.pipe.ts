@@ -1,5 +1,5 @@
 import { Pipe, PipeTransform } from '@angular/core';
-import { Product } from '../service/cart-favorites.service';
+import { Product } from '../interfaces';
 
 
 @Pipe({

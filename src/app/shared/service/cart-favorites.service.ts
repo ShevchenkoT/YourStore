@@ -1,15 +1,8 @@
 import { Injectable } from '@angular/core';
+import { Product } from '../interfaces';
 
 
-export interface Product {
-  id: number;
-  phoneName: string;
-  memory: number;
-  phoneColor: string;
-  phonePriceUsd: number;
-  pictureUrl: string;
-  numberOfProducts?: number;
-}
+
 
 
 @Injectable({

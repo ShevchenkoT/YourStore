@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { CartFavoritesService, Product } from '../shared/service/cart-favorites.service';
+import { Product } from '../shared/interfaces';
+import { CartFavoritesService } from '../shared/service/cart-favorites.service';
 import { TodoService } from '../shared/service/todo.service';
 
 @Component({

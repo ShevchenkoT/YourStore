@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Params } from '@angular/router';
+import { Product } from '../shared/interfaces';
 import { CartFavoritesService } from '../shared/service/cart-favorites.service';
 import { TodoService } from '../shared/service/todo.service';
 
@@ -10,7 +11,7 @@ import { TodoService } from '../shared/service/todo.service';
   styleUrls: ['./product-detail.component.scss']
 })
 export class ProductDetailComponent implements OnInit {
-  products: any[] = [];
+  products: Product[] = [];
   product!: any;
   error = '';
 

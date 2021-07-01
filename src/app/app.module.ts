@@ -17,6 +17,7 @@ import { CartComponent } from './cart/cart.component';
 import { SharedModule, } from './shared/shared.module';
 import { LoginPageComponent } from './login-page/login-page.component';
 import { MainLayoutComponent } from './shared/components/main-layout/main-layout.component';
+import { AuthService } from './shared/service/auth.service';
 
 @NgModule({
   declarations: [
@@ -40,7 +41,7 @@ import { MainLayoutComponent } from './shared/components/main-layout/main-layout
     ReactiveFormsModule,
     SharedModule
   ],
-  providers: [],
+  providers: [AuthService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
