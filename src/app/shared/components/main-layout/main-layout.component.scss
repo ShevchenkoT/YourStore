@@ -20,15 +20,21 @@
 
 
     & a {
+      transition: all .3s ease;
+
       & h1 {
         font-size: 45px;
         color: var(--text-color);
+
 
         & span {
           color: red
         }
       }
 
+      &:hover {
+        transform: scale(1.05);
+      }
 
     }
 
@@ -37,7 +43,7 @@
   .top-bar_icons {
 
     display: flex;
-    width: 280px;
+    width: 300px;
     height: 80px;
     margin-top: 1rem;
     justify-content: space-evenly;
@@ -53,7 +59,7 @@
         transition: all .2s ease;
 
         &:hover {
-          width: 50px;
+          transform: scale(1.2);
         }
       }
 

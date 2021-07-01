@@ -42,9 +42,10 @@
 
   <div class="cart-wish_form">
     <form [formGroup]="form" (ngSubmit)="onSubmit()">
-      <div class="form-control">
-        <label>Email</label>
-        <input type="Email" formControlName="email" placeholder="Email"><span></span>
+
+      <div [ngClass]="{invalid:form.get('email')?.touched && form.get('email')?.invalid}" class="form-control">
+        <label for="email">Email</label>
+        <input id="eamil" type="Email" formControlName="email" placeholder="Email"><span></span>
 
         <div class="errors" *ngIf="form.get('email')?.invalid && form.get('email')?.touched">
           <small *ngIf="form.get('email')?.errors?.required">
@@ -56,9 +57,12 @@
         </div>
       </div>
 
-      <div class=" form-control">
-        <label>Phone Number</label>
-        <input type="tel" formControlName="phoneNumber" inputmode="numeric" placeholder="Like this: 0963332211">
+      <div [ngClass]="{invalid:form.get('phoneNumber')?.touched && form.get('phoneNumber')?.invalid}"
+        class="form-control">
+
+        <label for="phoneNumber">Phone Number</label>
+        <input id="phoneNumber" type="text" formControlName="phoneNumber" inputmode="numeric"
+          placeholder="Like this: 0963332211">
 
 
         <div class="errors" *ngIf=" form.get('phoneNumber')?.invalid && form.get('phoneNumber')?.touched">
@@ -81,9 +85,9 @@
 
 
 
-      <div class="form-control">
-        <label>Full name</label>
-        <input type="text" formControlName='fullName' placeholder="Enter your name">
+      <div [ngClass]="{invalid:form.get('fullName')?.touched && form.get('fullName')?.invalid}" class="form-control">
+        <label for="fullName">Full name</label>
+        <input id="fullName" type="text" formControlName='fullName' placeholder="Enter your name">
 
         <div class="errors" *ngIf="form.get('fullName')?.invalid && form.get('fullName')?.touched">
           <small>
@@ -92,9 +96,9 @@
         </div>
       </div>
 
-      <div class="form-control">
-        <label>Type of sending</label>
-        <select formControlName="sending">
+      <div [ngClass]="{invalid:form.get('sending')?.touched && form.get('sending')?.invalid}" class="form-control">
+        <label for="sending">Type of sending</label>
+        <select id="sending" formControlName="sending">
           <option value="Self-pickup">Self-pickup</option>
           <option value="Courier">Delivery by courier</option>
           <option value="Mail">Delivery by mail</option>
@@ -103,11 +107,11 @@
       </div>
 
 
-      <div class="form-control_buttons">
-        <button class="btn" type="submit" [disabled]="form.invalid">Submit</button>
 
-        <button (click)="cartService.clearCartList()" class="btn wish-list_button">Clear Card</button>
-      </div>
+      <button class="btn" type="submit" [disabled]="form.invalid">Submit</button>
+
+      <button (click)="cartService.clearCartList()" class="btn wish-list_button">Clear Card</button>
+
       <div class="errors" *ngIf="!form.invalid && cartService.cartItem.length === 0">
         <small>
           Add any product

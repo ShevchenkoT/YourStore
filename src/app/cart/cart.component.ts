@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
-import { MyValidators } from '../my.validators';
+import { MyValidators } from '../shared/my.validators';
 import { CartFavoritesService } from '../shared/service/cart-favorites.service';
 
 @Component({
