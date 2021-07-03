@@ -1,0 +1,41 @@
+<div class="main-panel">
+  <form [formGroup]='form' (ngSubmit)="submit()">
+    <h2 class="text-center">Login to the admin panel</h2>
+
+    <div [ngClass]="{invalid:form.get('email')?.touched && form.get('email')?.invalid}" class="form-control">
+
+      <label for="email">Email</label>
+      <input id="email" type="email" placeholder="Email" formControlName='email'>
+
+      <div class="errors" *ngIf="form.get('email')?.invalid && form.get('email')?.touched">
+        <small *ngIf="form.get('email')?.errors?.required">
+          Email field cannot be empty
+        </small>
+        <small *ngIf="form.get('email')?.errors?.email">
+          Please enter a valid email address
+        </small>
+      </div>
+
+    </div>
+
+    <div [ngClass]="{invalid:form.get('password')?.touched && form.get('password')?.invalid}" class="form-control">
+
+      <label for="password">Password</label>
+      <input id='password' type="password" placeholder="Password" formControlName='password'>
+
+      <div class="errors" *ngIf="form.get('password')?.invalid && form.get('password')?.touched">
+        <small *ngIf="form.get('password')?.errors?.required">
+          Password field cannot be empty
+        </small>
+        <small *ngIf="form.get('password')?.errors?.minlength">
+          Min length {{form.get('password')?.errors?.minlength.requiredLength}} now
+          {{form.get('password')?.errors?.minlength.actualLength}}
+        </small>
+      </div>
+
+    </div>
+
+
+    <button class="btn" type="submit" [disabled]='form.invalid || submitted || auth.isAuthenticated()'>Submit</button>
+  </form>
+</div>
