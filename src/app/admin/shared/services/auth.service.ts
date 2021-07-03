@@ -1,5 +1,8 @@
 import { HttpClient } from '@angular/common/http';
+import { Route } from '@angular/compiler/src/core';
 import { Injectable } from '@angular/core';
+import { Router } from '@angular/router';
+
 import { Observable } from 'rxjs';
 import { tap } from 'rxjs/operators';
 import { environment } from 'src/environments/environment';
@@ -9,7 +12,10 @@ import { FbAuthResponse, User } from '../../../shared/interfaces';
 )
 export class AuthService {
 
-  constructor(private http: HttpClient) { }
+  constructor(
+    private http: HttpClient,
+    private router: Router
+  ) { }
 
   get token(): string | null {
     const expDate = new Date(localStorage.getItem('fb-token-exp')!)

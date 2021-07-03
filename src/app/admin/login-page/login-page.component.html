@@ -1,11 +1,10 @@
 <div class="main-panel">
   <form [formGroup]='form' (ngSubmit)="submit()">
     <h2 class="text-center">Login to the admin panel</h2>
-
     <div [ngClass]="{invalid:form.get('email')?.touched && form.get('email')?.invalid}" class="form-control">
 
       <label for="email">Email</label>
-      <input id="email" type="email" placeholder="Email" formControlName='email'>
+      <input id="email" type="email" placeholder="Email" formControlName="email">
 
       <div class="errors" *ngIf="form.get('email')?.invalid && form.get('email')?.touched">
         <small *ngIf="form.get('email')?.errors?.required">
@@ -35,7 +34,6 @@
 
     </div>
 
-
-    <button class="btn" type="submit" [disabled]='form.invalid || submitted || auth.isAuthenticated()'>Submit</button>
+    <button class="btn" type="submit" [disabled]="form.invalid || submitted || auth.isAuthenticated()">Submit</button>
   </form>
 </div>

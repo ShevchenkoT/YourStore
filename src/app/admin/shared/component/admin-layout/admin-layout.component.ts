@@ -11,7 +11,8 @@ export class AdminLayoutComponent implements OnInit {
 
   constructor(
     public auth: AuthService,
-    private router: Router
+    private router: Router,
+
   ) { }
 
   ngOnInit() {
