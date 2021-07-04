@@ -10,3 +10,22 @@
   padding: 1.3px;
   font-weight: bold;
 }
+
+.top-bar_element_search {
+  cursor: pointer;
+  width: 200px;
+  height: 50px;
+  margin: 0 10px;
+  text-align: center;
+  display: flex;
+  align-items: center;
+
+  & input {
+    border-radius: .5rem;
+    height: 2rem;
+    padding: 0 0 0 .5rem;
+    width: 150px;
+    font-weight: 900;
+    font-size: 1.2rem;
+  }
+}
