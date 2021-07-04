@@ -1,44 +1,38 @@
-<div class="main-panel">
+<--| filterPhones :nameCheck :'phoneName'| filterPhones :memoryCheck :'memory' | filterPhones :colorCheck :'phoneColor'
+  -->
   <div class="main-panel">
-    <!-- <div *ngIf="error else TodoEmpty">
-      <p class="product-error">Error 404, products is not found</p>
-    </div> -->
 
-    <ng-template #TodoEmpty>
-
-
-
+    <div class="main-panel">
       <div class="main-products_list">
-        <--| filterPhones :nameCheck :'phoneName'| filterPhones :memoryCheck :'memory' | filterPhones :colorCheck
-          :'phoneColor' -->
-          <div *ngFor="let p of products  " class="main-products_list__product" appHoverPhone>
+
+        <div *ngFor="let p of products  " class="main-products_list__product" appHoverPhone>
 
 
-            <div class="main-products_list__product___photo">
-              <a [routerLink]="['/product-detail',p.id]" title="Detail {{p.phoneName}}"
-                class="main-products_list__product__link-detail"></a>
-              <img title="Details {{p.phoneName}}" class="main-products_list__product___photo" src="{{p.pictureUrl}}"
-                alt="">
-            </div>
-
-            <p>{{p.phoneName }} {{p.memory}}GB </p>
-            <P>({{p.phoneColor}})</P>
-
-            <div class="main-products_list__product___button">
-              <button class="btn">Change</button>
-              <button class=" btn btn_another_prop">Remove</button>
-            </div>
-
-            <div class="main-product_list__product___price">
-
-              <span class="usd">{{p.phonePriceUsd | currency : 'USD':'symbol':'3.0'}}</span>
-              <span class="uah">{{ p.phonePriceUsd*28}} Грн</span>
-            </div>
-
+          <div class="main-products_list__product___photo">
+            <a [routerLink]="['/product-detail',p.id]" title="Detail {{p.phoneName}}"
+              class="main-products_list__product__link-detail"></a>
+            <img title="Details {{p.phoneName}}" class="main-products_list__product___photo" src="{{p.pictureUrl}}"
+              alt="">
           </div>
 
-      </div>
-    </ng-template>
+          <p>{{p.phoneName }} {{p.memory}}GB </p>
+          <P>({{p.phoneColor}})</P>
 
+          <div class="main-products_list__product___button">
+            <button class="btn">Change</button>
+            <button class=" btn btn_another_prop">Remove</button>
+          </div>
+
+          <div class="main-product_list__product___price">
+
+            <span class="usd">{{p.phonePriceUsd | currency : 'USD':'symbol':'3.0'}}</span>
+            <span class="uah">{{ p.phonePriceUsd*28}} Грн</span>
+          </div>
+
+        </div>
+
+      </div>
+
+
+    </div>
   </div>
-</div>

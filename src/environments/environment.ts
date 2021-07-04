@@ -6,7 +6,8 @@ import { Environment } from "./interface";
 
 export const environment: Environment = {
   production: false,
-  apiKey: "AIzaSyBJqzWmUTtDXtaKz9MIrnxoynPCDeiTS1c"
+  apiKey: "AIzaSyBJqzWmUTtDXtaKz9MIrnxoynPCDeiTS1c",
+  rbDbUrl: "https://yourstore-01-default-rtdb.firebaseio.com"
 };
 
 /*
