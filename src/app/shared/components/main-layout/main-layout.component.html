@@ -10,12 +10,12 @@
 
   <div class="top-bar_icons">
 
-    <div class="top-bar_element_search">
-      <input type="search">
-      <div class="top-bar_element">
+    <div class="top-bar_element_search" [@search]='searchState'>
+      <div class="top-bar_element icon_search" (click)="animate()">
         <img src="assets/img/ico/search.png" alt="">
         <small>Search</small>
       </div>
+      <input type="search">
     </div>
 
     <div class="top-bar_element">

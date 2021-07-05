@@ -181,7 +181,7 @@ input[type='text'],
 input[type='email'],
 input[type='password'],
 input[type='date'],
-input[type='date'],
+input[type='url'],
 select,
 textarea {
 
@@ -428,7 +428,7 @@ button {
     & .top-bar_element {
       cursor: pointer;
       width: 60px;
-      height: 50px;
+      height: 60px;
       margin: 0 10px;
       text-align: center;
 
@@ -445,8 +445,6 @@ button {
     }
   }
 }
-
-
 
 
 

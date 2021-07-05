@@ -48,7 +48,6 @@ export class LoginPageComponent implements OnInit, AfterContentChecked {
       password: this.form.value.password
     }
     this.auth.login(user).subscribe((resolve) => {
-
       this.router.navigate(["/admin", "product-list"])
       this.form.reset()
       this.submitted = false

@@ -1,5 +1,5 @@
 <div class="main-panel">
-  <form [formGroup]='form' (ngSubmit)="submit()">
+  <form class="login-form" [formGroup]='form' (ngSubmit)="submit()">
     <h2 class="text-center">Login to the admin panel</h2>
     <div [ngClass]="{invalid:form.get('email')?.touched && form.get('email')?.invalid}" class="form-control">
 

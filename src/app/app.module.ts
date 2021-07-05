@@ -15,6 +15,7 @@ import { SharedModule, } from './shared/shared.module';
 import { MainLayoutComponent } from './shared/components/main-layout/main-layout.component';
 import { FilterChecksPipe } from './shared/pipes/filter-checks.pipe';
 import { FilterPhonesPipe } from './shared/pipes/filter-phones.pipe';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 @NgModule({
   declarations: [
@@ -33,7 +34,7 @@ import { FilterPhonesPipe } from './shared/pipes/filter-phones.pipe';
     BrowserModule,
     AppRoutingModule,
     SharedModule,
-
+    BrowserAnimationsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

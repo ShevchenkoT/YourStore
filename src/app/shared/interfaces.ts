@@ -10,11 +10,11 @@ export interface FbAuthResponse {
 }
 
 export interface Product {
-  id?: number;
   phoneName: string;
   memory: number;
   phoneColor: string;
   phonePriceUsd: number;
   pictureUrl: string;
+  id?: number;
   numberOfProducts?: number;
 }

@@ -41,11 +41,11 @@
   </div>
 
   <div class="cart-wish_form">
-    <form [formGroup]="form" (ngSubmit)="onSubmit()">
+    <form class="cart-form" [formGroup]="form" (ngSubmit)="onSubmit()">
 
       <div [ngClass]="{invalid:form.get('email')?.touched && form.get('email')?.invalid}" class="form-control">
         <label for="email">Email</label>
-        <input id="eamil" type="Email" formControlName="email" placeholder="Email"><span></span>
+        <input id="email" type="Email" formControlName="email" placeholder="Email">
 
         <div class="errors" *ngIf="form.get('email')?.invalid && form.get('email')?.touched">
           <small *ngIf="form.get('email')?.errors?.required">

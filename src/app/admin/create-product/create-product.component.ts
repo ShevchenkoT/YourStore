@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { Product } from 'src/app/shared/interfaces';
 import { ProductService } from 'src/app/shared/service/product.service';
 
 @Component({
@@ -10,6 +11,7 @@ import { ProductService } from 'src/app/shared/service/product.service';
 export class CreateProductComponent implements OnInit {
 
   form!: FormGroup
+
   constructor(
     private productService: ProductService
   ) { }
@@ -27,25 +29,19 @@ export class CreateProductComponent implements OnInit {
     if (this.form.invalid) {
       return
     }
-    this.form.reset()
-    console.log(this.form.value);
+    const newProduct: Product = {
+      phoneName: this.form.value.phoneName,
+      memory: parseInt(this.form.value.memory),
+      phoneColor: this.form.value.phoneColor,
+      phonePriceUsd: parseInt(this.form.value.phonePriceUsd),
+      pictureUrl: this.form.value.pictureUrl
+    }
 
+    this.productService.create(newProduct).subscribe(() => {
+      this.form.reset()
+      console.log(newProduct);
 
+    })
   }
 
-  // test() {
-  //   this.productService.create({
-
-  //     phoneName: "test phone",
-  //     memory: 128,
-  //     phoneColor: 'red',
-  //     phonePriceUsd: 999,
-  //     pictureUrl: 'someurl',
-  //     numberOfProducts: 5,
-
-  //   }).subscribe((resolve) => {
-  //     console.log(resolve);
-
-  //   })
-  // }
 }

@@ -1,56 +1,67 @@
 <div class="main-panel">
-  <form [formGroup]="form" (ngSubmit)="submit()">
-    <div class="form-control">
-      <label for="phoneName">Phone Name</label>
-      <input id="phoneName" type="text" formControlName="phoneName" placeholder="Enter phone name">
+  <form class="create-form" [formGroup]="form" (ngSubmit)="submit()">
 
-      <div class="error">
-        <small>Some error</small>
+
+    <div>
+      <img src="{{'http://localhost:4200/assets/img/phones/11Red.png'}}">
+
+      <div [ngClass]="{invalid:form.get('pictureUrl')?.touched && form.get('pictureUrl')?.invalid}"
+        class=" form-control">
+        <label for="pictureUrl">Picture Url</label>
+        <input id="pictureUrl" type="url" formControlName="pictureUrl" placeholder="example.com/img.png">
+
+        <div class="error">
+          <small>Some error</small>
+        </div>
       </div>
     </div>
 
-    <div class="form-control">
-      <label for="memory">Memory</label>
-      <select id="memory" type="text" formControlName="memory">
-        <option value="32">32</option>
-        <option value="64">64</option>
-        <option value="128">128</option>
-        <option value="256">256</option>
-        <option value="512">512</option>
-      </select>
+    <div class="">
+      <div [ngClass]="{invalid:form.get('phoneName')?.touched && form.get('phoneName')?.invalid}" class="form-control">
+        <label for="phoneName">Phone Name</label>
+        <input id="phoneName" type="text" formControlName="phoneName" placeholder="Enter phone name">
 
-      <div class="error">
-        <small>Some error</small>
+        <div class="error">
+          <small>Some error</small>
+        </div>
       </div>
-    </div>
 
-    <div class="form-control">
-      <label for="phoneColor">Color</label>
-      <input id="phoneColor" type="text" formControlName="phoneColor" placeholder="Enter phone color">
+      <div [ngClass]="{invalid:form.get('memory')?.touched && form.get('memory')?.invalid}" class="form-control">
+        <label for="memory">Memory</label>
+        <select id="memory" type="number" formControlName="memory">
+          <option value="32">32</option>
+          <option value="64">64</option>
+          <option value="128">128</option>
+          <option value="256">256</option>
+          <option value="512">512</option>
+        </select>
 
-      <div class="error">
-        <small>Some error</small>
+        <div class="error">
+          <small>Some error</small>
+        </div>
       </div>
-    </div>
 
-    <div class="form-control">
-      <label for="pictureUrl">Picture Url</label>
-      <input id="pictureUrl" type="text" formControlName="pictureUrl" placeholder="Enter picture url">
+      <div [ngClass]="{invalid:form.get('phoneColor')?.touched && form.get('phoneColor')?.invalid}"
+        class="form-control">
+        <label for="phoneColor">Color</label>
+        <input id="phoneColor" type="text" formControlName="phoneColor" placeholder="Enter phone color">
 
-      <div class="error">
-        <small>Some error</small>
+        <div class="error">
+          <small>Some error</small>
+        </div>
       </div>
-    </div>
 
-    <div class="form-control">
-      <label for="phonePriceUsd">Price</label>
-      <input id="phonePriceUsd" type="text" formControlName="phonePriceUsd" placeholder="Enter price in USD">
+      <div [ngClass]="{invalid:form.get('phonePriceUsd')?.touched && form.get('phonePriceUsd')?.invalid}"
+        class="form-control">
+        <label for="phonePriceUsd">Price</label>
+        <input id="phonePriceUsd" type="text" formControlName="phonePriceUsd" placeholder="Enter price in USD">
 
-      <div class="error">
-        <small>Some error</small>
+        <div class="error">
+          <small>Some error</small>
+        </div>
       </div>
-    </div>
 
-    <button (ngSubmit)="submit()" [disabled]="form.invalid" class="btn">Create</button>
+      <button type="submit" [disabled]="form.invalid" class="btn">Create</button>
+    </div>
   </form>
 </div>

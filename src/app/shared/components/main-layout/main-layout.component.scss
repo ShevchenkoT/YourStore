@@ -13,12 +13,20 @@
 
 .top-bar_element_search {
   cursor: pointer;
-  width: 200px;
-  height: 50px;
+  width: 60px;
+  height: 60px;
   margin: 0 10px;
   text-align: center;
   display: flex;
   align-items: center;
+  overflow: hidden;
+  //transition: all .5s ease-in;
+  // background-position: left top;
+  // -webkit-transition: width .2s;
+  // top: 0;
+  // right: 0;
+  //transition: 1s cubic-bezier(0.175, 0.885, 0.32, 1.275) all;
+
 
   & input {
     border-radius: .5rem;
@@ -28,4 +36,16 @@
     font-weight: 900;
     font-size: 1.2rem;
   }
+
+  .icon_search {
+    left: 0;
+
+
+  }
+
+  // &:hover {
+  //   width: 250px;
+
+  // }
+
 }
