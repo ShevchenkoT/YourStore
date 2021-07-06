@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Product } from 'src/app/shared/interfaces';
+import { MyValidators } from 'src/app/shared/my.validators';
 import { ProductService } from 'src/app/shared/service/product.service';
 
 @Component({
@@ -21,7 +22,7 @@ export class CreateProductComponent implements OnInit {
       phoneName: new FormControl(null, [Validators.required]),
       memory: new FormControl(null, [Validators.required]),
       phoneColor: new FormControl(null, [Validators.required]),
-      phonePriceUsd: new FormControl(null, [Validators.required]),
+      phonePriceUsd: new FormControl(null, [Validators.required, MyValidators.ifInt]),
       pictureUrl: new FormControl(null, [Validators.required])
     })
   }

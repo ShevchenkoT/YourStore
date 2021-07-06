@@ -10,8 +10,10 @@
         <label for="pictureUrl">Picture Url</label>
         <input id="pictureUrl" type="url" formControlName="pictureUrl" placeholder="example.com/img.png">
 
-        <div class="error">
-          <small>Some error</small>
+        <div class="errors" *ngIf="form.get('pictureUrl')?.invalid && form.get('pictureUrl')?.touched">
+          <small *ngIf="form.get('pictureUrl')?.errors?.required">
+            Field cannot be empty
+          </small>
         </div>
       </div>
     </div>
@@ -21,8 +23,10 @@
         <label for="phoneName">Phone Name</label>
         <input id="phoneName" type="text" formControlName="phoneName" placeholder="Enter phone name">
 
-        <div class="error">
-          <small>Some error</small>
+        <div class="errors" *ngIf="form.get('phoneName')?.invalid && form.get('phoneName')?.touched">
+          <small *ngIf="form.get('phoneName')?.errors?.required">
+            Field cannot be empty
+          </small>
         </div>
       </div>
 
@@ -34,10 +38,13 @@
           <option value="128">128</option>
           <option value="256">256</option>
           <option value="512">512</option>
+          <option value="1024">1024</option>
         </select>
 
-        <div class="error">
-          <small>Some error</small>
+        <div class="errors" *ngIf="form.get('memory')?.invalid && form.get('memory')?.touched">
+          <small *ngIf="form.get('memory')?.errors?.required">
+            Field cannot be empty
+          </small>
         </div>
       </div>
 
@@ -46,8 +53,10 @@
         <label for="phoneColor">Color</label>
         <input id="phoneColor" type="text" formControlName="phoneColor" placeholder="Enter phone color">
 
-        <div class="error">
-          <small>Some error</small>
+        <div class="errors" *ngIf="form.get('phoneColor')?.invalid && form.get('phoneColor')?.touched">
+          <small *ngIf="form.get('phoneColor')?.errors?.required">
+            Field cannot be empty
+          </small>
         </div>
       </div>
 
@@ -56,8 +65,13 @@
         <label for="phonePriceUsd">Price</label>
         <input id="phonePriceUsd" type="text" formControlName="phonePriceUsd" placeholder="Enter price in USD">
 
-        <div class="error">
-          <small>Some error</small>
+        <div class="errors" *ngIf="form.get('phonePriceUsd')?.invalid && form.get('phonePriceUsd')?.touched">
+          <small *ngIf="form.get('phonePriceUsd')?.errors?.required">
+            Field cannot be empty
+          </small>
+          <small *ngIf="form.get('phonePriceUsd')?.errors?.isNotInteger">
+            Enter only numbers
+          </small>
         </div>
       </div>
 

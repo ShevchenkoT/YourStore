@@ -28,7 +28,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     ErrorPageComponent,
     FilterPhonesPipe,
     FilterChecksPipe,
-    HoverPhoneDirective,
+    //HoverPhoneDirective,
   ],
   imports: [
     BrowserModule,

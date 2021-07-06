@@ -1,12 +1,14 @@
 import { HttpClientModule } from "@angular/common/http";
 import { NgModule } from "@angular/core";
 import { FormsModule, ReactiveFormsModule } from "@angular/forms";
+import { HoverPhoneDirective } from "./directives/hover-phone.directive";
 
 @NgModule({
   imports: [
     HttpClientModule,
     ReactiveFormsModule,
     FormsModule,
+
 
   ],
   exports: [
@@ -15,6 +17,9 @@ import { FormsModule, ReactiveFormsModule } from "@angular/forms";
     FormsModule,
 
   ]
+  ,
+  providers: []
+
 })
 
 export class SharedModule { }

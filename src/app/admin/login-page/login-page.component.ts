@@ -1,13 +1,15 @@
 import { AfterContentChecked, Component, OnChanges, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { HoverPhoneDirective } from 'src/app/shared/directives/hover-phone.directive';
 import { User } from '../../shared/interfaces';
 import { AuthService } from '../shared/services/auth.service';
 
 @Component({
   selector: 'app-login-page',
   templateUrl: './login-page.component.html',
-  styleUrls: ['./login-page.component.scss']
+  styleUrls: ['./login-page.component.scss'],
+  providers: [HoverPhoneDirective]
 })
 export class LoginPageComponent implements OnInit, AfterContentChecked {
 

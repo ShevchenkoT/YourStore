@@ -15,6 +15,6 @@ export interface Product {
   phoneColor: string;
   phonePriceUsd: number;
   pictureUrl: string;
-  id?: number;
+  id?: any;//!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
   numberOfProducts?: number;
 }

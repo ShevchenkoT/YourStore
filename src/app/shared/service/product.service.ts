@@ -27,13 +27,13 @@ export class ProductService implements OnInit {
           }))
 
       }))
-
-
-
-
   }
 
   create(product: any): Observable<any> {
     return this.http.post(`${environment.rbDbUrl}/product.json`, product)
+  }
+
+  remove(id: string): Observable<void> {
+    return this.http.delete<void>(`${environment.rbDbUrl}/product/${id}.json `)
   }
 }

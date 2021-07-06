@@ -1,6 +1,6 @@
 <--| filterPhones :nameCheck :'phoneName'| filterPhones :memoryCheck :'memory' | filterPhones :colorCheck :'phoneColor'
   -->
-  <div class="main-panel">
+  <!-- <div class="main-panel">
 
     <div class="main-panel">
       <div class="main-products_list">
@@ -35,4 +35,43 @@
 
 
     </div>
+  </div> -->
+
+
+
+  <div class="main-panel">
+
+
+
+    <div class="main-products_list">
+
+      <div *ngFor="let p of products " class="main-products_list__product" appHoverPhone>
+
+
+        <div class="main-products_list__product___photo">
+          <a title="Detail {{p.phoneName}}" class="main-products_list__product__link-detail"></a>
+          <img title="Details {{p.phoneName}}" class="main-products_list__product___photo" src="{{p.pictureUrl}}"
+            alt="">
+        </div>
+
+        <p>{{p.phoneName }} {{p.memory}}GB </p>
+        <P>({{p.phoneColor}})</P>
+
+
+
+        <div class="main-products_list__product___button">
+          <button [routerLink]="['/admin', 'product', p.id, 'edit']" class="btn">Change</button>
+          <button (click)="remove(p.id)" class=" btn btn_another_prop">Remote</button>
+        </div>
+
+        <div class="main-product_list__product___price">
+
+          <span class="usd">{{p.phonePriceUsd | currency : 'USD':'symbol':'3.0'}}</span>
+          <span class="uah">{{ p.phonePriceUsd*28}} Грн</span>
+        </div>
+
+      </div>
+
+    </div>
+
   </div>

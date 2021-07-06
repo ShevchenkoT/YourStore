@@ -10,6 +10,7 @@ import { AdminLayoutComponent } from "./shared/component/admin-layout/admin-layo
 import { AuthService } from "./shared/services/auth.service";
 import { OrdersComponent } from "./orders/orders.component";
 import { AuthGuard } from "./shared/services/auth.guard";
+import { HoverPhoneDirective } from "../shared/directives/hover-phone.directive";
 
 const routes: Routes = [
   {
@@ -33,7 +34,7 @@ const routes: Routes = [
     EditProductComponent,
     LoginPageComponent,
     OrdersComponent,
-
+    HoverPhoneDirective,
   ],
 
   imports: [
