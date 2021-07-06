@@ -1,5 +1,5 @@
 <div class="main-panel">
-  <form class="edit-form" [formGroup]="form" (ngSubmit)="submit()">
+  <form *ngIf="product; else loading" class="edit-form" [formGroup]="form" (ngSubmit)="submit()">
 
 
     <div>
@@ -75,7 +75,10 @@
         </div>
       </div>
 
-      <button type="submit" [disabled]="form.invalid" class="btn">Create</button>
+      <button type="submit" [disabled]="form.invalid" class="btn">Change</button>
     </div>
   </form>
+  <ng-template #loading>
+    <p>loading...</p>
+  </ng-template>
 </div>

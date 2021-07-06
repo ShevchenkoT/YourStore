@@ -1,8 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Params } from '@angular/router';
-import { Product } from '../shared/interfaces';
+
 import { CartFavoritesService } from '../shared/service/cart-favorites.service';
 import { TodoService } from '../shared/service/todo.service';
+import { Product } from '../shared/interfaces';
 
 
 @Component({
@@ -15,7 +16,6 @@ export class ProductDetailComponent implements OnInit {
   product!: any;
   error = '';
 
-
   constructor(
     private route: ActivatedRoute,
     public cartFavoriteService: CartFavoritesService,
@@ -27,6 +27,6 @@ export class ProductDetailComponent implements OnInit {
       this.route.params.subscribe((params: Params) => {
         this.product = todos.find((p) => p.id === +params.id);
       }, (error) => { console.log('error', error); });
-    });
+    })
   }
 }

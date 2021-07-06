@@ -26,6 +26,7 @@ export class CreateProductComponent implements OnInit {
       pictureUrl: new FormControl(null, [Validators.required])
     })
   }
+
   submit() {
     if (this.form.invalid) {
       return

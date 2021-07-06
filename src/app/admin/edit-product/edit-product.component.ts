@@ -1,6 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { ActivatedRoute, Params, Router } from '@angular/router';
+import { switchMap } from 'rxjs/operators';
+import { Product } from 'src/app/shared/interfaces';
 import { MyValidators } from 'src/app/shared/my.validators';
+import { ProductService } from 'src/app/shared/service/product.service';
 
 @Component({
   selector: 'app-edit-product',
@@ -9,19 +13,39 @@ import { MyValidators } from 'src/app/shared/my.validators';
 })
 export class EditProductComponent implements OnInit {
 
-
   form!: FormGroup
 
-  constructor() { }
+  product!: Product
+
+  constructor(
+    private productService: ProductService,
+    private route: ActivatedRoute
+  ) { }
 
   ngOnInit() {
-    this.form = new FormGroup({
-      phoneName: new FormControl(null, [Validators.required]),
-      memory: new FormControl(null, [Validators.required]),
-      phoneColor: new FormControl(null, [Validators.required]),
-      phonePriceUsd: new FormControl(null, [Validators.required, MyValidators.ifInt]),
-      pictureUrl: new FormControl(null, [Validators.required])
+    this.route.params.pipe(
+      switchMap((params: Params) => {
+        return this.productService.getById(params['id'])
+      })
+    ).subscribe((product: Product) => {
+      this.product = product
+
+      this.form = new FormGroup({
+        phoneName: new FormControl(product.phoneName, [Validators.required]),
+        memory: new FormControl(product.memory, [Validators.required]),
+        phoneColor: new FormControl(product.phoneColor, [Validators.required]),
+        phonePriceUsd: new FormControl(product.phonePriceUsd, [Validators.required, MyValidators.ifInt]),
+        pictureUrl: new FormControl(product.pictureUrl, [Validators.required])
+      })
+
     })
+
+
+
+
+
+
+
   }
 
   submit() {

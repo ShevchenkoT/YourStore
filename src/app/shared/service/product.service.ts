@@ -3,6 +3,7 @@ import { Injectable, OnInit } from "@angular/core";
 import { Observable } from "rxjs";
 import { map } from "rxjs/operators";
 import { environment } from "src/environments/environment";
+import { Product } from "../interfaces";
 
 @Injectable({
   providedIn: "root"
@@ -35,5 +36,16 @@ export class ProductService implements OnInit {
 
   remove(id: string): Observable<void> {
     return this.http.delete<void>(`${environment.rbDbUrl}/product/${id}.json `)
+  }
+
+  getById(id: string): Observable<Product> {
+    return this.http.get<Product>(`${environment.rbDbUrl}/product/${id}.json `).pipe(
+      map((product: Product) => {
+        return {
+          ...product,
+          id,
+        }
+      })
+    )
   }
 }
