@@ -14,7 +14,7 @@ import { ProductService } from 'src/app/shared/service/product.service';
 export class EditProductComponent implements OnInit {
 
   form!: FormGroup
-
+  submitted = false
   product!: Product
 
   constructor(
@@ -37,19 +37,24 @@ export class EditProductComponent implements OnInit {
         phonePriceUsd: new FormControl(product.phonePriceUsd, [Validators.required, MyValidators.ifInt]),
         pictureUrl: new FormControl(product.pictureUrl, [Validators.required])
       })
-
     })
-
-
-
-
-
-
-
   }
 
   submit() {
-
+    if (this.form.invalid) {
+      return
+    }
+    this.submitted = true
+    this.productService.update({
+      ...this.product,
+      phoneName: this.form.value.phoneName,
+      memory: this.form.value.memory,
+      phoneColor: this.form.value.phoneColor,
+      phonePriceUsd: this.form.value.phonePriceUsd,
+      pictureUrl: this.form.value.pictureUrl
+    })
+      .subscribe(() => {
+        this.submitted = false
+      })
   }
-
 }

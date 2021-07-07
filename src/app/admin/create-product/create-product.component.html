@@ -3,7 +3,12 @@
 
 
     <div>
-      <img src="{{'http://localhost:4200/assets/img/phones/11Red.png'}}">
+      <img *ngIf="testPicture;else pictureEmpty" src="{{testPicture}}">
+      <ng-template #pictureEmpty>
+        <div class="pictureEmpty">
+          <p>No image</p>
+        </div>
+      </ng-template>
 
       <div [ngClass]="{invalid:form.get('pictureUrl')?.touched && form.get('pictureUrl')?.invalid}"
         class=" form-control">
@@ -16,6 +21,8 @@
           </small>
         </div>
       </div>
+      <button type="button" class="btn" (click)="testImg()" [disabled]="form.get('pictureUrl')?.invalid">Test
+        picture</button>
     </div>
 
     <div class="">

@@ -10,9 +10,10 @@ import { ProductService } from 'src/app/shared/service/product.service';
   styleUrls: ['./create-product.component.scss']
 })
 export class CreateProductComponent implements OnInit {
-
+  //assets/img/phones/12ProBlack.png
   form!: FormGroup
-
+  submitted = false
+  testPicture!: string
   constructor(
     private productService: ProductService
   ) { }
@@ -31,6 +32,7 @@ export class CreateProductComponent implements OnInit {
     if (this.form.invalid) {
       return
     }
+    this.submitted = true
     const newProduct: Product = {
       phoneName: this.form.value.phoneName,
       memory: parseInt(this.form.value.memory),
@@ -41,9 +43,13 @@ export class CreateProductComponent implements OnInit {
 
     this.productService.create(newProduct).subscribe(() => {
       this.form.reset()
-      console.log(newProduct);
-
+      this.testPicture = ''
+      this.submitted = false
     })
   }
+  testImg() {
+    this.testPicture = this.form.value.pictureUrl
+  }
+
 
 }

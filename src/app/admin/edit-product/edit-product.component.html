@@ -75,7 +75,7 @@
         </div>
       </div>
 
-      <button type="submit" [disabled]="form.invalid" class="btn">Change</button>
+      <button type="submit" [disabled]="form.invalid || submitted" class="btn">Save change</button>
     </div>
   </form>
   <ng-template #loading>

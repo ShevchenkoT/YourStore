@@ -39,13 +39,18 @@ export class ProductService implements OnInit {
   }
 
   getById(id: string): Observable<Product> {
-    return this.http.get<Product>(`${environment.rbDbUrl}/product/${id}.json `).pipe(
-      map((product: Product) => {
-        return {
-          ...product,
-          id,
-        }
-      })
-    )
+    return this.http.get<Product>(`${environment.rbDbUrl}/product/${id}.json `)
+      .pipe(
+        map((product: Product) => {
+          return {
+            ...product,
+            id,
+          }
+        })
+      )
+  }
+
+  update(product: Product): Observable<Product> {
+    return this.http.patch<Product>(`${environment.rbDbUrl}/product/${product.id}.json`, product)
   }
 }

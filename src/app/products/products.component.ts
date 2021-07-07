@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { HoverPhoneDirective } from '../shared/directives/hover-phone.directive';
 import { Product } from '../shared/interfaces';
 import { CartFavoritesService } from '../shared/service/cart-favorites.service';
 import { TodoService } from '../shared/service/todo.service';
@@ -6,8 +7,7 @@ import { TodoService } from '../shared/service/todo.service';
 @Component({
   selector: 'app-products',
   templateUrl: './products.component.html',
-  styleUrls: ['./products.component.scss'],
-
+  styleUrls: ['./products.component.scss']
 })
 export class ProductsComponent implements OnInit {
   minPrice = 0;
