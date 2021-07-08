@@ -15,7 +15,7 @@
         <img src="assets/img/ico/search.png" alt="">
         <small>Search</small>
       </div>
-      <input type="search">
+      <input type="search" [(ngModel)]='searchProductStr'>
     </div>
 
     <div class="top-bar_element">
@@ -33,10 +33,10 @@
     </div>
 
 
-
   </div>
 </div>
 <div class="main-container">
+
   <router-outlet></router-outlet>
 
 </div>

@@ -1,6 +1,7 @@
 import { animate, state, style, transition, trigger } from '@angular/animations';
-import { Component, OnInit } from '@angular/core';
+import { AfterContentChecked, Component, OnInit } from '@angular/core';
 import { CartFavoritesService } from '../../service/cart-favorites.service';
+import { SearchProductService } from '../../service/search-product.service';
 @Component({
   selector: 'app-main-layout',
   templateUrl: './main-layout.component.html',
@@ -15,16 +16,21 @@ import { CartFavoritesService } from '../../service/cart-favorites.service';
     ])
   ]
 })
-export class MainLayoutComponent {
+export class MainLayoutComponent implements AfterContentChecked {
 
   searchState = 'start'
+  searchProductStr = ''
 
-
-  constructor(public cartFavoriteService: CartFavoritesService) { }
+  constructor(
+    public cartFavoriteService: CartFavoritesService,
+    public searchService: SearchProductService
+  ) { }
 
   animate() {
     this.searchState = this.searchState === 'end' ? 'start' : 'end'
   }
-
+  ngAfterContentChecked() {
+    this.searchService.searchProductStr = this.searchProductStr
+  }
 
 }

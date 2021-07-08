@@ -8,13 +8,19 @@ export interface FbAuthResponse {
   idToken: string
   expiresIn: string
 }
-
 export interface Product {
   phoneName: string;
   memory: number;
   phoneColor: string;
   phonePriceUsd: number;
   pictureUrl: string;
-  id?: any;//!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+  id?: string;
   numberOfProducts?: number;
+}
+export interface Order {
+  email: string;
+  phoneNumber: string;
+  fullName: string;
+  sendingType: string;
+  products: Product[]
 }

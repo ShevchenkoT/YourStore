@@ -13,9 +13,8 @@ import { ErrorPageComponent } from './error-page/error-page.component';
 import { CartComponent } from './cart/cart.component';
 import { SharedModule, } from './shared/shared.module';
 import { MainLayoutComponent } from './shared/components/main-layout/main-layout.component';
-import { FilterChecksPipe } from './shared/pipes/filter-checks.pipe';
-import { FilterPhonesPipe } from './shared/pipes/filter-phones.pipe';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { SearchProductPipe } from './shared/pipes/search-product.pipe';
 
 @NgModule({
   declarations: [
@@ -26,9 +25,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     CartComponent,
     WishListComponent,
     ErrorPageComponent,
-    FilterPhonesPipe,
-    FilterChecksPipe,
-    //HoverPhoneDirective,
+    SearchProductPipe
   ],
   imports: [
     BrowserModule,

@@ -2,10 +2,12 @@
 
   <div class="top-bar_tittle">
     <a routerLink="/">
-      <h1><span>Your</span> Store admin</h1>
+      <h1><span>Your</span> Store </h1>
     </a>
   </div>
-
+  <a routerLink="/admin">
+    <h2>Admin</h2>
+  </a>
   <div class="top-bar_icons">
 
     <div class="top-bar_element" *ngIf="auth.isAuthenticated()">

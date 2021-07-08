@@ -5,34 +5,6 @@ p {
   }
 }
 
-.main-products_filter {
-  background-color: var(--second-color);
-  width: 22%;
-  color: var(--text-color);
-
-  .main-products_filter__properties {
-    margin: 2rem 0 2rem 0;
-
-    & p {
-      margin: 0 0 0 3rem;
-    }
-
-    & .main-products_filter__properties___property {
-      padding: 1.5rem 0 0 3rem;
-
-      & :first-child {
-        margin: 0 0.5rem;
-        cursor: pointer;
-      }
-
-      & :last-child {
-        cursor: pointer;
-      }
-    }
-  }
-}
-
-
 
 .range-slider {
   width: 200px;

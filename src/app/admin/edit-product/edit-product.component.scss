@@ -12,3 +12,16 @@ form {
     width: 200px;
   }
 }
+
+.pictureEmpty {
+  width: 378px;
+  height: 378px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  p {
+    font-size: 2rem;
+    font-weight: 900;
+  }
+}

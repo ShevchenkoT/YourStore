@@ -96,17 +96,16 @@
         </div>
       </div>
 
-      <div [ngClass]="{invalid:form.get('sending')?.touched && form.get('sending')?.invalid}" class="form-control">
-        <label for="sending">Type of sending</label>
-        <select id="sending" formControlName="sending">
+      <div [ngClass]="{invalid:form.get('sendingType')?.touched && form.get('sendingType')?.invalid}"
+        class="form-control">
+        <label for="sendingType">Type of sending</label>
+        <select id="sendingType" formControlName="sendingType">
           <option value="Self-pickup">Self-pickup</option>
           <option value="Courier">Delivery by courier</option>
           <option value="Mail">Delivery by mail</option>
         </select>
 
       </div>
-
-
 
       <button class="btn" type="submit" [disabled]="form.invalid">Submit</button>
 

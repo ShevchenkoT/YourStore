@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { HoverPhoneDirective } from '../shared/directives/hover-phone.directive';
 import { Product } from '../shared/interfaces';
 import { CartFavoritesService } from '../shared/service/cart-favorites.service';
-import { TodoService } from '../shared/service/todo.service';
+import { ProductService } from '../shared/service/product.service';
+import { SearchProductService } from '../shared/service/search-product.service';
 
 @Component({
   selector: 'app-products',
@@ -17,15 +17,18 @@ export class ProductsComponent implements OnInit {
   nameCheck: Product[] = [];
   memoryCheck: Product[] = [];
   colorCheck: Product[] = [];
-
   error = '';
+
   constructor(
     public cartFavoritesService: CartFavoritesService,
-    private todoService: TodoService
+    public searchService: SearchProductService,
+    private productService: ProductService,
   ) { }
 
   ngOnInit(): void {
-    this.todoService.addTodos().subscribe((todos) => this.products = todos, (error) => { this.error = error.message; });
+    this.productService.getAll()
+      .subscribe((product: Product[]) => {
+        this.products = product
+      })
   }
-
 }

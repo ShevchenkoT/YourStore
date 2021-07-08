@@ -1,7 +1,6 @@
 import { Directive, ElementRef, HostListener } from '@angular/core';
 @Directive({
   selector: '[appHoverPhone]',
-
 })
 export class HoverPhoneDirective {
 

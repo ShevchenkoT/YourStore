@@ -16,29 +16,12 @@ export class EditProductComponent implements OnInit {
   form!: FormGroup
   submitted = false
   product!: Product
+  testPicture!: string
 
   constructor(
     private productService: ProductService,
     private route: ActivatedRoute
   ) { }
-
-  ngOnInit() {
-    this.route.params.pipe(
-      switchMap((params: Params) => {
-        return this.productService.getById(params['id'])
-      })
-    ).subscribe((product: Product) => {
-      this.product = product
-
-      this.form = new FormGroup({
-        phoneName: new FormControl(product.phoneName, [Validators.required]),
-        memory: new FormControl(product.memory, [Validators.required]),
-        phoneColor: new FormControl(product.phoneColor, [Validators.required]),
-        phonePriceUsd: new FormControl(product.phonePriceUsd, [Validators.required, MyValidators.ifInt]),
-        pictureUrl: new FormControl(product.pictureUrl, [Validators.required])
-      })
-    })
-  }
 
   submit() {
     if (this.form.invalid) {
@@ -48,13 +31,36 @@ export class EditProductComponent implements OnInit {
     this.productService.update({
       ...this.product,
       phoneName: this.form.value.phoneName,
-      memory: this.form.value.memory,
+      memory: parseInt(this.form.value.memory),
       phoneColor: this.form.value.phoneColor,
-      phonePriceUsd: this.form.value.phonePriceUsd,
+      phonePriceUsd: parseInt(this.form.value.phonePriceUsd),
       pictureUrl: this.form.value.pictureUrl
     })
       .subscribe(() => {
         this.submitted = false
       })
+  }
+
+  testImg() {
+    this.testPicture = this.form.value.pictureUrl
+  }
+
+  ngOnInit() {
+    this.route.params.pipe(
+      switchMap((params: Params) => {
+        return this.productService.getById(params['id'])
+      })
+    ).subscribe((product: Product) => {
+      this.product = product
+      this.form = new FormGroup({
+        phoneName: new FormControl(product.phoneName, [Validators.required]),
+        memory: new FormControl(product.memory, [Validators.required]),
+        phoneColor: new FormControl(product.phoneColor, [Validators.required]),
+        phonePriceUsd: new FormControl(product.phonePriceUsd, [Validators.required, MyValidators.ifInt]),
+        pictureUrl: new FormControl(product.pictureUrl, [Validators.required])
+      })
+      this.testImg()
+    })
+
   }
 }

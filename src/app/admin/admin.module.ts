@@ -34,7 +34,7 @@ const routes: Routes = [
     EditProductComponent,
     LoginPageComponent,
     OrdersComponent,
-    HoverPhoneDirective,
+    // HoverPhoneDirective,
   ],
 
   imports: [

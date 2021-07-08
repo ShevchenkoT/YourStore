@@ -51,9 +51,12 @@
 
     <div class="main-products_list">
 
-      <div
-        *ngFor="let p of products | filterPhones :nameCheck :'phoneName'| filterPhones :memoryCheck :'memory' | filterPhones :colorCheck :'phoneColor' "
-        class="main-products_list__product" appHoverPhone>
+      <div *ngFor="let p of products
+        | filterPhones :nameCheck :'phoneName'
+        | filterPhones :memoryCheck :'memory'
+        | filterPhones :colorCheck :'phoneColor'
+        | searchProduct:searchService.searchProductStr
+        " class="main-products_list__product" appHoverPhone>
 
 
         <div class="main-products_list__product___photo">
