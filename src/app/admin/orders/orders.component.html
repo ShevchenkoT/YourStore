@@ -1,5 +1,51 @@
 <div class="main-panel">
-  <p>
-    orders works!
-  </p>
+
+  <div *ngIf="orders.length; else loading">
+
+    <div class="order" *ngFor="let o of orders">
+      <div class="order_user">
+        <h3>User:</h3>
+        <table style="width:100%">
+          <tr>
+            <th>Email:</th>
+            <td>{{o.email}}</td>
+          </tr>
+
+          <tr>
+            <th>Phone:</th>
+            <td>{{o.phoneNumber}}</td>
+          </tr>
+
+          <tr>
+            <th>Name:</th>
+            <td>{{o.fullName}}</td>
+          </tr>
+
+          <tr>
+            <th>Sending:</th>
+            <td>{{o.sendingType}}</td>
+          </tr>
+        </table>
+      </div>
+
+      <div class="order-info">
+        <p>Order id:{{o.id}}</p>
+
+        <mat-form-field appearance="fill">
+          <mat-label>Products-list</mat-label>
+          <mat-select>
+            <mat-option *ngFor="let p of o.products">
+              {{p['phoneName']}} ({{p['phoneColor']}}) {{p['memory']}}GB : {{p['numberOfProducts']}} pieces
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+
+        <p>Order date:{{o.orderDate | date:'medium'}}</p>
+        <p>Order price:{{getAllPrice(o.products) | currency : 'USD':'symbol':'3.0'}}</p>
+      </div>
+    </div>
+  </div>
+  <ng-template #loading>
+    <p>Loading...</p>
+  </ng-template>
 </div>

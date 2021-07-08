@@ -11,7 +11,7 @@ import { AuthService } from "./shared/services/auth.service";
 import { OrdersComponent } from "./orders/orders.component";
 import { AuthGuard } from "./shared/services/auth.guard";
 import { HoverPhoneDirective } from "../shared/directives/hover-phone.directive";
-
+import { MatSelectModule } from '@angular/material/select'
 const routes: Routes = [
   {
     path: '', component: AdminLayoutComponent, children: [
@@ -34,13 +34,13 @@ const routes: Routes = [
     EditProductComponent,
     LoginPageComponent,
     OrdersComponent,
-    // HoverPhoneDirective,
   ],
 
   imports: [
     CommonModule,
     SharedModule,
-    RouterModule.forChild(routes)
+    RouterModule.forChild(routes),
+    MatSelectModule
   ],
   providers: [
     AuthService,

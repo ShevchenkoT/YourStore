@@ -18,9 +18,11 @@ export interface Product {
   numberOfProducts?: number;
 }
 export interface Order {
+  id?: string;
   email: string;
   phoneNumber: string;
   fullName: string;
   sendingType: string;
-  products: Product[]
+  products: Product[];
+  orderDate: Date;
 }

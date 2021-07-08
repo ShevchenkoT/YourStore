@@ -59,7 +59,7 @@
 
       <div class="main-products_list__product___button">
         <button [routerLink]="['/admin', 'product', p.id, 'edit']" class="btn">Change</button>
-        <button (click)="remove(p.id)" class=" btn btn_another_prop" [disabled]=false>Remote</button>
+        <button (click)="remove(p.id)" class=" btn btn_another_prop" [disabled]=true>Remote</button>
       </div>
 
       <div class="main-product_list__product___price">

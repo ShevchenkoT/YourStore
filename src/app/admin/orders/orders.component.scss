@@ -1,0 +1,19 @@
+.order {
+  border: 2px solid white;
+  height: 200px;
+  width: 800px;
+  display: flex;
+  flex-direction: row;
+}
+
+.order_user {
+  border: 2px solid red;
+  width: 30%;
+  height: 100%;
+}
+
+.order-info {
+  border: 2px solid green;
+  width: 70%;
+  height: 100%;
+}
