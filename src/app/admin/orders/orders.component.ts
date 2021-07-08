@@ -1,11 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { Order, Product } from 'src/app/shared/interfaces';
 import { OrderService } from 'src/app/shared/service/order.service';
-
 @Component({
   selector: 'app-orders',
   templateUrl: './orders.component.html',
-  styleUrls: ['./orders.component.scss']
+  styleUrls: ['./orders.component.scss'],
 })
 export class OrdersComponent implements OnInit {
 
@@ -14,11 +13,6 @@ export class OrdersComponent implements OnInit {
     private orderService: OrderService
   ) { }
 
-  foods: any[] = [
-    { value: 'steak-0', viewValue: 'Steak' },
-    { value: 'pizza-1', viewValue: 'Pizza' },
-    { value: 'tacos-2', viewValue: 'Tacos' }
-  ];
 
   ngOnInit() {
     this.orderService.getAll().subscribe((orders: Order[]) => {

@@ -10,8 +10,7 @@ import { AdminLayoutComponent } from "./shared/component/admin-layout/admin-layo
 import { AuthService } from "./shared/services/auth.service";
 import { OrdersComponent } from "./orders/orders.component";
 import { AuthGuard } from "./shared/services/auth.guard";
-import { HoverPhoneDirective } from "../shared/directives/hover-phone.directive";
-import { MatSelectModule } from '@angular/material/select'
+import { ScrollingModule } from '@angular/cdk/scrolling'
 const routes: Routes = [
   {
     path: '', component: AdminLayoutComponent, children: [
@@ -40,7 +39,7 @@ const routes: Routes = [
     CommonModule,
     SharedModule,
     RouterModule.forChild(routes),
-    MatSelectModule
+    ScrollingModule,
   ],
   providers: [
     AuthService,

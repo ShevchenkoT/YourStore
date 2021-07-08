@@ -31,14 +31,11 @@
       <div class="order-info">
         <p>Order id:{{o.id}}</p>
 
-        <mat-form-field appearance="fill">
-          <mat-label>Products-list</mat-label>
-          <mat-select>
-            <mat-option *ngFor="let p of o.products">
-              {{p['phoneName']}} ({{p['phoneColor']}}) {{p['memory']}}GB : {{p['numberOfProducts']}} pieces
-            </mat-option>
-          </mat-select>
-        </mat-form-field>
+        <cdk-virtual-scroll-viewport itemSize="50" class="example-viewport">
+          <div *cdkVirtualFor="let p of o.products" class="example-item">{{p['phoneName']}} ({{p['phoneColor']}})
+            {{p['memory']}}GB : {{p['numberOfProducts']}} pieces
+          </div>
+        </cdk-virtual-scroll-viewport>
 
         <p>Order date:{{o.orderDate | date:'medium'}}</p>
         <p>Order price:{{getAllPrice(o.products) | currency : 'USD':'symbol':'3.0'}}</p>

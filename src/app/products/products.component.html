@@ -7,15 +7,17 @@
 
 
     <div class="main-products_filter">
-      <!--
-    <div class="main-products_filter__price">
-      <p>Price</p>
-      <div class="range-slider">
-        <input type="range" min="0" max="1000" step="10" v-model.number='minPrice'>
-        <input type="range" min="0" max="1000" step="10" v-model.number='maxPrice'>
+
+      <div class="main-products_filter__price">
+        <p>Price</p>
+        <div class="range-slider">
+
+          <input type="range" min="0" max="1000" value="700" step="10" (input)='getEvent($event)'
+            [(ngModel)]='minPrice'>
+          <input type="range" min="0" max="1000" value="500" step="10" [(ngModel)]='maxPrice'>
+        </div>
+        <p>{{minPrice}} <span>{{maxPrice}}</span></p>
       </div>
-      <p>{{minPrice}}</p>
-    </div> -->
 
       <div class="main-products_filter__properties">
         <p>Phone name</p>
@@ -56,6 +58,7 @@
         | filterPhones :memoryCheck :'memory'
         | filterPhones :colorCheck :'phoneColor'
         | searchProduct:searchService.searchProductStr
+        | priceFilter : maxPrice:minPrice
         " class="main-products_list__product" appHoverPhone>
 
 

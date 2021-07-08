@@ -13,6 +13,7 @@ import { SharedModule, } from './shared/shared.module';
 import { MainLayoutComponent } from './shared/components/main-layout/main-layout.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { SearchProductPipe } from './shared/pipes/search-product.pipe';
+import { PriceFilterPipe } from './shared/pipes/price-filter.pipe';
 
 @NgModule({
   declarations: [
@@ -23,7 +24,8 @@ import { SearchProductPipe } from './shared/pipes/search-product.pipe';
     CartComponent,
     WishListComponent,
     ErrorPageComponent,
-    SearchProductPipe
+    SearchProductPipe,
+    PriceFilterPipe
   ],
   imports: [
     BrowserModule,

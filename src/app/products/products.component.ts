@@ -18,7 +18,7 @@ export class ProductsComponent implements OnInit {
   memoryCheck: Product[] = [];
   colorCheck: Product[] = [];
   error = '';
-
+  srt!: any
   constructor(
     public cartFavoritesService: CartFavoritesService,
     public searchService: SearchProductService,
@@ -30,5 +30,10 @@ export class ProductsComponent implements OnInit {
       .subscribe((product: Product[]) => {
         this.products = product
       })
+  }
+
+  getEvent(event: any) {
+    console.log(event.target.max);
+
   }
 }
