@@ -8,15 +8,17 @@
 
     <div class="main-products_filter">
 
-      <div class="main-products_filter__price">
+      <div class="main-products_filter__properties">
         <p>Price</p>
-        <div class="range-slider">
-
-          <input type="range" min="0" max="1000" value="700" step="10" (input)='getEvent($event)'
-            [(ngModel)]='minPrice'>
-          <input type="range" min="0" max="1000" value="500" step="10" [(ngModel)]='maxPrice'>
+        <div class="prices">
+          <p><span>{{lowerPrice| currency : 'USD':'symbol':'3.0'}}</span>{{topPrice| currency : 'USD':'symbol':'3.0'}}
+          </p>
         </div>
-        <p>{{minPrice}} <span>{{maxPrice}}</span></p>
+        <div class="range-slider">
+          <input type="range" min="0" max={{maxPrice}} step="20" (input)='blockDown($event)' [(ngModel)]='lowerPrice'>
+          <input type="range" min="0" max={{maxPrice}} step="20" (input)='blockUp($event)' [(ngModel)]='topPrice'>
+        </div>
+
       </div>
 
       <div class="main-products_filter__properties">
@@ -58,7 +60,7 @@
         | filterPhones :memoryCheck :'memory'
         | filterPhones :colorCheck :'phoneColor'
         | searchProduct:searchService.searchProductStr
-        | priceFilter : maxPrice:minPrice
+        | priceFilter :topPrice: lowerPrice
         " class="main-products_list__product" appHoverPhone>
 
 

@@ -3,42 +3,48 @@
   <div *ngIf="orders.length; else loading">
 
     <div class="order" *ngFor="let o of orders">
-      <div class="order_user">
-        <h3>User:</h3>
-        <table style="width:100%">
-          <tr>
-            <th>Email:</th>
-            <td>{{o.email}}</td>
-          </tr>
 
-          <tr>
-            <th>Phone:</th>
-            <td>{{o.phoneNumber}}</td>
-          </tr>
+      <div class="order_user-product-info">
+        <div class="order_user">
+          <h3>User:</h3>
+          <table style="width:100%">
+            <tr>
+              <th>    Email:</th>
+              <td>{{o.email}}</td>
+            </tr>
 
-          <tr>
-            <th>Name:</th>
-            <td>{{o.fullName}}</td>
-          </tr>
+            <tr>
+              <th>   Phone:</th>
+              <td>{{o.phoneNumber}}</td>
+            </tr>
 
-          <tr>
-            <th>Sending:</th>
-            <td>{{o.sendingType}}</td>
-          </tr>
-        </table>
+            <tr>
+              <th>    Name:</th>
+              <td>{{o.fullName}}</td>
+            </tr>
+
+            <tr>
+              <th>Sending:</th>
+              <td>{{o.sendingType}}</td>
+            </tr>
+          </table>
+        </div>
+
+        <div class="order_products">
+          <h3>Products:</h3>
+          <div class="scroll">
+            <p *ngFor="let p of o.products" class="example-item">{{p['phoneName']}} ({{p['phoneColor']}})
+              {{p['memory']}}GB : {{p['numberOfProducts']}} pieces</p>
+          </div>
+
+        </div>
       </div>
 
+
       <div class="order-info">
-        <p>Order id:{{o.id}}</p>
-
-        <cdk-virtual-scroll-viewport itemSize="50" class="example-viewport">
-          <div *cdkVirtualFor="let p of o.products" class="example-item">{{p['phoneName']}} ({{p['phoneColor']}})
-            {{p['memory']}}GB : {{p['numberOfProducts']}} pieces
-          </div>
-        </cdk-virtual-scroll-viewport>
-
-        <p>Order date:{{o.orderDate | date:'medium'}}</p>
-        <p>Order price:{{getAllPrice(o.products) | currency : 'USD':'symbol':'3.0'}}</p>
+        <p>Order id: {{o.id}}</p>
+        <p>Order date: {{o.orderDate | date:'short'}}</p>
+        <p>Order price: {{getAllPrice(o.products) | currency : 'USD':'symbol':'3.0'}}</p>
       </div>
     </div>
   </div>

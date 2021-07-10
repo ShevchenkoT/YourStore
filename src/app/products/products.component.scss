@@ -5,6 +5,15 @@ p {
   }
 }
 
+.prices {
+  display: flex;
+
+  span {
+    margin: 0 6rem 0 .5rem;
+    width: 20px;
+    display: inline-block;
+  }
+}
 
 .range-slider {
   width: 200px;
@@ -19,6 +28,9 @@ p {
   position: absolute;
   left: 0;
   bottom: 0;
+  margin: 0 0 -1rem 2rem;
+
+
 }
 
 input[type=range]::-webkit-slider-thumb {

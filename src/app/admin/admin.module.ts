@@ -11,6 +11,8 @@ import { AuthService } from "./shared/services/auth.service";
 import { OrdersComponent } from "./orders/orders.component";
 import { AuthGuard } from "./shared/services/auth.guard";
 import { ScrollingModule } from '@angular/cdk/scrolling'
+import { MatProgressBarModule } from '@angular/material/progress-bar';
+
 const routes: Routes = [
   {
     path: '', component: AdminLayoutComponent, children: [
@@ -40,6 +42,7 @@ const routes: Routes = [
     SharedModule,
     RouterModule.forChild(routes),
     ScrollingModule,
+    MatProgressBarModule
   ],
   providers: [
     AuthService,
