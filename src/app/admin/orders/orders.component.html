@@ -46,9 +46,13 @@
         <p>Order date: {{o.orderDate | date:'short'}}</p>
         <p>Order price: {{getAllPrice(o.products) | currency : 'USD':'symbol':'3.0'}}</p>
       </div>
+      <div class="menu-button" (click)="rotate($event)"> <img src=" assets/img/ico/menu.png" alt="">
+      </div>
     </div>
   </div>
   <ng-template #loading>
     <p>Loading...</p>
   </ng-template>
 </div>
+<!--
+[@rotate]="boxState" (click)="animate()" -->

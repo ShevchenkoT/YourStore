@@ -10,6 +10,22 @@
   width: 1000px;
   font-size: 20px;
   margin-bottom: 1rem;
+  position: relative;
+
+  & .menu-button {
+
+    position: absolute;
+    right: 0;
+    top: 0;
+    width: 40px;
+    height: 40px;
+
+
+    & img {
+      transition: .5s ease-in;
+      width: 100%;
+    }
+  }
 }
 
 .order_user-product-info {
@@ -60,4 +76,9 @@
 h3 {
   font-size: 18px;
   font-weight: bold;
+}
+
+.rotate {
+  transition: .5s ease-in;
+  transform: rotate(90deg);
 }
