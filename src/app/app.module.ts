@@ -16,6 +16,7 @@ import { SearchProductPipe } from './shared/pipes/search-product.pipe';
 import { PriceFilterPipe } from './shared/pipes/price-filter.pipe';
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { AuthInterceptor } from './shared/auth.interceptor';
+
 const INTERCEPTOR_PROVIDER: Provider = {
   provide: HTTP_INTERCEPTORS,
   multi: true,
@@ -41,7 +42,7 @@ const INTERCEPTOR_PROVIDER: Provider = {
     SharedModule,
     BrowserAnimationsModule
   ],
-  providers: [],
+  providers: [INTERCEPTOR_PROVIDER],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

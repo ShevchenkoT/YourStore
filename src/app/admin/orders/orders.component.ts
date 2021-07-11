@@ -30,14 +30,48 @@ export class OrdersComponent implements OnInit {
     this.orderService.getAll().subscribe((orders: Order[]) => {
       this.orders = orders
       this.orders.map((o) => o.state = 'start')
-      console.log(this.orders);
-
     })
   }
 
   getAllPrice(products: Product[]): number {
     return products.map((p) => p.numberOfProducts ? p.phonePriceUsd * p.numberOfProducts : 0)
       .reduce((a, b) => a + b)
+  }
+  orderDone(order: Order) {
+    this.orderService.update({
+      ...order,
+      email: order.email,
+      fullName: order.fullName,
+      orderDate: order.orderDate,
+      orderStatus: "done",
+      phoneNumber: order.phoneNumber,
+      products: order.products,
+      sendingType: order.sendingType
+    }).subscribe((test) => {
+      this.orders.map((o) => {
+        if (o.id === order.id) {
+          o.orderStatus = 'done'
+        }
+      })
+    })
+  }
+  orderCancel(order: Order) {
+    this.orderService.update({
+      ...order,
+      email: order.email,
+      fullName: order.fullName,
+      orderDate: order.orderDate,
+      orderStatus: "cancel",
+      phoneNumber: order.phoneNumber,
+      products: order.products,
+      sendingType: order.sendingType
+    }).subscribe((test) => {
+      this.orders.map((o) => {
+        if (o.id === order.id) {
+          o.orderStatus = 'cancel'
+        }
+      })
+    })
   }
 
 }

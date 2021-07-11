@@ -2,8 +2,8 @@
 
   <div *ngIf="orders.length; else loading">
 
-    <div class="order" *ngFor="let o of orders">
-
+    <div class="order " *ngFor="let o of orders"
+      [ngClass]="{processing:o.orderStatus === 'processing',done:o.orderStatus === 'done',cancel:o.orderStatus === 'cancel'}">
       <div class="order_user-product-info">
         <div class="order_user">
           <h3>User:</h3>
@@ -47,8 +47,8 @@
         <p>Order price: {{getAllPrice(o.products) | currency : 'USD':'symbol':'3.0'}}</p>
       </div>
       <div class="order-buttons" [@hidden]="o.state">
-        <button style="background-color: rgb(46, 129, 46);" class="btn">Done</button>
-        <button style="background-color: rgb(158, 60, 60);" class="btn">Cancel</button>
+        <button style="background-color: rgb(46, 129, 46);" class="btn" (click)="orderDone(o)">Done</button>
+        <button style="background-color: rgb(158, 60, 60);" class="btn" (click)="orderCancel(o)">Cancel</button>
         <button style="background-color: rgb(41, 43, 161);" class="btn">Print</button>
       </div>
       <div class="menu-button" [@rotate]="o.state" (click)="animate( o.id)"> <img src=" assets/img/ico/menu.png" alt="">

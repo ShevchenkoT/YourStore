@@ -28,4 +28,8 @@ export class OrderService {
   create(order: Order): Observable<Order> {
     return this.http.post<Order>(`${environment.rbDbUrl}/order.json`, order)
   }
+  update(order: Order): Observable<Order> {
+    return this.http.patch<Order>(`${environment.rbDbUrl}/order/${order.id}.json`, order)
+  }
+
 }

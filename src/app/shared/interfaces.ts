@@ -25,4 +25,5 @@ export interface Order {
   sendingType: string;
   products: Product[];
   orderDate: Date;
+  orderStatus: 'done' | 'cancel' | 'processing'
 }

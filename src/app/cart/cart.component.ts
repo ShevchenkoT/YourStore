@@ -38,6 +38,7 @@ export class CartComponent implements OnInit {
       const formData: Order = {
         ...this.form.value,
         products: this.cartService.cartItem,
+        orderStatus: 'processing',
         orderDate: new Date()
       };
 

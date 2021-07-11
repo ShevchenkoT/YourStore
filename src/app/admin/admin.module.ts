@@ -45,7 +45,7 @@ const routes: Routes = [
     MatProgressBarModule
   ],
   providers: [
-    AuthService,
+
     AuthGuard
   ]
 })

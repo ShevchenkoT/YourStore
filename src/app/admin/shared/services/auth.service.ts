@@ -8,7 +8,9 @@ import { tap } from 'rxjs/operators';
 import { environment } from 'src/environments/environment';
 import { FbAuthResponse, User } from '../../../shared/interfaces';
 
-@Injectable(
+@Injectable({
+  providedIn: 'root'
+}
 )
 export class AuthService {
 

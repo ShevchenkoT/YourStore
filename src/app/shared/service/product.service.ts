@@ -35,11 +35,11 @@ export class ProductService implements OnInit {
   }
 
   remove(id: string): Observable<void> {
-    return this.http.delete<void>(`${environment.rbDbUrl}/product/${id}.json `)
+    return this.http.delete<void>(`${environment.rbDbUrl}/product/${id}.json`)
   }
 
   getById(id: string): Observable<Product> {
-    return this.http.get<Product>(`${environment.rbDbUrl}/product/${id}.json `)
+    return this.http.get<Product>(`${environment.rbDbUrl}/product/${id}.json`)
       .pipe(
         map((product: Product) => {
           return {

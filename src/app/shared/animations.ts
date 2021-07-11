@@ -16,11 +16,13 @@ export const animateBoxButtons = [
   trigger('hidden', [
     state('start', style({
       display: 'none',
-      opacity: '0',
+      //opacity: '0',
+      width: '0'
     })),
     state('end', style({
       display: 'flex',
-      opacity: '100',
+      //opacity: '100',
+      width: '160px'
     })),
     transition('start <=> end', [
       style({ display: 'flex' }),
