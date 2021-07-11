@@ -1,40 +1,37 @@
-import { animate, state, style, transition, trigger } from '@angular/animations';
 import { Component, OnInit } from '@angular/core';
+import { animateBoxButtons } from 'src/app/shared/animations';
 import { Order, Product } from 'src/app/shared/interfaces';
 import { OrderService } from 'src/app/shared/service/order.service';
+export interface OrderWithState extends Order {
+  state?: 'start' | 'end'
+}
+
 @Component({
   selector: 'app-orders',
   templateUrl: './orders.component.html',
   styleUrls: ['./orders.component.scss'],
-  animations: [
-    trigger('rotate', [
-      state('start', style({ transform: 'rotate(0deg)' })),
-      state('end', style({ transform: 'rotate(90deg)' })),
-      transition('start <=> end', animate(450)),
-      // transition('end => start', animate('800ms ease-in-out')),
-    ])
-  ]
+  animations: [animateBoxButtons]
 })
 export class OrdersComponent implements OnInit {
   toggle = true
-  boxState = 'start'
-  orders: Order[] = []
+  orders: OrderWithState[] = []
   constructor(
     private orderService: OrderService
   ) { }
 
-  animate() {
-    this.boxState = this.boxState === 'end' ? 'start' : 'end'
-
-  }
-
-
-  rotate(event: any) {
-    event.target.classList.contains('rotate') ? event.target.classList.remove('rotate') : event.target.classList.add('rotate')
+  animate(id: string | undefined) {
+    this.orders.map((o) => {
+      if (o.id === id) {
+        o.state = o.state === 'end' ? 'start' : 'end'
+      }
+    })
   }
   ngOnInit() {
     this.orderService.getAll().subscribe((orders: Order[]) => {
       this.orders = orders
+      this.orders.map((o) => o.state = 'start')
+      console.log(this.orders);
+
     })
   }
 

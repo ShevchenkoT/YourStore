@@ -46,7 +46,12 @@
         <p>Order date: {{o.orderDate | date:'short'}}</p>
         <p>Order price: {{getAllPrice(o.products) | currency : 'USD':'symbol':'3.0'}}</p>
       </div>
-      <div class="menu-button" (click)="rotate($event)"> <img src=" assets/img/ico/menu.png" alt="">
+      <div class="order-buttons" [@hidden]="o.state">
+        <button style="background-color: rgb(46, 129, 46);" class="btn">Done</button>
+        <button style="background-color: rgb(158, 60, 60);" class="btn">Cancel</button>
+        <button style="background-color: rgb(41, 43, 161);" class="btn">Print</button>
+      </div>
+      <div class="menu-button" [@rotate]="o.state" (click)="animate( o.id)"> <img src=" assets/img/ico/menu.png" alt="">
       </div>
     </div>
   </div>

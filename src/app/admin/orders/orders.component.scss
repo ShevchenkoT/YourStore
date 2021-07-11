@@ -1,5 +1,5 @@
 .main-panel {
-  justify-content: center
+  justify-content: center;
 }
 
 
@@ -20,11 +20,21 @@
     width: 40px;
     height: 40px;
 
-
     & img {
-      transition: .5s ease-in;
       width: 100%;
     }
+  }
+
+  .order-buttons {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    position: absolute;
+    right: 0;
+    top: 0;
+    width: 160px;
+    height: 76%;
+    background-color: rgba($color: rgb(78, 78, 78), $alpha: 0.9);
   }
 }
 
@@ -76,9 +86,4 @@
 h3 {
   font-size: 18px;
   font-weight: bold;
-}
-
-.rotate {
-  transition: .5s ease-in;
-  transform: rotate(90deg);
 }
