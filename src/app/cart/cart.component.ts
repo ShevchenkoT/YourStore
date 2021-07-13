@@ -3,6 +3,7 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Order } from '../shared/interfaces';
 import { MyValidators } from '../shared/my.validators';
 import { CartFavoritesService } from '../shared/service/cart-favorites.service';
+import { GeolocationService } from '../shared/service/geolocation.service';
 import { OrderService } from '../shared/service/order.service';
 
 @Component({
@@ -18,6 +19,7 @@ export class CartComponent implements OnInit {
   constructor(
     public cartService: CartFavoritesService,
     private orderService: OrderService,
+    private geolocationService: GeolocationService
   ) { }
 
   ngOnInit(): void {
@@ -25,11 +27,21 @@ export class CartComponent implements OnInit {
       email: new FormControl('', [Validators.email, Validators.required]),
       phoneNumber: new FormControl(null, [Validators.required, Validators.minLength(10), MyValidators.ifInt]),
       fullName: new FormControl('', [Validators.required,]),
-      sendingType: new FormControl('', [Validators.required])
+      sendingType: new FormControl('', [Validators.required]),
+      address: new FormControl('', [Validators.required])
     });
+  }
 
+  getGeolocation() {
 
+    navigator.geolocation.getCurrentPosition((locate) => {
+      //49.835663, 24.024150 lvov
+      this.geolocationService.getLocation(locate.coords.latitude, locate.coords.longitude).subscribe((loc) => {
+        this.form.get('address')?.setValue(`${loc.address.country}, ${loc.address.village}, ${loc.address.postcode}`)
 
+        console.log(loc);
+      })
+    })
   }
 
   onSubmit(): void {

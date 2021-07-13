@@ -104,8 +104,21 @@
           <option value="Courier">Delivery by courier</option>
           <option value="Mail">Delivery by mail</option>
         </select>
-
       </div>
+
+      <div [ngClass]="{invalid:form.get('address')?.touched && form.get('address')?.invalid}" class="form-control">
+        <label for="address">Delivery address</label>
+        <input id="address" type="text" formControlName='address' placeholder="Enter delivery address">
+        <button (click)="getGeolocation()" class="btn">Get
+          Address</button>
+
+        <div class="errors" *ngIf="form.get('address')?.invalid && form.get('address')?.touched">
+          <small>
+            Full name field cannot be empty
+          </small>
+        </div>
+      </div>
+
 
       <button class="btn" type="submit" [disabled]="form.invalid || submitted">Submit</button>
 
