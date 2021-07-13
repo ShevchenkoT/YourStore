@@ -1,4 +1,5 @@
 <div class="main-panel">
+  <router-outlet></router-outlet>
 
   <div *ngIf="orders.length; else loading">
 
@@ -49,9 +50,9 @@
       <div class="order-buttons" [@hidden]="o.state">
         <button style="background-color: rgb(46, 129, 46);" class="btn" (click)="orderDone(o)">Done</button>
         <button style="background-color: rgb(158, 60, 60);" class="btn" (click)="orderCancel(o)">Cancel</button>
-        <button style="background-color: rgb(41, 43, 161);" class="btn">Print</button>
+        <button style="background-color: rgb(41, 43, 161); " class="btn" (click)="getOrder(o.id)">Print</button>
       </div>
-      <div class="menu-button" [@rotate]="o.state" (click)="animate( o.id)"> <img src=" assets/img/ico/menu.png" alt="">
+      <div class="menu-button" [@rotate]="o.state" (click)="animate(o.id)"> <img src="assets/img/ico/menu.png" alt="">
       </div>
     </div>
   </div>

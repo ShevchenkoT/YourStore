@@ -1,10 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { animateBoxButtons } from 'src/app/shared/animations';
-import { Order, Product } from 'src/app/shared/interfaces';
+import { Order, OrderWithState, Product } from 'src/app/shared/interfaces';
 import { OrderService } from 'src/app/shared/service/order.service';
-export interface OrderWithState extends Order {
-  state?: 'start' | 'end'
-}
+import { PrintService } from '../shared/services/print.service';
 
 @Component({
   selector: 'app-orders',
@@ -16,7 +14,8 @@ export class OrdersComponent implements OnInit {
   toggle = true
   orders: OrderWithState[] = []
   constructor(
-    private orderService: OrderService
+    private orderService: OrderService,
+    private printService: PrintService
   ) { }
 
   animate(id: string | undefined) {
@@ -73,5 +72,15 @@ export class OrdersComponent implements OnInit {
       })
     })
   }
+
+  getOrder(id: string | undefined) {
+    this.printService.printDocument(id);
+    // this.orderService.getById(id).subscribe((order: OrderWithState) => {
+    //   this.printService.setInvoice(order)
+
+    // })
+
+  }
+
 
 }

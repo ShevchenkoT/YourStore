@@ -7,11 +7,11 @@ import { CreateProductComponent } from "./create-product/create-product.componen
 import { EditProductComponent } from "./edit-product/edit-product.component";
 import { ProductListComponent } from "./product-list/product-list.component";
 import { AdminLayoutComponent } from "./shared/component/admin-layout/admin-layout.component";
-import { AuthService } from "./shared/services/auth.service";
 import { OrdersComponent } from "./orders/orders.component";
 import { AuthGuard } from "./shared/services/auth.guard";
 import { ScrollingModule } from '@angular/cdk/scrolling'
 import { MatProgressBarModule } from '@angular/material/progress-bar';
+import { InvoiceComponent } from "./print-order/invoice/invoice.component";
 
 const routes: Routes = [
   {
@@ -19,9 +19,14 @@ const routes: Routes = [
       { path: '', redirectTo: '/admin/login', pathMatch: 'full' },
       { path: 'login', component: LoginPageComponent },
       { path: 'create', component: CreateProductComponent, canActivate: [AuthGuard] },
-      { path: 'orders', component: OrdersComponent, canActivate: [AuthGuard] },
       { path: 'product-list', component: ProductListComponent, canActivate: [AuthGuard] },
-      { path: 'product/:id/edit', component: EditProductComponent, canActivate: [AuthGuard] }
+      { path: 'product/:id/edit', component: EditProductComponent, canActivate: [AuthGuard] },
+      {
+        path: 'orders', component: OrdersComponent, canActivate: [AuthGuard], children: [
+
+        ]
+      },
+      { path: 'invoice/:id', component: InvoiceComponent }
     ]
   }
 ]
@@ -35,6 +40,7 @@ const routes: Routes = [
     EditProductComponent,
     LoginPageComponent,
     OrdersComponent,
+    InvoiceComponent
   ],
 
   imports: [

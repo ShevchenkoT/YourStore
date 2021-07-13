@@ -32,4 +32,18 @@ export class OrderService {
     return this.http.patch<Order>(`${environment.rbDbUrl}/order/${order.id}.json`, order)
   }
 
+  getById(id: string | undefined): Observable<Order> {
+    return this.http.get<Order>(`${environment.rbDbUrl}/order/${id}.json`)
+      .pipe(
+        map((order: Order) => {
+          return {
+            ...order,
+            id,
+          }
+        })
+      )
+  }
 }
+
+
+

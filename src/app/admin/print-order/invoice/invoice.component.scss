@@ -1,0 +1,42 @@
+.header,
+.header-space,
+.footer,
+.footer-space {
+  height: 100px;
+}
+
+.header {
+  position: fixed;
+  top: 0;
+}
+
+.footer {
+  position: fixed;
+  bottom: 0;
+}
+
+@media screen {
+  :host {
+    display: none;
+  }
+}
+
+
+.invoice {
+  page-break-after: always;
+}
+
+.invoice:last-child {
+  page-break-after: avoid;
+}
+
+.invoice-page {
+  background-color: green;
+  z-index: 9999;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  top: 0;
+  position: absolute;
+  height: 100%;
+}

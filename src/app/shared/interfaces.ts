@@ -27,3 +27,7 @@ export interface Order {
   orderDate: Date;
   orderStatus: 'done' | 'cancel' | 'processing'
 }
+
+export interface OrderWithState extends Order {
+  state?: 'start' | 'end'
+}
