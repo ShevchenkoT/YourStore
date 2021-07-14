@@ -3,7 +3,7 @@
 
   <div *ngIf="orders.length; else loading">
 
-    <div class="order " *ngFor="let o of orders"
+    <div class="order " *ngFor="let o of orders |sortByDate"
       [ngClass]="{processing:o.orderStatus === 'processing',done:o.orderStatus === 'done',cancel:o.orderStatus === 'cancel'}">
       <div class="order_user-product-info">
         <div class="order_user">
@@ -27,6 +27,11 @@
             <tr>
               <th>Sending:</th>
               <td>{{o.sendingType}}</td>
+            </tr>
+
+            <tr>
+              <th>Home Address:</th>
+              <td>{{o.address}}</td>
             </tr>
           </table>
         </div>

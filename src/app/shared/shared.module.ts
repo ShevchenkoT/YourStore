@@ -5,12 +5,14 @@ import { FormsModule, ReactiveFormsModule } from "@angular/forms";
 import { HoverPhoneDirective } from "./directives/hover-phone.directive";
 import { FilterChecksPipe } from "./pipes/filter-checks.pipe";
 import { FilterPhonesPipe } from "./pipes/filter-phones.pipe";
+import { SortByDatePipe } from "./pipes/sort-by-date.pipe";
 
 @NgModule({
   declarations: [
     HoverPhoneDirective,
     FilterPhonesPipe,
     FilterChecksPipe,
+    SortByDatePipe,
   ],
   imports: [
     HttpClientModule,
@@ -25,6 +27,7 @@ import { FilterPhonesPipe } from "./pipes/filter-phones.pipe";
     HoverPhoneDirective,
     FilterPhonesPipe,
     FilterChecksPipe,
+    SortByDatePipe,
   ],
   providers: []
 

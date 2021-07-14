@@ -45,7 +45,8 @@ export class OrdersComponent implements OnInit {
       orderStatus: "done",
       phoneNumber: order.phoneNumber,
       products: order.products,
-      sendingType: order.sendingType
+      sendingType: order.sendingType,
+      address: order.address
     }).subscribe((test) => {
       this.orders.map((o) => {
         if (o.id === order.id) {
@@ -63,7 +64,8 @@ export class OrdersComponent implements OnInit {
       orderStatus: "cancel",
       phoneNumber: order.phoneNumber,
       products: order.products,
-      sendingType: order.sendingType
+      sendingType: order.sendingType,
+      address: order.address
     }).subscribe((test) => {
       this.orders.map((o) => {
         if (o.id === order.id) {

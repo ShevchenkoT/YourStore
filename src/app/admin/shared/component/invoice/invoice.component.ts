@@ -3,7 +3,7 @@ import { ActivatedRoute, Params, } from '@angular/router';
 import { switchMap } from 'rxjs/operators';
 import { OrderWithState } from 'src/app/shared/interfaces';
 import { OrderService } from 'src/app/shared/service/order.service';
-import { PrintService } from '../../shared/services/print.service';
+import { PrintService } from '../../services/print.service';
 
 @Component({
   selector: 'app-invoice',

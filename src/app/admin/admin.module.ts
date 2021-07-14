@@ -11,7 +11,7 @@ import { OrdersComponent } from "./orders/orders.component";
 import { AuthGuard } from "./shared/services/auth.guard";
 import { ScrollingModule } from '@angular/cdk/scrolling'
 import { MatProgressBarModule } from '@angular/material/progress-bar';
-import { InvoiceComponent } from "./print-order/invoice/invoice.component";
+import { InvoiceComponent } from "./shared/component/invoice/invoice.component";
 
 const routes: Routes = [
   {

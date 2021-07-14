@@ -1,0 +1,86 @@
+<div class="invoice-page">
+  <table>
+    <thead>
+      <tr>
+        <td>
+          <div class="header-space">&nbsp;</div>
+        </td>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>
+          <div class="content" *ngIf="invoiceForPrint">
+            <div class="invoice">
+
+              <div class="recipient-sender-data">
+                <div class="recipient">
+                  <strong>RECIPIENT</strong>
+                  <p>{{invoiceForPrint.fullName}}</p>
+                  <p>{{invoiceForPrint.address}}</p>
+                  <p>{{invoiceForPrint.email}}</p>
+                  <p>{{invoiceForPrint.phoneNumber}}</p>
+                </div>
+                <div class="sender">
+                  <strong>Sender</strong>
+                  <p>Taras Shevchyk</p>
+                  <p>Ukraine, Prylbychi</p>
+                  <p>tarashevchuk@gmail.com</p>
+                  <p>0976064961</p>
+                </div>
+              </div>
+
+              <div class="products">
+                <table>
+                  <thead>
+                    <tr>
+                      <th>#</th>
+                      <th>PRODUCT NAME</th>
+                      <th>QTY</th>
+                      <th>PRICE</th>
+                      <th>ITEM TOTAL</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr *ngFor="let product of invoiceForPrint.products; let idx = index">
+                      <td>{{ idx + 1 }}</td>
+                      <td>{{ product.phoneName}} {{ product.phoneColor}} {{ product.memory}}</td>
+                      <td>{{ product.numberOfProducts}}</td>
+                      <td>{{ product.phonePriceUsd | currency : 'USD':'symbol':'3.0'}}</td>
+                      <td>{{ product.phonePriceUsd * product.numberOfProducts!| currency : 'USD':'symbol':'3.0' }}</td>
+
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+
+              <div class="total-price">
+                <p>Subtotal</p>
+              </div>
+
+            </div>
+
+          </div>
+        </td>
+      </tr>
+    </tbody>
+    <tfoot>
+      <tr>
+        <td>
+          <div class="footer-space">&nbsp;</div>
+        </td>
+      </tr>
+    </tfoot>
+  </table>
+
+  <div class="header">
+    <h1>YourShop</h1>
+    <div class="invoice-info" *ngIf="invoiceForPrint">
+      <p>ORDER ID/<span>{{invoiceForPrint.id}}</span></p>
+      <p>ORDER DATE/<span>{{invoiceForPrint.orderDate}}</span></p>
+      <p>SHIPPING/<span>{{invoiceForPrint.sendingType}}</span></p>
+    </div>
+  </div>
+  <div class="footer">AWESOME FOOTER</div>
+
+</div>
