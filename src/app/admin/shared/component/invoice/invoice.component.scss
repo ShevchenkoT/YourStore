@@ -1,3 +1,7 @@
+.top-bar {
+  display: none;
+}
+
 .header,
 .header-space,
 .footer,
@@ -31,18 +35,83 @@
 }
 
 .invoice-page {
-  background-color: green;
+  background-color: white;
   z-index: 9999;
   left: 0;
   right: 0;
   bottom: 0;
   top: 0;
-  position: absolute;
+  position: fixed;
   height: 100%;
+  color: black
+}
+
+.invoice-info {
+  text-align: end;
 
 }
 
 .header {
   display: flex;
   flex-direction: row;
+  width: 100%;
+  justify-content: space-around;
+  margin-top: 5rem;
+
+  & h1 {
+    span {
+      color: red;
+      font-weight: bold;
+    }
+
+    font-size: 50px;
+
+  }
+}
+
+.recipient-sender-data {
+  display: flex;
+  flex-direction: row;
+  margin-top: 8rem;
+
+  .recipient {
+    margin: 0 5rem;
+  }
+}
+
+.main-table {
+  width: 100%;
+}
+
+.products {
+  display: flex;
+  justify-content: center;
+
+  table {
+    width: 80%;
+    border-collapse: collapse;
+  }
+
+  table th,
+  table td {
+    padding: .5rem;
+    text-align: left;
+  }
+}
+
+.total-price {
+  display: flex;
+  justify-content: flex-end;
+
+}
+
+.price-data {
+  th {
+    text-align: start;
+  }
+
+  td {
+    text-align: end;
+
+  }
 }
