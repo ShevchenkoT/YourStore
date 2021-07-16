@@ -115,6 +115,11 @@ body {
   --light-color: #f4f4f4;
   --danger-color: #dc3545;
   --success-color: #28a745;
+
+  --button-hue: 2;
+  --button-saturation: 92%;
+  --button-lightness: 56%;
+  //color: hsl(2, 56%, 56%);
 }
 
 .main-container {
@@ -213,28 +218,10 @@ button {
   justify-content: space-between;
   margin: 1rem 0 0 0;
 
-  & :first-child {
-    &:disabled {
-      color: #555455;
-      background-color: #302e30;
-
-      cursor: not-allowed;
-    }
-
-    &:enabled {
-      background-color: #89216b;
-
-      &:hover {
-        background: #661950;
-      }
-
-      &:active {
-        border: 2px solid #bb2d93;
-      }
-    }
 
 
-  }
+
+
 }
 
 
@@ -246,7 +233,36 @@ button {
   cursor: pointer;
   color: var(--text-color);
   margin: 0 0.5rem;
-  transition: all 0.3s ease;
+  transition: all .2s ease;
+  background-color: hsl(var(--button-hue), var(--button-saturation), var(--button-lightness));
+
+  &:hover {
+    --button-lightness: 40%;
+  }
+
+  &:active {
+    --button-lightness: 24%;
+  }
+
+  &:disabled {
+    color: #555455;
+    background-color: hsl(300, 2%, 23%);
+    cursor: not-allowed;
+  }
+}
+
+.delete-product-button {
+  width: 40px;
+  background-color: rgb(126, 25, 25);
+
+  & img {
+    width: 30px;
+    height: 30px;
+  }
+
+  &:hover {
+    background-color: rgb(92, 19, 19);
+  }
 }
 
 
@@ -343,29 +359,8 @@ button {
   .cart-wish_products__product___buttons___delete-add-button {
     display: flex;
 
-    .delete-product-button {
-      width: 40px;
-      background-color: rgb(126, 25, 25);
 
-      & img {
-        width: 30px;
-        height: 30px;
-      }
 
-      &:hover {
-        background-color: rgb(92, 19, 19);
-      }
-    }
-
-    .add-to-cart-button {
-
-      background: #215bb1;
-
-      &:hover {
-        background: #153b74;
-      }
-
-    }
 
   }
 
@@ -459,24 +454,6 @@ button {
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-.wish-list_button {
-  background-color: rgb(60, 40, 172);
-
-  &:hover {
-    background-color: rgb(40, 27, 116);
-  }
-}
 
 
 
@@ -575,30 +552,6 @@ button {
     position: relative;
     color: var(--text-color);
 
-    & :first-child {
-      background: #c42a2c;
-
-      &:hover {
-        background: #811b1d;
-      }
-
-      &:active {
-        border: 2px solid #e02e31;
-      }
-    }
-
-    & :last-child {
-      background: #215bb1;
-
-
-      &:hover {
-        background: #153b74;
-      }
-
-      &:active {
-        border: 2px solid #2a7df8;
-      }
-    }
   }
 }
 

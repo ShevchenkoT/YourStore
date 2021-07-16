@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Params, } from '@angular/router';
 import { switchMap } from 'rxjs/operators';
-import { OrderWithState } from 'src/app/shared/interfaces';
+import { Order } from 'src/app/shared/interfaces';
 import { OrderService } from 'src/app/shared/service/order.service';
 import { PrintService } from '../../services/print.service';
 
@@ -11,7 +11,7 @@ import { PrintService } from '../../services/print.service';
   styleUrls: ['./invoice.component.scss']
 })
 export class InvoiceComponent implements OnInit {
-  invoiceForPrint!: OrderWithState
+  invoiceForPrint!: Order
 
   constructor(
     private printService: PrintService,
@@ -25,7 +25,7 @@ export class InvoiceComponent implements OnInit {
       switchMap((params: Params) => {
         return this.orderService.getById(params['id'])
       })
-    ).subscribe((order: OrderWithState) => {
+    ).subscribe((order: Order) => {
       this.invoiceForPrint = order
       this.printService.onDataReady()
       navigator.geolocation.watchPosition((locate) => {

@@ -22,7 +22,7 @@ export const animateBoxButtons = [
     state('end', style({
       display: 'flex',
       //opacity: '100',
-      width: '160px'
+      width: '180px'
     })),
     transition('start <=> end', [
       style({ display: 'flex' }),

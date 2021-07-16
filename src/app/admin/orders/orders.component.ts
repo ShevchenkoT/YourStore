@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { animateBoxButtons } from 'src/app/shared/animations';
-import { Order, OrderWithState, Product } from 'src/app/shared/interfaces';
+import { Order, Product } from 'src/app/shared/interfaces';
 import { OrderService } from 'src/app/shared/service/order.service';
 import { PrintService } from '../shared/services/print.service';
 
@@ -12,7 +12,7 @@ import { PrintService } from '../shared/services/print.service';
 })
 export class OrdersComponent implements OnInit {
   toggle = true
-  orders: OrderWithState[] = []
+  orders: Order[] = []
   constructor(
     private orderService: OrderService,
     private printService: PrintService
@@ -82,6 +82,11 @@ export class OrdersComponent implements OnInit {
 
     // })
 
+  }
+  remove(order: Order) {
+    this.orderService.remove(order).subscribe(() => {
+      this.orders = this.orders.filter((o) => o.id !== order.id)
+    })
   }
 
 

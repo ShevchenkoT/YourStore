@@ -26,9 +26,7 @@ export interface Order {
   products: Product[];
   orderDate: Date;
   orderStatus: 'done' | 'cancel' | 'processing';
-  address: string
+  address: string;
+  state?: 'start' | 'end';
 }
 
-export interface OrderWithState extends Order {
-  state?: 'start' | 'end'
-}

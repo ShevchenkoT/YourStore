@@ -54,7 +54,13 @@
       </div>
       <div class="order-buttons" [@hidden]="o.state">
         <button style="background-color: rgb(46, 129, 46);" class="btn" (click)="orderDone(o)">Done</button>
-        <button style="background-color: rgb(158, 60, 60);" class="btn" (click)="orderCancel(o)">Cancel</button>
+        <div class="cancel-remove-button"><button style="background-color: rgb(158, 60, 60);" class="btn"
+            (click)="orderCancel(o)">Cancel</button>
+          <button title="Delete product" class=" btn delete-product-button " *ngIf="o.orderStatus === 'cancel'"
+            (click)="remove(o)">
+            <img src="assets/img/ico/delete.png">
+          </button>
+        </div>
         <button style="background-color: rgb(41, 43, 161); " class="btn" (click)="getOrder(o.id)">Print</button>
       </div>
       <div class="menu-button" [@rotate]="o.state" (click)="animate(o.id)"> <img src="assets/img/ico/menu.png" alt="">

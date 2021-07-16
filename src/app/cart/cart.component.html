@@ -109,7 +109,7 @@
       <div [ngClass]="{invalid:form.get('address')?.touched && form.get('address')?.invalid}" class="form-control">
         <label for="address">Home address</label>
         <input id="address" type="text" formControlName='address' placeholder="Enter your home address">
-        <button type="button" (click)="getGeolocation()" class="btn">Get
+        <button type="button" (click)="getGeolocation()" class="btn" [disabled]="form.get('address')?.value">Get
           Address</button>
 
         <div class="errors" *ngIf="form.get('address')?.invalid && form.get('address')?.touched">

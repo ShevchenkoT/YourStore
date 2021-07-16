@@ -31,6 +31,9 @@ export class OrderService {
   update(order: Order): Observable<Order> {
     return this.http.patch<Order>(`${environment.rbDbUrl}/order/${order.id}.json`, order)
   }
+  remove(order: Order): Observable<any> {
+    return this.http.delete<any>(`${environment.rbDbUrl}/order/${order.id}.json`)
+  }
 
   getById(id: string | undefined): Observable<Order> {
     return this.http.get<Order>(`${environment.rbDbUrl}/order/${id}.json`)

@@ -1,12 +1,12 @@
 import { Pipe, PipeTransform } from '@angular/core';
-import { OrderWithState } from '../interfaces';
+import { Order } from '../interfaces';
 
 @Pipe({
   name: 'sortByDate'
 })
 export class SortByDatePipe implements PipeTransform {
 
-  transform(orders: OrderWithState[]): OrderWithState[] {
+  transform(orders: Order[]): Order[] {
     return orders.sort((a, b) => new Date(b.orderDate).getTime() - new Date(a.orderDate).getTime())
   }
 }
