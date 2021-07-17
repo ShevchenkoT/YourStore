@@ -31,11 +31,6 @@ export class OrdersComponent implements OnInit {
       this.orders.map((o) => o.state = 'start')
     })
   }
-
-  getAllPrice(products: Product[]): number {
-    return products.map((p) => p.numberOfProducts ? p.phonePriceUsd * p.numberOfProducts : 0)
-      .reduce((a, b) => a + b)
-  }
   orderDone(order: Order) {
     this.orderService.update({
       ...order,
@@ -46,8 +41,9 @@ export class OrdersComponent implements OnInit {
       phoneNumber: order.phoneNumber,
       products: order.products,
       sendingType: order.sendingType,
-      address: order.address
-    }).subscribe((test) => {
+      address: order.address,
+      orderPrice: order.orderPrice
+    }).subscribe(() => {
       this.orders.map((o) => {
         if (o.id === order.id) {
           o.orderStatus = 'done'
@@ -77,11 +73,6 @@ export class OrdersComponent implements OnInit {
 
   getOrder(id: string | undefined) {
     this.printService.printDocument(id);
-    // this.orderService.getById(id).subscribe((order: OrderWithState) => {
-    //   this.printService.setInvoice(order)
-
-    // })
-
   }
   remove(order: Order) {
     this.orderService.remove(order).subscribe(() => {

@@ -88,14 +88,34 @@ h6 {
   font-weight: inherit;
 }
 
+a {
+  text-decoration: none
+}
+
 /*--------------------*/
 @import url('https://fonts.googleapis.com/css?family=Roboto');
+
+html,
+body {
+  height: 100%;
+}
+
+@media print {
+  .isPrinting>* {
+    display: none;
+  }
+
+  .isPrinting app-print-layout {
+    display: block;
+  }
+}
 
 
 body {
   background: #000;
   color: #ffffff;
-  font-family: 'Roboto', sans-serif;
+  margin: 0;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
   font-size: 15px;
   line-height: 1.2;
 }
@@ -125,7 +145,6 @@ body {
 .main-container {
   width: 100%;
   height: 100%;
-
 }
 
 .main-panel {
@@ -217,11 +236,6 @@ button {
   display: flex;
   justify-content: space-between;
   margin: 1rem 0 0 0;
-
-
-
-
-
 }
 
 
@@ -264,110 +278,6 @@ button {
     background-color: rgb(92, 19, 19);
   }
 }
-
-
-
-
-/////////////wish-list and cart syle
-.cart-wish_products {
-  display: flex;
-  flex-direction: column;
-
-
-  & .cart-wish_products__product {
-    margin-top: 1rem;
-    width: 600px;
-    height: 250px;
-    background: #313131;
-    display: flex;
-    align-items: center;
-    justify-content: space-around;
-
-    & .cart-wish_products__product___picture {
-      width: 200px;
-      height: 200px;
-    }
-
-    & .cart-wish_products__product___info {
-      display: flex;
-      flex-direction: column;
-      flex-wrap: nowrap;
-      align-items: center;
-      justify-content: space-evenly;
-      height: 200px;
-
-      >span {
-        font-size: 16px;
-
-      }
-
-      h2 {
-        font-size: 20px;
-      }
-
-      p {
-        color: black;
-        font-size: 20px;
-        font-weight: 900;
-
-        :last-child {
-
-          padding: 0 0 0 1.5rem;
-        }
-      }
-    }
-  }
-}
-
-.cart-wish_products__product___buttons {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  height: 90%;
-  justify-content: space-around;
-
-  .cart-wish_products__product___buttons___circle-button {
-    color: #000;
-    display: flex;
-    width: 100px;
-    align-items: center;
-
-    & .circle-button {
-      width: 25px;
-      height: 25px;
-      border-radius: 5px;
-      font-size: 24px;
-      margin: 0 5px;
-      border: 2px solid black;
-      cursor: pointer;
-      transition: all 0.3s ease;
-      background-color: rgba($color: #000000, $alpha: 0);
-      display: flex;
-      justify-content: center;
-      align-items: center;
-
-      &:hover {
-        Background-color: rgba($color: #000000, $alpha: 0.2);
-      }
-
-      &:active {
-        border: 2px solid #fff
-      }
-    }
-  }
-
-  .cart-wish_products__product___buttons___delete-add-button {
-    display: flex;
-
-
-
-
-  }
-
-}
-
-
-
 
 .top-bar {
   background-color: var(--second-color);
@@ -449,6 +359,229 @@ button {
 
     }
   }
+}
+
+.main-footer {
+  // background-color: red; //var(--first-color);
+  //min-height: 100%;
+  width: 80%;
+  min-height: 400px;
+  margin: -3rem auto;
+  //border: 2px outset red; //var(--first-color);
+  padding: 3rem;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: baseline;
+
+
+  strong {
+    font-size: 20px;
+    text-align: center;
+    margin-bottom: 1.5rem;
+  }
+
+
+  .main-footer_logo {
+    width: 350px;
+
+
+    & a {
+
+      & h3 {
+        font-size: 30px;
+        color: var(--text-color);
+        transition: all .3s ease;
+        text-align: center;
+
+        & span {
+          color: red
+        }
+      }
+
+
+    }
+
+  }
+
+  .main-footer_social-network {
+    display: flex;
+    flex-direction: column;
+    width: 350px;
+
+
+
+    .main-footer_social-buttons {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .social-circle {
+      background-color: white;
+      transition: all 0.5s ease-out;
+      width: 50px;
+      height: 50px;
+      border-radius: 50px;
+      //float: left;
+      //box-shadow: 0 10px 10px rgba(0, 0, 0, 0.1);
+      overflow: hidden;
+      margin: 10px;
+      cursor: pointer;
+
+
+      .img {
+
+        width: 54px;
+        height: 54px;
+        margin: -1px 0 0 -2px;
+
+        img {
+          width: 100%;
+          height: 100%;
+          display: inline-block;
+        }
+
+      }
+
+
+
+      .text {
+        font-size: 20px;
+        font-weight: bold;
+        display: block;
+        text-align: center;
+        font-family: Arial, Helvetica, sans-serif;
+        width: 120px;
+        height: 25px;
+        margin: -40px 0 0 60px;
+        text-decoration: none;
+      }
+
+      &:hover {
+        width: 180px;
+        transition: all 0.4s ease-out;
+      }
+    }
+  }
+
+  .main-footer_communication {
+    display: flex;
+    flex-direction: column;
+    width: 350px;
+    text-align: center;
+
+    p {
+      margin: 1rem 0;
+    }
+
+    a {
+      color: white;
+    }
+  }
+}
+
+
+
+
+
+
+
+/////////////wish-list and cart syle
+.cart-wish_products {
+  display: flex;
+  flex-direction: column;
+
+
+  & .cart-wish_products__product {
+    margin-top: 1rem;
+    width: 600px;
+    height: 250px;
+    background: #313131;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+
+    & .cart-wish_products__product___picture {
+      width: 200px;
+      height: 200px;
+    }
+
+    & .cart-wish_products__product___info {
+      display: flex;
+      flex-direction: column;
+      flex-wrap: nowrap;
+      align-items: center;
+      justify-content: space-evenly;
+      height: 200px;
+
+      >span {
+        font-size: 16px;
+      }
+
+      h2 {
+        font-size: 20px;
+      }
+
+      p {
+        color: black;
+        font-size: 20px;
+        font-weight: 900;
+
+        :last-child {
+
+          padding: 0 0 0 1.5rem;
+        }
+      }
+    }
+  }
+}
+
+.cart-wish_products__product___buttons {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: 90%;
+  justify-content: space-around;
+
+  .cart-wish_products__product___buttons___circle-button {
+    color: #000;
+    display: flex;
+    width: 100px;
+    align-items: center;
+
+    & .circle-button {
+      width: 25px;
+      height: 25px;
+      border-radius: 5px;
+      font-size: 24px;
+      margin: 0 5px;
+      border: 2px solid black;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      background-color: rgba($color: #000000, $alpha: 0);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+
+      &:hover {
+        Background-color: rgba($color: #000000, $alpha: 0.2);
+      }
+
+      &:active {
+        border: 2px solid #fff
+      }
+    }
+  }
+
+  .cart-wish_products__product___buttons___delete-add-button {
+    display: flex;
+
+
+
+
+  }
+
 }
 
 
@@ -552,25 +685,5 @@ button {
     position: relative;
     color: var(--text-color);
 
-  }
-}
-
-html,
-body {
-  height: 100%;
-}
-
-body {
-  margin: 0;
-  font-family: Roboto, "Helvetica Neue", sans-serif;
-}
-
-@media print {
-  .isPrinting>* {
-    display: none;
-  }
-
-  .isPrinting app-print-layout {
-    display: block;
   }
 }

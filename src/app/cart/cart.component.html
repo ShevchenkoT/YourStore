@@ -104,6 +104,11 @@
           <option value="Courier">Delivery by courier</option>
           <option value="Mail">Delivery by mail</option>
         </select>
+        <div class="errors" *ngIf="form.get('sendingType')?.invalid && form.get('sendingType')?.touched">
+          <small>
+            Field cannot be empty
+          </small>
+        </div>
       </div>
 
       <div [ngClass]="{invalid:form.get('address')?.touched && form.get('address')?.invalid}" class="form-control">
@@ -120,7 +125,8 @@
       </div>
 
 
-      <button class="btn" type="submit" [disabled]="form.invalid || submitted">Submit</button>
+      <button class="btn" type="submit"
+        [disabled]="form.invalid || submitted || !cartService.cartItem.length">Submit</button>
 
       <button (click)="cartService.clearCartList()" class="btn wish-list_button">Clear Card</button>
 

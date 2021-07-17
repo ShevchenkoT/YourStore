@@ -62,7 +62,7 @@
                     <table>
                       <tr>
                         <th>Subtotal: </th>
-                        <td>{{'$61.00'}}</td>
+                        <td>{{invoiceForPrint.orderPrice | currency :'USD':'symbol':'3.0'}}</td>
                       </tr>
                       <tr>
                         <th>Shipping & Handling: </th>
@@ -74,7 +74,7 @@
                       </tr>
                       <tr>
                         <th>Grand Total: </th>
-                        <td>{{'$67.00'}}</td>
+                        <td>{{invoiceForPrint.orderPrice+7 | currency :'USD':'symbol':'3.0' }}</td>
                       </tr>
                     </table>
                   </div>
@@ -100,7 +100,7 @@
       <h1> <span>Your</span> Shop</h1>
       <div class="invoice-info" *ngIf="invoiceForPrint">
         <p>ORDER ID/<span>{{invoiceForPrint.id}}</span></p>
-        <p>ORDER DATE/<span>{{invoiceForPrint.orderDate}}</span></p>
+        <p>ORDER DATE/<span>{{invoiceForPrint.orderDate| date:'short'}}</span></p>
         <p>SHIPPING/<span>{{invoiceForPrint.sendingType}}</span></p>
       </div>
     </div>

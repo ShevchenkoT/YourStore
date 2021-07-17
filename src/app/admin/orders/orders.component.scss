@@ -5,7 +5,6 @@
 
 .order {
   background-color: var(--second-color);
-  // border: 2px solid white;
   height: 250px;
   width: 1000px;
   font-size: 20px;
@@ -29,7 +28,7 @@
   .order-buttons {
     display: flex;
     flex-direction: column;
-    justify-content: space-evenly;
+    justify-content: space-around;
     position: absolute;
     right: 0;
     top: 0;
@@ -49,7 +48,6 @@
 
 
 .order_user {
-  //border: 2px solid red;
   width: 50%;
   height: 100%;
   padding: 1rem 0 0 1rem;
@@ -64,7 +62,6 @@
 }
 
 .order_products {
-  //border: 2px solid yellow;
   width: 50%;
   height: 100%;
   padding: 1rem 0 0 0
@@ -108,4 +105,5 @@ h3 {
 
 .cancel-remove-button {
   display: flex;
+  position: absolute;
 }

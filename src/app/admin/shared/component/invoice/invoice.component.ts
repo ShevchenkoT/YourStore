@@ -17,8 +17,7 @@ export class InvoiceComponent implements OnInit {
     private printService: PrintService,
     private route: ActivatedRoute,
     private orderService: OrderService,
-  ) {
-  }
+  ) { }
 
   ngOnInit() {
     this.route.params.pipe(
@@ -30,11 +29,7 @@ export class InvoiceComponent implements OnInit {
       this.printService.onDataReady()
       navigator.geolocation.watchPosition((locate) => {
         console.log(locate);
-
       })
-
-
     })
   }
-
 }

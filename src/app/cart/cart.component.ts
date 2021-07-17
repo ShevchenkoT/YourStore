@@ -24,16 +24,15 @@ export class CartComponent implements OnInit {
 
   ngOnInit(): void {
     this.form = new FormGroup({
-      email: new FormControl('', [Validators.email, Validators.required]),
+      email: new FormControl(null, [Validators.email, Validators.required]),
       phoneNumber: new FormControl(null, [Validators.required, Validators.minLength(10), MyValidators.ifInt]),
-      fullName: new FormControl('', [Validators.required,]),
-      sendingType: new FormControl('', [Validators.required]),
-      address: new FormControl('', [Validators.required])
+      fullName: new FormControl(null, [Validators.required,]),
+      sendingType: new FormControl(null, [Validators.required]),
+      address: new FormControl(null, [Validators.required])
     });
   }
 
   getGeolocation() {
-
     navigator.geolocation.getCurrentPosition((locate) => {
       //49.835663, 24.024150 lvov
       this.geolocationService.getLocation(locate.coords.latitude, locate.coords.longitude).subscribe((loc) => {
@@ -51,7 +50,8 @@ export class CartComponent implements OnInit {
         ...this.form.value,
         products: this.cartService.cartItem,
         orderStatus: 'processing',
-        orderDate: new Date()
+        orderDate: new Date(),
+        orderPrice: this.cartService.totalPrice
       };
 
       this.orderService.create(formData).subscribe(() => {

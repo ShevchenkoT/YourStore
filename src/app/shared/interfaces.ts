@@ -18,7 +18,6 @@ export interface Product {
   numberOfProducts?: number;
 }
 export interface Order {
-  id?: string;
   email: string;
   phoneNumber: string;
   fullName: string;
@@ -27,6 +26,9 @@ export interface Order {
   orderDate: Date;
   orderStatus: 'done' | 'cancel' | 'processing';
   address: string;
+  orderPrice: number;
+  id?: string;
   state?: 'start' | 'end';
+
 }
 
