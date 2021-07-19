@@ -420,8 +420,8 @@ button {
     .social-circle {
       background-color: white;
       transition: all 0.5s ease-out;
-      width: 50px;
-      height: 50px;
+      width: 35px;
+      height: 35px;
       border-radius: 50px;
       //float: left;
       //box-shadow: 0 10px 10px rgba(0, 0, 0, 0.1);
@@ -432,9 +432,9 @@ button {
 
       .img {
 
-        width: 54px;
-        height: 54px;
-        margin: -1px 0 0 -2px;
+        width: 38px;
+        height: 38px;
+        margin: -1.5px 0 0 -1px;
 
         img {
           width: 100%;
@@ -454,12 +454,18 @@ button {
         font-family: Arial, Helvetica, sans-serif;
         width: 120px;
         height: 25px;
-        margin: -40px 0 0 60px;
+        margin: -30px 0 0 35px;
         text-decoration: none;
+        color: black;
+        transition: all 0.4s ease-out;
+
+        &:hover {
+          letter-spacing: 1px;
+        }
       }
 
       &:hover {
-        width: 180px;
+        width: 160px;
         transition: all 0.4s ease-out;
       }
     }
@@ -632,20 +638,59 @@ button {
   justify-content: flex-start;
   color: var(--text-color);
 
+  .main-product_list_header {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+    margin: 1rem;
+    padding: 0 3.5rem;
+
+    .list_header_selectCount {
+      width: 80px;
+    }
+  }
+
+  .main-product_list_footer {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    margin: 1rem;
+    padding: 0 3.5rem;
+
+    .change-list-btn {
+      width: 35px;
+      height: 35px;
+      margin: .5rem;
+      border: 2px solid #888;
+      display: flex;
+      justify-content: space-around;
+      align-items: center;
+      transition: all .2s ease;
+
+      &:hover {
+        background-color: rgb(66, 66, 66);
+      }
+
+      &:active {
+        background-color: rgb(46, 46, 46);
+      }
+    }
+  }
+
   & .main-products_list__product {
 
     background-color: var(--second-color);
     margin: 0 0.5rem 1rem;
     width: 250px;
-    height: 400px;
+    height: 430px;
     text-align: center;
-
-
 
 
     & .main-products_list__product__link-detail {
       width: 16.5%;
-      height: 67%;
+      height: 50%;
       display: block;
       position: absolute;
       margin-top: -13px;

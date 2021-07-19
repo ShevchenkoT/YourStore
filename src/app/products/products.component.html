@@ -55,12 +55,24 @@
 
     <div class="main-products_list">
 
+      <div class="main-product_list_header">
+        <label for="selectCount">Show:</label>
+        <select id="selectCount" class="list_header_selectCount" [(ngModel)]="countProduct" [value]='10'>
+          <option value=5>5</option>
+          <option value=10>10</option>
+          <option value=20>20</option>
+        </select>
+      </div>
+
       <div *ngFor="let p of products
-        | filterPhones :nameCheck :'phoneName'
-        | filterPhones :memoryCheck :'memory'
-        | filterPhones :colorCheck :'phoneColor'
-        | searchProduct:searchService.searchProductStr
-        | priceFilter :topPrice: lowerPrice
+
+      | filterPhones :nameCheck :'phoneName'
+      | filterPhones :memoryCheck :'memory'
+      | filterPhones :colorCheck :'phoneColor'
+      | priceFilter :topPrice: lowerPrice
+      | searchProduct:searchService.searchProductStr
+      | slice: startProductList : startProductList + +countProduct;
+      let i =  count;
         " class="main-products_list__product" appHoverPhone>
 
 
@@ -88,6 +100,13 @@
 
       </div>
 
+      <div class="main-product_list_footer">
+        <div class="change-list-btn" *ngFor="let p of numSequence(products.length/countProduct);
+          let idx = index" (click)="changeList(idx)">
+          <span>{{idx + 1}}</span>
+        </div>
+
+      </div>
     </div>
   </ng-template>
 

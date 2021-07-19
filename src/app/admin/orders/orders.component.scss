@@ -107,3 +107,33 @@ h3 {
   display: flex;
   position: absolute;
 }
+
+
+.wavy-loading {
+  position: relative;
+  margin-top: 15rem;
+
+  span {
+    position: relative;
+    font-size: 2em;
+    display: inline-block;
+    animation: animate 1s ease-in-out infinite;
+    animation-delay: calc(0.1s * var(--i));
+  }
+}
+
+@keyframes animate {
+  0% {
+    transform: translateY(0px);
+  }
+
+  20% {
+    transform: translateY(-20px);
+  }
+
+  40%,
+  100% {
+    transform: translateY(0px);
+  }
+
+}

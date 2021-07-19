@@ -10,6 +10,9 @@ import { SearchProductService } from '../shared/service/search-product.service';
   styleUrls: ['./products.component.scss']
 })
 export class ProductsComponent implements OnInit {
+  countProduct = 10
+  startProductList = 0
+
   lowerPrice: string = '0';
   topPrice!: string
   maxPrice!: string
@@ -30,7 +33,6 @@ export class ProductsComponent implements OnInit {
       .subscribe((product: Product[]) => {
         this.products = product
         this.maxPrice = this.topPrice = this.getMaxPrice(this.products).toString()
-
       })
 
   }
@@ -49,5 +51,13 @@ export class ProductsComponent implements OnInit {
 
   getMaxPrice(products: Product[]): any {
     return Math.max(...this.products.map((p) => p.phonePriceUsd))
+  }
+  numSequence(n: number): Array<number> {
+
+    return Array(Math.ceil(n));
+  }
+
+  changeList(i: number) {
+    this.startProductList = +this.countProduct * i
   }
 }

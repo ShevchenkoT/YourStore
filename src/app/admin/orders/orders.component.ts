@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { animateBoxButtons } from 'src/app/shared/animations';
-import { Order, Product } from 'src/app/shared/interfaces';
+import { Order } from 'src/app/shared/interfaces';
 import { OrderService } from 'src/app/shared/service/order.service';
 import { PrintService } from '../shared/services/print.service';
 
@@ -79,6 +79,4 @@ export class OrdersComponent implements OnInit {
       this.orders = this.orders.filter((o) => o.id !== order.id)
     })
   }
-
-
 }
