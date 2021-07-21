@@ -34,7 +34,10 @@
       <small>My Cart</small>
     </div>
     <div class="top-bar_element">
-      <button (click)="darkTheme($event)" class="light-theme">Dark theme</button>
+      <label class="theme-switch" id="theme-switch">
+        <input type="checkbox" checked class="my-check">
+        <span (click)="darkTheme($event)" class="theme-slider theme-round"></span>
+      </label>
     </div>
 
 

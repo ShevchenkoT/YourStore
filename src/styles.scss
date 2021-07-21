@@ -95,11 +95,6 @@ a {
 /*--------------------*/
 @import url('https://fonts.googleapis.com/css?family=Roboto');
 
-html,
-body {
-  height: 100%;
-}
-
 @media print {
   .isPrinting>* {
     display: none;
@@ -108,23 +103,6 @@ body {
   .isPrinting app-print-layout {
     display: block;
   }
-}
-
-
-body {
-  background: #000;
-  color: #ffffff;
-  margin: 0;
-  font-family: Roboto, "Helvetica Neue", sans-serif;
-  font-size: 15px;
-  line-height: 1.2;
-}
-
-* {
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0;
-  transition: background .7s ease-in-out;
 }
 
 :root {
@@ -144,11 +122,26 @@ body {
   //color: hsl(2, 56%, 56%);
 }
 
-body {
-
-  background-color: var(--body-color);
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  transition: background .7s ease-in-out;
 }
 
+html,
+body {
+  height: 100%;
+  margin: 0;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+  font-size: 15px;
+  line-height: 1.2;
+}
+
+body {
+  background-color: var(--body-color);
+  color: var(--text-color);
+}
 
 .main-container {
   width: 100%;
@@ -160,14 +153,11 @@ body {
   width: 80%;
   min-height: 100%;
   margin: 6rem auto;
-  // border: 2px outset var(--first-color);
   display: flex;
   padding: 3rem;
   justify-content: space-between;
   align-items: flex-start;
 }
-
-
 
 form {
   border: 1px solid #888;
@@ -216,10 +206,6 @@ input[type='date'],
 input[type='url'],
 select,
 textarea {
-
-
-
-
   &.ng-touched.ng-valid {
     outline: 1px solid #08f700;
     box-shadow: 0px 0px 4px 1px #08f700;
@@ -237,7 +223,6 @@ button {
   font: inherit;
 }
 
-
 .form-control_buttons {
   width: 300px;
   height: 50px;
@@ -245,7 +230,6 @@ button {
   justify-content: space-between;
   margin: 1rem 0 0 0;
 }
-
 
 .btn {
   width: 110px;
@@ -296,21 +280,16 @@ button {
   top: 0;
   z-index: 100;
   color: var(--text-color);
-
   display: flex;
   align-items: center;
   justify-content: space-evenly;
 
-
-
   .top-bar_tittle {
     cursor: pointer;
     text-align: center;
-    width: 440px;
+    width: 530px;
 
     & a {
-
-
       & h1 {
         font-size: 45px;
         color: var(--text-color);
@@ -324,9 +303,7 @@ button {
       & :hover {
         transform: scale(1.05);
       }
-
     }
-
   }
 
   h2 {
@@ -340,12 +317,10 @@ button {
   }
 
   .top-bar_icons {
-
     display: flex;
-    width: 440px;
+    width: 530px;
     height: 80px;
     margin-top: 1rem;
-
     justify-content: flex-end;
 
     & .top-bar_element {
@@ -355,37 +330,29 @@ button {
       margin: 0 10px;
       text-align: center;
 
-
       & img {
         width: 40px;
         transition: transform .2s ease;
         transition: filter 2s ease;
 
         &:hover {
-
           transform: scale(1.2);
         }
       }
-
-
     }
   }
 }
 
 .main-footer {
-  // background-color: red; //var(--first-color);
-  //min-height: 100%;
   color: var(--text-color);
   width: 80%;
   min-height: 400px;
   margin: -3rem auto;
-  //border: 2px outset red; //var(--first-color);
   padding: 3rem;
   display: flex;
   flex-direction: row;
   justify-content: space-between;
   align-items: baseline;
-
 
   strong {
     font-size: 20px;
@@ -397,9 +364,7 @@ button {
   .main-footer_logo {
     width: 350px;
 
-
     & a {
-
       & h3 {
         font-size: 30px;
         color: var(--text-color);
@@ -410,18 +375,13 @@ button {
           color: red
         }
       }
-
-
     }
-
   }
 
   .main-footer_social-network {
     display: flex;
     flex-direction: column;
     width: 350px;
-
-
 
     .main-footer_social-buttons {
       display: flex;
@@ -435,15 +395,11 @@ button {
       width: 35px;
       height: 35px;
       border-radius: 50px;
-      //float: left;
-      //box-shadow: 0 10px 10px rgba(0, 0, 0, 0.1);
       overflow: hidden;
       margin: 10px;
       cursor: pointer;
 
-
       .img {
-
         width: 38px;
         height: 38px;
         margin: -1.5px 0 0 -1px;
@@ -453,10 +409,7 @@ button {
           height: 100%;
           display: inline-block;
         }
-
       }
-
-
 
       .text {
         font-size: 20px;
@@ -499,17 +452,9 @@ button {
   }
 }
 
-
-
-
-
-
-
-/////////////wish-list and cart syle
 .cart-wish_products {
   display: flex;
   flex-direction: column;
-
 
   & .cart-wish_products__product {
     margin-top: 1rem;
@@ -547,7 +492,6 @@ button {
         font-weight: 900;
 
         :last-child {
-
           padding: 0 0 0 1.5rem;
         }
       }
@@ -594,20 +538,8 @@ button {
 
   .cart-wish_products__product___buttons___delete-add-button {
     display: flex;
-
-
-
-
   }
-
 }
-
-
-
-
-
-
-
 
 .main-products_filter {
   background-color: var(--second-color);
@@ -636,12 +568,6 @@ button {
   }
 }
 
-
-
-
-
-
-
 .main-products_list {
   width: 75%;
   display: flex;
@@ -660,7 +586,7 @@ button {
 
     & label {
       font-weight: bold;
-      font-size: 20px;
+      font-size: 17px;
       margin: 5px 1rem;
     }
 
@@ -705,13 +631,11 @@ button {
   }
 
   & .main-products_list__product {
-
     background-color: var(--second-color);
     margin: 0 0.5rem 1rem;
     width: 250px;
     height: 430px;
     text-align: center;
-
 
     & .main-products_list__product__link-detail {
       width: 16.5%;
@@ -720,8 +644,6 @@ button {
       position: absolute;
       margin-top: -13px;
     }
-
-
 
     & .main-products_list__product___photo {
       width: 235px;
@@ -754,10 +676,8 @@ button {
     height: 0px;
     position: relative;
     color: var(--text-color);
-
   }
 }
-
 
 .wavy-loading {
   position: relative;
@@ -784,44 +704,9 @@ button {
     100% {
       transform: translateY(0px);
     }
-
   }
 }
 
-// .test {
-//   overflow: hidden;
-
-// }
-
-// .waiting {
-//   color: rgba(255, 255, 255, 0.5);
-//   background-color: rgba($color: #000000, $alpha: 0.0);
-//   width: 200px;
-//   height: 50px;
-//   margin-right: 100px;
-//   background: #5d2fdf repeating-linear-gradient(60deg,
-
-//       transparent 0px,
-//       transparent 5px,
-//       #5526c5 10px,
-//       #5526c5 20px,
-
-
-//     );
-
-//   animation: wait 2s infinite;
-// }
-
-// @keyframes wait {
-//   0% {
-//     transform: translateX(0px);
-//   }
-
-//   100% {
-//     transform: translateX(-70px);
-//   }
-
-// }
 .range-slider {
   width: 200px;
   margin: auto 16px;
@@ -836,8 +721,6 @@ button {
   left: 0;
   bottom: 0;
   margin: 0 0 -1rem 2rem;
-
-
 }
 
 input[type=range]::-webkit-slider-thumb {
@@ -861,4 +744,52 @@ input[type=range]::-webkit-slider-thumb {
   & img {
     filter: invert(1);
   }
+}
+
+
+.theme-switch {
+  margin-top: 1rem;
+  position: relative;
+  display: inline-block;
+  width: 52px;
+  height: 26px;
+}
+
+.theme-slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #000;
+  transition: .4s;
+}
+
+.theme-slider:before {
+  position: absolute;
+  content: "";
+  height: 26px;
+  width: 26px;
+  left: 0px;
+  bottom: 0px;
+  background-color: #fff;
+  transition: .4s;
+}
+
+input:checked+.theme-slider {
+  background-color: #fff;
+}
+
+input:checked+.theme-slider:before {
+  transform: translateX(26px);
+  background-color: #000;
+}
+
+.theme-slider.theme-round {
+  border-radius: 34px;
+}
+
+.theme-slider.theme-round:before {
+  border-radius: 50%;
 }
