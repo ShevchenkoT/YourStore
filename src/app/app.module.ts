@@ -33,8 +33,7 @@ const INTERCEPTOR_PROVIDER: Provider = {
     CartComponent,
     WishListComponent,
     ErrorPageComponent,
-    SearchProductPipe,
-    PriceFilterPipe
+
   ],
   imports: [
     BrowserModule,

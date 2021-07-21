@@ -3,7 +3,6 @@ import { Product } from '../shared/interfaces';
 import { CartFavoritesService } from '../shared/service/cart-favorites.service';
 import { ProductService } from '../shared/service/product.service';
 import { SearchProductService } from '../shared/service/search-product.service';
-
 @Component({
   selector: 'app-products',
   templateUrl: './products.component.html',
@@ -12,6 +11,7 @@ import { SearchProductService } from '../shared/service/search-product.service';
 export class ProductsComponent implements OnInit {
   countProduct = 10
   startProductList = 0
+  productsAfterPipes = 10
 
   lowerPrice: string = '0';
   topPrice!: string
@@ -22,6 +22,7 @@ export class ProductsComponent implements OnInit {
   memoryCheck: Product[] = [];
   colorCheck: Product[] = [];
   error = '';
+
   constructor(
     public cartFavoritesService: CartFavoritesService,
     public searchService: SearchProductService,
@@ -37,6 +38,7 @@ export class ProductsComponent implements OnInit {
 
   }
 
+
   blockDown(event: any) {
     if (this.lowerPrice > this.topPrice) {
       event.target.value = this.lowerPrice = this.topPrice
@@ -50,7 +52,7 @@ export class ProductsComponent implements OnInit {
 
 
   getMaxPrice(products: Product[]): any {
-    return Math.max(...this.products.map((p) => p.phonePriceUsd))
+    return Math.max(...products.map((p) => p.phonePriceUsd))
   }
   numSequence(n: number): Array<number> {
 

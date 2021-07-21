@@ -124,12 +124,14 @@ body {
   box-sizing: border-box;
   margin: 0;
   padding: 0;
+  transition: background .7s ease-in-out;
 }
 
 :root {
   --first-color: #191919; //;#f0f2f5
   --second-color: #272727; //#ffffff;
   --text-color: #fff; // #000;
+  --body-color: #000000;
   --primary-color: #c5081b;
   --dark-color: #333333;
   --light-color: #f4f4f4;
@@ -142,6 +144,12 @@ body {
   //color: hsl(2, 56%, 56%);
 }
 
+body {
+
+  background-color: var(--body-color);
+}
+
+
 .main-container {
   width: 100%;
   height: 100%;
@@ -152,7 +160,7 @@ body {
   width: 80%;
   min-height: 100%;
   margin: 6rem auto;
-  border: 2px outset var(--first-color);
+  // border: 2px outset var(--first-color);
   display: flex;
   padding: 3rem;
   justify-content: space-between;
@@ -347,11 +355,14 @@ button {
       margin: 0 10px;
       text-align: center;
 
+
       & img {
         width: 40px;
-        transition: all .2s ease;
+        transition: transform .2s ease;
+        transition: filter 2s ease;
 
         &:hover {
+
           transform: scale(1.2);
         }
       }
@@ -364,6 +375,7 @@ button {
 .main-footer {
   // background-color: red; //var(--first-color);
   //min-height: 100%;
+  color: var(--text-color);
   width: 80%;
   min-height: 400px;
   margin: -3rem auto;
@@ -456,7 +468,7 @@ button {
         height: 25px;
         margin: -30px 0 0 35px;
         text-decoration: none;
-        color: black;
+        color: #000;
         transition: all 0.4s ease-out;
 
         &:hover {
@@ -482,7 +494,7 @@ button {
     }
 
     a {
-      color: white;
+      color: var(--text-color)
     }
   }
 }
@@ -646,8 +658,21 @@ button {
     margin: 1rem;
     padding: 0 3.5rem;
 
+    & label {
+      font-weight: bold;
+      font-size: 20px;
+      margin: 5px 1rem;
+    }
+
     .list_header_selectCount {
-      width: 80px;
+      width: 90px;
+
+      &.ng-touched.ng-valid,
+      select.ng-touched.ng-valid,
+      textarea.ng-touched.ng-valid {
+        outline: none;
+        box-shadow: none
+      }
     }
   }
 
@@ -730,5 +755,110 @@ button {
     position: relative;
     color: var(--text-color);
 
+  }
+}
+
+
+.wavy-loading {
+  position: relative;
+  margin-top: 15rem;
+
+  span {
+    position: relative;
+    font-size: 2em;
+    display: inline-block;
+    animation: animate 1s ease-in-out infinite;
+    animation-delay: calc(0.1s * var(--i));
+  }
+
+  @keyframes animate {
+    0% {
+      transform: translateY(0px);
+    }
+
+    20% {
+      transform: translateY(-20px);
+    }
+
+    40%,
+    100% {
+      transform: translateY(0px);
+    }
+
+  }
+}
+
+// .test {
+//   overflow: hidden;
+
+// }
+
+// .waiting {
+//   color: rgba(255, 255, 255, 0.5);
+//   background-color: rgba($color: #000000, $alpha: 0.0);
+//   width: 200px;
+//   height: 50px;
+//   margin-right: 100px;
+//   background: #5d2fdf repeating-linear-gradient(60deg,
+
+//       transparent 0px,
+//       transparent 5px,
+//       #5526c5 10px,
+//       #5526c5 20px,
+
+
+//     );
+
+//   animation: wait 2s infinite;
+// }
+
+// @keyframes wait {
+//   0% {
+//     transform: translateX(0px);
+//   }
+
+//   100% {
+//     transform: translateX(-70px);
+//   }
+
+// }
+.range-slider {
+  width: 200px;
+  margin: auto 16px;
+  text-align: center;
+  position: relative;
+
+}
+
+.range-slider svg,
+.range-slider input[type=range] {
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  margin: 0 0 -1rem 2rem;
+
+
+}
+
+input[type=range]::-webkit-slider-thumb {
+  z-index: 2;
+  position: relative;
+  top: 2px;
+  margin-top: -7px;
+}
+
+.prices {
+  display: flex;
+
+  span {
+    margin: 0 6rem 0 .5rem;
+    width: 20px;
+    display: inline-block;
+  }
+}
+
+.color-invert {
+  & img {
+    filter: invert(1);
   }
 }

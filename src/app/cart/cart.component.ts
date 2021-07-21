@@ -38,7 +38,7 @@ export class CartComponent implements OnInit {
       this.geolocationService.getLocation(locate.coords.latitude, locate.coords.longitude).subscribe((loc) => {
         this.form.get('address')?.setValue(`${loc.address.country}, ${loc.address.village}, ${loc.address.postcode}`)
 
-        console.log(loc);
+        console.log('this is location', loc);
       })
     })
   }

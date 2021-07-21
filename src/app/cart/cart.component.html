@@ -127,9 +127,7 @@
 
       <button class="btn" type="submit"
         [disabled]="form.invalid || submitted || !cartService.cartItem.length">Submit</button>
-
       <button (click)="cartService.clearCartList()" class="btn wish-list_button">Clear Card</button>
-
       <div class="errors" *ngIf="!form.invalid && cartService.cartItem.length === 0">
         <small>
           Add any product

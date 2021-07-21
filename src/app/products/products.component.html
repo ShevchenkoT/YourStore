@@ -1,69 +1,75 @@
 <div class="main-panel">
-  <div *ngIf="error else TodoEmpty">
-    <p class="product-error">Error 404, products is not found</p>
-  </div>
 
-  <ng-template #TodoEmpty>
-
-
-    <div class="main-products_filter">
-
-      <div class="main-products_filter__properties">
-        <p>Price</p>
-        <div class="prices">
-          <p><span>{{lowerPrice| currency : 'USD':'symbol':'3.0'}}</span>{{topPrice| currency : 'USD':'symbol':'3.0'}}
-          </p>
-        </div>
-        <div class="range-slider">
-          <input type="range" min="0" max={{maxPrice}} step="20" (input)='blockDown($event)' [(ngModel)]='lowerPrice'>
-          <input type="range" min="0" max={{maxPrice}} step="20" (input)='blockUp($event)' [(ngModel)]='topPrice'>
-        </div>
-
+  <div class="main-products_filter">
+    <div class="main-products_filter__properties">
+      <p>Price</p>
+      <div class="prices">
+        <p><span>{{lowerPrice| currency : 'USD':'symbol':'3.0'}}</span>{{topPrice| currency : 'USD':'symbol':'3.0'}}
+        </p>
       </div>
-
-      <div class="main-products_filter__properties">
-        <p>Phone name</p>
-        <div class="main-products_filter__properties___property" *ngFor="let p of products |filterChecks: 'phoneName' ">
-          <input type="checkbox" name="{{p}}" id={{p}} [(ngModel)]="nameCheck[p]"
-            [ngModelOptions]="{standalone: false}">
-          <label for={{p}}>{{p}}</label>
-        </div>
+      <div class="range-slider">
+        <input type="range" min="0" max={{maxPrice}} step="20" (input)='blockDown($event)' [(ngModel)]='lowerPrice'>
+        <input type="range" min="0" max={{maxPrice}} step="20" (input)='blockUp($event)' [(ngModel)]='topPrice'>
       </div>
-
-      <div class="main-products_filter__properties">
-        <p>Memory</p>
-        <div class="main-products_filter__properties___property" *ngFor="let p of products |filterChecks: 'memory'">
-          <input type="checkbox" name="{{p}}" id={{p}} [(ngModel)]="memoryCheck[p]"
-            [ngModelOptions]="{standalone: false}">
-          <label for={{p}}>{{p}}</label>
-        </div>
-      </div>
-
-      <div class="main-products_filter__properties">
-        <p>Color</p>
-        <div class="main-products_filter__properties___property"
-          *ngFor="let p of products |filterChecks: 'phoneColor' ">
-          <input type="checkbox" name="{{p}}" id={{p}} [(ngModel)]="colorCheck[p]"
-            [ngModelOptions]="{standalone: false}">
-          <label for={{p}}>{{p}} </label>
-        </div>
-      </div>
-
-
 
     </div>
 
-    <div class="main-products_list">
-
-      <div class="main-product_list_header">
-        <label for="selectCount">Show:</label>
-        <select id="selectCount" class="list_header_selectCount" [(ngModel)]="countProduct" [value]='10'>
-          <option value=5>5</option>
-          <option value=10>10</option>
-          <option value=20>20</option>
-        </select>
+    <div class="main-products_filter__properties">
+      <p>Phone name</p>
+      <div class="main-products_filter__properties___property" *ngFor="let p of products |filterChecks: 'phoneName' ">
+        <input type="checkbox" name="{{p}}" id={{p}} [(ngModel)]="nameCheck[p]" [ngModelOptions]="{standalone: false}">
+        <label for={{p}}>{{p}}</label>
       </div>
+    </div>
 
+    <div class="main-products_filter__properties">
+      <p>Memory</p>
+      <div class="main-products_filter__properties___property" *ngFor="let p of products |filterChecks: 'memory'">
+        <input type="checkbox" name="{{p}}" id={{p}} [(ngModel)]="memoryCheck[p]"
+          [ngModelOptions]="{standalone: false}">
+        <label for={{p}}>{{p}}</label>
+      </div>
+    </div>
+
+    <div class="main-products_filter__properties">
+      <p>Color</p>
+      <div class="main-products_filter__properties___property" *ngFor="let p of products |filterChecks: 'phoneColor' ">
+        <input type="checkbox" name="{{p}}" id={{p}} [(ngModel)]="colorCheck[p]" [ngModelOptions]="{standalone: false}">
+        <label for={{p}}>{{p}} </label>
+      </div>
+    </div>
+  </div>
+
+  <div class="main-products_list">
+
+    <div class="main-product_list_header">
+      <label for="selectCount">Show:</label>
+      <select id="selectCount" class="list_header_selectCount" [(ngModel)]="countProduct" [value]='10'>
+        <option value=5>5</option>
+        <option value=10>10</option>
+        <option value=20>20</option>
+        <option [value]="products.length">See all</option>
+      </select>
+    </div>
+
+
+    <div *ngIf="error || !products.length;else productNoEmpty">
+      <div class="wavy-loading">
+        <span style="--i:1;">L</span>
+        <span style="--i:2;">O</span>
+        <span style="--i:3;">A</span>
+        <span style="--i:4;">D</span>
+        <span style="--i:5;">I</span>
+        <span style="--i:6;">N</span>
+        <span style="--i:7;">G</span>
+        <span style="--i:8;">.</span>
+        <span style="--i:9;">.</span>
+        <span style="--i:10;">.</span>
+      </div>
+    </div>
+
+
+    <ng-template #productNoEmpty>
       <div *ngFor="let p of products
 
       | filterPhones :nameCheck :'phoneName'
@@ -71,8 +77,7 @@
       | filterPhones :colorCheck :'phoneColor'
       | priceFilter :topPrice: lowerPrice
       | searchProduct:searchService.searchProductStr
-      | slice: startProductList : startProductList + +countProduct;
-      let i =  count;
+      | slice: startProductList : startProductList + +countProduct
         " class="main-products_list__product" appHoverPhone>
 
 
@@ -107,7 +112,7 @@
         </div>
 
       </div>
-    </div>
-  </ng-template>
+    </ng-template>
+  </div>
 
 </div>
