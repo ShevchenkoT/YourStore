@@ -1,6 +1,6 @@
 import { AfterContentChecked, Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Params, Router } from '@angular/router';
 import { HoverPhoneDirective } from 'src/app/shared/directives/hover-phone.directive';
 import { User } from '../../shared/interfaces';
 import { AuthService } from '../shared/services/auth.service';
@@ -15,11 +15,12 @@ export class LoginPageComponent implements OnInit, AfterContentChecked {
 
   form!: FormGroup
   submitted: boolean = false
-
+  message!: string
 
   constructor(
     public auth: AuthService,
-    private router: Router
+    private router: Router,
+    private route: ActivatedRoute
   ) { }
 
   ngAfterContentChecked() {
@@ -30,10 +31,18 @@ export class LoginPageComponent implements OnInit, AfterContentChecked {
       this.form.get('email')?.enable()
       this.form.get('password')?.enable()
     }
-
   }
 
   ngOnInit() {
+    this.route.queryParams.subscribe((params: Params) => {
+      if (params['loginAgain']) {
+        this.message = 'Please enter data'
+      } else if (params['authFailed']) {
+        this.message = 'Session is over. Enter data again '
+      }
+    })
+
+
     this.form = new FormGroup({
       email: new FormControl(null, [Validators.email, Validators.required]),
       password: new FormControl(null, [Validators.minLength(6), Validators.required]),

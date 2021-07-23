@@ -1,6 +1,19 @@
 <div class="main-panel">
   <form class="login-form" [formGroup]='form' (ngSubmit)="submit()">
     <h2 class="text-center">Login to the admin panel</h2>
+
+    <div class="alert-auth" *ngIf="auth.error$ | async as error">
+      <p>{{error}}</p>
+    </div>
+
+    <div class="alert-auth" *ngIf="message">
+      <p>{{message}}</p>
+    </div>
+
+    <div class="alert-auth" *ngIf="auth.isAuthenticated()">
+      <p>{{'You are already logged in'}}</p>
+    </div>
+
     <div [ngClass]="{invalid:form.get('email')?.touched && form.get('email')?.invalid}" class="form-control">
 
       <label for="email">Email</label>

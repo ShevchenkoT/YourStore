@@ -1,8 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 import { Product } from 'src/app/shared/interfaces';
 import { MyValidators } from 'src/app/shared/my.validators';
 import { ProductService } from 'src/app/shared/service/product.service';
+import { AuthService } from '../shared/services/auth.service';
 
 @Component({
   selector: 'app-create-product',
@@ -15,7 +17,9 @@ export class CreateProductComponent implements OnInit {
   submitted = false
   testPicture!: string
   constructor(
-    private productService: ProductService
+    private productService: ProductService,
+    private auth: AuthService,
+    private router: Router,
   ) { }
 
   ngOnInit() {
@@ -32,6 +36,15 @@ export class CreateProductComponent implements OnInit {
     if (this.form.invalid) {
       return
     }
+    if (!this.auth.isAuthenticated()) {
+      this.router.navigate(['/admin', 'login'], {
+        queryParams: {
+          authFailed: true
+        }
+      })
+      return
+    }
+
     this.submitted = true
     const newProduct: Product = {
       phoneName: this.form.value.phoneName,
