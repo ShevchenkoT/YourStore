@@ -32,6 +32,14 @@
       <a title="My Cart"><img src="assets/img/ico/logout.png" (click)="exit()"></a>
       <small>Logout</small>
     </div>
+
+    <div class="top-bar_element">
+      <label class="theme-switch" id="theme-switch">
+        <input type="checkbox" checked class="my-check">
+        <span (click)="darkTheme($event)" class="theme-slider theme-round"></span>
+      </label>
+
+    </div>
   </div>
 </div>
 <div class="main-container">

@@ -12,6 +12,8 @@ import { AuthGuard } from "./shared/services/auth.guard";
 import { ScrollingModule } from '@angular/cdk/scrolling'
 import { MatProgressBarModule } from '@angular/material/progress-bar';
 import { InvoiceComponent } from "./shared/component/invoice/invoice.component";
+import { RefModalRemoveDirective } from "./shared/component/refModalRemove.directive";
+import { RemoveModalComponent } from "./shared/component/remove-modal/remove-modal.component";
 
 const routes: Routes = [
   {
@@ -40,7 +42,8 @@ const routes: Routes = [
     EditProductComponent,
     LoginPageComponent,
     OrdersComponent,
-    InvoiceComponent
+    InvoiceComponent,
+    RefModalRemoveDirective,
   ],
 
   imports: [
@@ -49,6 +52,9 @@ const routes: Routes = [
     RouterModule.forChild(routes),
     ScrollingModule,
     MatProgressBarModule
+  ],
+  entryComponents: [
+    RemoveModalComponent
   ],
   providers: [
 
