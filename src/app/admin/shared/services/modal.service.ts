@@ -1,4 +1,6 @@
 import { ComponentFactoryResolver, Injectable } from '@angular/core';
+import { ProductsComponent } from 'src/app/products/products.component';
+import { ProductService } from 'src/app/shared/service/product.service';
 import { RefModalRemoveDirective } from '../component/refModalRemove.directive';
 import { RemoveModalComponent } from '../component/remove-modal/remove-modal.component';
 
@@ -8,17 +10,25 @@ import { RemoveModalComponent } from '../component/remove-modal/remove-modal.com
 export class ModalService {
 
   refDir!: RefModalRemoveDirective
-  constructor() {
+  productId!: string
+  constructor(
+    private productService: ProductService,
+  ) {
 
   }
 
-  createModal(refDirect: RefModalRemoveDirective, modalFactory: any) {
+  createModal(refDirect: RefModalRemoveDirective | any, id: string | any) {
     this.refDir = refDirect
-    const component = refDirect.containerRef.createComponent(modalFactory)
-
+    this.productId = id
   }
 
   closeModal() {
     this.refDir.containerRef.remove()
+  }
+  deleteProduct() {
+    this.productService.remove(this.productId).subscribe(() => {
+      console.log("remote product is done");
+      this.closeModal()
+    })
   }
 }

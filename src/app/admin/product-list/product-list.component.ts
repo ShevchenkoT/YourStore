@@ -65,10 +65,11 @@ export class ProductListComponent implements OnInit {
     this.startProductList = +this.countProduct * i
   }
 
-  remove(id: string | undefined) {
+  remove(product: Product) {
     const modalFactory = this.resolver.resolveComponentFactory(RemoveModalComponent)
-    this.modalService.createModal(this.refDirect, modalFactory)
-
+    const component = this.refDirect.containerRef.createComponent(modalFactory)
+    component.instance.product = product.phoneName
+    this.modalService.createModal(this.refDirect, product.id)
     // const modalFactory = this.resolver.resolveComponentFactory(RemoveModalComponent)
     // const component = this.refDirect.containerRef.createComponent(modalFactory)
 
@@ -77,10 +78,6 @@ export class ProductListComponent implements OnInit {
     //     this.products = this.products.filter((p) => p.id !== id)
     //   })
     // }
-  }
-  closeModal() {
-    console.log('test 2');
-
   }
 
 }

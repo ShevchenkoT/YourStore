@@ -7,7 +7,7 @@
 
   <p>{{product}}</p>
   <div class="remote-modal-buttons">
-    <button class="btn">Yes</button>
+    <button class="btn" (click)="modalService.deleteProduct()">Yes</button>
     <button class="btn" (click)="modalService.closeModal()">No</button>
   </div>
 </div>
