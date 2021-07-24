@@ -2,7 +2,7 @@ import { Pipe, PipeTransform } from '@angular/core';
 import { Order } from '../interfaces';
 
 @Pipe({
-  name: 'sortByDate'
+  name: 'sortByDate',
 })
 export class SortByDatePipe implements PipeTransform {
 

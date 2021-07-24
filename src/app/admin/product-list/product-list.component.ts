@@ -1,4 +1,4 @@
-import { ComponentFactoryResolver, ViewChild } from '@angular/core';
+import { AfterContentChecked, ComponentFactoryResolver, ViewChild } from '@angular/core';
 import { Component, OnInit } from '@angular/core';
 import { Product } from 'src/app/shared/interfaces';
 import { ProductService } from 'src/app/shared/service/product.service';
@@ -21,17 +21,17 @@ export class ProductListComponent implements OnInit {
   topPrice!: string
   maxPrice!: string
 
-  products: Array<Product> = []
-  nameCheck: Product[] = [];
-  memoryCheck: Product[] = [];
-  colorCheck: Product[] = [];
+  //products: Array<Product> = []
+  nameCheck: any = [];
+  memoryCheck: any = [];
+  colorCheck: any = [];
 
   error = '';
 
   @ViewChild(RefModalRemoveDirective, { static: false }) refDirect!: RefModalRemoveDirective
 
   constructor(
-    private productService: ProductService,
+    public productService: ProductService,
     public searchService: SearchProductService,
     private modalService: ModalService,
     private resolver: ComponentFactoryResolver,
@@ -39,9 +39,9 @@ export class ProductListComponent implements OnInit {
   ngOnInit(): void {
     this.productService.getAll()
       .subscribe((product: Product[]) => {
-        this.products = product
-        this.maxPrice = this.topPrice = this.getMaxPrice(this.products).toString()
+        this.maxPrice = this.topPrice = this.getMaxPrice(this.productService.product).toString()
       })
+
   }
   blockDown(event: any) {
     if (this.lowerPrice > this.topPrice) {
@@ -63,6 +63,8 @@ export class ProductListComponent implements OnInit {
 
   changeList(i: number) {
     this.startProductList = +this.countProduct * i
+
+
   }
 
   remove(product: Product) {
@@ -70,14 +72,7 @@ export class ProductListComponent implements OnInit {
     const component = this.refDirect.containerRef.createComponent(modalFactory)
     component.instance.product = product.phoneName
     this.modalService.createModal(this.refDirect, product.id)
-    // const modalFactory = this.resolver.resolveComponentFactory(RemoveModalComponent)
-    // const component = this.refDirect.containerRef.createComponent(modalFactory)
-
-    // if (id) {
-    //   this.productService.remove(id).subscribe(() => {
-    //     this.products = this.products.filter((p) => p.id !== id)
-    //   })
-    // }
   }
+
 
 }

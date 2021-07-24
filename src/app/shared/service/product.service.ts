@@ -1,7 +1,7 @@
 import { HttpClient } from "@angular/common/http";
 import { Injectable, OnInit } from "@angular/core";
 import { Observable } from "rxjs";
-import { map } from "rxjs/operators";
+import { map, tap } from "rxjs/operators";
 import { environment } from "src/environments/environment";
 import { Product } from "../interfaces";
 
@@ -9,6 +9,8 @@ import { Product } from "../interfaces";
   providedIn: "root"
 })
 export class ProductService implements OnInit {
+  product: Product[] = []
+
   constructor(
     private http: HttpClient
   ) { }
@@ -19,15 +21,20 @@ export class ProductService implements OnInit {
 
   getAll(): Observable<any> {
     return this.http.get(`${environment.rbDbUrl}/product.json`)
-      .pipe(map((response: { [key: string]: any }) => {
-        return Object
-          .keys(response)
-          .map((key) => ({
-            ...response[key],
-            id: key,
-          }))
+      .pipe(
+        map((response: { [key: string]: any }) => {
+          return Object
+            .keys(response)
+            .map((key) => ({
+              ...response[key],
+              id: key,
+            }))
 
-      }))
+        }),
+        tap((product: Product[]) => {
+          this.product = product
+        })
+      )
   }
 
   create(product: any): Observable<any> {

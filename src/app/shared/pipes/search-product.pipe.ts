@@ -4,7 +4,6 @@ import { Product } from '../interfaces';
 
 @Pipe({
   name: 'searchProduct',
-  pure: true
 })
 export class SearchProductPipe implements PipeTransform {
 
