@@ -1,5 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { ProductListComponent } from 'src/app/admin/product-list/product-list.component';
+import { ModalService } from '../../services/modal.service';
 
 @Component({
   selector: 'app-remove-modal',
@@ -10,7 +10,7 @@ export class RemoveModalComponent implements OnInit {
 
   @Input() product = 'someProduct'
 
-  constructor(public productComponent: ProductListComponent) { }
+  constructor(public modalService: ModalService) { }
 
   ngOnInit() {
   }

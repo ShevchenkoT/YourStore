@@ -5,6 +5,7 @@ import { ProductService } from 'src/app/shared/service/product.service';
 import { SearchProductService } from 'src/app/shared/service/search-product.service';
 import { RefModalRemoveDirective } from '../shared/component/refModalRemove.directive';
 import { RemoveModalComponent } from '../shared/component/remove-modal/remove-modal.component';
+import { ModalService } from '../shared/services/modal.service';
 
 @Component({
   selector: 'app-product-list',
@@ -32,7 +33,8 @@ export class ProductListComponent implements OnInit {
   constructor(
     private productService: ProductService,
     public searchService: SearchProductService,
-    private resolver: ComponentFactoryResolver
+    private modalService: ModalService,
+    private resolver: ComponentFactoryResolver,
   ) { }
   ngOnInit(): void {
     this.productService.getAll()
@@ -63,17 +65,12 @@ export class ProductListComponent implements OnInit {
     this.startProductList = +this.countProduct * i
   }
 
-
-
-
-
-
-
-
   remove(id: string | undefined) {
     const modalFactory = this.resolver.resolveComponentFactory(RemoveModalComponent)
+    this.modalService.createModal(this.refDirect, modalFactory)
 
-    const component = this.refDirect.containerRef.createComponent(modalFactory)
+    // const modalFactory = this.resolver.resolveComponentFactory(RemoveModalComponent)
+    // const component = this.refDirect.containerRef.createComponent(modalFactory)
 
     // if (id) {
     //   this.productService.remove(id).subscribe(() => {
