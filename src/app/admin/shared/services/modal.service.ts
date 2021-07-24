@@ -1,5 +1,7 @@
+import { typeofExpr } from '@angular/compiler/src/output/output_ast';
 import { Injectable } from '@angular/core';
-import { Router } from '@angular/router';
+import { Order, Product } from 'src/app/shared/interfaces';
+import { OrderService } from 'src/app/shared/service/order.service';
 import { ProductService } from 'src/app/shared/service/product.service';
 import { RefModalRemoveDirective } from '../component/refModalRemove.directive';
 
@@ -9,26 +11,33 @@ import { RefModalRemoveDirective } from '../component/refModalRemove.directive';
 export class ModalService {
 
   refDir!: RefModalRemoveDirective
-  productId!: string
+  item!: Product | Order
   constructor(
     private productService: ProductService,
-    private router: Router
+    private orderService: OrderService,
   ) {
 
   }
 
-  createModal(refDirect: RefModalRemoveDirective | any, id: string | any) {
+  createModal(refDirect: RefModalRemoveDirective | any, item: Product | Order) {
     this.refDir = refDirect
-    this.productId = id
+    this.item = item
+
   }
 
   closeModal() {
     this.refDir.containerRef.remove()
   }
   deleteProduct() {
-    this.productService.remove(this.productId).subscribe(() => {
-      this.productService.product = this.productService.product.filter((p) => p.id !== this.productId)
+    if ('phoneName' in this.item) {
+      this.productService.remove(this.item.id).subscribe(() => {
+        this.productService.product = this.productService.product.filter((p) => p.id !== this.item.id)
+        this.closeModal()
+      })
+    } else if ('orderDate' in this.item) {
+      //?---------------------------------------------
       this.closeModal()
-    })
+    }
   }
 }
+

@@ -57,22 +57,18 @@ export class ProductListComponent implements OnInit {
     return Math.max(...products.map((p) => p.phonePriceUsd))
   }
   numSequence(n: number): Array<number> {
-
     return Array(Math.ceil(n));
   }
 
   changeList(i: number) {
     this.startProductList = +this.countProduct * i
-
-
   }
 
   remove(product: Product) {
     const modalFactory = this.resolver.resolveComponentFactory(RemoveModalComponent)
     const component = this.refDirect.containerRef.createComponent(modalFactory)
     component.instance.product = product.phoneName
-    this.modalService.createModal(this.refDirect, product.id)
+    this.modalService.createModal(this.refDirect, product)
   }
-
 
 }

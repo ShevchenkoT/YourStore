@@ -41,8 +41,10 @@ export class ProductService implements OnInit {
     return this.http.post(`${environment.rbDbUrl}/product.json`, product)
   }
 
-  remove(id: string): Observable<void> {
+  remove(id: string | undefined): Observable<void> {
+
     return this.http.delete<void>(`${environment.rbDbUrl}/product/${id}.json`)
+
   }
 
   getById(id: string): Observable<Product> {

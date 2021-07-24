@@ -1,7 +1,10 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, ComponentFactoryResolver, OnInit, ViewChild } from '@angular/core';
 import { animateBoxButtons } from 'src/app/shared/animations';
 import { Order } from 'src/app/shared/interfaces';
 import { OrderService } from 'src/app/shared/service/order.service';
+import { RefModalRemoveDirective } from '../shared/component/refModalRemove.directive';
+import { RemoveModalComponent } from '../shared/component/remove-modal/remove-modal.component';
+import { ModalService } from '../shared/services/modal.service';
 import { PrintService } from '../shared/services/print.service';
 
 @Component({
@@ -13,9 +16,14 @@ import { PrintService } from '../shared/services/print.service';
 export class OrdersComponent implements OnInit {
   toggle = true
   orders: Order[] = []
+
+  @ViewChild(RefModalRemoveDirective, { static: false }) refDirect!: RefModalRemoveDirective
   constructor(
     private orderService: OrderService,
-    private printService: PrintService
+    private printService: PrintService,
+    private resolver: ComponentFactoryResolver,
+    private modalService: ModalService
+
   ) { }
 
   animate(id: string | undefined) {
@@ -75,8 +83,13 @@ export class OrdersComponent implements OnInit {
     this.printService.printDocument(id);
   }
   remove(order: Order) {
-    this.orderService.remove(order).subscribe(() => {
-      this.orders = this.orders.filter((o) => o.id !== order.id)
-    })
+    // this.orderService.remove(order).subscribe(() => {
+    //   this.orders = this.orders.filter((o) => o.id !== order.id)
+    // })
+
+    const modalFactory = this.resolver.resolveComponentFactory(RemoveModalComponent)
+    const component = this.refDirect.containerRef.createComponent(modalFactory)
+    component.instance.product = order.id!
+    this.modalService.createModal(this.refDirect, order)
   }
 }
