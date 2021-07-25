@@ -8,16 +8,12 @@ import { Product } from "../interfaces";
 @Injectable({
   providedIn: "root"
 })
-export class ProductService implements OnInit {
+export class ProductService {
   product: Product[] = []
 
   constructor(
     private http: HttpClient
   ) { }
-
-  ngOnInit() {
-
-  }
 
   getAll(): Observable<any> {
     return this.http.get(`${environment.rbDbUrl}/product.json`)

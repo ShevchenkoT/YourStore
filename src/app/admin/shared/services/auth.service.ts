@@ -1,7 +1,5 @@
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
-import { Route } from '@angular/compiler/src/core';
 import { Injectable } from '@angular/core';
-import { Router } from '@angular/router';
 
 import { Observable, Subject, throwError } from 'rxjs';
 import { catchError, tap } from 'rxjs/operators';
@@ -10,15 +8,12 @@ import { FbAuthResponse, User } from '../../../shared/interfaces';
 
 @Injectable({
   providedIn: 'root'
-}
-)
+})
 export class AuthService {
 
   public error$: Subject<string> = new Subject()
-  constructor(
-    private http: HttpClient,
-    private router: Router
-  ) { }
+
+  constructor(private http: HttpClient) { }
 
   get token(): string | null {
     const expDate = new Date(localStorage.getItem('fb-token-exp')!)

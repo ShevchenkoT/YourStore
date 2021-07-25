@@ -1,6 +1,9 @@
-import { CommonModule } from "@angular/common";
 import { NgModule } from "@angular/core";
+import { CommonModule } from "@angular/common";
 import { RouterModule, Routes } from "@angular/router";
+import { ScrollingModule } from '@angular/cdk/scrolling'
+import { MatProgressBarModule } from '@angular/material/progress-bar';
+
 import { SharedModule } from "../shared/shared.module";
 import { LoginPageComponent } from "./login-page/login-page.component";
 import { CreateProductComponent } from "./create-product/create-product.component";
@@ -9,8 +12,6 @@ import { ProductListComponent } from "./product-list/product-list.component";
 import { AdminLayoutComponent } from "./shared/component/admin-layout/admin-layout.component";
 import { OrdersComponent } from "./orders/orders.component";
 import { AuthGuard } from "./shared/services/auth.guard";
-import { ScrollingModule } from '@angular/cdk/scrolling'
-import { MatProgressBarModule } from '@angular/material/progress-bar';
 import { InvoiceComponent } from "./shared/component/invoice/invoice.component";
 import { RefModalRemoveDirective } from "./shared/component/refModalRemove.directive";
 import { RemoveModalComponent } from "./shared/component/remove-modal/remove-modal.component";
@@ -23,18 +24,13 @@ const routes: Routes = [
       { path: 'create', component: CreateProductComponent, canActivate: [AuthGuard] },
       { path: 'product-list', component: ProductListComponent, canActivate: [AuthGuard] },
       { path: 'product/:id/edit', component: EditProductComponent, canActivate: [AuthGuard] },
-      {
-        path: 'orders', component: OrdersComponent, canActivate: [AuthGuard], children: [
-
-        ]
-      },
-      { path: 'invoice/:id', component: InvoiceComponent }
+      { path: 'orders', component: OrdersComponent, canActivate: [AuthGuard] },
+      { path: 'invoice/:id', component: InvoiceComponent, canActivate: [AuthGuard] },
     ]
   }
 ]
 
 @NgModule({
-
   declarations: [
     AdminLayoutComponent,
     CreateProductComponent,
@@ -57,7 +53,6 @@ const routes: Routes = [
     RemoveModalComponent
   ],
   providers: [
-
     AuthGuard
   ]
 })

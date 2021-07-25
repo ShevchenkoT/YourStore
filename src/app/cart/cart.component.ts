@@ -1,5 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { Subscription } from 'rxjs';
+
 import { Order } from '../shared/interfaces';
 import { MyValidators } from '../shared/my.validators';
 import { CartFavoritesService } from '../shared/service/cart-favorites.service';
@@ -11,11 +13,12 @@ import { OrderService } from '../shared/service/order.service';
   templateUrl: './cart.component.html',
   styleUrls: ['./cart.component.scss']
 })
-export class CartComponent implements OnInit {
+export class CartComponent implements OnInit, OnDestroy {
 
   form!: FormGroup;
   submitted = false
 
+  gSub!: Subscription
   constructor(
     public cartService: CartFavoritesService,
     private orderService: OrderService,
@@ -35,9 +38,8 @@ export class CartComponent implements OnInit {
   getGeolocation() {
     navigator.geolocation.getCurrentPosition((locate) => {
       //49.835663, 24.024150 lvov
-      this.geolocationService.getLocation(locate.coords.latitude, locate.coords.longitude).subscribe((loc) => {
+      this.gSub = this.geolocationService.getLocation(locate.coords.latitude, locate.coords.longitude).subscribe((loc) => {
         this.form.get('address')?.setValue(`${loc.address.country}, ${loc.address.village}, ${loc.address.postcode}`)
-
         console.log('this is location', loc);
       })
     })
@@ -60,6 +62,12 @@ export class CartComponent implements OnInit {
         this.cartService.totalPrice = 0;
         this.submitted = false
       })
+    }
+  }
+
+  ngOnDestroy() {
+    if (this.gSub) {
+      this.gSub.unsubscribe()
     }
   }
 }

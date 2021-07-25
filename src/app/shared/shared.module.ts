@@ -1,5 +1,5 @@
-import { HttpClientModule } from "@angular/common/http";
 import { NgModule } from "@angular/core";
+import { HttpClientModule } from "@angular/common/http";
 import { FormsModule, ReactiveFormsModule } from "@angular/forms";
 
 import { HoverPhoneDirective } from "./directives/hover-phone.directive";
@@ -22,7 +22,6 @@ import { SortByDatePipe } from "./pipes/sort-by-date.pipe";
     HttpClientModule,
     ReactiveFormsModule,
     FormsModule,
-
   ],
   exports: [
     HttpClientModule,
@@ -36,7 +35,6 @@ import { SortByDatePipe } from "./pipes/sort-by-date.pipe";
     PriceFilterPipe,
   ],
   providers: []
-
 })
 
 export class SharedModule { }

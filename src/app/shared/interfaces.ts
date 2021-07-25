@@ -29,6 +29,5 @@ export interface Order {
   orderPrice: number;
   id?: string;
   state?: 'start' | 'end';
-
 }
 

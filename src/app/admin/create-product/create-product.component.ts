@@ -1,6 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { Subscription } from 'rxjs';
 import { Product } from 'src/app/shared/interfaces';
 import { MyValidators } from 'src/app/shared/my.validators';
 import { ProductService } from 'src/app/shared/service/product.service';
@@ -11,11 +12,13 @@ import { AuthService } from '../shared/services/auth.service';
   templateUrl: './create-product.component.html',
   styleUrls: ['./create-product.component.scss']
 })
-export class CreateProductComponent implements OnInit {
-  //assets/img/phones/12ProBlack.png
+export class CreateProductComponent implements OnInit, OnDestroy {
   form!: FormGroup
   submitted = false
   testPicture!: string
+
+  cSub!: Subscription
+
   constructor(
     private productService: ProductService,
     private auth: AuthService,
@@ -54,7 +57,7 @@ export class CreateProductComponent implements OnInit {
       pictureUrl: this.form.value.pictureUrl
     }
 
-    this.productService.create(newProduct).subscribe(() => {
+    this.cSub = this.productService.create(newProduct).subscribe(() => {
       this.form.reset()
       this.testPicture = ''
       this.submitted = false
@@ -64,5 +67,10 @@ export class CreateProductComponent implements OnInit {
     this.testPicture = this.form.value.pictureUrl
   }
 
+  ngOnDestroy() {
+    if (this.cSub) {
+      this.cSub.unsubscribe
+    }
+  }
 
 }

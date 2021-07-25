@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Subscription } from 'rxjs';
 import { Product } from '../shared/interfaces';
 import { CartFavoritesService } from '../shared/service/cart-favorites.service';
 import { ProductService } from '../shared/service/product.service';
@@ -8,7 +9,7 @@ import { SearchProductService } from '../shared/service/search-product.service';
   templateUrl: './products.component.html',
   styleUrls: ['./products.component.scss']
 })
-export class ProductsComponent implements OnInit {
+export class ProductsComponent implements OnInit, OnDestroy {
   countProduct = 10
   startProductList = 0
   productsAfterPipes = 10
@@ -17,49 +18,54 @@ export class ProductsComponent implements OnInit {
   topPrice!: string
   maxPrice!: string
 
-  products: Product[] = [];
+
   nameCheck: Product[] = [];
   memoryCheck: Product[] = [];
   colorCheck: Product[] = [];
   error = '';
 
+  gSub!: Subscription
+
   constructor(
     public cartFavoritesService: CartFavoritesService,
     public searchService: SearchProductService,
-    private productService: ProductService,
+    public productService: ProductService,
   ) { }
 
   ngOnInit(): void {
     this.productService.getAll()
-      .subscribe((product: Product[]) => {
-        this.products = product
-        this.maxPrice = this.topPrice = this.getMaxPrice(this.products).toString()
+      .subscribe(() => {
+        this.maxPrice = this.topPrice = this.getMaxPrice(this.productService.product).toString()
       })
-
   }
-
 
   blockDown(event: any) {
     if (this.lowerPrice > this.topPrice) {
       event.target.value = this.lowerPrice = this.topPrice
     }
   }
+
   blockUp(event: any) {
     if (this.lowerPrice > this.topPrice) {
       event.target.value = this.topPrice = this.lowerPrice
     }
   }
 
-
   getMaxPrice(products: Product[]): any {
     return Math.max(...products.map((p) => p.phonePriceUsd))
   }
-  numSequence(n: number): Array<number> {
 
+  numSequence(n: number): Array<number> {
     return Array(Math.ceil(n));
   }
 
   changeList(i: number) {
     this.startProductList = +this.countProduct * i
+  }
+
+  ngOnDestroy() {
+    if (this.gSub) {
+      this.gSub.unsubscribe()
+    }
   }
 }

@@ -3,14 +3,18 @@
 <div class="main-panel">
   <router-outlet></router-outlet>
 
-  <div *ngIf="orders.length; else loading">
+  <div class="no-order" *ngIf="error">
+    <p>There are no orders yet</p>
+  </div>
+  <div *ngIf="orderService.order.length; else loading">
 
-    <div class="order " *ngFor="let o of orders |sortByDate"
+    <div class="order " *ngFor="let o of orderService.order |sortByDate"
       [ngClass]="{processing:o.orderStatus === 'processing',done:o.orderStatus === 'done',cancel:o.orderStatus === 'cancel'}">
       <div class="order_user-product-info">
         <div class="order_user">
           <h3>User:</h3>
           <table style="width:100%">
+
             <tr>
               <th>Email: </th>
               <td>{{o.email}}</td>
@@ -35,6 +39,7 @@
               <th>Home Address: </th>
               <td>{{o.address}}</td>
             </tr>
+
           </table>
         </div>
 

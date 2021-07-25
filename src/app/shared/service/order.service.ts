@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { map } from 'rxjs/operators';
+import { map, tap } from 'rxjs/operators';
 import { environment } from 'src/environments/environment';
 import { Order } from '../interfaces';
 
@@ -9,6 +9,7 @@ import { Order } from '../interfaces';
   providedIn: 'root'
 })
 export class OrderService {
+  order: Order[] = []
 
   constructor(public http: HttpClient) { }
 
@@ -22,7 +23,11 @@ export class OrderService {
               ...response[key],
               id: key,
             }))
-        }))
+        }),
+        tap((order: Order[]) => {
+          this.order = order
+        })
+      )
   }
 
   create(order: Order): Observable<Order> {

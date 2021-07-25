@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
-import { ActivatedRoute, Params, Router } from '@angular/router';
+import { ActivatedRoute, Params } from '@angular/router';
+import { Subscription } from 'rxjs';
 import { switchMap } from 'rxjs/operators';
 import { Product } from 'src/app/shared/interfaces';
 import { MyValidators } from 'src/app/shared/my.validators';
@@ -18,6 +19,8 @@ export class EditProductComponent implements OnInit {
   product!: Product
   testPicture!: string
 
+  uSub!: Subscription
+
   constructor(
     private productService: ProductService,
     private route: ActivatedRoute
@@ -28,7 +31,7 @@ export class EditProductComponent implements OnInit {
       return
     }
     this.submitted = true
-    this.productService.update({
+    this.uSub = this.productService.update({
       ...this.product,
       phoneName: this.form.value.phoneName,
       memory: parseInt(this.form.value.memory),
@@ -61,6 +64,11 @@ export class EditProductComponent implements OnInit {
       })
       this.testImg()
     })
+  }
 
+  ngOnDestroy() {
+    if (this.uSub) {
+      this.uSub.unsubscribe
+    }
   }
 }

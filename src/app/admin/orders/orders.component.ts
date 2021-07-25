@@ -1,4 +1,5 @@
-import { Component, ComponentFactoryResolver, OnInit, ViewChild } from '@angular/core';
+import { Component, ComponentFactoryResolver, ErrorHandler, OnDestroy, OnInit, ViewChild } from '@angular/core';
+import { Subscription } from 'rxjs';
 import { animateBoxButtons } from 'src/app/shared/animations';
 import { Order } from 'src/app/shared/interfaces';
 import { OrderService } from 'src/app/shared/service/order.service';
@@ -13,30 +14,32 @@ import { PrintService } from '../shared/services/print.service';
   styleUrls: ['./orders.component.scss'],
   animations: [animateBoxButtons]
 })
-export class OrdersComponent implements OnInit {
+export class OrdersComponent implements OnInit, OnDestroy {
   toggle = true
-  orders: Order[] = []
+  firstUSub!: Subscription
+  secondUSub!: Subscription
+  error!: string
 
   @ViewChild(RefModalRemoveDirective, { static: false }) refDirect!: RefModalRemoveDirective
   constructor(
-    private orderService: OrderService,
+    public orderService: OrderService,
     private printService: PrintService,
     private resolver: ComponentFactoryResolver,
     private modalService: ModalService
-
   ) { }
 
   animate(id: string | undefined) {
-    this.orders.map((o) => {
+    this.orderService.order.map((o) => {
       if (o.id === id) {
         o.state = o.state === 'end' ? 'start' : 'end'
       }
     })
   }
   ngOnInit() {
-    this.orderService.getAll().subscribe((orders: Order[]) => {
-      this.orders = orders
-      this.orders.map((o) => o.state = 'start')
+    this.orderService.getAll().subscribe(() => {
+      this.orderService.order.map((o) => o.state = 'start')
+    }, (error) => {
+      this.error = error
     })
   }
   orderDone(order: Order) {
@@ -52,7 +55,7 @@ export class OrdersComponent implements OnInit {
       address: order.address,
       orderPrice: order.orderPrice
     }).subscribe(() => {
-      this.orders.map((o) => {
+      this.orderService.order.map((o) => {
         if (o.id === order.id) {
           o.orderStatus = 'done'
         }
@@ -70,8 +73,8 @@ export class OrdersComponent implements OnInit {
       products: order.products,
       sendingType: order.sendingType,
       address: order.address
-    }).subscribe((test) => {
-      this.orders.map((o) => {
+    }).subscribe(() => {
+      this.orderService.order.map((o) => {
         if (o.id === order.id) {
           o.orderStatus = 'cancel'
         }
@@ -83,13 +86,18 @@ export class OrdersComponent implements OnInit {
     this.printService.printDocument(id);
   }
   remove(order: Order) {
-    // this.orderService.remove(order).subscribe(() => {
-    //   this.orders = this.orders.filter((o) => o.id !== order.id)
-    // })
-
     const modalFactory = this.resolver.resolveComponentFactory(RemoveModalComponent)
     const component = this.refDirect.containerRef.createComponent(modalFactory)
     component.instance.product = order.id!
     this.modalService.createModal(this.refDirect, order)
+  }
+
+  ngOnDestroy() {
+    if (this.firstUSub) {
+      this.firstUSub.unsubscribe
+    }
+    if (this.secondUSub) {
+      this.secondUSub.unsubscribe
+    }
   }
 }

@@ -694,6 +694,13 @@ button {
   }
 }
 
+.no-order {
+  & p {
+    text-align: center;
+    font-size: 24px;
+  }
+}
+
 .wavy-loading {
   position: relative;
   margin-top: 15rem;

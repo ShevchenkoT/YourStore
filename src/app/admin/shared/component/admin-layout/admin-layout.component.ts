@@ -17,14 +17,13 @@ export class AdminLayoutComponent implements OnInit {
 
   ngOnInit() {
   }
+
   exit() {
     this.auth.logout()
     this.router.navigate(['/admin', 'login'])
   }
 
   darkTheme(event: any) {
-
-
     if (document.body.style.cssText.includes('--text-color:#000')) {
       document.body.style.setProperty('--first-color', "#191919")
       document.body.style.setProperty('--second-color', "#272727")

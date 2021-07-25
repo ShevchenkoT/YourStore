@@ -1,4 +1,3 @@
-import { typeofExpr } from '@angular/compiler/src/output/output_ast';
 import { Injectable } from '@angular/core';
 import { Order, Product } from 'src/app/shared/interfaces';
 import { OrderService } from 'src/app/shared/service/order.service';
@@ -35,8 +34,10 @@ export class ModalService {
         this.closeModal()
       })
     } else if ('orderDate' in this.item) {
-      //?---------------------------------------------
-      this.closeModal()
+      this.orderService.remove(this.item).subscribe(() => {
+        this.orderService.order = this.orderService.order.filter((o) => o.id !== this.item.id)
+        this.closeModal()
+      })
     }
   }
 }

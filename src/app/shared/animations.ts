@@ -16,12 +16,10 @@ export const animateBoxButtons = [
   trigger('hidden', [
     state('start', style({
       display: 'none',
-      //opacity: '0',
       width: '0'
     })),
     state('end', style({
       display: 'flex',
-      //opacity: '100',
       width: '180px'
     })),
     transition('start <=> end', [
@@ -35,7 +33,6 @@ export const animateBoxButtons = [
   trigger('rotate', [
     state('start', style({
       transform: 'rotate(0deg)',
-
     })),
     state('end', style({ transform: 'rotate(90deg)' })),
     transition('start <=> end', animate(450)),

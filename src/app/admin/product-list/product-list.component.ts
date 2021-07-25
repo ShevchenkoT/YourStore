@@ -1,5 +1,6 @@
-import { AfterContentChecked, ComponentFactoryResolver, ViewChild } from '@angular/core';
+import { ComponentFactoryResolver, OnDestroy, ViewChild } from '@angular/core';
 import { Component, OnInit } from '@angular/core';
+import { Subscription } from 'rxjs';
 import { Product } from 'src/app/shared/interfaces';
 import { ProductService } from 'src/app/shared/service/product.service';
 import { SearchProductService } from 'src/app/shared/service/search-product.service';
@@ -12,7 +13,7 @@ import { ModalService } from '../shared/services/modal.service';
   templateUrl: './product-list.component.html',
   styleUrls: ['./product-list.component.scss']
 })
-export class ProductListComponent implements OnInit {
+export class ProductListComponent implements OnInit, OnDestroy {
   countProduct = 10
   startProductList = 0
   productsAfterPipes = 10
@@ -21,11 +22,11 @@ export class ProductListComponent implements OnInit {
   topPrice!: string
   maxPrice!: string
 
-  //products: Array<Product> = []
   nameCheck: any = [];
   memoryCheck: any = [];
   colorCheck: any = [];
 
+  gSub!: Subscription
   error = '';
 
   @ViewChild(RefModalRemoveDirective, { static: false }) refDirect!: RefModalRemoveDirective
@@ -36,9 +37,10 @@ export class ProductListComponent implements OnInit {
     private modalService: ModalService,
     private resolver: ComponentFactoryResolver,
   ) { }
+
   ngOnInit(): void {
-    this.productService.getAll()
-      .subscribe((product: Product[]) => {
+    this.gSub = this.productService.getAll()
+      .subscribe(() => {
         this.maxPrice = this.topPrice = this.getMaxPrice(this.productService.product).toString()
       })
 
@@ -69,6 +71,13 @@ export class ProductListComponent implements OnInit {
     const component = this.refDirect.containerRef.createComponent(modalFactory)
     component.instance.product = product.phoneName
     this.modalService.createModal(this.refDirect, product)
+  }
+
+  ngOnDestroy() {
+    if (this.gSub) {
+      this.gSub.unsubscribe
+    }
+
   }
 
 }
