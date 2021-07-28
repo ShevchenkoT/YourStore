@@ -22,7 +22,7 @@
             <img src="assets/img/ico/delete.png">
           </button>
 
-          <button class="add-to-cart-button btn" title="Add to Cart"
+          <button class="blue-btn btn" title="Add to Cart"
             (click)="favoriteService.addToCart(product); favoriteService.deleteInFavorites(product)">
             Add to Cart
           </button>
@@ -30,5 +30,5 @@
       </div>
     </div>
   </div>
-  <button (click)="favoriteService.clearFavoriteList()" class="btn wish-list_button">Clear Wish List</button>
+  <button (click)="favoriteService.clearFavoriteList()" class="btn red-btn">Clear Wish List</button>
 </div>

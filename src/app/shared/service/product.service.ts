@@ -10,6 +10,15 @@ import { Product } from "../interfaces";
 })
 export class ProductService {
   product: Product[] = []
+  photosPhonesLinks: Array<string> = [
+    "https://stylus.ua/thumbs/378x378/05/ee/1987044.png",
+    "https://stylus.ua/thumbs/378x378/fc/1b/1509441.png",
+    "https://stylus.ua/thumbs/378x378/f6/04/1217704.png",
+    "https://stylus.ua/thumbs/378x378/67/dc/1217703.png",
+    "https://stylus.ua/thumbs/378x378/f6/04/1217704.png",
+    "https://stylus.ua/thumbs/378x378/89/27/1217697.png",
+    "https://stylus.ua/thumbs/378x378/ea/72/1217698.png",
+  ]
 
   constructor(
     private http: HttpClient

@@ -43,6 +43,10 @@
         <label for={{p}}>{{p}} </label>
       </div>
     </div>
+
+    <div class="main-products_filter__properties">
+      <button class="reset-btn" (click)="resetFilters()"> &times; Reset filters</button>
+    </div>
   </div>
 
   <div class="main-products_list">
@@ -97,8 +101,8 @@
         <P>({{p.phoneColor}})</P>
 
         <div class="main-products_list__product___button">
-          <button [routerLink]="['/admin', 'product', p.id, 'edit']" class="btn">Change</button>
-          <button (click)="remove(p)" class=" btn btn_another_prop">Remove</button>
+          <button [routerLink]="['/admin', 'product', p.id, 'edit']" class="btn blue-btn">Change</button>
+          <button (click)="remove(p)" class=" btn red-btn">Remove</button>
         </div>
 
         <div class="main-product_list__product___price">
@@ -120,9 +124,3 @@
   </div>
 
 </div>
-
-
-
-<!--
-
- -->

@@ -26,6 +26,7 @@ const routes: Routes = [
       { path: 'product/:id/edit', component: EditProductComponent, canActivate: [AuthGuard] },
       { path: 'orders', component: OrdersComponent, canActivate: [AuthGuard] },
       { path: 'invoice/:id', component: InvoiceComponent, canActivate: [AuthGuard] },
+      { path: '**', redirectTo: 'product-list' }
     ]
   }
 ]
@@ -40,6 +41,7 @@ const routes: Routes = [
     OrdersComponent,
     InvoiceComponent,
     RefModalRemoveDirective,
+
   ],
 
   imports: [

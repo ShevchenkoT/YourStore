@@ -39,30 +39,6 @@
         display: flex;
         width: 300px;
         justify-content: space-between;
-
-        & :first-child {
-          background: #c42a2c;
-
-          &:hover {
-            background: #811b1d;
-          }
-
-          &:active {
-            border: 2px solid #e02e31;
-          }
-        }
-
-        & :last-child {
-          background: #215bb1;
-
-          &:hover {
-            background: #153b74;
-          }
-
-          &:active {
-            border: 2px solid #2a7df8;
-          }
-        }
       }
     }
   }

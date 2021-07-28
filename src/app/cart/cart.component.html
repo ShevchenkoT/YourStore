@@ -42,7 +42,7 @@
 
   <div class="cart-wish_form">
     <form class="cart-form" [formGroup]="form" (ngSubmit)="onSubmit()">
-
+      <h3>Ordering</h3>
       <div [ngClass]="{invalid:form.get('email')?.touched && form.get('email')?.invalid}" class="form-control">
         <label for="email">Email</label>
         <input id="email" type="Email" formControlName="email" placeholder="Email">
@@ -114,7 +114,8 @@
       <div [ngClass]="{invalid:form.get('address')?.touched && form.get('address')?.invalid}" class="form-control">
         <label for="address">Home address</label>
         <input id="address" type="text" formControlName='address' placeholder="Enter your home address">
-        <button type="button" (click)="getGeolocation()" class="btn" [disabled]="form.get('address')?.value">Get
+        <button type="button" (click)="getGeolocation()" class="btn blue-btn"
+          [disabled]="form.get('address')?.value">Get
           Address</button>
 
         <div class="errors" *ngIf="form.get('address')?.invalid && form.get('address')?.touched">
@@ -125,9 +126,9 @@
       </div>
 
 
-      <button class="btn" type="submit"
+      <button class="btn blue-btn" type="submit"
         [disabled]="form.invalid || submitted || !cartService.cartItem.length">Submit</button>
-      <button (click)="cartService.clearCartList()" class="btn wish-list_button">Clear Card</button>
+      <button (click)="cartService.clearCartList()" class="btn red-btn">Clear Card</button>
       <div class="errors" *ngIf="!form.invalid && cartService.cartItem.length === 0">
         <small>
           Add any product

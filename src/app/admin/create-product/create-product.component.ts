@@ -20,7 +20,7 @@ export class CreateProductComponent implements OnInit, OnDestroy {
   cSub!: Subscription
 
   constructor(
-    private productService: ProductService,
+    public productService: ProductService,
     private auth: AuthService,
     private router: Router,
   ) { }

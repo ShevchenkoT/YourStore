@@ -18,26 +18,34 @@
       <p>Phone name</p>
       <div class="main-products_filter__properties___property"
         *ngFor="let p of productService.product |filterChecks: 'phoneName' ">
-        <input type="checkbox" name="{{p}}" id={{p}} [(ngModel)]="nameCheck[p]" [ngModelOptions]="{standalone: false}">
-        <label for={{p}}>{{p}}</label>
+        <input class="product-checkbox" type="checkbox" name="{{p}}" id={{p}} [(ngModel)]="nameCheck[p]"
+          [ngModelOptions]="{standalone: false}">
+        <label class="product-checkbox-label" for={{p}}>{{p}}</label>
       </div>
     </div>
 
     <div class="main-products_filter__properties">
       <p>Memory</p>
-      <div class="main-products_filter__properties___property" *ngFor="let p of productService.product |filterChecks: 'memory'">
-        <input type="checkbox" name="{{p}}" id={{p}} [(ngModel)]="memoryCheck[p]"
+      <div class="main-products_filter__properties___property"
+        *ngFor="let p of productService.product |filterChecks: 'memory'">
+        <input class="product-checkbox" type="checkbox" name="{{p}}" id={{p}} [(ngModel)]="memoryCheck[p]"
           [ngModelOptions]="{standalone: false}">
-        <label for={{p}}>{{p}}</label>
+        <label class="product-checkbox-label" for={{p}}>{{p}}</label>
       </div>
     </div>
 
     <div class="main-products_filter__properties">
       <p>Color</p>
-      <div class="main-products_filter__properties___property" *ngFor="let p of productService.product |filterChecks: 'phoneColor' ">
-        <input type="checkbox" name="{{p}}" id={{p}} [(ngModel)]="colorCheck[p]" [ngModelOptions]="{standalone: false}">
-        <label for={{p}}>{{p}} </label>
+      <div class="main-products_filter__properties___property"
+        *ngFor="let p of productService.product |filterChecks: 'phoneColor' ">
+        <input class="product-checkbox" type="checkbox" name="{{p}}" id={{p}} [(ngModel)]="colorCheck[p]"
+          [ngModelOptions]="{standalone: false}">
+        <label class="product-checkbox-label" for={{p}}>{{p}} </label>
       </div>
+    </div>
+
+    <div class="main-products_filter__properties">
+      <button class="reset-btn" (click)="resetFilters()"> &times; Reset filters</button>
     </div>
   </div>
 
@@ -54,7 +62,7 @@
     </div>
 
 
-    <div *ngIf="error || !productService.product.length;else productNoEmpty">
+    <div *ngIf=" !productService.product.length;else productNoEmpty">
       <div class="wavy-loading">
         <span style="--i:1;">L</span>
         <span style="--i:2;">O</span>
@@ -89,13 +97,13 @@
             alt="">
         </div>
 
-        <p>{{p.phoneName }} {{p.memory}}GB </p>
-        <P>({{p.phoneColor}})</P>
+        <p>{{p.phoneName}} {{p.memory}}GB</p>
+        <small>({{p.phoneColor}})</small>
 
         <div class="main-products_list__product___button">
-          <button (click)="cartFavoritesService.addToCart(p)" class="btn">Add to cart</button>
-          <button (click)="cartFavoritesService.addToFavorites(p)" class=" btn btn_another_prop">Add to
-            favorites</button>
+          <button (click)="cartFavoritesService.addToCart(p)" class="btn red-btn">Add to cart</button>
+          <button (click)="cartFavoritesService.addToFavorites(p)" class=" btn blue-btn">Add to
+            wish</button>
         </div>
 
         <div class="main-product_list__product___price">

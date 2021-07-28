@@ -22,7 +22,7 @@ export class EditProductComponent implements OnInit {
   uSub!: Subscription
 
   constructor(
-    private productService: ProductService,
+    public productService: ProductService,
     private route: ActivatedRoute
   ) { }
 

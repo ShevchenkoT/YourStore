@@ -13,7 +13,12 @@
       <div [ngClass]="{invalid:form.get('pictureUrl')?.touched && form.get('pictureUrl')?.invalid}"
         class=" form-control">
         <label for="pictureUrl">Picture Url</label>
-        <input id="pictureUrl" type="url" formControlName="pictureUrl" placeholder="example.com/img.png">
+
+        <input list="post" id="pictureUrl" type="search" formControlName="pictureUrl" placeholder="example.com/img.png">
+
+        <datalist id="post">
+          <option *ngFor="let photo of productService.photosPhonesLinks" [value]="photo"></option>
+        </datalist>
 
         <div class="errors" *ngIf="form.get('pictureUrl')?.invalid && form.get('pictureUrl')?.touched">
           <small *ngIf="form.get('pictureUrl')?.errors?.required">

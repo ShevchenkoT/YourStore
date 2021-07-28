@@ -1,75 +1,75 @@
 {
-  "product" : {
-    "-Me4xrVSAlylVRMLuNyM" : {
-      "memory" : 128,
-      "phoneColor" : "Blue",
-      "phoneName" : "Iphone 12",
-      "phonePriceUsd" : 899,
-      "pictureUrl" : "assets/img/phones/12Blue.png"
+  "product": {
+    "-Me4xrVSAlylVRMLuNyM": {
+      "memory": 128,
+      "phoneColor": "Blue",
+      "phoneName": "Iphone 12",
+      "phonePriceUsd": 899,
+      "pictureUrl": "assets/img/phones/12Blue.png"
     },
-    "-Me4xz6kwMU-zu4xBRNp" : {
-      "memory" : 256,
-      "phoneColor" : "Black",
-      "phoneName" : "Iphone 11",
-      "phonePriceUsd" : 799,
-      "pictureUrl" : "assets/img/phones/11Black.png"
+    "-Me4xz6kwMU-zu4xBRNp": {
+      "memory": 256,
+      "phoneColor": "Black",
+      "phoneName": "Iphone 11",
+      "phonePriceUsd": 799,
+      "pictureUrl": "assets/img/phones/11Black.png"
     },
-    "-Me4y3D85SFj3dxQgiig" : {
-      "memory" : 64,
-      "phoneColor" : "Purple",
-      "phoneName" : "Iphone 11",
-      "phonePriceUsd" : 599,
-      "pictureUrl" : "assets/img/phones/11Purple.png"
+    "-Me4y3D85SFj3dxQgiig": {
+      "memory": 64,
+      "phoneColor": "Purple",
+      "phoneName": "Iphone 11",
+      "phonePriceUsd": 599,
+      "pictureUrl": "assets/img/phones/11Purple.png"
     },
-    "-Me4y8xG1k43RCBGMNma" : {
-      "memory" : 256,
-      "phoneColor" : "Blue",
-      "phoneName" : "Iphone 12 Pro",
-      "phonePriceUsd" : 1199,
-      "pictureUrl" : "assets/img/phones/12ProBlue.png"
+    "-Me4y8xG1k43RCBGMNma": {
+      "memory": 256,
+      "phoneColor": "Blue",
+      "phoneName": "Iphone 12 Pro",
+      "phonePriceUsd": 1199,
+      "pictureUrl": "assets/img/phones/12ProBlue.png"
     },
-    "-Me4yFB8c9_spe_akYKV" : {
-      "memory" : 128,
-      "phoneColor" : "Green",
-      "phoneName" : "Iphone 11 Pro",
-      "phonePriceUsd" : 699,
-      "pictureUrl" : "assets/img/phones/11ProGreen.png"
+    "-Me4yFB8c9_spe_akYKV": {
+      "memory": 128,
+      "phoneColor": "Green",
+      "phoneName": "Iphone 11 Pro",
+      "phonePriceUsd": 699,
+      "pictureUrl": "assets/img/phones/11ProGreen.png"
     },
-    "-Me4yJvndAsBH2AspNRF" : {
-      "memory" : 512,
-      "phoneColor" : "Gold",
-      "phoneName" : "Iphone 12 Pro",
-      "phonePriceUsd" : 1299,
-      "pictureUrl" : "assets/img/phones/12ProGold.png"
+    "-Me4yJvndAsBH2AspNRF": {
+      "memory": 512,
+      "phoneColor": "Gold",
+      "phoneName": "Iphone 12 Pro",
+      "phonePriceUsd": 1299,
+      "pictureUrl": "assets/img/phones/12ProGold.png"
     },
-    "-Me4yOEYngIGrZIn6CR2" : {
-      "memory" : 128,
-      "phoneColor" : "Silver",
-      "phoneName" : "Iphone 12 Pro",
-      "phonePriceUsd" : 999,
-      "pictureUrl" : "assets/img/phones/12ProSilver.png"
+    "-Me4yOEYngIGrZIn6CR2": {
+      "memory": 128,
+      "phoneColor": "Silver",
+      "phoneName": "Iphone 12 Pro",
+      "phonePriceUsd": 999,
+      "pictureUrl": "assets/img/phones/12ProSilver.png"
     },
-    "-Me4yTDCA8UrelIr4dpf" : {
-      "memory" : 256,
-      "phoneColor" : "Black",
-      "phoneName" : "Iphone 12 Pro",
-      "phonePriceUsd" : 1099,
-      "pictureUrl" : "assets/img/phones/12ProBlack.png"
+    "-Me4yTDCA8UrelIr4dpf": {
+      "memory": 256,
+      "phoneColor": "Black",
+      "phoneName": "Iphone 12 Pro",
+      "phonePriceUsd": 1099,
+      "pictureUrl": "assets/img/phones/12ProBlack.png"
     },
-    "-Me4yXQnT4m_sVD9B6FX" : {
-      "memory" : 128,
-      "phoneColor" : "RED",
-      "phoneName" : "Iphone 11",
-      "phonePriceUsd" : 699,
-      "pictureUrl" : "assets/img/phones/11Red.png"
+    "-Me4yXQnT4m_sVD9B6FX": {
+      "memory": 128,
+      "phoneColor": "RED",
+      "phoneName": "Iphone 11",
+      "phonePriceUsd": 699,
+      "pictureUrl": "assets/img/phones/11Red.png"
     },
-    "-Me4zFhJ2YKqO4PhA1mM" : {
-      "id" : "-Me4zFhJ2YKqO4PhA1mM",
-      "memory" : "64",
-      "phoneColor" : "White",
-      "phoneName" : "Iphone SE",
-      "phonePriceUsd" : "599",
-      "pictureUrl" : "assets/img/phones/SEWhite.png"
+    "-Me4zFhJ2YKqO4PhA1mM": {
+      "id": "-Me4zFhJ2YKqO4PhA1mM",
+      "memory": 64,
+      "phoneColor": "White",
+      "phoneName": "Iphone SE",
+      "phonePriceUsd": "599",
+      "pictureUrl": "assets/img/phones/SEWhite.png"
     }
   }
 }

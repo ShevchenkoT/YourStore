@@ -19,9 +19,9 @@ export class ProductsComponent implements OnInit, OnDestroy {
   maxPrice!: string
 
 
-  nameCheck: Product[] = [];
-  memoryCheck: Product[] = [];
-  colorCheck: Product[] = [];
+  nameCheck: Array<string> = [];
+  memoryCheck: Array<string> = [];
+  colorCheck: Array<string> = [];
   error = '';
 
   gSub!: Subscription
@@ -37,6 +37,7 @@ export class ProductsComponent implements OnInit, OnDestroy {
       .subscribe(() => {
         this.maxPrice = this.topPrice = this.getMaxPrice(this.productService.product).toString()
       })
+
   }
 
   blockDown(event: any) {
@@ -61,6 +62,14 @@ export class ProductsComponent implements OnInit, OnDestroy {
 
   changeList(i: number) {
     this.startProductList = +this.countProduct * i
+  }
+
+  resetFilters() {
+    this.memoryCheck = []
+    this.nameCheck = []
+    this.colorCheck = []
+    this.topPrice = this.getMaxPrice(this.productService.product).toString()
+    this.lowerPrice = '0';
   }
 
   ngOnDestroy() {

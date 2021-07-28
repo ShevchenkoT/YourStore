@@ -73,6 +73,14 @@ export class ProductListComponent implements OnInit, OnDestroy {
     this.modalService.createModal(this.refDirect, product)
   }
 
+  resetFilters() {
+    this.memoryCheck = []
+    this.nameCheck = []
+    this.colorCheck = []
+    this.topPrice = this.getMaxPrice(this.productService.product).toString()
+    this.lowerPrice = '0';
+  }
+
   ngOnDestroy() {
     if (this.gSub) {
       this.gSub.unsubscribe

@@ -108,6 +108,7 @@ a {
 :root {
   --first-color: #191919; //;#f0f2f5
   --second-color: #272727; //#ffffff;
+  --third-color: #313131;
   --text-color: #fff; // #000;
   --body-color: #000000;
   --primary-color: #c5081b;
@@ -116,10 +117,14 @@ a {
   --danger-color: #dc3545;
   --success-color: #28a745;
 
-  --button-hue: 2;
-  --button-saturation: 92%;
-  --button-lightness: 56%;
-  //color: hsl(2, 56%, 56%);
+  //red button prop bgcolor: hsl(2, 70%, 52%);
+  --red-button-hue: 2;
+  //blue button prop bgcolor: hsl(234, 70%, 52%);
+  --blue-button-hue: 234;
+
+  --button-saturation: 70%;
+  --button-lightness: 52%;
+
 }
 
 * {
@@ -204,6 +209,7 @@ input[type='email'],
 input[type='password'],
 input[type='date'],
 input[type='url'],
+input[type='search'],
 select,
 textarea {
   &.ng-touched.ng-valid {
@@ -255,7 +261,7 @@ button {
   color: var(--text-color);
   margin: 0 0.5rem;
   transition: all .2s ease;
-  background-color: hsl(var(--button-hue), var(--button-saturation), var(--button-lightness));
+
 
   &:hover {
     --button-lightness: 40%;
@@ -271,6 +277,16 @@ button {
     cursor: not-allowed;
   }
 }
+
+.red-btn {
+  background-color: hsl(var(--red-button-hue), var(--button-saturation), var(--button-lightness));
+}
+
+.blue-btn {
+  background-color: hsl(var(--blue-button-hue), var(--button-saturation), var(--button-lightness));
+}
+
+.delete-btn {}
 
 .delete-product-button {
   width: 40px;
@@ -475,7 +491,7 @@ button {
     margin-top: 1rem;
     width: 600px;
     height: 250px;
-    background: #313131;
+    background: var(--third-color);
     display: flex;
     align-items: center;
     justify-content: space-around;
@@ -502,9 +518,9 @@ button {
       }
 
       p {
-        color: black;
+        color: var(--text-color);
         font-size: 20px;
-        font-weight: 900;
+        font-weight: 500;
 
         :last-child {
           padding: 0 0 0 1.5rem;
@@ -522,7 +538,7 @@ button {
   justify-content: space-around;
 
   .cart-wish_products__product___buttons___circle-button {
-    color: #000;
+    color: var(--text-color);
     display: flex;
     width: 100px;
     align-items: center;
@@ -558,21 +574,50 @@ button {
 
 .main-products_filter {
   background-color: var(--second-color);
-  width: 22%;
+  max-width: 300px;
   color: var(--text-color);
+
+  padding: 1rem;
 
   .main-products_filter__properties {
     margin: 2rem 0 2rem 0;
+    user-select: none;
 
     & p {
-      margin: 0 0 0 3rem;
+      margin: 0 0 0 2rem;
+      font-weight: 500;
+      font-size: 18px;
     }
 
     & .main-products_filter__properties___property {
-      padding: 1.5rem 0 0 3rem;
+      padding: 1rem 0 0 2rem;
+      max-width: 220px;
+      overflow: hidden;
+      white-space: nowrap;
+      text-overflow: ellipsis;
+
+      .product-checkbox {
+        transform: translateY(10%);
+      }
+
+      .product-checkbox-label {
+        font-size: 15px;
+
+
+
+        &:hover {
+          color: rgb(139, 139, 139);
+        }
+
+        &:active {
+          color: rgb(102, 102, 102);
+        }
+      }
 
       & :first-child {
-        margin: 0 0.5rem;
+        width: 1rem;
+        height: 1rem;
+        margin: 0 1rem;
         cursor: pointer;
       }
 
@@ -581,7 +626,30 @@ button {
       }
     }
   }
+
+  .reset-btn {
+    background-color: rgba($color: #000000, $alpha: 0.0);
+    color: var(--text-color);
+    margin-left: 3rem;
+    font-size: 16px;
+    border: 1px solid var(--text-color);
+    width: 150px;
+    height: 40px;
+    transition: all .3s ease;
+
+    &:hover {
+      background-color: rgba($color: #4e4e4e, $alpha: 1);
+    }
+
+    &:active {
+      background-color: rgba($color: #2c2c2c, $alpha: 1);
+    }
+  }
+
 }
+
+
+
 
 .main-products_list {
   width: 75%;
@@ -590,6 +658,7 @@ button {
   align-items: center;
   justify-content: flex-start;
   color: var(--text-color);
+  margin-left: 3rem;
 
   .main-product_list_header {
     width: 100%;
@@ -634,6 +703,7 @@ button {
       justify-content: space-around;
       align-items: center;
       transition: all .2s ease;
+      user-select: none;
 
       &:hover {
         background-color: rgb(66, 66, 66);
@@ -651,13 +721,24 @@ button {
     width: 250px;
     height: 430px;
     text-align: center;
+    padding: 0 .5rem;
+
+    &>p {
+      font-size: 18px;
+      overflow: hidden;
+      white-space: nowrap;
+      text-overflow: ellipsis;
+    }
+
+    &>small {
+      font-size: 14px;
+    }
 
     & .main-products_list__product__link-detail {
-      width: 16.5%;
-      height: 50%;
-      display: block;
+      width: 250px;
+      height: 335px;
       position: absolute;
-      margin-top: -13px;
+
     }
 
     & .main-products_list__product___photo {
@@ -682,6 +763,18 @@ button {
     transition: all .5s ease;
     overflow: hidden;
     height: 35px;
+    display: flex;
+    flex-direction: row;
+
+    justify-content: center;
+
+    .usd,
+    .uah {
+      font-size: 18px;
+
+      white-space: nowrap;
+
+    }
   }
 
   & .main-products_list__product___button {
@@ -691,6 +784,8 @@ button {
     height: 0px;
     position: relative;
     color: var(--text-color);
+    display: flex;
+    flex-direction: row;
   }
 }
 
@@ -773,7 +868,7 @@ input[type=range]::-webkit-slider-thumb {
   margin-top: 1rem;
   position: relative;
   display: inline-block;
-  width: 52px;
+  width: 51px;
   height: 26px;
 }
 

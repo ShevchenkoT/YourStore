@@ -5,4 +5,8 @@ import { Injectable } from '@angular/core';
 })
 export class SearchProductService {
   searchProductStr = ''
+
+  resetStr() {
+    this.searchProductStr = ''
+  }
 }
