@@ -24,17 +24,18 @@
 
     </div>
 
-    <div class="top-bar_element">
+    <div class="top-bar_element " routerLinkActive="active-route">
 
       <a routerLink="/wish-list" title="My wish list"><img src="assets/img/ico/wishlist.png" alt=""></a>
-      <div class="counter">{{cartFavoriteService.numberOfFavorites}}</div>
+      <div [@shake]='searchService.wishState' class="counter">
+        <p>{{cartFavoriteService.numberOfFavorites}}</p>
+      </div>
       <small>Wish list</small>
     </div>
-
-    <div class="top-bar_element">
+    <div class="top-bar_element" routerLinkActive="active-route">
 
       <a routerLink='/cart' title="My Cart"><img src="assets/img/ico/card.png" alt=""></a>
-      <div class="counter">
+      <div [@shake]='searchService.cartState' class="counter">
         <p>{{cartFavoriteService.numberOfCart}}</p>
       </div>
       <small>My Cart</small>

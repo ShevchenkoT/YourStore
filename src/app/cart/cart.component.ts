@@ -17,7 +17,7 @@ export class CartComponent implements OnInit, OnDestroy {
 
   form!: FormGroup;
   submitted = false
-
+  locationSubmitted = false
   gSub!: Subscription
   constructor(
     public cartService: CartFavoritesService,
@@ -36,11 +36,16 @@ export class CartComponent implements OnInit, OnDestroy {
   }
 
   getGeolocation() {
+    this.locationSubmitted = true
     navigator.geolocation.getCurrentPosition((locate) => {
       //49.835663, 24.024150 lvov
+      //locate.coords.latitude, locate.coords.longitude
+      //49.863637, 23.444908 Mulda
       this.gSub = this.geolocationService.getLocation(locate.coords.latitude, locate.coords.longitude).subscribe((loc) => {
         this.form.get('address')?.setValue(`${loc.address.country}, ${loc.address.village}, ${loc.address.postcode}`)
-        console.log('this is location', loc);
+        this.form.get('address')?.setValue(
+          `${loc.address.country ? loc.address.country : ''} ${loc.address.city ? loc.address.city : ''} ${loc.address.village ? loc.address.village : ''} ${loc.address.borough ? loc.address.borough : ''} ${loc.address.postcode ? loc.address.postcode : ''}`)
+        this.locationSubmitted = false
       })
     })
   }
@@ -63,6 +68,11 @@ export class CartComponent implements OnInit, OnDestroy {
         this.submitted = false
       })
     }
+  }
+
+  resetForm() {
+    this.cartService.totalPrice = 0
+    this.form.reset();
   }
 
   ngOnDestroy() {

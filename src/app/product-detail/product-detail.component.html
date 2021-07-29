@@ -1,6 +1,8 @@
 <div class="main-panel">
 
-  <div class="product-detail" *ngIf="product">
+
+
+  <div class="product-detail" *ngIf="product; else loading">
     <img [src]='product?.pictureUrl'>
     <div class="info-about-product">
       <h2>{{product?.phoneName}} <span>{{product?.memory}}GB</span></h2>
@@ -11,10 +13,27 @@
           {{ product?.phonePriceUsd*28}} Грн </span>
       </p>
       <div class="buttons">
-        <button (click)="cartFavoriteService.addToCart(product)" class="btn red-btn">Add to cart</button>
-        <button (click)="cartFavoriteService.addToFavorites(product)" class="btn blue-btn">Add to
+        <button (click)="cartFavoriteService.addToFavorites(product); searchService.wishStateChange()"
+          class="btn blue-btn">Add to
           favorites</button>
+        <button (click)="cartFavoriteService.addToCart(product); searchService.cartStateChange()"
+          class="btn red-btn">Add to cart</button>
       </div>
     </div>
   </div>
+
+  <ng-template #loading>
+    <div class="wavy-loading">
+      <span style="--i:1;">L</span>
+      <span style="--i:2;">O</span>
+      <span style="--i:3;">A</span>
+      <span style="--i:4;">D</span>
+      <span style="--i:5;">I</span>
+      <span style="--i:6;">N</span>
+      <span style="--i:7;">G</span>
+      <span style="--i:8;">.</span>
+      <span style="--i:9;">.</span>
+      <span style="--i:10;">.</span>
+    </div>
+  </ng-template>
 </div>

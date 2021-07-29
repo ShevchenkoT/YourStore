@@ -5,6 +5,7 @@ import { CartFavoritesService } from '../shared/service/cart-favorites.service';
 import { Product } from '../shared/interfaces';
 import { ProductService } from '../shared/service/product.service';
 import { switchMap } from 'rxjs/operators';
+import { SearchProductService } from '../shared/service/search-product.service';
 
 
 @Component({
@@ -20,6 +21,7 @@ export class ProductDetailComponent implements OnInit {
     private route: ActivatedRoute,
     private productService: ProductService,
     public cartFavoriteService: CartFavoritesService,
+    public searchService: SearchProductService,
   ) { }
 
   ngOnInit(): void {

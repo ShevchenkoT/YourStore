@@ -1,4 +1,5 @@
 <div class="main-panel">
+  <h2>CHANGE PRODUCT</h2>
   <form *ngIf="product; else loading" class="edit-form" [formGroup]="form" (ngSubmit)="submit()">
 
 
@@ -26,7 +27,7 @@
           </small>
         </div>
       </div>
-      <button type="button" class="btn" (click)="testImg()" [disabled]="form.get('pictureUrl')?.invalid">Test
+      <button type="button" class="btn blue-btn" (click)="testImg()" [disabled]="form.get('pictureUrl')?.invalid">Test
         picture</button>
     </div>
 
@@ -87,10 +88,21 @@
         </div>
       </div>
 
-      <button type="submit" [disabled]="form.invalid || submitted" class="btn">Save change</button>
+      <button type="submit" [disabled]="form.invalid || submitted" class="btn red-btn">Save change</button>
     </div>
   </form>
   <ng-template #loading>
-    <p>loading...</p>
+    <div class="wavy-loading">
+      <span style="--i:1;">L</span>
+      <span style="--i:2;">O</span>
+      <span style="--i:3;">A</span>
+      <span style="--i:4;">D</span>
+      <span style="--i:5;">I</span>
+      <span style="--i:6;">N</span>
+      <span style="--i:7;">G</span>
+      <span style="--i:8;">.</span>
+      <span style="--i:9;">.</span>
+      <span style="--i:10;">.</span>
+    </div>
   </ng-template>
 </div>

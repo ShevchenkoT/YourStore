@@ -53,7 +53,8 @@
 
     <div class="main-product_list_header">
       <label for="selectCount">Show:</label>
-      <select id="selectCount" class="list_header_selectCount" [(ngModel)]="countProduct" [value]='10'>
+      <select id="selectCount" class="list_header_selectCount" on-change="changeList(0)" [(ngModel)]="countProduct"
+        [value]='10'>
         <option value=5>5</option>
         <option value=10>10</option>
         <option value=20>20</option>
@@ -62,7 +63,7 @@
     </div>
 
 
-    <div *ngIf=" !productService.product.length;else productNoEmpty">
+    <div *ngIf="error ||!productService.product.length;else productNoEmpty">
       <div class="wavy-loading">
         <span style="--i:1;">L</span>
         <span style="--i:2;">O</span>
@@ -86,24 +87,25 @@
       | filterPhones :colorCheck :'phoneColor'
       | priceFilter :topPrice: lowerPrice
       | searchProduct:searchService.searchProductStr
-      | slice: startProductList : startProductList + +countProduct
-        " class="main-products_list__product" appHoverPhone>
+      | slice: startProductList : startProductList + +countProduct;
+      let idx = index" class="main-products_list__product " appHoverPhone>
 
 
         <div class="main-products_list__product___photo">
           <a [routerLink]="['/product-detail',p.id]" title="Detail {{p.phoneName}}"
             class="main-products_list__product__link-detail"></a>
-          <img title="Details {{p.phoneName}}" class="main-products_list__product___photo" src="{{p.pictureUrl}}"
-            alt="">
+
+          <img [@getProduct]="currentState[idx]" title="Details {{p.phoneName}}"
+            class="main-products_list__product___photo" src="{{p.pictureUrl}}" alt="">
         </div>
 
         <p>{{p.phoneName}} {{p.memory}}GB</p>
         <small>({{p.phoneColor}})</small>
 
         <div class="main-products_list__product___button">
-          <button (click)="cartFavoritesService.addToCart(p)" class="btn red-btn">Add to cart</button>
-          <button (click)="cartFavoritesService.addToFavorites(p)" class=" btn blue-btn">Add to
+          <button (click)="cartFavoritesService.addToFavorites(p);turnLeft(idx)" class=" btn blue-btn">Add to
             wish</button>
+          <button (click)="cartFavoritesService.addToCart(p);turnRight(idx)" class="btn red-btn">Add to cart</button>
         </div>
 
         <div class="main-product_list__product___price">
@@ -115,7 +117,7 @@
       </div>
 
       <div class="main-product_list_footer">
-        <div class="change-list-btn" *ngFor="let p of numSequence(productService.product.length/countProduct);
+        <div class="change-list-btn" *ngFor="let p of numSequence(searchService.countProductAfterPipes/countProduct);
           let idx = index" (click)="changeList(idx)">
           <span>{{idx + 1}}</span>
         </div>

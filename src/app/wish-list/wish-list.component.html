@@ -1,34 +1,46 @@
 <div class="main-panel">
-  <div class="cart-wish_products">
-    <div class="cart-wish_products__product" *ngFor="let product of favoriteService.favoriteItems">
 
-      <img class="cart-wish_products__product___picture" src={{product.pictureUrl}}>
+  <div *ngIf="!favoriteService.favoriteItems.length;else content " class="list-empty">
+    <p>Wish-list is empty &#9785;</p>
+    <a routerLink="/">Add some product</a>
+  </div>
 
-      <div class="cart-wish_products__product___info">
-        <h2>{{product.phoneName}} <span>{{product.memory}}GB</span></h2>
-        <span>({{product.phoneColor}})</span>
-        <p>
-          {{product.phonePriceUsd | currency : 'USD':'symbol':'3.0'}}
-          <span>{{ product.phonePriceUsd*28}} Грн</span>
-        </p>
-      </div>
+  <ng-template #content>
+    <div class="cart-wish_products">
+      <div class="cart-wish_products__product" *ngFor="let product of favoriteService.favoriteItems">
 
-      <div class="cart-wish_products__product___buttons">
+        <img class="cart-wish_products__product___picture" src={{product.pictureUrl}}>
+
+        <div class="cart-wish_products__product___info">
+          <h2>{{product.phoneName}} <span>{{product.memory}}GB</span></h2>
+          <span>({{product.phoneColor}})</span>
+          <p>
+            {{product.phonePriceUsd | currency : 'USD':'symbol':'3.0'}}
+            <span>{{ product.phonePriceUsd*28}} Грн</span>
+          </p>
+        </div>
+
+        <div class="cart-wish_products__product___buttons">
 
 
-        <div class="cart-wish_products__product___buttons___delete-add-button">
-          <button title="Delete product" class=" btn delete-product-button "
-            (click)="favoriteService.deleteInFavorites(product)">
-            <img src="assets/img/ico/delete.png">
-          </button>
+          <div class="cart-wish_products__product___buttons___delete-add-button">
 
-          <button class="blue-btn btn" title="Add to Cart"
-            (click)="favoriteService.addToCart(product); favoriteService.deleteInFavorites(product)">
-            Add to Cart
-          </button>
+            <button class="blue-btn btn" title="Add to Cart"
+              (click)="favoriteService.addToCart(product); favoriteService.deleteInFavorites(product)">
+              Add to Cart
+            </button>
+            <button title="Delete product" class="btn red-btn delete-btn "
+              (click)="favoriteService.deleteInFavorites(product)">
+              <img src="assets/img/ico/delete.png">
+            </button>
+          </div>
         </div>
       </div>
     </div>
-  </div>
-  <button (click)="favoriteService.clearFavoriteList()" class="btn red-btn">Clear Wish List</button>
+
+    <div class="wish-list">
+      <h2>WISH LIST</h2>
+      <button (click)="favoriteService.clearFavoriteList()" class="btn red-btn">Clear</button>
+    </div>
+  </ng-template>
 </div>

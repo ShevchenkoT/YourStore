@@ -79,6 +79,7 @@ export class ProductListComponent implements OnInit, OnDestroy {
     this.colorCheck = []
     this.topPrice = this.getMaxPrice(this.productService.product).toString()
     this.lowerPrice = '0';
+    this.changeList(0)
   }
 
   ngOnDestroy() {

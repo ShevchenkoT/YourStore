@@ -1,0 +1,12 @@
+.wish-list {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  align-items: center;
+
+  &>h2 {
+    font-size: 35px;
+  }
+
+  margin: 1rem auto;
+}

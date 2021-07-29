@@ -1,5 +1,6 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Subscription } from 'rxjs';
+import { animateGetProduct } from '../shared/animations';
 import { Product } from '../shared/interfaces';
 import { CartFavoritesService } from '../shared/service/cart-favorites.service';
 import { ProductService } from '../shared/service/product.service';
@@ -7,9 +8,12 @@ import { SearchProductService } from '../shared/service/search-product.service';
 @Component({
   selector: 'app-products',
   templateUrl: './products.component.html',
-  styleUrls: ['./products.component.scss']
+  styleUrls: ['./products.component.scss'],
+  animations: [animateGetProduct]
 })
 export class ProductsComponent implements OnInit, OnDestroy {
+  currentState!: Array<string>
+
   countProduct = 10
   startProductList = 0
   productsAfterPipes = 10
@@ -36,8 +40,9 @@ export class ProductsComponent implements OnInit, OnDestroy {
     this.productService.getAll()
       .subscribe(() => {
         this.maxPrice = this.topPrice = this.getMaxPrice(this.productService.product).toString()
+        this.currentState = new Array(this.productService.product.length)
+        this.currentState.fill('start')
       })
-
   }
 
   blockDown(event: any) {
@@ -60,6 +65,7 @@ export class ProductsComponent implements OnInit, OnDestroy {
     return Array(Math.ceil(n));
   }
 
+
   changeList(i: number) {
     this.startProductList = +this.countProduct * i
   }
@@ -70,6 +76,24 @@ export class ProductsComponent implements OnInit, OnDestroy {
     this.colorCheck = []
     this.topPrice = this.getMaxPrice(this.productService.product).toString()
     this.lowerPrice = '0';
+    this.changeList(0)
+  }
+
+  turnRight(idx: number) {
+    this.currentState[idx] = 'right'
+    this.searchService.cartStateChange()
+
+    setTimeout(() => {
+      this.currentState[idx] = 'start'
+    }, 400)
+  }
+  turnLeft(idx: number) {
+    this.currentState[idx] = 'left'
+    this.searchService.wishStateChange()
+
+    setTimeout(() => {
+      this.currentState[idx] = 'start'
+    }, 400)
   }
 
   ngOnDestroy() {

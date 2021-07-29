@@ -1,4 +1,6 @@
 <div class="main-panel">
+
+  <h2>CREATE PRODUCT</h2>
   <form class="create-form" [formGroup]="form" (ngSubmit)="submit()">
 
 
@@ -25,11 +27,11 @@
           </small>
         </div>
       </div>
-      <button type="button" class="btn" (click)="testImg()" [disabled]="form.get('pictureUrl')?.invalid">Test
+      <button type="button" class="btn blue-btn" (click)="testImg()" [disabled]="form.get('pictureUrl')?.invalid">Test
         picture</button>
     </div>
 
-    <div class="">
+    <div class="product-data">
       <div [ngClass]="{invalid:form.get('phoneName')?.touched && form.get('phoneName')?.invalid}" class="form-control">
         <label for="phoneName">Phone Name</label>
         <input id="phoneName" type="text" formControlName="phoneName" placeholder="Enter phone name">
@@ -86,7 +88,7 @@
         </div>
       </div>
 
-      <button type="submit" [disabled]="form.invalid" class="btn">Create</button>
+      <button type="submit" [disabled]="form.invalid || submitted" class="btn red-btn">Create</button>
     </div>
   </form>
 </div>

@@ -1,5 +1,5 @@
 import { AfterContentChecked, Component } from '@angular/core';
-import { animateSearch } from '../../animations';
+import { animateSearch, shakeIt } from '../../animations';
 import { CartFavoritesService } from '../../service/cart-favorites.service';
 import { ProductService } from '../../service/product.service';
 import { SearchProductService } from '../../service/search-product.service';
@@ -7,7 +7,7 @@ import { SearchProductService } from '../../service/search-product.service';
   selector: 'app-main-layout',
   templateUrl: './main-layout.component.html',
   styleUrls: ['./main-layout.component.scss'],
-  animations: [animateSearch]
+  animations: [animateSearch, shakeIt]
 })
 export class MainLayoutComponent implements AfterContentChecked {
   searchState = 'start'
@@ -35,6 +35,7 @@ export class MainLayoutComponent implements AfterContentChecked {
       document.body.style.setProperty('--third-color', "#313131")
       document.body.style.setProperty('--text-color', "#fff")
       document.body.style.setProperty('--body-color', "#000")
+      document.body.style.setProperty('--button-lightness', "52%")
       event.target.parentNode.parentNode.parentNode.classList.remove("color-invert")
     }
     //white theme
@@ -44,6 +45,7 @@ export class MainLayoutComponent implements AfterContentChecked {
       document.body.style.setProperty('--third-color', "#bfbfbf")
       document.body.style.setProperty('--text-color', "#000")
       document.body.style.setProperty('--body-color', "#fbfbfd")
+      document.body.style.setProperty('--button-lightness', "60%")
       event.target.parentNode.parentNode.parentNode.classList.add("color-invert")
     }
   }

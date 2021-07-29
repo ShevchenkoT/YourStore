@@ -4,6 +4,7 @@
   .form-control_price {
     margin: 1rem auto;
     font-size: 24px;
+    text-align: center;
   }
 
   & h3 {
@@ -22,4 +23,14 @@
 
 .errors {
   color: red;
+}
+
+.location-btn {
+  margin-top: .5rem;
+}
+
+.card-fom_buttons {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between
 }

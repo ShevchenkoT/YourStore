@@ -121,6 +121,8 @@ a {
   --red-button-hue: 2;
   //blue button prop bgcolor: hsl(234, 70%, 52%);
   --blue-button-hue: 234;
+  //green button prop bgcolor: hsl(234, 70%, 52%);
+  --green-button-hue: 108;
 
   --button-saturation: 70%;
   --button-lightness: 52%;
@@ -132,6 +134,7 @@ a {
   margin: 0;
   padding: 0;
   transition: background .7s ease-in-out;
+
 }
 
 html,
@@ -177,6 +180,12 @@ form {
     font-size: 2rem;
     font-weight: 900;
   }
+}
+
+.active-route {
+  display: block;
+  //transform: translateY(20%);
+  text-decoration: underline;
 }
 
 .form-control {
@@ -268,7 +277,7 @@ button {
   }
 
   &:active {
-    --button-lightness: 24%;
+    --button-lightness: 35%;
   }
 
   &:disabled {
@@ -286,21 +295,19 @@ button {
   background-color: hsl(var(--blue-button-hue), var(--button-saturation), var(--button-lightness));
 }
 
-.delete-btn {}
+.green-btn {
+  background-color: hsl(var(--green-button-hue), var(--button-saturation), var(--button-lightness));
+}
 
-.delete-product-button {
+.delete-btn {
   width: 40px;
-  background-color: rgb(126, 25, 25);
 
   & img {
     width: 30px;
     height: 30px;
   }
-
-  &:hover {
-    background-color: rgb(92, 19, 19);
-  }
 }
+
 
 .top-bar {
   background-color: var(--second-color);
@@ -316,13 +323,15 @@ button {
   justify-content: space-evenly;
 
   .top-bar_tittle {
+    margin-top: 1rem;
     cursor: pointer;
     text-align: center;
     width: 530px;
 
     & a {
       & h1 {
-        font-size: 45px;
+        font-size: 50px;
+        font-weight: 500;
         color: var(--text-color);
         transition: all .3s ease;
 
@@ -360,11 +369,12 @@ button {
       height: 60px;
       margin: 0 10px;
       text-align: center;
+      font-size: 17px;
+      font-weight: 500;
 
       & img {
         width: 40px;
-        transition: transform .2s ease;
-        transition: filter 2s ease;
+        transition: filter 2s, transform .2s;
 
         &:hover {
           transform: scale(1.2);
@@ -542,27 +552,29 @@ button {
     display: flex;
     width: 100px;
     align-items: center;
+    font-size: 16px;
 
     & .circle-button {
-      width: 25px;
-      height: 25px;
+      width: 30px;
+      height: 30px;
       border-radius: 5px;
       font-size: 24px;
       margin: 0 5px;
-      border: 2px solid black;
+      border: 2px solid var(--text-color);
       cursor: pointer;
-      transition: all 0.3s ease;
+      transition: all 0.2s ease;
       background-color: rgba($color: #000000, $alpha: 0);
       display: flex;
       justify-content: center;
       align-items: center;
+      color: var(--text-color);
 
       &:hover {
-        Background-color: rgba($color: #000000, $alpha: 0.2);
+        background-color: rgba($color: #000000, $alpha: 0.3);
       }
 
       &:active {
-        border: 2px solid #fff
+        transform: scale(1.1);
       }
     }
   }
@@ -583,10 +595,16 @@ button {
     margin: 2rem 0 2rem 0;
     user-select: none;
 
-    & p {
+    .prices {
+      margin: 0 0 0 2rem;
+      font-size: 15px;
+    }
+
+    &>p {
       margin: 0 0 0 2rem;
       font-weight: 500;
       font-size: 18px;
+
     }
 
     & .main-products_filter__properties___property {
@@ -596,16 +614,17 @@ button {
       white-space: nowrap;
       text-overflow: ellipsis;
 
+
       .product-checkbox {
         transform: translateY(10%);
       }
 
       .product-checkbox-label {
         font-size: 15px;
-
-
+        transition: all .4s;
 
         &:hover {
+
           color: rgb(139, 139, 139);
         }
 
@@ -636,13 +655,14 @@ button {
     width: 150px;
     height: 40px;
     transition: all .3s ease;
+    transition: all .4s;
 
     &:hover {
       background-color: rgba($color: #4e4e4e, $alpha: 1);
     }
 
     &:active {
-      background-color: rgba($color: #2c2c2c, $alpha: 1);
+      background-color: rgba($color: #2c2c2c, $alpha: 0.1);
     }
   }
 
@@ -722,6 +742,7 @@ button {
     height: 430px;
     text-align: center;
     padding: 0 .5rem;
+    overflow: hidden;
 
     &>p {
       font-size: 18px;
@@ -736,9 +757,10 @@ button {
 
     & .main-products_list__product__link-detail {
       width: 250px;
-      height: 335px;
+      height: 330px;
       position: absolute;
-
+      z-index: 99;
+      margin-left: -6px;
     }
 
     & .main-products_list__product___photo {
@@ -829,7 +851,6 @@ button {
   margin: auto 16px;
   text-align: center;
   position: relative;
-
 }
 
 .range-slider svg,
@@ -837,21 +858,22 @@ button {
   position: absolute;
   left: 0;
   bottom: 0;
-  margin: 0 0 -1rem 2rem;
+  margin: 0 0 0rem 2rem;
+
 }
 
 input[type=range]::-webkit-slider-thumb {
   z-index: 2;
   position: relative;
   top: 2px;
-  margin-top: -7px;
+  margin-top: -4px;
 }
 
 .prices {
   display: flex;
 
   span {
-    margin: 0 6rem 0 .5rem;
+    margin: 1rem 6rem 0 .5rem;
     width: 20px;
     display: inline-block;
   }
@@ -892,6 +914,7 @@ input[type=range]::-webkit-slider-thumb {
   bottom: 0px;
   background-color: #fff;
   transition: .4s;
+
 }
 
 input:checked+.theme-slider {
@@ -909,4 +932,44 @@ input:checked+.theme-slider:before {
 
 .theme-slider.theme-round:before {
   border-radius: 50%;
+}
+
+
+.list-empty {
+  margin: 6rem auto;
+  text-align: center;
+
+  &>p {
+    font-size: 40px;
+
+  }
+
+  &>a {
+    display: block;
+    margin-top: 3rem;
+    font-size: 35px;
+    color: rgb(50, 70, 252);
+
+    &:hover {
+      color: rgb(36, 51, 192);
+    }
+
+    &:active {
+      color: rgb(29, 41, 150);
+    }
+  }
+
+}
+
+.pictureEmpty {
+  width: 378px;
+  height: 378px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  p {
+    font-size: 2rem;
+    font-weight: 900;
+  }
 }

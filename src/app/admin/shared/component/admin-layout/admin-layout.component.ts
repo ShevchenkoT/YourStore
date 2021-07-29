@@ -29,12 +29,14 @@ export class AdminLayoutComponent implements OnInit {
       document.body.style.setProperty('--second-color', "#272727")
       document.body.style.setProperty('--text-color', "#fff")
       document.body.style.setProperty('--body-color', "#000")
+      document.body.style.setProperty('--button-lightness', "52%")
       event.target.parentNode.parentNode.parentNode.classList.remove("color-invert")
     } else {
       document.body.style.setProperty('--first-color', "#f0f2f5")
       document.body.style.setProperty('--second-color', "#c7c7c7")
       document.body.style.setProperty('--text-color', "#000")
       document.body.style.setProperty('--body-color', "#fbfbfd")
+      document.body.style.setProperty('--button-lightness', "60%")
       event.target.parentNode.parentNode.parentNode.classList.add("color-invert")
     }
 

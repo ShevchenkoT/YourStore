@@ -1,44 +1,50 @@
 <div class="main-panel">
-  <div class="cart-wish_products">
-    <div class="cart-wish_products__product" *ngFor="let product of cartService.cartItem">
+  <div *ngIf="!cartService.cartItem.length;else content " class="list-empty">
+    <p>Cart is empty &#9785;</p>
+    <a routerLink="/">Add some product</a>
+  </div>
 
-      <img class="cart-wish_products__product___picture" src={{product.pictureUrl}}>
+  <ng-template #content>
+    <div class="cart-wish_products">
+      <div class="cart-wish_products__product" *ngFor="let product of cartService.cartItem">
 
-      <div class="cart-wish_products__product___info">
-        <h2>{{product.phoneName}} <span>{{product.memory}}GB</span></h2>
-        <span>({{product.phoneColor}})</span>
-        <p>
-          {{product.phonePriceUsd | currency : 'USD':'symbol':'3.0'}}
-          <span>{{ product.phonePriceUsd*28}} Грн</span>
-        </p>
-      </div>
+        <img class="cart-wish_products__product___picture" src={{product.pictureUrl}}>
 
-      <div class="cart-wish_products__product___buttons">
-
-        <div class="cart-wish_products__product___buttons___circle-button">
-          <button (click)="cartService.deleteOneProductInCart(product)" class="circle-button">
-            <span>-</span>
-          </button>
-
-          <span> {{product.numberOfProducts}}</span>
-
-          <button (click)="cartService.addOneProductToCart(product)" class="circle-button">
-            <span>+</span>
-          </button>
-
+        <div class="cart-wish_products__product___info">
+          <h2>{{product.phoneName}} <span>{{product.memory}}GB</span></h2>
+          <span>({{product.phoneColor}})</span>
+          <p>
+            {{product.phonePriceUsd | currency : 'USD':'symbol':'3.0'}}
+            <span>{{ product.phonePriceUsd*28}} Грн</span>
+          </p>
         </div>
 
-        <div class="cart-wish_products__product___buttons___delete-add-button">
-          <button title="Delete product" class=" btn delete-product-button "
-            (click)="cartService.deleteInCart(product)">
-            <img src="assets/img/ico/delete.png">
-          </button>
+        <div class="cart-wish_products__product___buttons">
+
+          <div class="cart-wish_products__product___buttons___circle-button">
+            <button (click)="cartService.deleteOneProductInCart(product)" class="circle-button">
+              <span>-</span>
+            </button>
+
+            <span> {{product.numberOfProducts}}</span>
+
+            <button (click)="cartService.addOneProductToCart(product)" class="circle-button">
+              <span>+</span>
+            </button>
+
+          </div>
+
+          <div class="cart-wish_products__product___buttons___delete-add-button">
+            <button title="Delete product" class="btn red-btn delete-btn " (click)="cartService.deleteInCart(product)">
+              <img src="assets/img/ico/delete.png">
+            </button>
 
 
+          </div>
         </div>
       </div>
     </div>
-  </div>
+  </ng-template>
 
   <div class="cart-wish_form">
     <form class="cart-form" [formGroup]="form" (ngSubmit)="onSubmit()">
@@ -114,8 +120,8 @@
       <div [ngClass]="{invalid:form.get('address')?.touched && form.get('address')?.invalid}" class="form-control">
         <label for="address">Home address</label>
         <input id="address" type="text" formControlName='address' placeholder="Enter your home address">
-        <button type="button" (click)="getGeolocation()" class="btn blue-btn"
-          [disabled]="form.get('address')?.value">Get
+        <button type="button" (click)="getGeolocation()" class="btn blue-btn location-btn"
+          [disabled]="form.get('address')?.value || locationSubmitted">Get
           Address</button>
 
         <div class="errors" *ngIf="form.get('address')?.invalid && form.get('address')?.touched">
@@ -125,10 +131,12 @@
         </div>
       </div>
 
+      <div class="card-fom_buttons">
+        <button class="btn blue-btn" type="submit"
+          [disabled]="form.invalid || submitted || !cartService.cartItem.length">Submit</button>
+        <button (click)="cartService.clearCartList();resetForm()" class="btn red-btn">Clear Cart</button>
+      </div>
 
-      <button class="btn blue-btn" type="submit"
-        [disabled]="form.invalid || submitted || !cartService.cartItem.length">Submit</button>
-      <button (click)="cartService.clearCartList()" class="btn red-btn">Clear Card</button>
       <div class="errors" *ngIf="!form.invalid && cartService.cartItem.length === 0">
         <small>
           Add any product
