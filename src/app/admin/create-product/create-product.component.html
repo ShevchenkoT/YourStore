@@ -89,6 +89,40 @@
       </div>
 
       <button type="submit" [disabled]="form.invalid || submitted" class="btn red-btn">Create</button>
+
+    </div>
+    <div class="create-form_characteristics">
+
+      <h3>CHARACTERISTIC</h3>
+
+      <button class="btn blue-btn " type="button" (click)="addFeature()">Add</button>
+
+      <p><span>NAME</span> INFO</p>
+      <div class="form-array-control">
+        <div class="test">
+
+          <div class="create-form_characteristics_characteristicOfName" formGroupName="characteristicOfName"
+            *ngFor="let c of getCharacteristicOfName(); let idx = index">
+            <label>{{idx + 1 }}:</label>
+            <input type="text" [formControlName]="idx">
+          </div>
+
+        </div>
+
+        <div class="test">
+          <div class="create-form_characteristics_characteristicOfInfo" formGroupName="characteristicOfInfo"
+            *ngFor="let c of getCharacteristicOfInfo(); let idx = index">
+
+            <input type="text" [formControlName]="idx ">
+            <button title="Delete characteristic" class="btn red-btn delete-btn" (click)="remoteCharacteristic(idx)">
+              <img src="assets/img/ico/delete.png">
+            </button>
+          </div>
+        </div>
+
+
+      </div>
+
     </div>
   </form>
 </div>

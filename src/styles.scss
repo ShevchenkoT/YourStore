@@ -270,7 +270,7 @@ button {
   color: var(--text-color);
   margin: 0 0.5rem;
   transition: all .2s ease;
-
+  user-select: none;
 
   &:hover {
     --button-lightness: 40%;
@@ -656,6 +656,7 @@ button {
     height: 40px;
     transition: all .3s ease;
     transition: all .4s;
+    user-select: none;
 
     &:hover {
       background-color: rgba($color: #4e4e4e, $alpha: 1);
@@ -745,7 +746,7 @@ button {
     overflow: hidden;
 
     &>p {
-      font-size: 18px;
+      font-size: 17px;
       overflow: hidden;
       white-space: nowrap;
       text-overflow: ellipsis;
