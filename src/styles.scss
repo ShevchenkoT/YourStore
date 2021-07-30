@@ -137,6 +137,8 @@ a {
 
 }
 
+
+
 html,
 body {
   height: 100%;
@@ -144,6 +146,7 @@ body {
   font-family: Roboto, "Helvetica Neue", sans-serif;
   font-size: 15px;
   line-height: 1.2;
+  min-height: 100%;
 }
 
 body {

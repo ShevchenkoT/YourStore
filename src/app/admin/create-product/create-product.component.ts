@@ -54,9 +54,7 @@ export class CreateProductComponent implements OnInit, OnDestroy {
   remoteCharacteristic(idx: number) {
     (this.form.get('characteristicOfName') as FormArray).removeAt(idx);
     (this.form.get('characteristicOfInfo') as FormArray).removeAt(idx);
-
   }
-
 
   submit() {
     if (this.form.invalid) {
@@ -70,22 +68,27 @@ export class CreateProductComponent implements OnInit, OnDestroy {
       })
       return
     }
-    const newName = this.form.value.characteristicOfName
-    console.log(newName);
-
+    let newCharacteristic: any = {}
+    if (this.form.value.characteristicOfName && this.form.value.characteristicOfInfo) {
+      this.form.value.characteristicOfName.forEach((key: number, i: number) => newCharacteristic[key] = this.form.value.characteristicOfInfo[i])
+    }
     this.submitted = true
     const newProduct: Product = {
       phoneName: this.form.value.phoneName,
       memory: parseInt(this.form.value.memory),
       phoneColor: this.form.value.phoneColor,
       phonePriceUsd: parseInt(this.form.value.phonePriceUsd),
-      pictureUrl: this.form.value.pictureUrl
+      pictureUrl: this.form.value.pictureUrl,
+      characteristic: newCharacteristic,
     }
 
     this.cSub = this.productService.create(newProduct).subscribe(() => {
-      this.form.reset()
+      this.form.reset();
+      (this.form.get('characteristicOfName') as FormArray).clear();
+      (this.form.get('characteristicOfInfo') as FormArray).clear();
       this.testPicture = ''
       this.submitted = false
+      console.log(newProduct);///////////////////////////////////////////////////////////////////////////////////////////////////////////
     })
   }
   testImg() {
