@@ -16,7 +16,7 @@ export interface Product {
   pictureUrl: string;
   id?: string;
   numberOfProducts?: number;
-  characteristic?: object;
+  characteristic: object;
 }
 export interface Order {
   email: string;
