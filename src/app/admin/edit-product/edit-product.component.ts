@@ -6,6 +6,7 @@ import { switchMap } from 'rxjs/operators';
 import { Product } from 'src/app/shared/interfaces';
 import { MyValidators } from 'src/app/shared/my.validators';
 import { ProductService } from 'src/app/shared/service/product.service';
+import { AlertService } from '../shared/services/alert.service';
 
 @Component({
   selector: 'app-edit-product',
@@ -23,7 +24,8 @@ export class EditProductComponent implements OnInit {
 
   constructor(
     public productService: ProductService,
-    private route: ActivatedRoute
+    private route: ActivatedRoute,
+    public alertService: AlertService,
   ) { }
 
   ngOnInit() {
@@ -45,10 +47,12 @@ export class EditProductComponent implements OnInit {
 
       })
 
-      let obj: { [index: string]: any } = product.characteristic
-      Object.keys(obj as Object).map((key: string, index: any) => {
-        this.addFeature(key, obj[key])
-      })
+      if (product.characteristic) {
+        let obj: { [index: string]: any } = product.characteristic
+        Object.keys(obj as Object).map((key: string, index: any) => {
+          this.addFeature(key, obj[key])
+        })
+      }
 
       this.testImg()
     })
@@ -94,6 +98,7 @@ export class EditProductComponent implements OnInit {
       .subscribe(() => {
         this.submitted = false
       })
+    this.alertService.success("Product is changed")
   }
 
   testImg() {

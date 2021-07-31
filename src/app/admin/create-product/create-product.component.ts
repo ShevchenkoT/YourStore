@@ -5,6 +5,7 @@ import { Subscription } from 'rxjs';
 import { Product } from 'src/app/shared/interfaces';
 import { MyValidators } from 'src/app/shared/my.validators';
 import { ProductService } from 'src/app/shared/service/product.service';
+import { AlertService } from '../shared/services/alert.service';
 import { AuthService } from '../shared/services/auth.service';
 
 @Component({
@@ -23,6 +24,7 @@ export class CreateProductComponent implements OnInit, OnDestroy {
     public productService: ProductService,
     private auth: AuthService,
     private router: Router,
+    private alertService: AlertService,
   ) { }
 
   ngOnInit() {
@@ -81,7 +83,6 @@ export class CreateProductComponent implements OnInit, OnDestroy {
       pictureUrl: this.form.value.pictureUrl,
       characteristic: newCharacteristic,
     }
-
     this.cSub = this.productService.create(newProduct).subscribe(() => {
       this.form.reset();
       (this.form.get('characteristicOfName') as FormArray).clear();
@@ -90,6 +91,8 @@ export class CreateProductComponent implements OnInit, OnDestroy {
       this.submitted = false
       console.log(newProduct);///////////////////////////////////////////////////////////////////////////////////////////////////////////
     })
+    this.alertService.success("Product is created")
+
   }
   testImg() {
     this.testPicture = this.form.value.pictureUrl

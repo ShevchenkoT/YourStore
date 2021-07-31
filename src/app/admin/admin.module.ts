@@ -15,6 +15,8 @@ import { AuthGuard } from "./shared/services/auth.guard";
 import { InvoiceComponent } from "./shared/component/invoice/invoice.component";
 import { RefModalRemoveDirective } from "./shared/component/refModalRemove.directive";
 import { RemoveModalComponent } from "./shared/component/remove-modal/remove-modal.component";
+import { AlertComponent } from "./shared/component/alert/alert.component";
+import { AlertService } from "./shared/services/alert.service";
 
 const routes: Routes = [
   {
@@ -40,6 +42,7 @@ const routes: Routes = [
     LoginPageComponent,
     OrdersComponent,
     InvoiceComponent,
+    AlertComponent,
     RefModalRemoveDirective,
 
   ],

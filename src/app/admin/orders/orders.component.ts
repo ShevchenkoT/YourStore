@@ -5,6 +5,7 @@ import { Order } from 'src/app/shared/interfaces';
 import { OrderService } from 'src/app/shared/service/order.service';
 import { RefModalRemoveDirective } from '../shared/component/refModalRemove.directive';
 import { RemoveModalComponent } from '../shared/component/remove-modal/remove-modal.component';
+import { AlertService } from '../shared/services/alert.service';
 import { ModalService } from '../shared/services/modal.service';
 import { PrintService } from '../shared/services/print.service';
 
@@ -25,7 +26,8 @@ export class OrdersComponent implements OnInit, OnDestroy {
     public orderService: OrderService,
     private printService: PrintService,
     private resolver: ComponentFactoryResolver,
-    private modalService: ModalService
+    private modalService: ModalService,
+    public alertService: AlertService,
   ) { }
 
   animate(id: string | undefined) {
@@ -58,6 +60,7 @@ export class OrdersComponent implements OnInit, OnDestroy {
       this.orderService.order.map((o) => {
         if (o.id === order.id) {
           o.orderStatus = 'done'
+          this.alertService.success("Order confirmed")
         }
       })
     })
@@ -77,6 +80,7 @@ export class OrdersComponent implements OnInit, OnDestroy {
       this.orderService.order.map((o) => {
         if (o.id === order.id) {
           o.orderStatus = 'cancel'
+          this.alertService.warning("Order rejected")
         }
       })
     })
@@ -90,6 +94,7 @@ export class OrdersComponent implements OnInit, OnDestroy {
     const component = this.refDirect.containerRef.createComponent(modalFactory)
     component.instance.product = order.id!
     this.modalService.createModal(this.refDirect, order)
+
   }
 
   ngOnDestroy() {

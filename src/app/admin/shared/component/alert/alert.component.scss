@@ -1,0 +1,28 @@
+.alert-wrap {
+  z-index: 999;
+  position: fixed;
+  top: 100px;
+  right: 190px;
+  max-width: 200px;
+  background-color: white;
+  height: 50px;
+  text-align: center;
+  padding: 1rem .5rem;
+  font-size: 1.2rem;
+  color: black;
+  font-weight: 500;
+}
+
+.alert-success {
+  background-color: var(--success-color);
+}
+
+.alert-warning {
+
+  background-color: var(--warning-color);
+}
+
+.alert-danger {
+  background-color: var(--danger-color);
+
+}

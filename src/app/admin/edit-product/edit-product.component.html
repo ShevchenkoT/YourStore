@@ -1,6 +1,6 @@
 <div class="main-panel">
   <h2>CHANGE PRODUCT</h2>
-  <form *ngIf="product; else loading" class="create-form" [formGroup]="form" (ngSubmit)="submit()">
+  <form *ngIf="product; else loading" class="edit-form" [formGroup]="form" (ngSubmit)="submit()">
 
 
     <div>
@@ -91,7 +91,7 @@
       <button type="submit" [disabled]="form.invalid || submitted" class="btn red-btn">Save change</button>
     </div>
 
-    <div class="create-form_characteristics">
+    <div class="form_characteristics">
 
       <h3>CHARACTERISTICS</h3>
 
@@ -99,9 +99,9 @@
 
       <p><span>NAME</span> INFO</p>
       <div class="form-array-control">
-        <div class="test">
+        <div>
 
-          <div class="create-form_characteristics_characteristicOfName" formGroupName="characteristicOfName"
+          <div class="form_characteristics_characteristicOfName" formGroupName="characteristicOfName"
             *ngFor="let c of getCharacteristicOfName(); let idx = index">
             <label>{{idx + 1 }}:</label>
             <input type="text" [formControlName]="idx">
@@ -109,8 +109,8 @@
 
         </div>
 
-        <div class="test">
-          <div class="create-form_characteristics_characteristicOfInfo" formGroupName="characteristicOfInfo"
+        <div>
+          <div class="form_characteristics_characteristicOfInfo" formGroupName="characteristicOfInfo"
             *ngFor="let c of getCharacteristicOfInfo(); let idx = index">
 
             <input type="text" [formControlName]="idx ">

@@ -12,6 +12,7 @@ import { CartComponent } from './cart/cart.component';
 import { SharedModule, } from './shared/shared.module';
 import { MainLayoutComponent } from './shared/components/main-layout/main-layout.component';
 import { AuthInterceptor } from './shared/auth.interceptor';
+import { AlertService } from './admin/shared/services/alert.service';
 
 const INTERCEPTOR_PROVIDER: Provider = {
   provide: HTTP_INTERCEPTORS,
@@ -36,7 +37,7 @@ const INTERCEPTOR_PROVIDER: Provider = {
     SharedModule,
     BrowserAnimationsModule
   ],
-  providers: [INTERCEPTOR_PROVIDER],
+  providers: [INTERCEPTOR_PROVIDER, AlertService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -91,7 +91,7 @@
       <button type="submit" [disabled]="form.invalid || submitted" class="btn red-btn">Create</button>
 
     </div>
-    <div class="create-form_characteristics">
+    <div class="form_characteristics">
 
       <h3>CHARACTERISTICS</h3>
 
@@ -101,7 +101,7 @@
       <div class="form-array-control">
         <div class="test">
 
-          <div class="create-form_characteristics_characteristicOfName" formGroupName="characteristicOfName"
+          <div class="form_characteristics_characteristicOfName" formGroupName="characteristicOfName"
             *ngFor="let c of getCharacteristicOfName(); let idx = index">
             <label>{{idx + 1 }}:</label>
             <input type="text" [formControlName]="idx">
@@ -110,7 +110,7 @@
         </div>
 
         <div class="test">
-          <div class="create-form_characteristics_characteristicOfInfo" formGroupName="characteristicOfInfo"
+          <div class="form_characteristics_characteristicOfInfo" formGroupName="characteristicOfInfo"
             *ngFor="let c of getCharacteristicOfInfo(); let idx = index">
 
             <input type="text" [formControlName]="idx ">
