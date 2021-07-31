@@ -3,7 +3,7 @@
   position: fixed;
   top: 100px;
   right: 190px;
-  max-width: 200px;
+  max-width: 250px;
   background-color: white;
   height: 50px;
   text-align: center;
@@ -11,18 +11,48 @@
   font-size: 1.2rem;
   color: black;
   font-weight: 500;
+  display: flex;
+  padding: .5rem;
+
+  align-items: center;
+
+
+  .alert-wrap_img-circle {
+    border-radius: 50%;
+    width: 25px;
+    height: 25px;
+    background-color: white;
+    margin-right: .5rem;
+
+  }
+
+  &>p {
+    margin: 0;
+  }
+
 }
 
 .alert-success {
   background-color: var(--success-color);
+
+  &>.alert-wrap_img-circle {
+    background: url('/assets/img/ico/alert-ico/success.png') 0 0 /cover;
+  }
 }
 
 .alert-warning {
 
   background-color: var(--warning-color);
+
+  &>.alert-wrap_img-circle {
+    background: url('/assets/img/ico/alert-ico/warning.png') 0 0 /cover;
+  }
 }
 
 .alert-danger {
   background-color: var(--danger-color);
 
+  &>.alert-wrap_img-circle {
+    background: url('/assets/img/ico/alert-ico/danger.png') 0 0 /cover;
+  }
 }

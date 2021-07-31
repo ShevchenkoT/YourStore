@@ -21,6 +21,9 @@ export class OrdersComponent implements OnInit, OnDestroy {
   secondUSub!: Subscription
   error!: string
 
+  doneSubmitted = false
+  cancelSubmitted = false
+
   @ViewChild(RefModalRemoveDirective, { static: false }) refDirect!: RefModalRemoveDirective
   constructor(
     public orderService: OrderService,
@@ -45,6 +48,7 @@ export class OrdersComponent implements OnInit, OnDestroy {
     })
   }
   orderDone(order: Order) {
+    this.doneSubmitted = true
     this.orderService.update({
       ...order,
       email: order.email,
@@ -61,11 +65,13 @@ export class OrdersComponent implements OnInit, OnDestroy {
         if (o.id === order.id) {
           o.orderStatus = 'done'
           this.alertService.success("Order confirmed")
+          this.doneSubmitted = false
         }
       })
     })
   }
   orderCancel(order: Order) {
+    this.cancelSubmitted = true
     this.orderService.update({
       ...order,
       email: order.email,
@@ -81,6 +87,7 @@ export class OrdersComponent implements OnInit, OnDestroy {
         if (o.id === order.id) {
           o.orderStatus = 'cancel'
           this.alertService.warning("Order rejected")
+          this.cancelSubmitted = false
         }
       })
     })

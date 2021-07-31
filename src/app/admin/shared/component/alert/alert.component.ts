@@ -27,10 +27,10 @@ import { AlertService, AlertType } from '../../services/alert.service';
 })
 export class AlertComponent implements OnInit, OnDestroy {
 
-  @Input() delay = 5000
+  @Input() delay = 4000
 
   public text: string = ""
-  public type!: AlertType
+  public type: AlertType = 'success'
   timeout: any
   aSub!: Subscription
   constructor(private alertService: AlertService) { }

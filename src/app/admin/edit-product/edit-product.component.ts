@@ -49,7 +49,7 @@ export class EditProductComponent implements OnInit {
 
       if (product.characteristic) {
         let obj: { [index: string]: any } = product.characteristic
-        Object.keys(obj as Object).map((key: string, index: any) => {
+        Object.keys(obj as Object).map((key: string) => {
           this.addFeature(key, obj[key])
         })
       }

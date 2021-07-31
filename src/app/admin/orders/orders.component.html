@@ -61,10 +61,10 @@
       </div>
 
       <div class="order-buttons" [@hidden]="o.state">
-        <button class="btn green-btn" (click)="orderDone(o)">Done</button>
+        <button class="btn green-btn" (click)="orderDone(o)" [disabled]='doneSubmitted'>Done</button>
         <div class="cancel-remove-button">
 
-          <button class="btn red-btn" (click)="orderCancel(o)">Cancel</button>
+          <button class="btn red-btn" (click)="orderCancel(o)" [disabled]='cancelSubmitted'>Cancel</button>
           <button title="Delete product" class="btn red-btn delete-btn" *ngIf="o.orderStatus === 'cancel'"
             (click)="remove(o)">
             <img src="assets/img/ico/delete.png">
