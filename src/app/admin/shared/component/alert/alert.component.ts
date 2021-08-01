@@ -33,6 +33,7 @@ export class AlertComponent implements OnInit, OnDestroy {
   public type: AlertType = 'success'
   timeout: any
   aSub!: Subscription
+
   constructor(private alertService: AlertService) { }
 
   ngOnInit() {
@@ -46,8 +47,6 @@ export class AlertComponent implements OnInit, OnDestroy {
       }, this.delay);
       this.text = alert.text
       this.type = alert.type
-
-
     })
   }
 

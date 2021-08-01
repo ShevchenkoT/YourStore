@@ -1,4 +1,4 @@
-import { ComponentFactoryResolver, OnDestroy, ViewChild } from '@angular/core';
+import { AfterContentChecked, ComponentFactoryResolver, OnDestroy, ViewChild } from '@angular/core';
 import { Component, OnInit } from '@angular/core';
 import { Subscription } from 'rxjs';
 import { Product } from 'src/app/shared/interfaces';
@@ -13,7 +13,7 @@ import { ModalService } from '../shared/services/modal.service';
   templateUrl: './product-list.component.html',
   styleUrls: ['./product-list.component.scss']
 })
-export class ProductListComponent implements OnInit, OnDestroy {
+export class ProductListComponent implements OnInit, OnDestroy, AfterContentChecked {
   countProduct = 10
   startProductList = 0
   productsAfterPipes = 10
@@ -43,21 +43,35 @@ export class ProductListComponent implements OnInit, OnDestroy {
       .subscribe(() => {
         this.maxPrice = this.topPrice = this.getMaxPrice(this.productService.product).toString()
       })
-
   }
+
+  ngAfterContentChecked() {
+    if (this.productService.product.length) {
+      const newMaxPrice = this.getMaxPrice(this.productService.product).toString()
+      if (newMaxPrice !== this.maxPrice) {
+        this.maxPrice = this.topPrice = newMaxPrice
+        this.lowerPrice = '0';
+      }
+    }
+  }
+
   blockDown(event: any) {
     if (this.lowerPrice > this.topPrice) {
       event.target.value = this.lowerPrice = this.topPrice
+
     }
   }
+
   blockUp(event: any) {
     if (this.lowerPrice > this.topPrice) {
       event.target.value = this.topPrice = this.lowerPrice
     }
   }
+
   getMaxPrice(products: Product[]): any {
     return Math.max(...products.map((p) => p.phonePriceUsd))
   }
+
   numSequence(n: number): Array<number> {
     return Array(Math.ceil(n));
   }
@@ -86,7 +100,5 @@ export class ProductListComponent implements OnInit, OnDestroy {
     if (this.gSub) {
       this.gSub.unsubscribe
     }
-
   }
-
 }

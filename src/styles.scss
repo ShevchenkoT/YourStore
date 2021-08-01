@@ -110,6 +110,7 @@ a {
   --second-color: #272727; //#ffffff;
   --third-color: #313131;
   --text-color: #fff; // #000;
+  --primary-color: #dc3545;
   --body-color: #000000;
   --dark-color: #333333;
   --light-color: #f4f4f4;
@@ -196,7 +197,7 @@ form {
   color: #888;
   margin-bottom: .8rem;
 
-  label {
+  >label {
     margin: 1rem 0 0 0;
     display: block;
     font-size: 1.5rem;
