@@ -1,5 +1,18 @@
+.under-top-panel {
+  padding: 1rem;
+  margin: 90px auto 0 auto;
+  width: 80%;
+  min-height: 50px;
+  background-color: var(--first-color);
+
+  &>.reset-btn {
+    width: 120px;
+  }
+}
+
 .main-panel {
   justify-content: center;
+  margin: 0 auto;
 
   .product-detail {
     display: flex;

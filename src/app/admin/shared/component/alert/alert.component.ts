@@ -1,29 +1,13 @@
-import { animate, keyframes, state, style, transition, trigger } from '@angular/animations';
 import { Component, Input, OnDestroy, OnInit } from '@angular/core';
 import { Subscription } from 'rxjs';
+import { showAlert } from 'src/app/shared/animations';
 import { AlertService, AlertType } from '../../services/alert.service';
 
 @Component({
   selector: 'app-alert',
   templateUrl: './alert.component.html',
   styleUrls: ['./alert.component.scss'],
-  animations: [
-
-    trigger('enterEl', [
-      transition(':enter', [
-        animate(500, keyframes([
-          style({ top: "-50px", offset: 0 }),
-          style({ top: "100px", offset: 1 })
-        ]))
-      ]),
-      transition(':leave', [
-        animate(500, keyframes([
-          style({ top: "100px", offset: 0 }),
-          style({ top: "-50px", offset: 1 })
-        ]))
-      ])
-    ])
-  ]
+  animations: [showAlert]
 })
 export class AlertComponent implements OnInit, OnDestroy {
 

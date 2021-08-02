@@ -1,3 +1,7 @@
+<div class="under-top-panel">
+  <button class="reset-btn" (click)="previousPage()"> &lt; Back</button>
+</div>
+
 <div class="main-panel">
   <div *ngIf="!cartService.cartItem.length;else content " class="list-empty">
     <p>Cart is empty &#9785;</p>

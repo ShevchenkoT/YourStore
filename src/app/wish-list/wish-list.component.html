@@ -1,3 +1,8 @@
+<div class="under-top-panel">
+  <button class="reset-btn" (click)="previousPage()"> &lt; Back</button>
+</div>
+
+
 <div class="main-panel">
 
   <div *ngIf="!favoriteService.favoriteItems.length;else content " class="list-empty">

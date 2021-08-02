@@ -1,7 +1,8 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
-import { Subscription } from 'rxjs';
+import { Location } from '@angular/common';
 
+import { Subscription } from 'rxjs';
 import { Order } from '../shared/interfaces';
 import { MyValidators } from '../shared/my.validators';
 import { CartFavoritesService } from '../shared/service/cart-favorites.service';
@@ -22,7 +23,8 @@ export class CartComponent implements OnInit, OnDestroy {
   constructor(
     public cartService: CartFavoritesService,
     private orderService: OrderService,
-    private geolocationService: GeolocationService
+    private geolocationService: GeolocationService,
+    private location: Location,
   ) { }
 
   ngOnInit(): void {
@@ -33,6 +35,10 @@ export class CartComponent implements OnInit, OnDestroy {
       sendingType: new FormControl(null, [Validators.required]),
       address: new FormControl(null, [Validators.required])
     });
+  }
+
+  previousPage() {
+    this.location.back()
   }
 
   getGeolocation() {

@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Params } from '@angular/router';
+import { Location } from '@angular/common';
+
 
 import { CartFavoritesService } from '../shared/service/cart-favorites.service';
 import { Product } from '../shared/interfaces';
@@ -22,6 +24,8 @@ export class ProductDetailComponent implements OnInit {
     private productService: ProductService,
     public cartFavoriteService: CartFavoritesService,
     public searchService: SearchProductService,
+    private location: Location,
+
   ) { }
 
   ngOnInit(): void {
@@ -33,5 +37,8 @@ export class ProductDetailComponent implements OnInit {
       ).subscribe((product: Product) => {
         this.product = product
       })
+  }
+  previousPage() {
+    this.location.back()
   }
 }

@@ -86,3 +86,39 @@ export const shakeIt = [
   ])
 ]
 
+
+export const hideFilters = [
+  trigger('showFilter', [
+    state('show',
+      style([{ height: '*' }
+      ])),
+    state('hide',
+      style([{ height: '0' }
+      ])),
+    transition('*<=>*', [
+      animate(400)
+    ])
+  ]),
+  trigger('rotateBtn', [
+    state('show', style({ transform: 'rotate(90deg)' })),
+    state('hide', style({ transform: 'rotate(0deg)' })),
+    transition('*<=>*', animate(400)),
+  ])
+]
+
+export const showAlert = [
+  trigger('enterEl', [
+    transition(':enter', [
+      animate(500, keyframes([
+        style({ top: "-50px", offset: 0 }),
+        style({ top: "100px", offset: 1 })
+      ]))
+    ]),
+    transition(':leave', [
+      animate(500, keyframes([
+        style({ top: "100px", offset: 0 }),
+        style({ top: "-50px", offset: 1 })
+      ]))
+    ])
+  ])
+]

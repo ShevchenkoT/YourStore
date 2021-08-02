@@ -1,7 +1,9 @@
+<div class="under-top-panel">
+  <button class="reset-btn" (click)="previousPage()"> &lt; Back</button>
+</div>
+
+
 <div class="main-panel">
-
-
-
   <div class="product-detail" *ngIf="product; else loading">
     <div class="product-detail_img-name">
       <img [src]='product?.pictureUrl'>

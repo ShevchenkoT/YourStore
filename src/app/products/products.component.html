@@ -15,32 +15,54 @@
     </div>
 
     <div class="main-products_filter__properties">
-      <p>Phone name</p>
-      <div class="main-products_filter__properties___property"
-        *ngFor="let p of productService.product |filterChecks: 'phoneName' ">
-        <input class="product-checkbox" type="checkbox" name="{{p}}" id={{p}} [(ngModel)]="nameCheck[p]"
-          [ngModelOptions]="{standalone: false}">
-        <label class="product-checkbox-label" for={{p}}>{{p}}</label>
+      <div class="main-products_filter__properties__title-btn">
+        <p>Phone name</p>
+        <div class="hover-btn" (click)="changeState(0)"><img [@rotateBtn]="filterShow[0]"
+            src="assets/img/ico/arrow.png">
+        </div>
+      </div>
+
+      <div [@showFilter]="filterShow[0]" class="hover-filter">
+        <div class="main-products_filter__properties___property "
+          *ngFor="let p of productService.product |filterChecks: 'phoneName' ">
+          <input class="product-checkbox" type="checkbox" name="{{p}}" id={{p}} [(ngModel)]="nameCheck[p]"
+            [ngModelOptions]="{standalone: false}">
+          <label class="product-checkbox-label" for={{p}}>{{p}}</label>
+        </div>
       </div>
     </div>
 
     <div class="main-products_filter__properties">
-      <p>Memory</p>
-      <div class="main-products_filter__properties___property"
-        *ngFor="let p of productService.product |filterChecks: 'memory'">
-        <input class="product-checkbox" type="checkbox" name="{{p}}" id={{p}} [(ngModel)]="memoryCheck[p]"
-          [ngModelOptions]="{standalone: false}">
-        <label class="product-checkbox-label" for={{p}}>{{p}}</label>
+      <div class="main-products_filter__properties__title-btn">
+        <p>Memory</p>
+        <div class="hover-btn" (click)="changeState(1)"><img [@rotateBtn]="filterShow[1]"
+            src="assets/img/ico/arrow.png">
+        </div>
+      </div>
+      <div [@showFilter]="filterShow[1]" class="hover-filter">
+        <div class="main-products_filter__properties___property"
+          *ngFor="let p of productService.product |filterChecks: 'memory'">
+          <input class="product-checkbox" type="checkbox" name="{{p}}" id={{p}} [(ngModel)]="memoryCheck[p]"
+            [ngModelOptions]="{standalone: false}">
+          <label class="product-checkbox-label" for={{p}}>{{p}}</label>
+        </div>
       </div>
     </div>
 
     <div class="main-products_filter__properties">
-      <p>Color</p>
-      <div class="main-products_filter__properties___property"
-        *ngFor="let p of productService.product |filterChecks: 'phoneColor' ">
-        <input class="product-checkbox" type="checkbox" name="{{p}}" id={{p}} [(ngModel)]="colorCheck[p]"
-          [ngModelOptions]="{standalone: false}">
-        <label class="product-checkbox-label" for={{p}}>{{p}} </label>
+      <div class="main-products_filter__properties__title-btn">
+        <p>Color</p>
+        <div class="hover-btn" (click)="changeState(2)"><img [@rotateBtn]="filterShow[2]"
+            src="assets/img/ico/arrow.png">
+        </div>
+      </div>
+      <div [@showFilter]="filterShow[2]" class="hover-filter">
+        <div class="main-products_filter__properties___property"
+          *ngFor="let p of productService.product |filterChecks: 'phoneColor' ">
+          <input class="product-checkbox" type="checkbox" name="{{p}}" id={{p}} [(ngModel)]="colorCheck[p]"
+            [ngModelOptions]="{standalone: false}">
+          <label class="product-checkbox-label" for={{p}}>{{p}} </label>
+        </div>
       </div>
     </div>
 

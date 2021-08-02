@@ -1,6 +1,6 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Subscription } from 'rxjs';
-import { animateGetProduct } from '../shared/animations';
+import { animateGetProduct, hideFilters } from '../shared/animations';
 import { Product } from '../shared/interfaces';
 import { CartFavoritesService } from '../shared/service/cart-favorites.service';
 import { ProductService } from '../shared/service/product.service';
@@ -9,7 +9,7 @@ import { SearchProductService } from '../shared/service/search-product.service';
   selector: 'app-products',
   templateUrl: './products.component.html',
   styleUrls: ['./products.component.scss'],
-  animations: [animateGetProduct]
+  animations: [animateGetProduct, hideFilters]
 })
 export class ProductsComponent implements OnInit, OnDestroy {
   currentState!: Array<string>
@@ -26,9 +26,12 @@ export class ProductsComponent implements OnInit, OnDestroy {
   nameCheck: Array<string> = [];
   memoryCheck: Array<string> = [];
   colorCheck: Array<string> = [];
-  error = '';
+  filterShow = ["show", "hide", "hide"]
 
+
+  error = '';
   gSub!: Subscription
+
 
   constructor(
     public cartFavoritesService: CartFavoritesService,
@@ -43,6 +46,10 @@ export class ProductsComponent implements OnInit, OnDestroy {
         this.currentState = new Array(this.productService.product.length)
         this.currentState.fill('start')
       })
+  }
+
+  changeState(n: number) {
+    this.filterShow[n] = this.filterShow[n] === "show" ? "hide" : "show"
   }
 
   blockDown(event: any) {

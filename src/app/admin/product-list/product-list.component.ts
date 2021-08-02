@@ -1,6 +1,8 @@
 import { AfterContentChecked, ComponentFactoryResolver, OnDestroy, ViewChild } from '@angular/core';
 import { Component, OnInit } from '@angular/core';
+
 import { Subscription } from 'rxjs';
+import { hideFilters } from 'src/app/shared/animations';
 import { Product } from 'src/app/shared/interfaces';
 import { ProductService } from 'src/app/shared/service/product.service';
 import { SearchProductService } from 'src/app/shared/service/search-product.service';
@@ -11,20 +13,21 @@ import { ModalService } from '../shared/services/modal.service';
 @Component({
   selector: 'app-product-list',
   templateUrl: './product-list.component.html',
-  styleUrls: ['./product-list.component.scss']
+  styleUrls: ['./product-list.component.scss'],
+  animations: [hideFilters]
 })
 export class ProductListComponent implements OnInit, OnDestroy, AfterContentChecked {
   countProduct = 10
   startProductList = 0
-  productsAfterPipes = 10
 
   lowerPrice: string = '0';
   topPrice!: string
   maxPrice!: string
 
-  nameCheck: any = [];
-  memoryCheck: any = [];
-  colorCheck: any = [];
+  nameCheck: Array<string> = [];
+  memoryCheck: Array<string> = [];
+  colorCheck: Array<string> = [];
+  filterShow = ["show", "hide", "hide"]
 
   gSub!: Subscription
   error = '';
@@ -45,6 +48,10 @@ export class ProductListComponent implements OnInit, OnDestroy, AfterContentChec
       })
   }
 
+  changeState(n: number) {
+    this.filterShow[n] = this.filterShow[n] === "show" ? "hide" : "show"
+  }
+
   ngAfterContentChecked() {
     if (this.productService.product.length) {
       const newMaxPrice = this.getMaxPrice(this.productService.product).toString()
@@ -54,6 +61,7 @@ export class ProductListComponent implements OnInit, OnDestroy, AfterContentChec
       }
     }
   }
+
 
   blockDown(event: any) {
     if (this.lowerPrice > this.topPrice) {

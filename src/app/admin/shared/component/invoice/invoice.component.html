@@ -99,9 +99,9 @@
     <div class="header">
       <h1> <span>Your</span> Shop</h1>
       <div class="invoice-info" *ngIf="invoiceForPrint">
-        <p>ORDER ID/<span>{{invoiceForPrint.id}}</span></p>
-        <p>ORDER DATE/<span>{{invoiceForPrint.orderDate| date:'short'}}</span></p>
-        <p>SHIPPING/<span>{{invoiceForPrint.sendingType}}</span></p>
+        <p>ORDER ID\<span>{{invoiceForPrint.id}}</span></p>
+        <p>ORDER DATE\<span>{{invoiceForPrint.orderDate| date:'MM/dd/yyyy, h:mm a'}}</span></p>
+        <p>SHIPPING\<span>{{invoiceForPrint.sendingType}}</span></p>
       </div>
     </div>
     <div class="footer">AWESOME FOOTER</div>

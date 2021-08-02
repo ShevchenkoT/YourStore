@@ -313,6 +313,27 @@ button {
   }
 }
 
+.reset-btn {
+  background-color: rgba($color: #000000, $alpha: 0.0);
+  color: var(--text-color);
+  margin-left: 3rem;
+  font-size: 16px;
+  border: 1px solid var(--text-color);
+  width: 150px;
+  height: 40px;
+  transition: all .3s ease;
+  transition: all .4s;
+  user-select: none;
+
+  &:hover {
+    background-color: rgba($color: #4e4e4e, $alpha: 1);
+  }
+
+  &:active {
+    background-color: rgba($color: #2c2c2c, $alpha: 0.1);
+  }
+}
+
 
 .top-bar {
   background-color: var(--second-color);
@@ -605,11 +626,25 @@ button {
       font-size: 15px;
     }
 
-    &>p {
+    .main-products_filter__properties__title-btn {
+      display: flex;
       margin: 0 0 0 2rem;
       font-weight: 500;
-      font-size: 18px;
+      font-size: 17px;
+      justify-content: space-between;
 
+
+      .hover-btn {
+        margin-right: .5rem;
+
+        &>img {
+          width: 20px;
+        }
+      }
+    }
+
+    .hover-filter {
+      overflow: hidden;
     }
 
     & .main-products_filter__properties___property {
@@ -651,26 +686,6 @@ button {
     }
   }
 
-  .reset-btn {
-    background-color: rgba($color: #000000, $alpha: 0.0);
-    color: var(--text-color);
-    margin-left: 3rem;
-    font-size: 16px;
-    border: 1px solid var(--text-color);
-    width: 150px;
-    height: 40px;
-    transition: all .3s ease;
-    transition: all .4s;
-    user-select: none;
-
-    &:hover {
-      background-color: rgba($color: #4e4e4e, $alpha: 1);
-    }
-
-    &:active {
-      background-color: rgba($color: #2c2c2c, $alpha: 0.1);
-    }
-  }
 
 }
 

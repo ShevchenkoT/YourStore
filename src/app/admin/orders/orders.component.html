@@ -56,7 +56,7 @@
 
       <div class="order-info">
         <p>Order id: {{o.id}}</p>
-        <p>Order date: {{o.orderDate | date:'short'}}</p>
+        <p>Order date: {{o.orderDate | date:'MM/dd/yyyy, h:mm a'}}</p>
         <p>Order price: {{o.orderPrice | currency : 'USD':'symbol':'3.0'}}</p>
       </div>
 
