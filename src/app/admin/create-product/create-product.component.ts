@@ -38,6 +38,7 @@ export class CreateProductComponent implements OnInit, OnDestroy {
       characteristicOfInfo: new FormArray([])
     })
 
+
   }
 
   addFeature() {
@@ -56,6 +57,20 @@ export class CreateProductComponent implements OnInit, OnDestroy {
   remoteCharacteristic(idx: number) {
     (this.form.get('characteristicOfName') as FormArray).removeAt(idx);
     (this.form.get('characteristicOfInfo') as FormArray).removeAt(idx);
+  }
+
+  arrayFormErrors() {
+    return !!this.getCharacteristicOfName().filter((obj) => obj.errors).length || !!this.getCharacteristicOfInfo().filter((obj) => obj.errors).length
+  }
+  arrayFormValid() {
+    return !!this.getCharacteristicOfName()
+      .filter(
+        (obj) => obj.invalid && obj.touched
+      ).length
+      || !!this.getCharacteristicOfInfo()
+        .filter(
+          (obj) => obj.invalid && obj.touched
+        ).length
   }
 
   submit() {

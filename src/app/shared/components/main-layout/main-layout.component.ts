@@ -32,10 +32,12 @@ export class MainLayoutComponent implements AfterContentChecked {
     if (document.body.style.cssText.includes('--text-color:#000')) {
       document.body.style.setProperty('--first-color', "#191919")
       document.body.style.setProperty('--second-color', "#272727")
+      document.body.style.setProperty('--other-text-color', "#999999")
       document.body.style.setProperty('--third-color', "#313131")
       document.body.style.setProperty('--text-color', "#fff")
       document.body.style.setProperty('--body-color', "#000")
       document.body.style.setProperty('--button-lightness', "52%")
+
       event.target.parentNode.parentNode.parentNode.classList.remove("color-invert")
     }
     //white theme
@@ -44,8 +46,10 @@ export class MainLayoutComponent implements AfterContentChecked {
       document.body.style.setProperty('--second-color', "#c7c7c7")
       document.body.style.setProperty('--third-color', "#bfbfbf")
       document.body.style.setProperty('--text-color', "#000")
+      document.body.style.setProperty('--other-text-color', "#4d4d53")
       document.body.style.setProperty('--body-color', "#fbfbfd")
       document.body.style.setProperty('--button-lightness', "60%")
+
       event.target.parentNode.parentNode.parentNode.classList.add("color-invert")
     }
   }

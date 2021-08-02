@@ -38,13 +38,15 @@ export class CartComponent implements OnInit, OnDestroy {
   getGeolocation() {
     this.locationSubmitted = true
     navigator.geolocation.getCurrentPosition((locate) => {
+      //!Debug
       //49.835663, 24.024150 lvov
       //locate.coords.latitude, locate.coords.longitude
       //49.863637, 23.444908 Mulda
+      //49.932095, 23.578184 NYA
       this.gSub = this.geolocationService.getLocation(locate.coords.latitude, locate.coords.longitude).subscribe((loc) => {
         this.form.get('address')?.setValue(`${loc.address.country}, ${loc.address.village}, ${loc.address.postcode}`)
         this.form.get('address')?.setValue(
-          `${loc.address.country ? loc.address.country : ''} ${loc.address.city ? loc.address.city : ''} ${loc.address.village ? loc.address.village : ''} ${loc.address.borough ? loc.address.borough : ''} ${loc.address.postcode ? loc.address.postcode : ''}`)
+          `${loc.address.country ? loc.address.country : ''} ${loc.address.town ? loc.address.town : ''} ${loc.address.city ? loc.address.city : ''} ${loc.address.village ? loc.address.village : ''} ${loc.address.borough ? loc.address.borough : ''} ${loc.address.postcode ? loc.address.postcode : ''}`)
         this.locationSubmitted = false
       })
     })

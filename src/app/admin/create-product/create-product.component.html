@@ -89,19 +89,30 @@
       </div>
 
       <button type="submit" [disabled]="form.invalid || submitted" class="btn red-btn">Create</button>
+      <div class="errors " *ngIf="arrayFormValid()">
+        <small *ngIf="arrayFormErrors()">
+          Fill in all the characteristics
+        </small>
+      </div>
+
 
     </div>
     <div class="form_characteristics">
 
-      <h3>CHARACTERISTICS</h3>
+      <h3>CHARACTERISTICS </h3>
 
       <button class="btn blue-btn " type="button" (click)="addFeature()">Add</button>
 
+      <div class="errors " *ngIf="arrayFormValid()">
+        <small *ngIf="arrayFormErrors()">
+          Fill in all the characteristics
+        </small>
+      </div>
       <p><span>NAME</span> INFO</p>
-      <div class="form-array-control">
-        <div class="test">
-
-          <div class="form_characteristics_characteristicOfName" formGroupName="characteristicOfName"
+      <div class="form-array-control ">
+        <div>
+          <div [ngClass]="{invalid:getCharacteristicOfName()[idx].touched && getCharacteristicOfName()[idx].invalid}"
+            class="form_characteristics_characteristicOfName" formGroupName="characteristicOfName"
             *ngFor="let c of getCharacteristicOfName(); let idx = index">
             <label>{{idx + 1 }}:</label>
             <input type="text" [formControlName]="idx">
@@ -109,8 +120,9 @@
 
         </div>
 
-        <div class="test">
-          <div class="form_characteristics_characteristicOfInfo" formGroupName="characteristicOfInfo"
+        <div>
+          <div [ngClass]="{invalid:getCharacteristicOfInfo()[idx].touched && getCharacteristicOfInfo()[idx].invalid}"
+            class="form_characteristics_characteristicOfInfo" formGroupName="characteristicOfInfo"
             *ngFor="let c of getCharacteristicOfInfo(); let idx = index">
 
             <input type="text" [formControlName]="idx ">

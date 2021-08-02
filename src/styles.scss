@@ -106,10 +106,11 @@ a {
 }
 
 :root {
-  --first-color: #191919; //;#f0f2f5
-  --second-color: #272727; //#ffffff;
+  --first-color: #191919;
+  --second-color: #272727;
   --third-color: #313131;
-  --text-color: #fff; // #000;
+  --text-color: #fff;
+  --other-text-color: #999999; //#4d4d53;
   --primary-color: #dc3545;
   --body-color: #000000;
   --dark-color: #333333;
@@ -194,7 +195,7 @@ form {
 
 .form-control {
   display: block;
-  color: #888;
+  color: var(--other-text-color);
   margin-bottom: .8rem;
 
   >label {
@@ -998,6 +999,22 @@ input:checked+.theme-slider:before {
     .form-array-control {
       display: flex;
       flex-direction: row;
+
+      .form_characteristics_characteristicOfInfo,
+      .form_characteristics_characteristicOfName {
+        &.invalid {
+          color: var(--primary-color);
+
+          input {
+            border-color: var(--primary-color);
+            box-shadow: 0px 0px 4px 1px var(--primary-color);
+          }
+        }
+
+        .validation {
+          color: var(--primary-color);
+        }
+      }
     }
 
 
@@ -1047,4 +1064,8 @@ input:checked+.theme-slider:before {
   }
 
 
+}
+
+.errors {
+  color: var(--primary-color)
 }

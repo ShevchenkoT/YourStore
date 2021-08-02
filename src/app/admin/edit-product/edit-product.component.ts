@@ -76,6 +76,21 @@ export class EditProductComponent implements OnInit {
     (this.form.get('characteristicOfInfo') as FormArray).removeAt(idx);
   }
 
+
+  arrayFormErrors() {
+    return !!this.getCharacteristicOfName().filter((obj) => obj.errors).length || !!this.getCharacteristicOfInfo().filter((obj) => obj.errors).length
+  }
+  arrayFormValid() {
+    return !!this.getCharacteristicOfName()
+      .filter(
+        (obj) => obj.invalid && obj.touched
+      ).length
+      || !!this.getCharacteristicOfInfo()
+        .filter(
+          (obj) => obj.invalid && obj.touched
+        ).length
+  }
+
   submit() {
     if (this.form.invalid) {
       return

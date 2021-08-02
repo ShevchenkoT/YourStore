@@ -55,19 +55,43 @@
   height: 100%;
   padding: 1rem 0 0 1rem;
 
-  th {
-    text-align: end;
+  table {
+    margin-left: 5rem;
+    font-size: 1rem;
+    table-layout: fixed;
+    width: 100%;
+
+    tr {
+      display: block;
+      width: 100%;
+      //margin-top: 1rem
+    }
+
+    th {
+      text-align: start;
+      width: 130px;
+    }
+
+    td {
+      word-wrap: break-word;
+      text-align: start;
+      color: var(--other-text-color);
+    }
   }
 
-  table {
-    margin-left: 3rem;
-  }
 }
 
 .order_products {
   width: 50%;
   height: 100%;
-  padding: 1rem 0 0 0
+  padding: 1rem 0 0 0;
+  font-size: 1.2rem;
+
+  .scroll {
+    &>p {
+      color: var(--other-text-color);
+    }
+  }
 }
 
 .order-info {
