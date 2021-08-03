@@ -1,6 +1,9 @@
 <div class="main-panel">
 
-  <div class="main-products_filter">
+  <div class="main-products_filter" id="product-filter">
+
+    <button class="close-btn" (click)="showFilters()"> &times;</button>
+
     <div class="main-products_filter__properties">
       <div class="main-products_filter__properties__title-btn">
         <p>Price</p>
@@ -76,31 +79,35 @@
   <div class="main-products_list">
 
     <div class="main-product_list_header">
-      <label for="selectCount">Show:</label>
-      <select id="selectCount" class="list_header_selectCount" on-change="changeList(0)" [(ngModel)]="countProduct"
-        [value]='10'>
-        <option value=5>5</option>
-        <option value=10>10</option>
-        <option value=20>20</option>
-        <option [value]="productService.product.length">See all</option>
-      </select>
-    </div>
+      <button class="filter-show-btn reset-btn" (click)="showFilters()">Show filters</button>
 
-
-    <div *ngIf="error ||!productService.product.length;else productNoEmpty">
-      <div class="wavy-loading">
-        <span style="--i:1;">L</span>
-        <span style="--i:2;">O</span>
-        <span style="--i:3;">A</span>
-        <span style="--i:4;">D</span>
-        <span style="--i:5;">I</span>
-        <span style="--i:6;">N</span>
-        <span style="--i:7;">G</span>
-        <span style="--i:8;">.</span>
-        <span style="--i:9;">.</span>
-        <span style="--i:10;">.</span>
+      <div class="list_header_container">
+        <label for="selectCount">Show:</label>
+        <select id="selectCount" class="list_header_selectCount" on-change="changeList(0)" [(ngModel)]="countProduct"
+          [value]='10'>
+          <option value=5>5</option>
+          <option value=10>10</option>
+          <option value=20>20</option>
+          <option [value]="productService.product.length">See all</option>
+        </select>
       </div>
     </div>
+
+
+
+    <div class="wavy-loading" *ngIf="error ||!productService.product.length;else productNoEmpty">
+      <span style="--i:1;">L</span>
+      <span style="--i:2;">O</span>
+      <span style="--i:3;">A</span>
+      <span style="--i:4;">D</span>
+      <span style="--i:5;">I</span>
+      <span style="--i:6;">N</span>
+      <span style="--i:7;">G</span>
+      <span style="--i:8;">.</span>
+      <span style="--i:9;">.</span>
+      <span style="--i:10;">.</span>
+    </div>
+
 
 
     <ng-template #productNoEmpty>

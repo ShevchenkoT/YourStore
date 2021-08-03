@@ -1,7 +1,7 @@
 //adaptive property
 
 $maxWidth:1920;
-$maxWidthContainer:1170;
+$maxWidthContainer:1200; //1170;
 
 @mixin adaptive-value($property, $startSize, $minSize, $type) {
   $addSize: $startSize - $minSize;
@@ -206,7 +206,7 @@ body {
   min-height: 100vh;
   margin: 6rem auto 0;
   display: flex;
-  @include adaptive-value('padding', 50, 2, 3);
+  @include adaptive-value('padding', 40, 2, 1);
   justify-content: space-between;
   align-items: flex-start;
 }
@@ -388,6 +388,24 @@ button {
   }
 }
 
+.close-btn {
+  display: none;
+  position: absolute;
+  right: 1rem;
+  top: 1rem;
+  width: 25px;
+  height: 25px;
+  background-color: rgba($color: #000000, $alpha: 0.0);
+  border: 1px solid var(--text-color);
+  color: var(--text-color);
+  font-size: 1.8rem;
+  user-select: none;
+
+  &:active {
+    background-color: rgba($color: #2c2c2c, $alpha: 0.1);
+  }
+}
+
 
 
 
@@ -528,7 +546,8 @@ button {
       .img {
         width: 38px;
         height: 38px;
-        margin: -1.5px 0 0 -1px;
+        transform: translate(-2px, -2px);
+        //margin: -2px 0 0 -1px;
 
         img {
           width: 100%;
@@ -573,6 +592,7 @@ button {
     }
 
     a {
+
       color: var(--text-color)
     }
   }
@@ -767,16 +787,24 @@ button {
 
   .main-product_list_header {
     width: 100%;
-    display: flex;
-    flex-direction: row;
-    justify-content: flex-end;
-    margin: 1rem;
-    //padding: 0 3.5rem;
+    height: 60px;
+    position: relative;
+
+    .list_header_container {
+      top: 6px;
+      position: absolute;
+      right: 1.5rem;
+    }
 
     & label {
+      display: inline-block;
       font-weight: bold;
       font-size: 17px;
       margin: 5px 1rem;
+    }
+
+    & select {
+      display: inline-block;
     }
 
     .list_header_selectCount {
@@ -785,6 +813,7 @@ button {
       &.ng-touched.ng-valid,
       select.ng-touched.ng-valid,
       textarea.ng-touched.ng-valid {
+
         outline: none;
         box-shadow: none
       }
@@ -904,8 +933,9 @@ button {
 }
 
 .wavy-loading {
-  position: relative;
-  margin-top: 15rem;
+  position: absolute;
+  @include adaptive-value('left', 1100, 100, 3);
+  top: 50%;
 
   span {
     position: relative;
@@ -1145,12 +1175,19 @@ input:checked+.theme-slider:before {
 
 }
 
+
+
 .errors {
   color: var(--primary-color)
 }
 
-
-
+.filter-show-btn {
+  display: none;
+  position: absolute;
+  @include adaptive-value('left', 200, -20, 3);
+  @include adaptive-value('width', 200, 100, 3);
+  top: 5px;
+}
 
 @media(max-width:1200px) {
 
@@ -1158,23 +1195,9 @@ input:checked+.theme-slider:before {
   .under-top-panel {
     max-width: 970px;
   }
-
 }
 
 @media(max-width:992px) {
-
-
-  .main-products_list {
-
-    // &>wavy-loading {
-    //   margin: 0;
-    //   left: auto;
-    // }
-  }
-
-
-
-
 
   .main-panel,
   .under-top-panel {
@@ -1182,7 +1205,24 @@ input:checked+.theme-slider:before {
   }
 
   .main-products_filter {
-    display: none;
+    transform: translateX(-100%);
+    transition: all .5s ease;
+    overflow: hidden;
+    position: fixed;
+    z-index: 999;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+
+    .close-btn {
+      display: block;
+    }
+  }
+
+  .showEl {
+    transform: translateX(0);
+
   }
 
   .main-products_list {
@@ -1190,6 +1230,13 @@ input:checked+.theme-slider:before {
     padding-left: 0;
   }
 
+  .main-product_list_header {
+
+    .filter-show-btn {
+      display: block;
+
+    }
+  }
 }
 
 @media(max-width:767px) {
@@ -1197,15 +1244,9 @@ input:checked+.theme-slider:before {
     flex-wrap: wrap;
 
     .social-circle {
-
-
       pointer-events: none;
-
-
     }
   }
-
-
 
   .main-panel,
   .under-top-panel {
@@ -1213,7 +1254,23 @@ input:checked+.theme-slider:before {
   }
 
   .main-products_filter {
-    display: none;
+    transition: all .5s ease;
+    transform: translateX(-100%);
+    overflow: hidden;
+    position: fixed;
+    z-index: 999;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+
+    .close-btn {
+      display: block;
+    }
+  }
+
+  .showEl {
+    transform: translateX(0);
   }
 
   .top-bar {

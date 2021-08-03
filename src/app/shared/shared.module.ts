@@ -17,6 +17,7 @@ import { SortByDatePipe } from "./pipes/sort-by-date.pipe";
     SortByDatePipe,
     SearchProductPipe,
     PriceFilterPipe,
+
   ],
   imports: [
     HttpClientModule,
@@ -33,6 +34,7 @@ import { SortByDatePipe } from "./pipes/sort-by-date.pipe";
     SortByDatePipe,
     SearchProductPipe,
     PriceFilterPipe,
+
   ],
   providers: []
 })

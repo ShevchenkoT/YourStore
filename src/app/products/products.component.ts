@@ -1,3 +1,4 @@
+import { animate, keyframes, state, style, transition, trigger } from '@angular/animations';
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Subscription } from 'rxjs';
 import { animateGetProduct, hideFilters } from '../shared/animations';
@@ -9,9 +10,36 @@ import { SearchProductService } from '../shared/service/search-product.service';
   selector: 'app-products',
   templateUrl: './products.component.html',
   styleUrls: ['./products.component.scss'],
-  animations: [animateGetProduct, hideFilters]
+  animations: [animateGetProduct, hideFilters,
+    trigger("phoneModShowFilter", [
+      // state('show',
+      //   style({ display: 'block' })
+      // ),
+      // state('hide',
+      //   style({ display: 'none' })
+      // ),
+
+
+      transition(':leave', [
+        animate(500, keyframes([
+          style({ transform: "translateX(-100%)", offset: 0.9 }),
+          //style({ display: "none", offset: 0.9 }),
+        ]))
+      ]),
+      transition(':enter', [
+        animate(500, keyframes([
+
+          //style({ display: "block", offset: 0 }),
+          style({ transform: "translateX(-100%)", offset: 0 }),
+          style({ transform: "translateX(0)", offset: 1 }),
+        ]))
+      ]),
+
+    ])
+  ]
 })
 export class ProductsComponent implements OnInit, OnDestroy {
+
   currentState!: Array<string>
 
   countProduct = 10
@@ -101,6 +129,12 @@ export class ProductsComponent implements OnInit, OnDestroy {
     setTimeout(() => {
       this.currentState[idx] = 'start'
     }, 400)
+  }
+
+  showFilters() {
+    const filters = document.querySelector("#product-filter")
+    filters?.classList.contains("showEl") ? filters?.classList.remove("showEl") : filters?.classList.add("showEl")
+    //this.stateeee = this.stateeee === "show" ? "hide" : "show"
   }
 
   ngOnDestroy() {
