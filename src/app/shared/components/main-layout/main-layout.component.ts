@@ -1,4 +1,6 @@
+import { Target } from '@angular/compiler';
 import { AfterContentChecked, Component } from '@angular/core';
+import { Event } from '@angular/router';
 import { animateSearch, shakeIt } from '../../animations';
 import { CartFavoritesService } from '../../service/cart-favorites.service';
 import { ProductService } from '../../service/product.service';
@@ -18,6 +20,14 @@ export class MainLayoutComponent implements AfterContentChecked {
     public searchService: SearchProductService,
     public productService: ProductService,
   ) { }
+
+
+  showBurgerMenu(event: any) {
+    event.target.offsetParent.classList.contains("open-burger")
+      ? event.target.offsetParent.classList.remove("open-burger")
+      : event.target.offsetParent.classList.add("open-burger")
+
+  }
 
   animate() {
     this.searchState = this.searchState === 'end' ? 'start' : 'end'
