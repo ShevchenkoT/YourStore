@@ -218,6 +218,11 @@ body {
   min-height: 50px;
   background-color: var(--first-color);
 
+  .wish-title {
+
+    font-size: 35px;
+  }
+
   &>.reset-btn {
     width: 110px;
     margin-left: 1rem;
@@ -429,6 +434,7 @@ button {
     text-align: center;
     width: 530px;
 
+
     &>a {
       &>h1 {
         font-size: 50px;
@@ -460,7 +466,7 @@ button {
   .top-bar_icons {
     display: flex;
     max-width: 530px;
-    height: 80px;
+    height: 70px;
     margin-top: 1rem;
     justify-content: flex-end;
 
@@ -715,19 +721,23 @@ button {
 .cart-wish_products {
   display: flex;
   flex-direction: column;
+  padding: 1rem;
 
   & .cart-wish_products__product {
     margin-top: 1rem;
-    width: 600px;
-    height: 250px;
+    max-width: 600px;
+    min-height: 250px;
     background: var(--third-color);
     display: flex;
     align-items: center;
     justify-content: space-around;
+    flex-wrap: wrap;
+    padding: 1rem;
 
     & .cart-wish_products__product___picture {
       width: 200px;
       height: 200px;
+      margin-bottom: 1rem;
     }
 
     & .cart-wish_products__product___info {
@@ -1216,18 +1226,21 @@ input:checked+.theme-slider:before {
 
 
 .list-empty {
+  width: 100%;
   margin: 6rem auto;
   text-align: center;
 
-  &>p {
-    font-size: 40px;
 
+  &>p {
+    //font-size: 25px; //35px;
+    @include adaptive-value('font-size', 35, 25, 3);
   }
 
   &>a {
     display: block;
     margin-top: 3rem;
-    font-size: 35px;
+    @include adaptive-value('font-size', 30, 20, 3);
+    //font-size: 20px; //30px;
     color: rgb(50, 70, 252);
 
     &:hover {
@@ -1357,6 +1370,8 @@ input:checked+.theme-slider:before {
 .errors {
   color: var(--primary-color)
 }
+
+
 
 
 
@@ -1587,6 +1602,16 @@ input:checked+.theme-slider:before {
   .main-panel,
   .under-top-panel {
     max-width: none;
+
+    .wish-title {
+      display: block;
+      position: absolute;
+      top: 170px;
+      width: 100%;
+      text-align: center;
+      font-size: 30px;
+      transform: translateX(-2%);
+    }
   }
 
   .main-products_filter {
@@ -1729,4 +1754,17 @@ input:checked+.theme-slider:before {
       }
     }
   }
+
+
+
+  .cart-wish_products .cart-wish_products__product .cart-wish_products__product___info {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    align-items: center;
+    justify-content: space-evenly;
+    height: 150px;
+  }
+
+
 }

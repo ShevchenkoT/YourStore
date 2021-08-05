@@ -1,17 +1,14 @@
-.wish-list {
+.under-top-panel {
   display: flex;
-  flex-direction: column;
-  justify-content: flex-end;
-  align-items: center;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: baseline;
+  flex-wrap: wrap;
 
-  &>h2 {
-    font-size: 35px;
-  }
 
-  margin: 1rem auto;
 }
 
 .main-panel {
   margin: 0 auto;
-
+  padding-top: 5rem;
 }

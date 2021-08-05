@@ -1,5 +1,8 @@
 <div class="under-top-panel">
   <button class="reset-btn" (click)="previousPage()"> &lt; Back</button>
+  <h2 class="wish-title">WISH LIST</h2>
+  <button (click)="favoriteService.clearFavoriteList()" class="btn red-btn">Clear</button>
+
 </div>
 
 
@@ -44,9 +47,6 @@
       </div>
     </div>
 
-    <div class="wish-list">
-      <h2>WISH LIST</h2>
-      <button (click)="favoriteService.clearFavoriteList()" class="btn red-btn">Clear</button>
-    </div>
+
   </ng-template>
 </div>
