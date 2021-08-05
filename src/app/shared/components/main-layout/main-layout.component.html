@@ -7,16 +7,23 @@
 
   </div>
 
-  <div class="top-bar_icons ">
+  <div class="search-input search-input-duplicate" id="search-input-duplicate"><input list="post" type="search"
+      [(ngModel)]='searchProductStr'>
+    <button class="reset-btn" (click)="showSearch()"> Hide</button>
+  </div>
 
-    <div class="top-bar_element_search" [@search]='searchState'>
+
+  <div class="top-bar_icons" id="top-bar_icons">
+
+    <div class="top-bar_element_search " [@search]='searchState'>
+      <div class="btn-search-duplicate" (click)="showSearch()"></div>
+
       <div class="top-bar_element icon_search" (click)="animate()">
-        <img src="assets/img/ico/search.png" alt="">
+        <img src="assets/img/ico/search.png">
         <small>Search</small>
       </div>
-
-
-      <input list="post" type="search" [(ngModel)]='searchProductStr'>
+      <div class="search-input"><input list="post" type="search" [(ngModel)]='searchProductStr'>
+      </div>
       <datalist id="post">
         <option *ngFor="let p of productService.product |filterChecks: 'phoneName'" [value]="p"></option>
       </datalist>
@@ -44,14 +51,14 @@
         <input type="checkbox" checked class="my-check">
         <span (click)="darkTheme($event)" class="theme-slider theme-round"></span>
       </label>
-
+      <small>Theme</small>
     </div>
 
 
   </div>
-  <div class="show-menu-btn" (click)="showBurgerMenu($event)">
+  <div class="show-menu-btn" id="burger-btn" (click)="showBurgerMenu($event)">
     <div class="menu-btn_burger"></div>
-    <!-- <img src="assets/img/ico/card.png"> -->
+
   </div>
 </div>
 <div class="main-container">

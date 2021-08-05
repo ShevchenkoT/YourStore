@@ -133,9 +133,21 @@ export class ProductsComponent implements OnInit, OnDestroy {
 
   showFilters() {
     const filters = document.querySelector("#product-filter")
-    filters?.classList.contains("showEl") ? filters?.classList.remove("showEl") : filters?.classList.add("showEl")
-    //this.stateeee = this.stateeee === "show" ? "hide" : "show"
+    const topIcons = document.querySelector("#top-bar_icons")
+    const burgerBtn = document.querySelector("#burger-btn")
+    const searchInput = document.querySelector("#search-input-duplicate")
+
+
+    if (filters?.classList.contains("showEl")) {
+      filters?.classList.remove("showEl")
+    } else {
+      filters?.classList.add("showEl")
+      topIcons?.classList.contains("show_top-icons") ? topIcons?.classList.remove("show_top-icons") : null;
+      burgerBtn?.classList.contains("open-burger") ? burgerBtn?.classList.remove("open-burger") : null;
+      searchInput?.classList.contains("show-search") ? searchInput?.classList.remove("show-search") : null;
+    }
   }
+
 
   ngOnDestroy() {
     if (this.gSub) {

@@ -20,13 +20,23 @@ export class MainLayoutComponent implements AfterContentChecked {
     public searchService: SearchProductService,
     public productService: ProductService,
   ) { }
+  showSearch() {
 
+    const searchInput = document.querySelector("#search-input-duplicate")
+    searchInput?.classList.contains("show-search") ? searchInput?.classList.remove("show-search") : searchInput?.classList.add("show-search");
+  }
 
   showBurgerMenu(event: any) {
-    event.target.offsetParent.classList.contains("open-burger")
-      ? event.target.offsetParent.classList.remove("open-burger")
-      : event.target.offsetParent.classList.add("open-burger")
-
+    const filters = document.querySelector("#product-filter")
+    const topIcons = document.querySelector("#top-bar_icons")
+    if (topIcons?.classList.contains("show_top-icons") && event.target.offsetParent.classList.contains("open-burger")) {
+      event.target.offsetParent.classList.remove("open-burger")
+      topIcons?.classList.remove("show_top-icons")
+    } else {
+      event.target.offsetParent.classList.add("open-burger")
+      topIcons?.classList.add("show_top-icons")
+      filters?.classList.contains("showEl") ? filters?.classList.remove("showEl") : null;
+    }
   }
 
   animate() {

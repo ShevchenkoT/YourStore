@@ -82,7 +82,7 @@
 
     <div class="main-product_list_header">
       <button class="filter-show-btn reset-btn" (click)="showFilters()">Show filters</button>
-      <div class="list_header_container">
+      <div class="list_header_container" *ngIf="productService.product.length">
         <label for="selectCount">Show:</label>
         <select id="selectCount" class="list_header_selectCount" on-change="changeList(0)" [(ngModel)]="countProduct"
           [value]='10'>
@@ -121,7 +121,9 @@
       | searchProduct:searchService.searchProductStr
       | slice: startProductList : startProductList + +countProduct;
       let idx = index" class="main-products_list__product " appHoverPhone>
-
+        <div class="hover-btn-price">
+          <img src="assets/img/ico/arrowDown.png">
+        </div>
 
         <div class="main-products_list__product___photo">
           <a [routerLink]="['/product-detail',p.id]" title="Detail {{p.phoneName}}"
@@ -146,12 +148,15 @@
           <span class="uah">{{ p.phonePriceUsd*28}} Грн</span>
         </div>
 
+
       </div>
 
       <div class="main-product_list_footer">
-        <div class="change-list-btn" *ngFor="let p of numSequence(searchService.countProductAfterPipes/countProduct);
-          let idx = index" (click)="changeList(idx)">
-          <span>{{idx + 1}}</span>
+        <div class="main-product_list_footer_buttons">
+          <div class="change-list-btn" *ngFor="let p of numSequence(searchService.countProductAfterPipes/countProduct);
+                    let idx = index" (click)="changeList(idx)">
+            <span>{{idx + 1}}</span>
+          </div>
         </div>
 
       </div>
