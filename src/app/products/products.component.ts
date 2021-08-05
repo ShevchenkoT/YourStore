@@ -97,6 +97,9 @@ export class ProductsComponent implements OnInit, OnDestroy {
   }
 
   numSequence(n: number): Array<number> {
+    if (Math.ceil(n) <= 1) {
+      return Array(0)
+    }
     return Array(Math.ceil(n));
   }
 

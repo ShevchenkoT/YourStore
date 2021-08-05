@@ -6,7 +6,7 @@ export const animateSearch = [
     state('start', style({
       width: '60px',
     })),
-    state('end', style({ width: '250px' })),
+    state('end', style({ width: '*' })),
     transition('*<=>*', animate("600ms cubic-bezier(0.175, 0.500, 0.32, 1.2)"))
   ])
 ]

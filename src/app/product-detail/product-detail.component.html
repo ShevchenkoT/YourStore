@@ -5,40 +5,39 @@
 
 <div class="main-panel">
   <div class="product-detail" *ngIf="product; else loading">
-    <div class="product-detail_img-name">
+    <div class="product-detail_img">
       <img [src]='product?.pictureUrl'>
-      <div class="info-about-product">
-        <h2>{{product?.phoneName}} <span>{{product?.memory}}GB</span></h2>
-        <span>({{product?.phoneColor}})</span>
-        <p>{{product?.phonePriceUsd | currency : 'USD':'symbol':'3.0'}}
 
-          <span>
-            {{ product?.phonePriceUsd*28}} Грн </span>
-        </p>
-        <div class="buttons">
-          <button (click)="cartFavoriteService.addToFavorites(product); searchService.wishStateChange()"
-            class="btn blue-btn">Add to
-            favorites</button>
-          <button (click)="cartFavoriteService.addToCart(product); searchService.cartStateChange()"
-            class="btn red-btn">Add to
-            cart</button>
-        </div>
+    </div>
+
+    <div class="info-about-product">
+      <h2>{{product?.phoneName}} <span>{{product?.memory}}GB</span></h2>
+      <span>({{product?.phoneColor}})</span>
+      <p>{{product?.phonePriceUsd | currency : 'USD':'symbol':'3.0'}}
+
+        <span>
+          {{ product?.phonePriceUsd*28}} Грн </span>
+      </p>
+      <div class="buttons">
+        <button (click)="cartFavoriteService.addToFavorites(product); searchService.wishStateChange()"
+          class="btn blue-btn">Add to
+          favorites</button>
+        <button (click)="cartFavoriteService.addToCart(product); searchService.cartStateChange()"
+          class="btn red-btn">Add to
+          cart</button>
       </div>
     </div>
 
     <div class="product-detail_characteristics">
       <h3>CHARACTERISTICS</h3>
-
-
-
-
-
-      <table>
-        <tr *ngFor="let item of product.characteristic | keyvalue">
-          <th>{{item.key}}: </th>
-          <td>{{item.value}}</td>
-        </tr>
-      </table>
+      <div class="characteristic_table">
+        <table>
+          <tr *ngFor="let item of product.characteristic | keyvalue">
+            <th>{{item.key}}: </th>
+            <td>{{item.value}}</td>
+          </tr>
+        </table>
+      </div>
     </div>
   </div>
 
