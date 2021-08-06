@@ -3,53 +3,6 @@
 </div>
 
 <div class="main-panel">
-  <div *ngIf="!cartService.cartItem.length;else content " class="list-empty">
-    <p>Cart is empty &#9785;</p>
-    <a routerLink="/">Add some product</a>
-  </div>
-
-  <ng-template #content>
-    <div class="cart-wish_products">
-      <div class="cart-wish_products__product" *ngFor="let product of cartService.cartItem">
-
-        <img class="cart-wish_products__product___picture" src={{product.pictureUrl}}>
-
-        <div class="cart-wish_products__product___info">
-          <h2>{{product.phoneName}} <span>{{product.memory}}GB</span></h2>
-          <span>({{product.phoneColor}})</span>
-          <p>
-            {{product.phonePriceUsd | currency : 'USD':'symbol':'3.0'}}
-            <span>{{ product.phonePriceUsd*28}} Грн</span>
-          </p>
-        </div>
-
-        <div class="cart-wish_products__product___buttons">
-
-          <div class="cart-wish_products__product___buttons___circle-button">
-            <button (click)="cartService.deleteOneProductInCart(product)" class="circle-button">
-              <span>-</span>
-            </button>
-
-            <span> {{product.numberOfProducts}}</span>
-
-            <button (click)="cartService.addOneProductToCart(product)" class="circle-button">
-              <span>+</span>
-            </button>
-
-          </div>
-
-          <div class="cart-wish_products__product___buttons___delete-add-button">
-            <button title="Delete product" class="btn red-btn delete-btn " (click)="cartService.deleteInCart(product)">
-              <img src="assets/img/ico/delete.png">
-            </button>
-
-
-          </div>
-        </div>
-      </div>
-    </div>
-  </ng-template>
-
   <div class="cart-wish_form">
     <form class="cart-form" [formGroup]="form" (ngSubmit)="onSubmit()">
       <h3>Ordering</h3>
@@ -151,4 +104,56 @@
     <p class="form-control_price">Total price: {{cartService.totalPrice | currency : 'USD':'symbol':'3.0'}}</p>
 
   </div>
+
+
+  <div *ngIf="!cartService.cartItem.length;else content " class="list-empty">
+    <p>Cart is empty &#9785;</p>
+    <a routerLink="/">Add some product</a>
+  </div>
+
+
+
+  <ng-template #content>
+    <div class="cart-wish_products">
+      <div class="cart-wish_products__product" *ngFor="let product of cartService.cartItem">
+
+        <img class="cart-wish_products__product___picture" src={{product.pictureUrl}}>
+
+        <div class="cart-wish_products__product___info">
+          <h2>{{product.phoneName}} <span>{{product.memory}}GB</span></h2>
+          <span>({{product.phoneColor}})</span>
+          <p>
+            {{product.phonePriceUsd | currency : 'USD':'symbol':'3.0'}}
+            <span>{{ product.phonePriceUsd*28}} Грн</span>
+          </p>
+        </div>
+
+        <div class="cart-wish_products__product___buttons">
+
+          <div class="cart-wish_products__product___buttons___circle-button">
+            <button (click)="cartService.deleteOneProductInCart(product)" class="circle-button">
+              <span>-</span>
+            </button>
+
+            <span> {{product.numberOfProducts}}</span>
+
+            <button (click)="cartService.addOneProductToCart(product)" class="circle-button">
+              <span>+</span>
+            </button>
+
+          </div>
+
+          <div class="cart-wish_products__product___buttons___delete-add-button">
+            <button title="Delete product" class="btn red-btn delete-btn " (click)="cartService.deleteInCart(product)">
+              <img src="assets/img/ico/delete.png">
+            </button>
+
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </ng-template>
+
+
 </div>

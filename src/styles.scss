@@ -773,13 +773,14 @@ button {
   display: flex;
   flex-direction: column;
   align-items: center;
-  height: 90%;
+  height: 150px;
   justify-content: space-around;
+  width: 100px;
 
   .cart-wish_products__product___buttons___circle-button {
     color: var(--text-color);
     display: flex;
-    width: 100px;
+    //width: 100px;
     align-items: center;
     font-size: 16px;
 
@@ -1097,6 +1098,44 @@ button {
     color: var(--text-color);
     display: flex;
     flex-direction: row;
+  }
+}
+
+.cart-wish_form {
+
+
+  .cart-form {
+
+
+    // border: 1px solid #888;
+    // max-width: 600px;
+    // margin: 0 auto;
+    // padding: 1rem;
+    // display: block;
+    //min-width: 200px; //400px;
+    @include adaptive-value('min-width', 400, 200, 1);
+
+
+  }
+
+  .form-control_price {
+    margin: 1rem auto;
+    font-size: 24px;
+    text-align: center;
+  }
+
+  & h3 {
+    text-align: center;
+    //font-size: 25px; //34px;
+    @include adaptive-value('font-size', 34, 25, 1);
+    font-weight: 500;
+  }
+
+  color: var(--text-color);
+
+  & input,
+  select {
+    margin-top: 4px;
   }
 }
 
