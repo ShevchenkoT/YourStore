@@ -96,6 +96,7 @@
 
 
 
+
     <div class="wavy-loading" *ngIf="error ||!productService.product.length;else productNoEmpty">
       <span style="--i:1;">L</span>
       <span style="--i:2;">O</span>
@@ -152,7 +153,7 @@
       </div>
 
       <div class="main-product_list_footer">
-        <div class="main-product_list_footer_buttons">
+        <div class="main-product_list_footer_buttons" *ngIf="showAfterProduct">
           <div class="change-list-btn" *ngFor="let p of numSequence(searchService.countProductAfterPipes/countProduct);
                     let idx = index" (click)="changeList(idx)">
             <span>{{idx + 1}}</span>
@@ -160,7 +161,20 @@
         </div>
 
       </div>
+      <div class="no-product-after-filter"
+        *ngIf="searchService.countProductAfterPipes == 0 && productService.product.length && showAfterProduct ">
+        <div class="no-product-after-filter_img">
+          <img src="assets/img/searchError.png">
+        </div>
+        <p class="no-product-after-filter_text">
+          No products by your criteria!
+        </p>
+        <a (click)="resetFilters()" class="no-product-after-filter_text">
+          Reset filters
+        </a>
+      </div>
     </ng-template>
   </div>
+
 
 </div>

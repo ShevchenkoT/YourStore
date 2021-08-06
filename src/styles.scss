@@ -432,7 +432,7 @@ button {
     margin-top: 1rem;
     cursor: pointer;
     text-align: center;
-    width: 530px;
+    //width: 530px;
 
 
     &>a {
@@ -465,7 +465,7 @@ button {
 
   .top-bar_icons {
     display: flex;
-    max-width: 530px;
+    width: 610px;
     height: 70px;
     margin-top: 1rem;
     justify-content: flex-end;
@@ -1146,6 +1146,39 @@ button {
   }
 }
 
+.no-product-after-filter {
+  position: absolute;
+  @include adaptive-value('left', 1100, 100, 3);
+  top: 45%;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  margin: 0 auto;
+
+
+  .no-product-after-filter_img {
+    @include adaptive-value('width', 180, 130, 1);
+
+    &>img {
+      width: 100%;
+    }
+  }
+
+  &>p {
+    @include adaptive-value('font-size', 25, 18, 1);
+    margin: 2rem;
+    text-align: center;
+  }
+
+  &>a {
+    @include adaptive-value('font-size', 20, 15, 1);
+    text-align: center;
+    color: #2433c0;
+  }
+
+}
+
+
 .wavy-loading {
   position: absolute;
   @include adaptive-value('left', 1100, 100, 3);
@@ -1624,6 +1657,10 @@ input:checked+.theme-slider:before {
     }
   }
 
+  .no-product-after-filter {
+    left: 50%;
+    transform: translateX(-50%);
+  }
 
 
 }

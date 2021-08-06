@@ -40,6 +40,8 @@ import { SearchProductService } from '../shared/service/search-product.service';
 })
 export class ProductsComponent implements OnInit, OnDestroy {
 
+  showAfterProduct = false
+
   currentState!: Array<string>
 
   countProduct = 10
@@ -73,6 +75,10 @@ export class ProductsComponent implements OnInit, OnDestroy {
         this.maxPrice = this.topPrice = this.getMaxPrice(this.productService.product).toString()
         this.currentState = new Array(this.productService.product.length)
         this.currentState.fill('start')
+        console.log('start');
+
+      }, null, () => {
+        setTimeout(() => { this.showAfterProduct = true }, 0)
       })
   }
 
@@ -114,6 +120,7 @@ export class ProductsComponent implements OnInit, OnDestroy {
     this.colorCheck = []
     this.topPrice = this.getMaxPrice(this.productService.product).toString()
     this.lowerPrice = '0';
+    this.searchService.searchProductStr = ""
     this.changeList(0)
   }
 

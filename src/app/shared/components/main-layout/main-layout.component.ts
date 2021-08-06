@@ -1,6 +1,4 @@
-import { Target } from '@angular/compiler';
-import { AfterContentChecked, Component } from '@angular/core';
-import { Event } from '@angular/router';
+import { Component } from '@angular/core';
 import { animateSearch, shakeIt } from '../../animations';
 import { CartFavoritesService } from '../../service/cart-favorites.service';
 import { ProductService } from '../../service/product.service';
@@ -11,7 +9,7 @@ import { SearchProductService } from '../../service/search-product.service';
   styleUrls: ['./main-layout.component.scss'],
   animations: [animateSearch, shakeIt]
 })
-export class MainLayoutComponent implements AfterContentChecked {
+export class MainLayoutComponent {
   searchState = 'start'
   searchProductStr = ''
 
@@ -21,7 +19,6 @@ export class MainLayoutComponent implements AfterContentChecked {
     public productService: ProductService,
   ) { }
   showSearch() {
-
     const searchInput = document.querySelector("#search-input-duplicate")
     searchInput?.classList.contains("show-search") ? searchInput?.classList.remove("show-search") : searchInput?.classList.add("show-search");
   }
@@ -43,9 +40,7 @@ export class MainLayoutComponent implements AfterContentChecked {
     this.searchState = this.searchState === 'end' ? 'start' : 'end'
   }
 
-  ngAfterContentChecked() {
-    this.searchService.searchProductStr = this.searchProductStr
-  }
+
 
   darkTheme(event: any) {
     //black theme

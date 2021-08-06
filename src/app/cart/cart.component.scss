@@ -5,6 +5,7 @@
 .card-fom_buttons {
   display: flex;
   flex-direction: row;
+
   justify-content: space-between
 }
 
@@ -12,6 +13,7 @@
   margin: 0 auto;
   flex-wrap: wrap;
   justify-content: space-around;
+  flex-direction: row-reverse;
 }
 
 

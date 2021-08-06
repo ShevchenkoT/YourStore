@@ -8,7 +8,7 @@
   </div>
 
   <div class="search-input search-input-duplicate" id="search-input-duplicate"><input list="post" type="search"
-      [(ngModel)]='searchProductStr'>
+      [(ngModel)]='searchService.searchProductStr'>
     <button class="reset-btn" (click)="showSearch()"> Hide</button>
   </div>
 
@@ -22,7 +22,7 @@
         <img src="assets/img/ico/search.png">
         <small>Search</small>
       </div>
-      <div class="search-input"><input list="post" type="search" [(ngModel)]='searchProductStr'>
+      <div class="search-input"><input list="post" type="search" [(ngModel)]='searchService.searchProductStr'>
       </div>
       <datalist id="post">
         <option *ngFor="let p of productService.product |filterChecks: 'phoneName'" [value]="p"></option>

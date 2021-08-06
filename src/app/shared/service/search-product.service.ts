@@ -4,7 +4,7 @@ import { Injectable } from '@angular/core';
   providedIn: 'root'
 })
 export class SearchProductService {
-  countProductAfterPipes!: number
+  countProductAfterPipes: number = 0;
   searchProductStr = ''
 
   cartState = 'start'
@@ -21,10 +21,5 @@ export class SearchProductService {
     setTimeout(() => {
       this.wishState = 'start'
     }, 300)
-  }
-
-
-  resetStr() {
-    this.searchProductStr = ''
   }
 }

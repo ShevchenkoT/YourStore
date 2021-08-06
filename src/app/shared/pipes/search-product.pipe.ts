@@ -15,7 +15,9 @@ export class SearchProductPipe implements PipeTransform {
         this.spaceFilter(p.phoneName).includes(this.spaceFilter(searchProductStr))
       )
     }
-    this.searchService.countProductAfterPipes = products.length
+    setTimeout(() => {
+      this.searchService.countProductAfterPipes = products.length
+    }, 0)
     return products
   }
 
