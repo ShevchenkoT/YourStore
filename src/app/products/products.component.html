@@ -84,8 +84,8 @@
       <button class="filter-show-btn reset-btn" (click)="showFilters()">Show filters</button>
       <div class="list_header_container" *ngIf="productService.product.length">
         <label for="selectCount">Show:</label>
-        <select id="selectCount" class="list_header_selectCount" on-change="changeList(0)" [(ngModel)]="countProduct"
-          [value]='10'>
+        <select id="selectCount" class="list_header_selectCount" on-change="paginator.changeList(0)"
+          [(ngModel)]="paginator.countProduct" [value]='10'>
           <option value=5>5</option>
           <option value=10>10</option>
           <option value=20>20</option>
@@ -120,7 +120,7 @@
       | filterPhones :colorCheck :'phoneColor'
       | priceFilter :topPrice: lowerPrice
       | searchProduct:searchService.searchProductStr
-      | slice: startProductList : startProductList + +countProduct;
+      | slice: paginator.startProductList : paginator.startProductList + +paginator.countProduct;
       let idx = index" class="main-products_list__product " appHoverPhone>
         <div class="hover-btn-price">
           <img src="assets/img/ico/arrowDown.png">
@@ -154,16 +154,16 @@
 
       <div class="main-product_list_footer">
         <div class="main-product_list_footer_buttons" *ngIf="showAfterProduct">
-          <div class="change-list-btn" *ngIf="showBackToFirstList" (click)="changeList(0)">
+          <div class="change-list-btn" *ngIf="paginator.showBackToFirstList" (click)="paginator.changeList(0)">
             <span>
               << </span>
           </div>
-          <div class="change-list-btn dynamic-footer_button" *ngFor="let p of numSequence(searchService.countProductAfterPipes/countProduct);
-                    let idx = index" (click)="changeList(idx)">
+          <div class="change-list-btn dynamic-footer_button" *ngFor="let p of paginator.numSequence(searchService.countProductAfterPipes/paginator.countProduct);
+                    let idx = index" (click)="paginator.changeList(idx)">
             <span>{{idx + 1}}</span>
           </div>
-          <div class="change-list-btn" *ngIf="showBackToLastList"
-            (click)="changeList(numSequence(searchService.countProductAfterPipes/countProduct).length -1)">
+          <div class="change-list-btn" *ngIf="paginator.showBackToLastList"
+            (click)="paginator.changeList(paginator.numSequence(searchService.countProductAfterPipes/paginator.countProduct).length -1)">
             <span>
               >> </span>
           </div>

@@ -1,9 +1,9 @@
-import { animate, keyframes, style, transition, trigger } from '@angular/animations';
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Subscription } from 'rxjs';
 import { animateGetProduct, hideFilters, phoneModShowFilter } from '../shared/animations';
 import { Product } from '../shared/interfaces';
 import { CartFavoritesService } from '../shared/service/cart-favorites.service';
+import { PaginationService } from '../shared/service/pagination.service';
 import { ProductService } from '../shared/service/product.service';
 import { SearchProductService } from '../shared/service/search-product.service';
 @Component({
@@ -17,10 +17,6 @@ export class ProductsComponent implements OnInit, OnDestroy {
   showAfterProduct = false
 
   currentState!: Array<string>
-
-  countProduct = 10
-  startProductList = 0
-  productsAfterPipes = 10
 
   lowerPrice: string = '0';
   topPrice!: string
@@ -36,16 +32,14 @@ export class ProductsComponent implements OnInit, OnDestroy {
   error = '';
   gSub!: Subscription
 
-  showListBtn = 5
-  showBackToFirstList = false
-  showBackToLastList = false
   constructor(
     public cartFavoritesService: CartFavoritesService,
     public searchService: SearchProductService,
     public productService: ProductService,
+    public paginator: PaginationService,
   ) {
     setTimeout(() => {
-      this.changeList(0)
+      this.paginator.changeList(0)
     }, 800)
 
   }
@@ -86,27 +80,6 @@ export class ProductsComponent implements OnInit, OnDestroy {
     return Math.max(...products.map((p) => p.phonePriceUsd))
   }
 
-  numSequence(n: number): Array<number> {
-    return Array(8)//Array(Math.ceil(n));
-  }
-
-
-  changeList(i: number) {
-    const listBtn = document.querySelectorAll(".dynamic-footer_button")//dynamic-footer_button
-    listBtn.forEach((btn, id) => {
-      id === i ? btn.classList.add('active') : btn.classList.remove('active')
-      btn.classList.add('dynamic-footer_button_hide')
-    })
-
-    this.showBackToFirstList = i > 2 ? true : false
-    this.showBackToLastList = i < listBtn.length - 3 ? true : false
-    listBtn.forEach((btn, id) => {
-      if (id >= i - 2 && id <= i + 2) {
-        btn.classList.remove('dynamic-footer_button_hide')
-      }
-    })
-    this.startProductList = +this.countProduct * i
-  }
 
   resetFilters() {
     this.memoryCheck = []
@@ -115,7 +88,7 @@ export class ProductsComponent implements OnInit, OnDestroy {
     this.topPrice = this.getMaxPrice(this.productService.product).toString()
     this.lowerPrice = '0';
     this.searchService.searchProductStr = ""
-    this.changeList(0)
+    this.paginator.changeList(0)
   }
 
   turnRight(idx: number) {
