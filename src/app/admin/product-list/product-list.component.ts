@@ -2,8 +2,9 @@ import { AfterContentChecked, ComponentFactoryResolver, OnDestroy, ViewChild } f
 import { Component, OnInit } from '@angular/core';
 
 import { Subscription } from 'rxjs';
-import { hideFilters } from 'src/app/shared/animations';
+import { hideFilters, phoneModShowFilter } from 'src/app/shared/animations';
 import { Product } from 'src/app/shared/interfaces';
+import { PaginationService } from 'src/app/shared/service/pagination.service';
 import { ProductService } from 'src/app/shared/service/product.service';
 import { SearchProductService } from 'src/app/shared/service/search-product.service';
 import { RefModalRemoveDirective } from '../shared/component/refModalRemove.directive';
@@ -14,11 +15,11 @@ import { ModalService } from '../shared/services/modal.service';
   selector: 'app-product-list',
   templateUrl: './product-list.component.html',
   styleUrls: ['./product-list.component.scss'],
-  animations: [hideFilters]
+  animations: [hideFilters, phoneModShowFilter]
 })
 export class ProductListComponent implements OnInit, OnDestroy, AfterContentChecked {
-  countProduct = 10
-  startProductList = 0
+
+  showAfterProduct = false
 
   lowerPrice: string = '0';
   topPrice!: string
@@ -39,12 +40,22 @@ export class ProductListComponent implements OnInit, OnDestroy, AfterContentChec
     public searchService: SearchProductService,
     private modalService: ModalService,
     private resolver: ComponentFactoryResolver,
-  ) { }
+    public paginator: PaginationService,
+  ) {
+    setTimeout(() => {
+      this.paginator.changeList(0)
+    }, 800)
+  }
 
   ngOnInit(): void {
     this.gSub = this.productService.getAll()
       .subscribe(() => {
         this.maxPrice = this.topPrice = this.getMaxPrice(this.productService.product).toString()
+      }, null, () => {
+        setTimeout(() => {
+          this.showAfterProduct = true
+
+        }, 0)
       })
   }
 
@@ -80,14 +91,6 @@ export class ProductListComponent implements OnInit, OnDestroy, AfterContentChec
     return Math.max(...products.map((p) => p.phonePriceUsd))
   }
 
-  numSequence(n: number): Array<number> {
-    return Array(Math.ceil(n));
-  }
-
-  changeList(i: number) {
-    this.startProductList = +this.countProduct * i
-  }
-
   remove(product: Product) {
     const modalFactory = this.resolver.resolveComponentFactory(RemoveModalComponent)
     const component = this.refDirect.containerRef.createComponent(modalFactory)
@@ -101,7 +104,20 @@ export class ProductListComponent implements OnInit, OnDestroy, AfterContentChec
     this.colorCheck = []
     this.topPrice = this.getMaxPrice(this.productService.product).toString()
     this.lowerPrice = '0';
-    this.changeList(0)
+    this.searchService.searchProductStr = ""
+    this.paginator.changeList(0)
+  }
+  showFilters() {
+    const filters = document.querySelector("#product-filter")
+    const topIcons = document.querySelector("#top-bar_icons")
+    const burgerBtn = document.querySelector("#burger-btn")
+    if (filters?.classList.contains("showEl")) {
+      filters?.classList.remove("showEl")
+    } else {
+      filters?.classList.add("showEl")
+      topIcons?.classList.contains("show_top-icons") ? topIcons?.classList.remove("show_top-icons") : null;
+      burgerBtn?.classList.contains("open-burger") ? burgerBtn?.classList.remove("open-burger") : null;
+    }
   }
 
   ngOnDestroy() {

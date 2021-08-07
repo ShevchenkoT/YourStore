@@ -234,11 +234,12 @@ body {
 
 form {
   border: 1px solid #888;
-  max-width: 600px;
+  //max-width: 600px;
   margin: 0 auto;
   padding: 1rem;
   display: block;
-  min-width: 400px;
+  //min-width: 400px;
+  @include adaptive-value('min-width', 400, 200, 1);
 
   h2 {
     text-align: center;
@@ -261,7 +262,7 @@ form {
   >label {
     margin: 1rem 0 0 0;
     display: block;
-    font-size: 1.5rem;
+    font-size: 22px;
   }
 
   &.invalid {
@@ -965,6 +966,7 @@ button {
     display: flex;
     justify-content: center;
 
+
     .main-product_list_footer_buttons {
       max-width: 100%;
       height: 60px;
@@ -1134,20 +1136,6 @@ button {
 
 .cart-wish_form {
 
-
-  .cart-form {
-
-
-    // border: 1px solid #888;
-    // max-width: 600px;
-    // margin: 0 auto;
-    // padding: 1rem;
-    // display: block;
-    //min-width: 200px; //400px;
-    @include adaptive-value('min-width', 400, 200, 1);
-
-
-  }
 
   .form-control_price {
     margin: 1rem auto;
@@ -1612,7 +1600,7 @@ input:checked+.theme-slider:before {
 
     .top-bar_admin {
       left: 30%;
-      top: 60px;
+      top: -2px;
 
       a {
         h2 {
@@ -1732,7 +1720,7 @@ input:checked+.theme-slider:before {
 
     .top-bar_admin {
       left: 50%;
-      top: 60px;
+      top: -2px;
 
       a {
         h2 {

@@ -153,7 +153,7 @@
       </div>
 
       <div class="main-product_list_footer">
-        <div class="main-product_list_footer_buttons" *ngIf="showAfterProduct">
+        <div class="main-product_list_footer_buttons" *ngIf="showAfterProduct && searchService.countProductAfterPipes">
           <div class="change-list-btn" *ngIf="paginator.showBackToFirstList" (click)="paginator.changeList(0)">
             <span>
               << </span>

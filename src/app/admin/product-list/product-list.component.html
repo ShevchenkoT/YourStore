@@ -1,8 +1,9 @@
 <ng-template appModalRemove></ng-template>
 <div class="main-panel">
 
-  <div class="main-products_filter">
+  <div class="main-products_filter" id="product-filter">
 
+    <button class="close-btn" (click)="showFilters()"> &times;</button>
     <div class="main-products_filter__properties">
       <div class="main-products_filter__properties__title-btn">
         <p>Price</p>
@@ -71,20 +72,24 @@
     </div>
     <div class="main-products_filter__properties">
       <button class="reset-btn" (click)="resetFilters()"> &times; Reset filters</button>
+      <button class="reset-btn hide-btn" (click)="showFilters()"> Hide filters</button>
     </div>
   </div>
 
   <div class="main-products_list">
 
     <div class="main-product_list_header">
-      <label for="selectCount">Show:</label>
-      <select id="selectCount" class="list_header_selectCount" on-change="changeList(0)" [(ngModel)]="countProduct"
-        [value]='10'>
-        <option value=5>5</option>
-        <option value=10>10</option>
-        <option value=20>20</option>
-        <option [value]="productService.product.length">See all</option>
-      </select>
+      <button class="filter-show-btn reset-btn" (click)="showFilters()">Show filters</button>
+      <div class="list_header_container" *ngIf="productService.product.length">
+        <label for="selectCount">Show:</label>
+        <select id="selectCount" class="list_header_selectCount" on-change="paginator.changeList(0)"
+          [(ngModel)]="paginator.countProduct" [value]='10'>
+          <option value=5>5</option>
+          <option value=10>10</option>
+          <option value=20>20</option>
+          <option [value]="productService.product.length">See all</option>
+        </select>
+      </div>
     </div>
 
 
@@ -112,7 +117,11 @@
       | filterPhones :colorCheck :'phoneColor'
       | priceFilter :topPrice: lowerPrice
       | searchProduct:searchService.searchProductStr
-      | slice: startProductList : startProductList + +countProduct" class="main-products_list__product" appHoverPhone>
+      | slice: paginator.startProductList : paginator.startProductList + +paginator.countProduct;
+      " class="main-products_list__product" appHoverPhone>
+        <div class="hover-btn-price">
+          <img src="assets/img/ico/arrowDown.png">
+        </div>
 
 
         <div class="main-products_list__product___photo">
@@ -137,11 +146,34 @@
       </div>
 
       <div class="main-product_list_footer">
-        <div class="change-list-btn" *ngFor="let p of numSequence(searchService.countProductAfterPipes/countProduct);
-          let idx = index" (click)="changeList(idx)">
-          <span>{{idx + 1}}</span>
+        <div class="main-product_list_footer_buttons" *ngIf="showAfterProduct && searchService.countProductAfterPipes">
+          <div class="change-list-btn" *ngIf="paginator.showBackToFirstList" (click)="paginator.changeList(0)">
+            <span>
+              << </span>
+          </div>
+          <div class="change-list-btn dynamic-footer_button" *ngFor="let p of paginator.numSequence(searchService.countProductAfterPipes/paginator.countProduct);
+                          let idx = index" (click)="paginator.changeList(idx)">
+            <span>{{idx + 1}}</span>
+          </div>
+          <div class="change-list-btn" *ngIf="paginator.showBackToLastList"
+            (click)="paginator.changeList(paginator.numSequence(searchService.countProductAfterPipes/paginator.countProduct).length -1)">
+            <span>
+              >> </span>
+          </div>
         </div>
 
+      </div>
+      <div class="no-product-after-filter"
+        *ngIf="searchService.countProductAfterPipes == 0 && productService.product.length && showAfterProduct ">
+        <div class="no-product-after-filter_img">
+          <img src="assets/img/searchError.png">
+        </div>
+        <p class="no-product-after-filter_text">
+          No products by your criteria!
+        </p>
+        <a (click)="resetFilters()" class="no-product-after-filter_text">
+          Reset filters
+        </a>
       </div>
     </ng-template>
   </div>

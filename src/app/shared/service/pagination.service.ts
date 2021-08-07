@@ -32,6 +32,6 @@ export class PaginationService {
   }
 
   numSequence(n: number): Array<number> {
-    return Array(8)//Array(Math.ceil(n));
+    return Array(Math.ceil(n));
   }
 }

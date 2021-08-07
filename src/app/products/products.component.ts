@@ -113,8 +113,6 @@ export class ProductsComponent implements OnInit, OnDestroy {
     const topIcons = document.querySelector("#top-bar_icons")
     const burgerBtn = document.querySelector("#burger-btn")
     const searchInput = document.querySelector("#search-input-duplicate")
-
-
     if (filters?.classList.contains("showEl")) {
       filters?.classList.remove("showEl")
     } else {
