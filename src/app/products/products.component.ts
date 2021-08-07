@@ -1,7 +1,7 @@
-import { animate, keyframes, state, style, transition, trigger } from '@angular/animations';
+import { animate, keyframes, style, transition, trigger } from '@angular/animations';
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Subscription } from 'rxjs';
-import { animateGetProduct, hideFilters } from '../shared/animations';
+import { animateGetProduct, hideFilters, phoneModShowFilter } from '../shared/animations';
 import { Product } from '../shared/interfaces';
 import { CartFavoritesService } from '../shared/service/cart-favorites.service';
 import { ProductService } from '../shared/service/product.service';
@@ -10,33 +10,7 @@ import { SearchProductService } from '../shared/service/search-product.service';
   selector: 'app-products',
   templateUrl: './products.component.html',
   styleUrls: ['./products.component.scss'],
-  animations: [animateGetProduct, hideFilters,
-    trigger("phoneModShowFilter", [
-      // state('show',
-      //   style({ display: 'block' })
-      // ),
-      // state('hide',
-      //   style({ display: 'none' })
-      // ),
-
-
-      transition(':leave', [
-        animate(500, keyframes([
-          style({ transform: "translateX(-100%)", offset: 0.9 }),
-          //style({ display: "none", offset: 0.9 }),
-        ]))
-      ]),
-      transition(':enter', [
-        animate(500, keyframes([
-
-          //style({ display: "block", offset: 0 }),
-          style({ transform: "translateX(-100%)", offset: 0 }),
-          style({ transform: "translateX(0)", offset: 1 }),
-        ]))
-      ]),
-
-    ])
-  ]
+  animations: [animateGetProduct, hideFilters, phoneModShowFilter]
 })
 export class ProductsComponent implements OnInit, OnDestroy {
 
@@ -62,12 +36,19 @@ export class ProductsComponent implements OnInit, OnDestroy {
   error = '';
   gSub!: Subscription
 
-
+  showListBtn = 5
+  showBackToFirstList = false
+  showBackToLastList = false
   constructor(
     public cartFavoritesService: CartFavoritesService,
     public searchService: SearchProductService,
     public productService: ProductService,
-  ) { }
+  ) {
+    setTimeout(() => {
+      this.changeList(0)
+    }, 800)
+
+  }
 
   ngOnInit(): void {
     this.productService.getAll()
@@ -75,12 +56,15 @@ export class ProductsComponent implements OnInit, OnDestroy {
         this.maxPrice = this.topPrice = this.getMaxPrice(this.productService.product).toString()
         this.currentState = new Array(this.productService.product.length)
         this.currentState.fill('start')
-        console.log('start');
 
       }, null, () => {
-        setTimeout(() => { this.showAfterProduct = true }, 0)
+        setTimeout(() => {
+          this.showAfterProduct = true
+
+        }, 0)
       })
   }
+
 
   changeState(n: number) {
     this.filterShow[n] = this.filterShow[n] === "show" ? "hide" : "show"
@@ -103,14 +87,24 @@ export class ProductsComponent implements OnInit, OnDestroy {
   }
 
   numSequence(n: number): Array<number> {
-    if (Math.ceil(n) <= 1) {
-      return Array(0)
-    }
-    return Array(Math.ceil(n));
+    return Array(8)//Array(Math.ceil(n));
   }
 
 
   changeList(i: number) {
+    const listBtn = document.querySelectorAll(".dynamic-footer_button")//dynamic-footer_button
+    listBtn.forEach((btn, id) => {
+      id === i ? btn.classList.add('active') : btn.classList.remove('active')
+      btn.classList.add('dynamic-footer_button_hide')
+    })
+
+    this.showBackToFirstList = i > 2 ? true : false
+    this.showBackToLastList = i < listBtn.length - 3 ? true : false
+    listBtn.forEach((btn, id) => {
+      if (id >= i - 2 && id <= i + 2) {
+        btn.classList.remove('dynamic-footer_button_hide')
+      }
+    })
     this.startProductList = +this.countProduct * i
   }
 

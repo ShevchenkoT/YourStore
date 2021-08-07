@@ -122,3 +122,20 @@ export const showAlert = [
     ])
   ])
 ]
+
+export const phoneModShowFilter = [
+  trigger("phoneModShowFilter", [
+    transition(':leave', [
+      animate(500, keyframes([
+        style({ transform: "translateX(-100%)", offset: 0.9 }),
+      ]))
+    ]),
+    transition(':enter', [
+      animate(500, keyframes([
+        style({ transform: "translateX(-100%)", offset: 0 }),
+        style({ transform: "translateX(0)", offset: 1 }),
+      ]))
+    ]),
+
+  ])
+]

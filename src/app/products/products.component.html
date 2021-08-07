@@ -154,9 +154,18 @@
 
       <div class="main-product_list_footer">
         <div class="main-product_list_footer_buttons" *ngIf="showAfterProduct">
-          <div class="change-list-btn" *ngFor="let p of numSequence(searchService.countProductAfterPipes/countProduct);
+          <div class="change-list-btn" *ngIf="showBackToFirstList" (click)="changeList(0)">
+            <span>
+              << </span>
+          </div>
+          <div class="change-list-btn dynamic-footer_button" *ngFor="let p of numSequence(searchService.countProductAfterPipes/countProduct);
                     let idx = index" (click)="changeList(idx)">
             <span>{{idx + 1}}</span>
+          </div>
+          <div class="change-list-btn" *ngIf="showBackToLastList"
+            (click)="changeList(numSequence(searchService.countProductAfterPipes/countProduct).length -1)">
+            <span>
+              >> </span>
           </div>
         </div>
 
