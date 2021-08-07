@@ -18,6 +18,19 @@ export class AdminLayoutComponent implements OnInit {
   ngOnInit() {
   }
 
+  showBurgerMenu(event: any) {
+    const filters = document.querySelector("#product-filter")
+    const topIcons = document.querySelector("#top-bar_icons")
+    if (topIcons?.classList.contains("show_top-icons") && event.target.offsetParent.classList.contains("open-burger")) {
+      event.target.offsetParent.classList.remove("open-burger")
+      topIcons?.classList.remove("show_top-icons")
+    } else {
+      event.target.offsetParent.classList.add("open-burger")
+      topIcons?.classList.add("show_top-icons")
+      filters?.classList.contains("showEl") ? filters?.classList.remove("showEl") : null;
+    }
+  }
+
   exit() {
     this.auth.logout()
     this.router.navigate(['/admin', 'login'])

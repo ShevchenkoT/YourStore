@@ -2,14 +2,16 @@
 <div class="top-bar">
 
   <div class="top-bar_tittle">
-    <a routerLink="/">
+    <a [routerLink]="['/admin', 'product-list']">
       <h1><span>Your</span> Store </h1>
     </a>
   </div>
-  <a routerLink="/admin">
-    <h2>Admin</h2>
-  </a>
-  <div class="top-bar_icons">
+  <div class="top-bar_admin">
+    <a routerLink="/admin">
+      <h2>Admin</h2>
+    </a>
+  </div>
+  <div class="top-bar_icons" id="top-bar_icons">
 
     <div routerLinkActive="active-route" class="top-bar_element " *ngIf="auth.isAuthenticated()">
       <a [routerLink]="['/admin', 'product-list']"><img src="assets/img/ico/list.png" alt=""></a>
@@ -39,8 +41,12 @@
         <input type="checkbox" checked class="my-check">
         <span (click)="darkTheme($event)" class="theme-slider theme-round"></span>
       </label>
-
+      <small>Theme</small>
     </div>
+  </div>
+  <div class="show-menu-btn" id="burger-btn" (click)="showBurgerMenu($event)">
+    <div class="menu-btn_burger"></div>
+
   </div>
 </div>
 <div class="main-container">
@@ -64,20 +70,29 @@
       <strong>Social networks</strong>
       <div class="main-footer_social-buttons">
         <div class="social-circle main-footer_social-network_facebook">
-          <div class="img"><img src="assets/img/social-ico/facebook.png" alt=""></div>
-          <a href="https://www.facebook.com/profile.php?id=100002003441140" target="_blank" class="text">Facebook</a>
+          <a href="https://www.facebook.com/profile.php?id=100002003441140" target="_blank">
+            <div class="img"><img src="assets/img/social-ico/facebook.png" alt=""></div>
+            <p class="text">Facebook</p>
+          </a>
         </div>
         <div class="social-circle main-footer_social-network_instagram">
-          <div class="img"><img src="assets/img/social-ico/instagram.png" alt=""></div>
-          <a href="https://www.instagram.com/shevchenko___t/" target="_blank" class="text">Instagram</a>
+          <a href="https://www.instagram.com/shevchenko___t/" target="_blank">
+            <div class="img"><img src="assets/img/social-ico/instagram.png" alt=""></div>
+            <p class="text">Instagram</p>
+          </a>
         </div>
         <div class="social-circle main-footer_social-network_github">
-          <div class="img"><img src="assets/img/social-ico/git-hub.png" alt=""></div>
-          <a href="https://github.com/ShevchenkoT" target="_blank" class="text">Git Hub</a>
+          <a href="https://github.com/ShevchenkoT" target="_blank">
+            <div class="img"><img src="assets/img/social-ico/git-hub.png" alt=""></div>
+            <p class="text">Git Hub</p>
+          </a>
         </div>
         <div class="social-circle main-footer_social-network_linkedin">
-          <div class="img"><img src="assets/img/social-ico/linkin.png" alt=""></div>
-          <a href="https://www.linkedin.com/in/taras-shevchyk-ab5002217/" target="_blank" class="text">Linkedin</a>
+          <a href="https://www.linkedin.com/in/taras-shevchyk-ab5002217/" target="_blank">
+            <div class="img"><img src="assets/img/social-ico/linkin.png" alt=""></div>
+            <p class="text">Linkedin</p>
+
+          </a>
         </div>
       </div>
 

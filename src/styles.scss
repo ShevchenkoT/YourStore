@@ -453,15 +453,29 @@ button {
     }
   }
 
-  h2 {
-    font-size: 38px;
-    color: var(--text-color);
-    transition: all .3s ease;
+  .top-bar_admin {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
 
-    &:hover {
-      transform: scale(1.05);
+
+    a {
+
+      h2 {
+        font-size: 38px;
+        transition: all .3s ease;
+        color: var(--text-color);
+
+        &:hover {
+          transform: scale(1.05);
+        }
+      }
+
     }
+
+
   }
+
 
   .top-bar_icons {
     display: flex;
@@ -1595,6 +1609,17 @@ input:checked+.theme-slider:before {
         }
       }
     }
+
+    .top-bar_admin {
+      left: 30%;
+      top: 60px;
+
+      a {
+        h2 {
+          font-size: 25px;
+        }
+      }
+    }
   }
 
   .main-products_filter {
@@ -1701,6 +1726,17 @@ input:checked+.theme-slider:before {
       a {
         h1 {
           font-size: 35px;
+        }
+      }
+    }
+
+    .top-bar_admin {
+      left: 50%;
+      top: 60px;
+
+      a {
+        h2 {
+          font-size: 25px;
         }
       }
     }
