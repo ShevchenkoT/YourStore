@@ -33,12 +33,17 @@ export class OrdersComponent implements OnInit, OnDestroy {
     public alertService: AlertService,
   ) { }
 
-  animate(id: string | undefined) {
+  animate(id: string | undefined, idx: number) {
     this.orderService.order.map((o) => {
       if (o.id === id) {
         o.state = o.state === 'end' ? 'start' : 'end'
       }
     })
+    const menuBtn = document.querySelectorAll("#menu-btn")
+
+
+    menuBtn[idx]?.classList.contains("open-burger") ? menuBtn[idx]?.classList.remove("open-burger") : menuBtn[idx]?.classList.add("open-burger")
+
   }
   ngOnInit() {
     this.orderService.getAll().subscribe(() => {

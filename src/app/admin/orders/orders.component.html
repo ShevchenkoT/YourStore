@@ -2,13 +2,13 @@
 
 <div class="main-panel">
   <router-outlet></router-outlet>
-
+  <h2 class="title">ORDERS</h2>
   <div class="no-order" *ngIf="error">
     <p>There are no orders yet</p>
   </div>
   <div *ngIf="orderService.order.length; else loading">
 
-    <div class="order " *ngFor="let o of orderService.order |sortByDate"
+    <div class="order" *ngFor="let o of orderService.order |sortByDate; let idx = index"
       [ngClass]="{processing:o.orderStatus === 'processing',done:o.orderStatus === 'done',cancel:o.orderStatus === 'cancel'}">
       <div class="order_user-product-info">
         <div class="order_user">
@@ -74,7 +74,11 @@
         <button class="btn blue-btn" (click)="getOrder(o.id)">Print</button>
       </div>
 
-      <div class="menu-button" [@rotate]="o.state" (click)="animate(o.id)"> <img src="assets/img/ico/menu.png" alt="">
+      <!-- <div class="menu-button" [@rotate]="o.state" (click)="animate(o.id)"> <img src="assets/img/ico/menu.png" alt="">
+      </div> -->
+      <div class="show-menu-btn" id="menu-btn" (click)="animate(o.id, idx)">
+        <div class="menu-btn_burger"></div>
+
       </div>
 
     </div>

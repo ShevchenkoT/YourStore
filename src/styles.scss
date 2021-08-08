@@ -34,11 +34,6 @@ $maxWidthContainer:1200; //1170;
   @include adaptive-value('width', 200, 50, 3);
 }
 
-
-
-
-
-
 /*Zero style*/
 * {
   padding: 0;
@@ -435,6 +430,14 @@ button {
   align-items: center;
   justify-content: space-evenly;
 
+  .show-menu-btn {
+    display: none;
+
+    .menu-btn_burger {
+      display: none;
+    }
+  }
+
   .top-bar_tittle {
     margin-top: 1rem;
     cursor: pointer;
@@ -572,7 +575,7 @@ button {
 
 
 .show-menu-btn {
-  display: none;
+  //display: none;
   width: 30px; //50px
   height: 30px; //50px
   margin: 0 10px;
@@ -589,7 +592,7 @@ button {
 
 
   .menu-btn_burger {
-    display: none;
+    //display: none;
     width: 30px;
     height: 5px;
     background-color: var(--text-color);
@@ -1448,20 +1451,6 @@ input:checked+.theme-slider:before {
       font-size: 1.5rem;
     }
 
-    // .form_characteristics_characteristicOfName {
-    //   &>input {
-    //     @include adaptive-value('width', 160, 60, 1);
-
-    //   }
-    // }
-
-    // .form_characteristics_characteristicOfInfo {
-    //   &>input {
-    //     @include adaptive-value('width', 350, 135, 1);
-
-    //   }
-    // }
-
     .form_characteristics_characteristicOfInfo,
     .form_characteristics_characteristicOfName {
       display: flex;
@@ -1479,6 +1468,129 @@ input:checked+.theme-slider:before {
       }
     }
   }
+}
+
+.order {
+
+  //@include adaptive-value('max-width', 1000, 300, 1);
+  background-color: var(--second-color);
+  max-width: 1000px;
+  min-height: 250px;
+  //max-width: 300px;
+  font-size: 20px;
+  margin-bottom: 1rem;
+  position: relative;
+  transition: box-shadow .5s ease-in;
+
+
+  .order_user-product-info {
+    //width: 100%;
+    min-height: 180px;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+
+
+    h3 {
+      font-size: 18px;
+      font-weight: bold;
+    }
+
+    .order_user {
+      width: 50%;
+      height: 100%;
+      padding: 1rem 0 0 1rem;
+
+      table {
+        margin-left: 5rem;
+        font-size: 1rem;
+        // table-layout: fixed;
+        width: 100%;
+
+        tr {
+          display: block;
+          width: 100%;
+          //margin-top: 1rem
+        }
+
+        th {
+          text-align: start;
+          width: 130px;
+
+
+        }
+
+        td {
+          word-break: break-all;
+          text-align: start;
+          color: var(--other-text-color);
+
+        }
+      }
+    }
+
+    .order_products {
+      width: 50%;
+      height: 100%;
+      padding: .5rem;
+      font-size: 1.2rem;
+
+      .scroll {
+        margin-left: 3rem;
+        max-width: 500px;
+        overflow: auto;
+        max-height: 70%;
+        padding: 0 0 0 3rem;
+        max-height: 190px;
+
+        &>p {
+          color: var(--other-text-color);
+        }
+      }
+    }
+  }
+
+  .order-info {
+    border-top: 2px solid #fff;
+    width: 100%;
+    min-height: 60px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+
+    align-items: flex-end;
+
+  }
+
+  .order-buttons {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    position: absolute;
+    right: 0;
+    top: 0;
+    width: 180px;
+    height: 76%;
+    background-color: rgba($color: rgb(78, 78, 78), $alpha: 0.9);
+    overflow: hidden;
+  }
+
+
+
+
+  .show-menu-btn {
+
+    position: absolute;
+    right: 0;
+    top: 15px;
+    //width: 40px;
+    //height: 40px;
+    // & img {
+    //   width: 100%;
+    // }
+  }
+
+
 }
 
 .search-input-duplicate {
@@ -1623,6 +1735,10 @@ input:checked+.theme-slider:before {
   .under-top-panel {
     max-width: 970px;
   }
+
+  .order {
+    min-width: 90%;
+  }
 }
 
 @media(max-width:992px) {
@@ -1706,6 +1822,60 @@ input:checked+.theme-slider:before {
     left: 50%;
     transform: translateX(-50%);
   }
+
+  .order {
+    .order_user-product-info {
+      .order_user {
+        table {
+          margin-left: 2rem;
+        }
+      }
+
+      .order_products {
+
+        .scroll {
+          margin-left: 2rem;
+        }
+      }
+    }
+
+    .order-info {
+      flex-direction: column;
+      align-items: center;
+      padding: 1rem;
+    }
+
+    // .order-buttons {
+    //   display: flex;
+    //   flex-direction: column;
+    //   justify-content: space-around;
+    //   position: absolute;
+    //   right: 0;
+    //   top: 0;
+    //   width: 180px;
+    //   height: 76%;
+    //   background-color: rgba($color: rgb(78, 78, 78), $alpha: 0.9);
+    //   overflow: hidden;
+    // }
+
+
+
+
+    // .menu-button {
+
+    //   position: absolute;
+    //   right: 0;
+    //   top: 0;
+    //   width: 40px;
+    //   height: 40px;
+
+    //   & img {
+    //     width: 100%;
+    //   }
+    // }
+
+
+  }
 }
 
 @media(max-width:767px) {
@@ -1757,6 +1927,14 @@ input:checked+.theme-slider:before {
   }
 
   .top-bar {
+    .show-menu-btn {
+      display: block;
+
+      .menu-btn_burger {
+        display: block;
+      }
+    }
+
     .top-bar_tittle {
       width: 200px;
 
@@ -1824,13 +2002,6 @@ input:checked+.theme-slider:before {
     }
   }
 
-  .show-menu-btn {
-    display: block;
-
-    .menu-btn_burger {
-      display: block;
-    }
-  }
 
   .main-products_list {
     .main-products_list__product {
@@ -1913,5 +2084,70 @@ input:checked+.theme-slider:before {
       }
     }
   }
+
+  .order {
+    max-width: 98%;
+
+    .order_user-product-info {
+
+      .order_user {
+        min-width: 100%;
+        padding: 1rem;
+
+        table {
+          margin-left: 1rem;
+        }
+      }
+
+      .order_products {
+        min-width: 100%;
+        padding: 1rem;
+
+        .scroll {
+          margin-left: 1rem;
+          padding: 0; //   max-height: 190px;
+        }
+      }
+    }
+
+    .order-info {
+      padding: 1rem;
+      flex-direction: column;
+      font-size: 16px;
+      align-items: center;
+    }
+
+    // .order-buttons {
+    //   display: flex;
+    //   flex-direction: column;
+    //   justify-content: space-around;
+    //   position: absolute;
+    //   right: 0;
+    //   top: 0;
+    //   width: 180px;
+    //   height: 76%;
+    //   background-color: rgba($color: rgb(78, 78, 78), $alpha: 0.9);
+    //   overflow: hidden;
+    // }
+
+
+
+
+    // .menu-button {
+
+    //   position: absolute;
+    //   right: 0;
+    //   top: 0;
+    //   width: 40px;
+    //   height: 40px;
+
+    //   & img {
+    //     width: 100%;
+    //   }
+    // }
+
+
+  }
+
 
 }
