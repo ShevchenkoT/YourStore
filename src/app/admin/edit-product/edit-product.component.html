@@ -1,20 +1,25 @@
 <div class="main-panel">
-  <h2>CHANGE PRODUCT</h2>
+  <h2 class="title">CHANGE PRODUCT</h2>
   <form *ngIf="product; else loading" class="edit-form" [formGroup]="form" (ngSubmit)="submit()">
 
 
-    <div>
-      <img *ngIf="testPicture;else pictureEmpty" src="{{testPicture}}">
-      <ng-template #pictureEmpty>
-        <div class="pictureEmpty">
-          <p>No image</p>
-        </div>
-      </ng-template>
+    <div class="form-choice-img">
+      <div class="form-img">
+
+        <img *ngIf="testPicture;else pictureEmpty" src="{{testPicture}}">
+
+        <ng-template #pictureEmpty>
+          <div class="pictureEmpty">
+            <p>No image</p>
+          </div>
+        </ng-template>
+      </div>
+
+
 
       <div [ngClass]="{invalid:form.get('pictureUrl')?.touched && form.get('pictureUrl')?.invalid}"
         class=" form-control">
         <label for="pictureUrl">Picture Url</label>
-
         <input list="post" id="pictureUrl" type="search" formControlName="pictureUrl" placeholder="example.com/img.png">
 
         <datalist id="post">
@@ -31,7 +36,7 @@
         picture</button>
     </div>
 
-    <div class="">
+    <div class="product-data">
       <div [ngClass]="{invalid:form.get('phoneName')?.touched && form.get('phoneName')?.invalid}" class="form-control">
         <label for="phoneName">Phone Name</label>
         <input id="phoneName" type="text" formControlName="phoneName" placeholder="Enter phone name">
@@ -106,10 +111,10 @@
           Fill in all the characteristics
         </small>
       </div>
-      <p><span>NAME</span> INFO</p>
-      <div class="form-array-control">
-        <div>
 
+      <div class="form-array-control">
+        <div class="control-name">
+          <p>NAME</p>
           <div [ngClass]="{invalid:getCharacteristicOfName()[idx].touched && getCharacteristicOfName()[idx].invalid}"
             class="form_characteristics_characteristicOfName" formGroupName="characteristicOfName"
             *ngFor="let c of getCharacteristicOfName(); let idx = index">
@@ -119,7 +124,8 @@
 
         </div>
 
-        <div>
+        <div class="control-info">
+          <p>INFO</p>
           <div [ngClass]="{invalid:getCharacteristicOfInfo()[idx].touched && getCharacteristicOfInfo()[idx].invalid}"
             class="form_characteristics_characteristicOfInfo" formGroupName="characteristicOfInfo"
             *ngFor="let c of getCharacteristicOfInfo(); let idx = index">

@@ -125,6 +125,9 @@
 
 
         <div class="main-products_list__product___photo">
+          <a [routerLink]="['/admin', 'product', p.id, 'edit']" title="Change {{p.phoneName}}"
+            class="main-products_list__product__link-detail">
+          </a>
           <img title="Details {{p.phoneName}}" class="main-products_list__product___photo" src="{{p.pictureUrl}}"
             alt="">
         </div>

@@ -1,40 +1,10 @@
 .main-panel {
-
+  display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: flex-start
+
 }
 
-h2 {
-  font-weight: 500;
-  font-size: 28px;
-}
-
-form {
-  display: flex;
-  margin: 0 auto;
-  max-width: 1500px;
-
-
-  &>img {
-    width: 378px;
-    height: 378px;
-  }
-
-  input {
-    width: 250px;
-  }
-}
-
-.form-control {
-  &>label {
-    margin-bottom: 5px;
-  }
-
-  &>#pictureUrl {
-    width: 350px;
-  }
-}
 
 .delete-btn {
   margin-top: .5rem;
@@ -42,6 +12,6 @@ form {
 
 
 
-.wavy-loading {
-  margin: 7rem auto;
-}
+// .wavy-loading {
+//   margin: 7rem auto;
+// }
