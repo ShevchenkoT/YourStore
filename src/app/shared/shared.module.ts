@@ -1,13 +1,13 @@
-import { NgModule } from "@angular/core";
-import { HttpClientModule } from "@angular/common/http";
-import { FormsModule, ReactiveFormsModule } from "@angular/forms";
+import { NgModule } from '@angular/core';
+import { HttpClientModule } from '@angular/common/http';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
-import { HoverPhoneDirective } from "./directives/hover-phone.directive";
-import { FilterChecksPipe } from "./pipes/filter-checks.pipe";
-import { FilterPhonesPipe } from "./pipes/filter-phones.pipe";
-import { PriceFilterPipe } from "./pipes/price-filter.pipe";
-import { SearchProductPipe } from "./pipes/search-product.pipe";
-import { SortByDatePipe } from "./pipes/sort-by-date.pipe";
+import { HoverPhoneDirective } from './directives/hover-phone.directive';
+import { FilterChecksPipe } from './pipes/filter-checks.pipe';
+import { FilterPhonesPipe } from './pipes/filter-phones.pipe';
+import { PriceFilterPipe } from './pipes/price-filter.pipe';
+import { SearchProductPipe } from './pipes/search-product.pipe';
+import { SortByDatePipe } from './pipes/sort-by-date.pipe';
 
 @NgModule({
   declarations: [
@@ -17,7 +17,6 @@ import { SortByDatePipe } from "./pipes/sort-by-date.pipe";
     SortByDatePipe,
     SearchProductPipe,
     PriceFilterPipe,
-
   ],
   imports: [
     HttpClientModule,
@@ -34,7 +33,6 @@ import { SortByDatePipe } from "./pipes/sort-by-date.pipe";
     SortByDatePipe,
     SearchProductPipe,
     PriceFilterPipe,
-
   ],
   providers: []
 })

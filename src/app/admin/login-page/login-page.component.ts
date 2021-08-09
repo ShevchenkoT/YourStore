@@ -14,65 +14,63 @@ import { AuthService } from '../shared/services/auth.service';
 })
 export class LoginPageComponent implements OnInit, AfterContentChecked, OnDestroy {
 
-  form!: FormGroup
-  submitted: boolean = false
-  message!: string
+  form!: FormGroup;
+  submitted = false;
+  message!: string;
 
-  lSub!: Subscription
+  lSub!: Subscription;
   constructor(
     public auth: AuthService,
     private router: Router,
     private route: ActivatedRoute
   ) { }
-  ngOnInit() {
+  ngOnInit(): void {
     window.scroll(0, 0);
     this.route.queryParams.subscribe((params: Params) => {
-      if (params['loginAgain']) {
-        this.message = 'Please enter data'
-      } else if (params['authFailed']) {
-        this.message = 'Session is over. Enter data again '
+      if (params.loginAgain) {// !params['loginAgain']
+        this.message = 'Please enter data';
+      } else if (params.authFailed) { // !params['authFailed']
+        this.message = 'Session is over. Enter data again';
       }
-    })
-
-
+    });
     this.form = new FormGroup({
       email: new FormControl(null, [Validators.email, Validators.required]),
       password: new FormControl(null, [Validators.minLength(6), Validators.required]),
-    })
+    });
   }
-  ngAfterContentChecked() {
+  ngAfterContentChecked(): void {
     if (this.auth.isAuthenticated()) {
-      this.form.get('email')?.disable()
-      this.form.get('password')?.disable()
+      this.form.get('email')?.disable();
+      this.form.get('password')?.disable();
     } else {
-      this.form.get('email')?.enable()
-      this.form.get('password')?.enable()
+      this.form.get('email')?.enable();
+      this.form.get('password')?.enable();
     }
   }
 
 
 
-  submit() {
+  submit(): void {
     if (this.form.invalid) {
-      return
+      return;
     }
-    this.submitted = true
+    this.submitted = true;
     const user: User = {
       email: this.form.value.email,
       password: this.form.value.password
-    }
-    this.lSub = this.auth.login(user).subscribe((resolve) => {
-      this.router.navigate(["/admin", "product-list"])
-      this.form.reset()
-      this.submitted = false
+    };
+    this.lSub = this.auth.login(user).subscribe(() => {
+      this.router.navigate(['/admin', 'product-list']);
+      this.form.reset();
+      this.submitted = false;
     }, () => {
-      this.submitted = false
-    })
+      this.submitted = false;
+    });
   }
 
-  ngOnDestroy() {
+  ngOnDestroy(): void {
     if (this.lSub) {
-      this.lSub.unsubscribe
+      this.lSub.unsubscribe();
     }
   }
 

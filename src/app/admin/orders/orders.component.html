@@ -1,45 +1,37 @@
 <ng-template appModalRemove></ng-template>
-
 <div class="main-panel">
   <router-outlet></router-outlet>
   <h2 class="title">ORDERS</h2>
   <div class="no-order" *ngIf="error">
     <p>There are no orders yet</p>
   </div>
-  <div *ngIf="orderService.order.length; else loading">
-
+  <div *ngIf="orderService.order.length ; else loading">
     <div class="order" *ngFor="let o of orderService.order |sortByDate; let idx = index"
       [ngClass]="{processing:o.orderStatus === 'processing',done:o.orderStatus === 'done',cancel:o.orderStatus === 'cancel'}">
       <div class="order_user-product-info">
         <div class="order_user">
           <h3>User:</h3>
           <table>
-
             <tr>
               <th>Email: </th>
               <td><a href="mailto:{{o.email}}">{{o.email}}</a></td>
             </tr>
-
             <tr>
               <th>Phone: </th>
               <td><a href="tel:{{o.phoneNumber}}">{{o.phoneNumber}}</a></td>
             </tr>
-
             <tr>
               <th>Name: </th>
               <td>{{o.fullName}}</td>
             </tr>
-
             <tr>
               <th>Sending: </th>
               <td>{{o.sendingType}}</td>
             </tr>
-
             <tr>
               <th>Home Address: </th>
               <td>{{o.address}}</td>
             </tr>
-
           </table>
         </div>
 
@@ -49,10 +41,8 @@
             <p *ngFor="let p of o.products" class="example-item">{{p['phoneName']}} ({{p['phoneColor']}})
               {{p['memory']}}GB : {{p['numberOfProducts']}} pieces</p>
           </div>
-
         </div>
       </div>
-
 
       <div class="order-info">
         <p>Order id: {{o.id}}</p>
@@ -63,26 +53,21 @@
       <div class="order-buttons" [@hidden]="o.state">
         <button class="btn green-btn" (click)="orderDone(o)" [disabled]='doneSubmitted'>Done</button>
         <div class="cancel-remove-button">
-
           <button class="btn red-btn" (click)="orderCancel(o)" [disabled]='cancelSubmitted'>Cancel</button>
           <button title="Delete product" class="btn red-btn delete-btn" *ngIf="o.orderStatus === 'cancel'"
             (click)="remove(o)">
             <img src="assets/img/ico/delete.png">
           </button>
-
         </div>
         <button class="btn blue-btn" (click)="getOrder(o.id)">Print</button>
       </div>
 
-      <!-- <div class="menu-button" [@rotate]="o.state" (click)="animate(o.id)"> <img src="assets/img/ico/menu.png" alt="">
-      </div> -->
       <div class="show-menu-btn" id="menu-btn" (click)="animate(o.id, idx)">
         <div class="menu-btn_burger"></div>
-
       </div>
-
     </div>
   </div>
+
   <ng-template #loading>
     <div class="wavy-loading">
       <span style="--i:1;">L</span>

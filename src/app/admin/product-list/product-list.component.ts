@@ -1,5 +1,5 @@
-import { AfterContentChecked, AfterViewInit, ComponentFactoryResolver, OnDestroy, ViewChild } from '@angular/core';
 import { Component, OnInit } from '@angular/core';
+import { AfterContentChecked, AfterViewInit, ComponentFactoryResolver, OnDestroy, ViewChild } from '@angular/core';
 
 import { Subscription } from 'rxjs';
 import { hideFilters, phoneModShowFilter } from 'src/app/shared/animations';
@@ -19,21 +19,21 @@ import { ModalService } from '../shared/services/modal.service';
 })
 export class ProductListComponent implements OnInit, OnDestroy, AfterContentChecked, AfterViewInit {
 
-  showAfterProduct = false
+  showAfterProduct = false;
 
-  lowerPrice: string = '0';
-  topPrice!: string
-  maxPrice!: string
+  lowerPrice = '0';
+  topPrice!: string;
+  maxPrice!: string;
 
   nameCheck: Array<string> = [];
   memoryCheck: Array<string> = [];
   colorCheck: Array<string> = [];
-  filterShow = ["show", "hide", "hide"]
+  filterShow = ['show', 'hide', 'hide'];
 
-  gSub!: Subscription
+  gSub!: Subscription;
   error = '';
 
-  @ViewChild(RefModalRemoveDirective, { static: false }) refDirect!: RefModalRemoveDirective
+  @ViewChild(RefModalRemoveDirective, { static: false }) refDirect!: RefModalRemoveDirective;
 
   constructor(
     public productService: ProductService,
@@ -43,94 +43,96 @@ export class ProductListComponent implements OnInit, OnDestroy, AfterContentChec
     public paginator: PaginationService,
   ) {
     setTimeout(() => {
-      this.paginator.changeList(0)
-    }, 800)
+      this.paginator.changeList(0);
+    }, 800);
   }
 
   ngOnInit(): void {
     window.scroll(0, 0);
     this.gSub = this.productService.getAll()
       .subscribe(() => {
-        this.maxPrice = this.topPrice = this.getMaxPrice(this.productService.product).toString()
+        this.maxPrice = this.topPrice = this.getMaxPrice(this.productService.product).toString();
       }, null, () => {
         setTimeout(() => {
-          this.showAfterProduct = true
+          this.showAfterProduct = true;
 
-        }, 0)
-      })
+        }, 0);
+      });
   }
 
-
-  ngAfterViewInit() {
+  ngAfterViewInit(): void {
     setTimeout(() => {
-      this.paginator.changeList(0)
-    }, 500)
+      this.paginator.changeList(0);
+    }, 500);
   }
 
-  changeState(n: number) {
-    this.filterShow[n] = this.filterShow[n] === "show" ? "hide" : "show"
+  changeState(n: number): void {
+    this.filterShow[n] = this.filterShow[n] === 'show' ? 'hide' : 'show';
   }
 
-  ngAfterContentChecked() {
+  ngAfterContentChecked(): void {
     if (this.productService.product.length) {
-      const newMaxPrice = this.getMaxPrice(this.productService.product).toString()
+      const newMaxPrice = this.getMaxPrice(this.productService.product).toString();
       if (newMaxPrice !== this.maxPrice) {
-        this.maxPrice = this.topPrice = newMaxPrice
+        this.maxPrice = this.topPrice = newMaxPrice;
         this.lowerPrice = '0';
       }
     }
   }
 
-
-  blockDown(event: any) {
+  blockDown(event: any): void {
     if (this.lowerPrice > this.topPrice) {
-      event.target.value = this.lowerPrice = this.topPrice
+      event.target.value = this.lowerPrice = this.topPrice;
 
     }
   }
 
-  blockUp(event: any) {
+  blockUp(event: any): void {
     if (this.lowerPrice > this.topPrice) {
-      event.target.value = this.topPrice = this.lowerPrice
+      event.target.value = this.topPrice = this.lowerPrice;
     }
   }
 
   getMaxPrice(products: Product[]): any {
-    return Math.max(...products.map((p) => p.phonePriceUsd))
+    return Math.max(...products.map((p) => p.phonePriceUsd));
   }
 
-  remove(product: Product) {
-    const modalFactory = this.resolver.resolveComponentFactory(RemoveModalComponent)
-    const component = this.refDirect.containerRef.createComponent(modalFactory)
-    component.instance.product = product.phoneName
-    this.modalService.createModal(this.refDirect, product)
+  remove(product: Product): void {
+    const modalFactory = this.resolver.resolveComponentFactory(RemoveModalComponent);
+    const component = this.refDirect.containerRef.createComponent(modalFactory);
+    component.instance.product = product.phoneName;
+    this.modalService.createModal(this.refDirect, product);
   }
 
-  resetFilters() {
-    this.memoryCheck = []
-    this.nameCheck = []
-    this.colorCheck = []
-    this.topPrice = this.getMaxPrice(this.productService.product).toString()
+  resetFilters(): void {
+    this.memoryCheck = [];
+    this.nameCheck = [];
+    this.colorCheck = [];
+    this.topPrice = this.getMaxPrice(this.productService.product).toString();
     this.lowerPrice = '0';
-    this.searchService.searchProductStr = ""
-    this.paginator.changeList(0)
+    this.searchService.searchProductStr = '';
+    this.paginator.changeList(0);
   }
-  showFilters() {
-    const filters = document.querySelector("#product-filter")
-    const topIcons = document.querySelector("#top-bar_icons")
-    const burgerBtn = document.querySelector("#burger-btn")
-    if (filters?.classList.contains("showEl")) {
-      filters?.classList.remove("showEl")
+  showFilters(): void {
+    const filters = document.querySelector('#product-filter');
+    const topIcons = document.querySelector('#top-bar_icons');
+    const burgerBtn = document.querySelector('#burger-btn');
+    if (filters?.classList.contains('showEl')) {
+      filters?.classList.remove('showEl');
     } else {
-      filters?.classList.add("showEl")
-      topIcons?.classList.contains("show_top-icons") ? topIcons?.classList.remove("show_top-icons") : null;
-      burgerBtn?.classList.contains("open-burger") ? burgerBtn?.classList.remove("open-burger") : null;
+      filters?.classList.add('showEl');
+      if (topIcons?.classList.contains('show_top-icons')) {
+        topIcons?.classList.remove('show_top-icons');
+      }
+      if (burgerBtn?.classList.contains('open-burger')) {
+        burgerBtn?.classList.remove('open-burger');
+      }
     }
   }
 
-  ngOnDestroy() {
+  ngOnDestroy(): void {
     if (this.gSub) {
-      this.gSub.unsubscribe
+      this.gSub.unsubscribe();
     }
   }
 }

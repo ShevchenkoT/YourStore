@@ -22,20 +22,15 @@
 
       <div [ngClass]="{invalid:form.get('phoneNumber')?.touched && form.get('phoneNumber')?.invalid}"
         class="form-control">
-
         <label for="phoneNumber">Phone Number</label>
         <input id="phoneNumber" type="text" formControlName="phoneNumber" inputmode="numeric"
           placeholder="Like this: 0963332211">
 
-
         <div class="errors" *ngIf=" form.get('phoneNumber')?.invalid && form.get('phoneNumber')?.touched">
-
           <small *ngIf="form.get('phoneNumber')?.errors?.minlength && !form.get('phoneNumber')?.errors?.isNotInteger">
             Enter {{form.get('phoneNumber')?.errors?.minlength?.requiredLength}} digits now:
             {{form.get('phoneNumber')?.errors?.minlength?.actualLength}}
-
           </small>
-
           <small *ngIf="form.get('phoneNumber')?.errors?.required ">
             Phone Number field cannot be empty
           </small>
@@ -44,9 +39,6 @@
           </small>
         </div>
       </div>
-
-
-
 
       <div [ngClass]="{invalid:form.get('fullName')?.touched && form.get('fullName')?.invalid}" class="form-control">
         <label for="fullName">Full name</label>
@@ -67,6 +59,7 @@
           <option value="Courier">Delivery by courier</option>
           <option value="Mail">Delivery by mail</option>
         </select>
+
         <div class="errors" *ngIf="form.get('sendingType')?.invalid && form.get('sendingType')?.touched">
           <small>
             Field cannot be empty
@@ -105,20 +98,15 @@
 
   </div>
 
-
   <div *ngIf="!cartService.cartItem.length;else content " class="list-empty">
     <p>Cart is empty &#9785;</p>
     <a routerLink="/">Add some product</a>
   </div>
 
-
-
   <ng-template #content>
     <div class="cart-wish_products">
       <div class="cart-wish_products__product" *ngFor="let product of cartService.cartItem">
-
         <img class="cart-wish_products__product___picture" src={{product.pictureUrl}}>
-
         <div class="cart-wish_products__product___info">
           <h2>{{product.phoneName}} <span>{{product.memory}}GB</span></h2>
           <span>({{product.phoneColor}})</span>
@@ -129,31 +117,23 @@
         </div>
 
         <div class="cart-wish_products__product___buttons">
-
           <div class="cart-wish_products__product___buttons___circle-button">
             <button (click)="cartService.deleteOneProductInCart(product)" class="circle-button">
               <span>-</span>
             </button>
-
             <span> {{product.numberOfProducts}}</span>
-
             <button (click)="cartService.addOneProductToCart(product)" class="circle-button">
               <span>+</span>
             </button>
-
           </div>
 
           <div class="cart-wish_products__product___buttons___delete-add-button">
             <button title="Delete product" class="btn red-btn delete-btn " (click)="cartService.deleteInCart(product)">
               <img src="assets/img/ico/delete.png">
             </button>
-
-
           </div>
         </div>
       </div>
     </div>
   </ng-template>
-
-
 </div>

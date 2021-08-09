@@ -11,33 +11,33 @@ import { AlertService, AlertType } from '../../services/alert.service';
 })
 export class AlertComponent implements OnInit, OnDestroy {
 
-  @Input() delay = 4000
+  @Input() delay = 4000;
 
-  public text: string = ""
-  public type: AlertType = 'success'
-  timeout: any
-  aSub!: Subscription
+  public text = '';
+  public type: AlertType = 'success';
+  timeout: any;
+  aSub!: Subscription;
 
   constructor(private alertService: AlertService) { }
 
-  ngOnInit() {
+  ngOnInit(): void {
     this.alertService.alert$.subscribe((alert) => {
       if (this.text) {
-        clearTimeout(this.timeout)
+        clearTimeout(this.timeout);
       }
       this.timeout = setTimeout(() => {
-        clearTimeout(this.timeout)
-        this.text = ''
+        clearTimeout(this.timeout);
+        this.text = '';
       }, this.delay);
-      this.text = alert.text
-      this.type = alert.type
-    })
+      this.text = alert.text;
+      this.type = alert.type;
+    });
   }
 
 
-  ngOnDestroy() {
+  ngOnDestroy(): void {
     if (this.aSub) {
-      this.aSub.unsubscribe()
+      this.aSub.unsubscribe();
     }
   }
 }

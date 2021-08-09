@@ -5,6 +5,6 @@ export class MyValidators {
     if (control.value) {
       return /\D/.test(control.value) ? { isNotInteger: true } : null as any;
     }
-    return null as any
+    return null as any;
   }
 }

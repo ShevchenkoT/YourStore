@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
-import { CartFavoritesService } from '../shared/service/cart-favorites.service';
 import { Location } from '@angular/common';
 
+import { CartFavoritesService } from '../shared/service/cart-favorites.service';
 @Component({
   selector: 'app-wish-list',
   templateUrl: './wish-list.component.html',
@@ -13,10 +13,9 @@ export class WishListComponent {
     private location: Location,
   ) {
     window.scroll(0, 0);
-
   }
 
-  previousPage() {
-    this.location.back()
+  previousPage(): void {
+    this.location.back();
   }
 }

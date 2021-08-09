@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { ModalService } from '../../services/modal.service';
 
 @Component({
@@ -6,13 +6,11 @@ import { ModalService } from '../../services/modal.service';
   templateUrl: './remove-modal.component.html',
   styleUrls: ['./remove-modal.component.scss']
 })
-export class RemoveModalComponent implements OnInit {
+export class RemoveModalComponent {
 
-  @Input() product = 'someProduct'
+  @Input() product = 'someProduct';
 
   constructor(public modalService: ModalService) { }
 
-  ngOnInit() {
-  }
 
 }

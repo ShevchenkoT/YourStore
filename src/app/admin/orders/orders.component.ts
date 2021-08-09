@@ -1,4 +1,4 @@
-import { Component, ComponentFactoryResolver, ErrorHandler, OnDestroy, OnInit, ViewChild } from '@angular/core';
+import { Component, ComponentFactoryResolver, OnDestroy, OnInit, ViewChild } from '@angular/core';
 import { Subscription } from 'rxjs';
 import { animateBoxButtons } from 'src/app/shared/animations';
 import { Order } from 'src/app/shared/interfaces';
@@ -16,15 +16,15 @@ import { PrintService } from '../shared/services/print.service';
   animations: [animateBoxButtons]
 })
 export class OrdersComponent implements OnInit, OnDestroy {
-  toggle = true
-  firstUSub!: Subscription
-  secondUSub!: Subscription
-  error!: string
+  toggle = true;
+  firstUSub!: Subscription;
+  secondUSub!: Subscription;
+  error!: string;
 
-  doneSubmitted = false
-  cancelSubmitted = false
+  doneSubmitted = false;
+  cancelSubmitted = false;
 
-  @ViewChild(RefModalRemoveDirective, { static: false }) refDirect!: RefModalRemoveDirective
+  @ViewChild(RefModalRemoveDirective, { static: false }) refDirect!: RefModalRemoveDirective;
   constructor(
     public orderService: OrderService,
     private printService: PrintService,
@@ -33,34 +33,34 @@ export class OrdersComponent implements OnInit, OnDestroy {
     public alertService: AlertService,
   ) { }
 
-  animate(id: string | undefined, idx: number) {
+  animate(id: string | undefined, idx: number): void {
     this.orderService.order.map((o) => {
       if (o.id === id) {
-        o.state = o.state === 'end' ? 'start' : 'end'
+        o.state = o.state === 'end' ? 'start' : 'end';
       }
-    })
-    const menuBtn = document.querySelectorAll("#menu-btn")
+    });
+    const menuBtn = document.querySelectorAll('#menu-btn');
 
 
-    menuBtn[idx]?.classList.contains("open-burger") ? menuBtn[idx]?.classList.remove("open-burger") : menuBtn[idx]?.classList.add("open-burger")
+    menuBtn[idx]?.classList.contains('open-burger') ? menuBtn[idx]?.classList.remove('open-burger') : menuBtn[idx]?.classList.add('open-burger');
 
   }
-  ngOnInit() {
+  ngOnInit(): void {
     window.scroll(0, 0);
     this.orderService.getAll().subscribe(() => {
-      this.orderService.order.map((o) => o.state = 'start')
+      this.orderService.order.map((o) => o.state = 'start');
     }, (error) => {
-      this.error = error
-    })
+      this.error = error;
+    });
   }
-  orderDone(order: Order) {
-    this.doneSubmitted = true
+  orderDone(order: Order): void {
+    this.doneSubmitted = true;
     this.orderService.update({
       ...order,
       email: order.email,
       fullName: order.fullName,
       orderDate: order.orderDate,
-      orderStatus: "done",
+      orderStatus: 'done',
       phoneNumber: order.phoneNumber,
       products: order.products,
       sendingType: order.sendingType,
@@ -69,21 +69,21 @@ export class OrdersComponent implements OnInit, OnDestroy {
     }).subscribe(() => {
       this.orderService.order.map((o) => {
         if (o.id === order.id) {
-          o.orderStatus = 'done'
-          this.alertService.success("Order confirmed")
-          this.doneSubmitted = false
+          o.orderStatus = 'done';
+          this.alertService.success('Order confirmed');
+          this.doneSubmitted = false;
         }
-      })
-    })
+      });
+    });
   }
-  orderCancel(order: Order) {
-    this.cancelSubmitted = true
+  orderCancel(order: Order): void {
+    this.cancelSubmitted = true;
     this.orderService.update({
       ...order,
       email: order.email,
       fullName: order.fullName,
       orderDate: order.orderDate,
-      orderStatus: "cancel",
+      orderStatus: 'cancel',
       phoneNumber: order.phoneNumber,
       products: order.products,
       sendingType: order.sendingType,
@@ -91,31 +91,33 @@ export class OrdersComponent implements OnInit, OnDestroy {
     }).subscribe(() => {
       this.orderService.order.map((o) => {
         if (o.id === order.id) {
-          o.orderStatus = 'cancel'
-          this.alertService.warning("Order rejected")
-          this.cancelSubmitted = false
+          o.orderStatus = 'cancel';
+          this.alertService.warning('Order rejected');
+          this.cancelSubmitted = false;
         }
-      })
-    })
+      });
+    });
   }
 
-  getOrder(id: string | undefined) {
+  getOrder(id: string | undefined): void {
     this.printService.printDocument(id);
   }
-  remove(order: Order) {
-    const modalFactory = this.resolver.resolveComponentFactory(RemoveModalComponent)
-    const component = this.refDirect.containerRef.createComponent(modalFactory)
-    component.instance.product = order.id!
-    this.modalService.createModal(this.refDirect, order)
+  remove(order: Order): void {
+    const modalFactory = this.resolver.resolveComponentFactory(RemoveModalComponent);
+    const component = this.refDirect.containerRef.createComponent(modalFactory);
+    if (order.id) {
+      component.instance.product = order.id;
+    }
+    this.modalService.createModal(this.refDirect, order);
 
   }
 
-  ngOnDestroy() {
+  ngOnDestroy(): void {
     if (this.firstUSub) {
-      this.firstUSub.unsubscribe
+      this.firstUSub.unsubscribe();
     }
     if (this.secondUSub) {
-      this.secondUSub.unsubscribe
+      this.secondUSub.unsubscribe();
     }
   }
 }

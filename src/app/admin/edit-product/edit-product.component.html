@@ -2,21 +2,15 @@
   <h2 class="title">CHANGE PRODUCT</h2>
   <form *ngIf="product; else loading" class="edit-form" [formGroup]="form" (ngSubmit)="submit()">
 
-
     <div class="form-choice-img">
       <div class="form-img">
-
         <img *ngIf="testPicture;else pictureEmpty" src="{{testPicture}}">
-
         <ng-template #pictureEmpty>
           <div class="pictureEmpty">
             <p>No image</p>
           </div>
         </ng-template>
       </div>
-
-
-
       <div [ngClass]="{invalid:form.get('pictureUrl')?.touched && form.get('pictureUrl')?.invalid}"
         class=" form-control">
         <label for="pictureUrl">Picture Url</label>
@@ -58,7 +52,6 @@
           <option value="512">512</option>
           <option value="1024">1024</option>
         </select>
-
         <div class="errors" *ngIf="form.get('memory')?.invalid && form.get('memory')?.touched">
           <small *ngIf="form.get('memory')?.errors?.required">
             Field cannot be empty
@@ -102,7 +95,6 @@
     </div>
 
     <div class="form_characteristics">
-
       <h3>CHARACTERISTICS</h3>
 
       <button class="btn blue-btn " type="button" (click)="addFeature()">Add</button>
@@ -124,7 +116,6 @@
               <option *ngFor="let photo of productService.characteristicsNameList" [value]="photo"></option>
             </datalist>
           </div>
-
         </div>
 
         <div class="control-info">
@@ -139,13 +130,8 @@
             </button>
           </div>
         </div>
-
-
       </div>
-
     </div>
-
-
   </form>
   <ng-template #loading>
     <div class="wavy-loading">

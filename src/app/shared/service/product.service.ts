@@ -1,36 +1,37 @@
-import { HttpClient } from "@angular/common/http";
-import { Injectable, OnInit } from "@angular/core";
-import { Observable } from "rxjs";
-import { map, tap } from "rxjs/operators";
-import { environment } from "src/environments/environment";
-import { Product } from "../interfaces";
+import { HttpClient } from '@angular/common/http';
+import { Injectable } from '@angular/core';
+
+import { Observable } from 'rxjs';
+import { map, tap } from 'rxjs/operators';
+import { environment } from 'src/environments/environment';
+import { Product } from '../interfaces';
 
 @Injectable({
-  providedIn: "root"
+  providedIn: 'root'
 })
 export class ProductService {
-  product: Product[] = []
+  product: Product[] = [];
   photosPhonesLinks: Array<string> = [
-    "https://stylus.ua/thumbs/378x378/05/ee/1987044.png",
-    "https://stylus.ua/thumbs/378x378/fc/1b/1509441.png",
-    "https://stylus.ua/thumbs/378x378/f6/04/1217704.png",
-    "https://stylus.ua/thumbs/378x378/67/dc/1217703.png",
-    "https://stylus.ua/thumbs/378x378/f6/04/1217704.png",
-    "https://stylus.ua/thumbs/378x378/89/27/1217697.png",
-    "https://stylus.ua/thumbs/378x378/ea/72/1217698.png",
-  ]
+    'https://stylus.ua/thumbs/378x378/05/ee/1987044.png',
+    'https://stylus.ua/thumbs/378x378/fc/1b/1509441.png',
+    'https://stylus.ua/thumbs/378x378/f6/04/1217704.png',
+    'https://stylus.ua/thumbs/378x378/67/dc/1217703.png',
+    'https://stylus.ua/thumbs/378x378/f6/04/1217704.png',
+    'https://stylus.ua/thumbs/378x378/89/27/1217697.png',
+    'https://stylus.ua/thumbs/378x378/ea/72/1217698.png',
+  ];
 
   characteristicsNameList: Array<string> = [
-    "Battery Type",
-    "Chipset",
-    "Dimensions",
-    "Display Resolution",
-    "Display Size",
-    "Display Type",
-    "Launch",
-    "Platform OS",
-    "Weight",
-  ]
+    'Battery Type',
+    'Chipset',
+    'Dimensions',
+    'Display Resolution',
+    'Display Size',
+    'Display Type',
+    'Launch',
+    'Platform OS',
+    'Weight',
+  ];
 
 
   constructor(
@@ -46,23 +47,20 @@ export class ProductService {
             .map((key) => ({
               ...response[key],
               id: key,
-            }))
-
+            }));
         }),
         tap((product: Product[]) => {
-          this.product = product
+          this.product = product;
         })
-      )
+      );
   }
 
   create(product: any): Observable<any> {
-    return this.http.post(`${environment.rbDbUrl}/product.json`, product)
+    return this.http.post(`${environment.rbDbUrl}/product.json`, product);
   }
 
   remove(id: string | undefined): Observable<void> {
-
-    return this.http.delete<void>(`${environment.rbDbUrl}/product/${id}.json`)
-
+    return this.http.delete<void>(`${environment.rbDbUrl}/product/${id}.json`);
   }
 
   getById(id: string): Observable<Product> {
@@ -72,12 +70,12 @@ export class ProductService {
           return {
             ...product,
             id,
-          }
+          };
         })
-      )
+      );
   }
 
   update(product: Product): Observable<Product> {
-    return this.http.patch<Product>(`${environment.rbDbUrl}/product/${product.id}.json`, product)
+    return this.http.patch<Product>(`${environment.rbDbUrl}/product/${product.id}.json`, product);
   }
 }

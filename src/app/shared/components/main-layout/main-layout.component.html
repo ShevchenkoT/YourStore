@@ -1,10 +1,11 @@
+<div class="burger-menu"></div>
+
 <div class="top-bar">
 
   <div class="top-bar_tittle">
     <a routerLink="/" (click)="scrollUp()">
       <h1><span>Your</span> Store</h1>
     </a>
-
   </div>
 
   <div class="search-input search-input-duplicate" id="search-input-duplicate">
@@ -12,26 +13,22 @@
     <button class="reset-btn" (click)="showSearch()"> Hide</button>
   </div>
 
-
   <div class="top-bar_icons" id="top-bar_icons">
-
     <div class="top-bar_element_search " [@search]='searchState'>
       <div class="btn-search-duplicate" (click)="showSearch()"></div>
-
       <div class="top-bar_element icon_search" (click)="animate()">
         <img src="assets/img/ico/search.png">
         <small>Search</small>
       </div>
+
       <div class="search-input"><input list="post" type="search" [(ngModel)]='searchService.searchProductStr'>
       </div>
       <datalist id="post">
         <option *ngFor="let p of productService.product |filterChecks: 'phoneName'" [value]="p"></option>
       </datalist>
-
     </div>
 
     <div class="top-bar_element " routerLinkActive="active-route">
-
       <a routerLink="/wish-list" title="My wish list"><img src="assets/img/ico/wishlist.png" alt=""></a>
       <div [@shake]='searchService.wishState' class="counter">
         <p>{{cartFavoriteService.numberOfFavorites}}</p>
@@ -53,16 +50,12 @@
       </label>
       <small>Theme</small>
     </div>
-
-
   </div>
   <div class="show-menu-btn" id="burger-btn" (click)="showBurgerMenu($event)">
     <div class="menu-btn_burger"></div>
-
   </div>
 </div>
 <div class="main-container">
-
   <router-outlet></router-outlet>
   <div class="main-footer">
     <div class="main-footer_logo">
@@ -103,15 +96,9 @@
           <a href="https://www.linkedin.com/in/taras-shevchyk-ab5002217/" target="_blank">
             <div class="img"><img src="assets/img/social-ico/linkin.png" alt=""></div>
             <p class="text">Linkedin</p>
-
           </a>
         </div>
       </div>
-
     </div>
   </div>
-
 </div>
-
-
-<div class="burger-menu"></div>

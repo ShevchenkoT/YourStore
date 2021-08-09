@@ -16,7 +16,6 @@
         <input type="range" min="0" max={{maxPrice}} step="20" (input)='blockDown($event)' [(ngModel)]='lowerPrice'>
         <input type="range" min="0" max={{maxPrice}} step="20" (input)='blockUp($event)' [(ngModel)]='topPrice'>
       </div>
-
     </div>
 
     <div class="main-products_filter__properties">
@@ -92,7 +91,6 @@
       </div>
     </div>
 
-
     <div *ngIf="error || !productService.product.length;else productNoEmpty">
       <div class="wavy-loading">
         <span style="--i:1;">L</span>
@@ -108,7 +106,6 @@
       </div>
     </div>
 
-
     <ng-template #productNoEmpty>
       <div *ngFor="let p of productService.product
 
@@ -122,8 +119,6 @@
         <div class="hover-btn-price">
           <img src="assets/img/ico/arrowDown.png">
         </div>
-
-
         <div class="main-products_list__product___photo">
           <a [routerLink]="['/admin', 'product', p.id, 'edit']" title="Change {{p.phoneName}}"
             class="main-products_list__product__link-detail">
@@ -141,11 +136,9 @@
         </div>
 
         <div class="main-product_list__product___price">
-
           <span class="usd">{{p.phonePriceUsd | currency : 'USD':'symbol':'3.0'}}</span>
           <span class="uah">{{ p.phonePriceUsd*28}} Грн</span>
         </div>
-
       </div>
 
       <div class="main-product_list_footer">
@@ -164,7 +157,6 @@
               >> </span>
           </div>
         </div>
-
       </div>
       <div class="no-product-after-filter"
         *ngIf="searchService.countProductAfterPipes == 0 && productService.product.length && showAfterProduct ">
@@ -180,5 +172,4 @@
       </div>
     </ng-template>
   </div>
-
 </div>

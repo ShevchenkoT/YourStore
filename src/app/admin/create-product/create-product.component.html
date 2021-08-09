@@ -1,23 +1,15 @@
 <div class="main-panel">
-
   <h2 class="title">CREATE PRODUCT</h2>
   <form class="create-form" [formGroup]="form" (ngSubmit)="submit()">
-
-
     <div class="form-choice-img">
       <div class="form-img">
-
         <img *ngIf="testPicture;else pictureEmpty" src="{{testPicture}}">
-
         <ng-template #pictureEmpty>
           <div class="pictureEmpty">
             <p>No image</p>
           </div>
         </ng-template>
       </div>
-
-
-
       <div [ngClass]="{invalid:form.get('pictureUrl')?.touched && form.get('pictureUrl')?.invalid}"
         class=" form-control">
         <label for="pictureUrl">Picture Url</label>
@@ -100,13 +92,9 @@
           Fill in all the characteristics
         </small>
       </div>
-
-
     </div>
     <div class="form_characteristics">
-
       <h3>CHARACTERISTICS </h3>
-
       <button class="btn blue-btn " type="button" (click)="addFeature()">Add</button>
 
       <div class="errors " *ngIf="arrayFormValid()">
@@ -126,7 +114,6 @@
               <option *ngFor="let photo of productService.characteristicsNameList" [value]="photo"></option>
             </datalist>
           </div>
-
         </div>
 
         <div class="control-info">
@@ -141,10 +128,7 @@
             </button>
           </div>
         </div>
-
-
       </div>
-
     </div>
   </form>
 </div>

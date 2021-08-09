@@ -17,9 +17,9 @@ import { OrderService } from '../shared/service/order.service';
 export class CartComponent implements OnInit, OnDestroy {
 
   form!: FormGroup;
-  submitted = false
-  locationSubmitted = false
-  gSub!: Subscription
+  submitted = false;
+  locationSubmitted = false;
+  gSub!: Subscription;
   constructor(
     public cartService: CartFavoritesService,
     private orderService: OrderService,
@@ -33,36 +33,31 @@ export class CartComponent implements OnInit, OnDestroy {
     this.form = new FormGroup({
       email: new FormControl(null, [Validators.email, Validators.required]),
       phoneNumber: new FormControl(null, [Validators.required, Validators.minLength(10), MyValidators.ifInt]),
-      fullName: new FormControl(null, [Validators.required,]),
+      fullName: new FormControl(null, [Validators.required]),
       sendingType: new FormControl(null, [Validators.required]),
       address: new FormControl(null, [Validators.required])
     });
   }
 
-  previousPage() {
-    this.location.back()
+  previousPage(): void {
+    this.location.back();
   }
 
-  getGeolocation() {
-    this.locationSubmitted = true
+  getGeolocation(): void {
+    this.locationSubmitted = true;
     navigator.geolocation.getCurrentPosition((locate) => {
-      //!Debug
-      //49.835663, 24.024150 lvov
-      //locate.coords.latitude, locate.coords.longitude
-      //49.863637, 23.444908 Mulda
-      //49.932095, 23.578184 NYA
       this.gSub = this.geolocationService.getLocation(locate.coords.latitude, locate.coords.longitude).subscribe((loc) => {
-        this.form.get('address')?.setValue(`${loc.address.country}, ${loc.address.village}, ${loc.address.postcode}`)
+        this.form.get('address')?.setValue(`${loc.address.country}, ${loc.address.village}, ${loc.address.postcode}`);
         this.form.get('address')?.setValue(
-          `${loc.address.country ? loc.address.country : ''} ${loc.address.town ? loc.address.town : ''} ${loc.address.city ? loc.address.city : ''} ${loc.address.village ? loc.address.village : ''} ${loc.address.borough ? loc.address.borough : ''} ${loc.address.postcode ? loc.address.postcode : ''}`)
-        this.locationSubmitted = false
-      })
-    })
+          `${loc.address.country ? loc.address.country : ''} ${loc.address.town ? loc.address.town : ''} ${loc.address.city ? loc.address.city : ''} ${loc.address.village ? loc.address.village : ''} ${loc.address.borough ? loc.address.borough : ''} ${loc.address.postcode ? loc.address.postcode : ''}`);
+        this.locationSubmitted = false;
+      });
+    });
   }
 
   onSubmit(): void {
     if (this.cartService.cartItem.length || this.cartService.cartItem.length !== 0) {
-      this.submitted = true
+      this.submitted = true;
       const formData: Order = {
         ...this.form.value,
         products: this.cartService.cartItem,
@@ -75,19 +70,19 @@ export class CartComponent implements OnInit, OnDestroy {
         this.form.reset();
         this.cartService.clearCartList();
         this.cartService.totalPrice = 0;
-        this.submitted = false
-      })
+        this.submitted = false;
+      });
     }
   }
 
-  resetForm() {
-    this.cartService.totalPrice = 0
+  resetForm(): void {
+    this.cartService.totalPrice = 0;
     this.form.reset();
   }
 
-  ngOnDestroy() {
+  ngOnDestroy(): void {
     if (this.gSub) {
-      this.gSub.unsubscribe()
+      this.gSub.unsubscribe();
     }
   }
 }

@@ -10,8 +10,8 @@ import { AlertService } from './alert.service';
 })
 export class ModalService {
 
-  refDir!: RefModalRemoveDirective
-  item!: Product | Order
+  refDir!: RefModalRemoveDirective;
+  item!: Product | Order;
   constructor(
     private productService: ProductService,
     private orderService: OrderService,
@@ -20,29 +20,28 @@ export class ModalService {
 
   }
 
-  createModal(refDirect: RefModalRemoveDirective | any, item: Product | Order) {
-    this.refDir = refDirect
-    this.item = item
-
+  createModal(refDirect: RefModalRemoveDirective | any, item: Product | Order): void {
+    this.refDir = refDirect;
+    this.item = item;
   }
 
-  closeModal() {
-    this.refDir.containerRef.remove()
+  closeModal(): void {
+    this.refDir.containerRef.remove();
   }
-  deleteProduct() {
+  deleteProduct(): void {
     if ('phoneName' in this.item) {
       this.productService.remove(this.item.id).subscribe(() => {
-        this.productService.product = this.productService.product.filter((p) => p.id !== this.item.id)
-        this.closeModal()
-        this.alertService.danger("Product remove")
-      })
+        this.productService.product = this.productService.product.filter((p) => p.id !== this.item.id);
+        this.closeModal();
+        this.alertService.danger('Product remove');
+      });
     } else if ('orderDate' in this.item) {
       this.orderService.remove(this.item).subscribe(() => {
-        this.orderService.order = this.orderService.order.filter((o) => o.id !== this.item.id)
-        this.alertService.danger("Order remove")
-        this.closeModal()
+        this.orderService.order = this.orderService.order.filter((o) => o.id !== this.item.id);
+        this.alertService.danger('Order remove');
+        this.closeModal();
 
-      })
+      });
     }
   }
 }

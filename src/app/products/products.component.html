@@ -16,7 +16,6 @@
         <input type="range" min="0" max={{maxPrice}} step="20" (input)='blockDown($event)' [(ngModel)]='lowerPrice'>
         <input type="range" min="0" max={{maxPrice}} step="20" (input)='blockUp($event)' [(ngModel)]='topPrice'>
       </div>
-
     </div>
 
     <div class="main-products_filter__properties">
@@ -94,9 +93,6 @@
       </div>
     </div>
 
-
-
-
     <div class="wavy-loading" *ngIf="error ||!productService.product.length;else productNoEmpty">
       <span style="--i:1;">L</span>
       <span style="--i:2;">O</span>
@@ -110,11 +106,8 @@
       <span style="--i:10;">.</span>
     </div>
 
-
-
     <ng-template #productNoEmpty>
       <div *ngFor="let p of productService.product
-
       | filterPhones :nameCheck :'phoneName'
       | filterPhones :memoryCheck :'memory'
       | filterPhones :colorCheck :'phoneColor'
@@ -128,7 +121,8 @@
 
         <div class="main-products_list__product___photo">
           <a [routerLink]="['/product-detail',p.id]" title="Detail {{p.phoneName}}"
-            class="main-products_list__product__link-detail"></a>
+            class="main-products_list__product__link-detail">
+          </a>
 
           <img [@getProduct]="currentState[idx]" title="Details {{p.phoneName}}"
             class="main-products_list__product___photo" src="{{p.pictureUrl}}" alt="">
@@ -144,12 +138,9 @@
         </div>
 
         <div class="main-product_list__product___price">
-
           <span class="usd">{{p.phonePriceUsd | currency : 'USD':'symbol':'3.0'}}</span>
           <span class="uah">{{ p.phonePriceUsd*28}} Грн</span>
         </div>
-
-
       </div>
 
       <div class="main-product_list_footer">
@@ -184,6 +175,4 @@
       </div>
     </ng-template>
   </div>
-
-
 </div>

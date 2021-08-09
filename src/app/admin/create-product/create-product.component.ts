@@ -14,11 +14,11 @@ import { AuthService } from '../shared/services/auth.service';
   styleUrls: ['./create-product.component.scss']
 })
 export class CreateProductComponent implements OnInit, OnDestroy {
-  form!: FormGroup
-  submitted = false
-  testPicture!: string
+  form!: FormGroup;
+  submitted = false;
+  testPicture!: string;
 
-  cSub!: Subscription
+  cSub!: Subscription;
 
   constructor(
     public productService: ProductService,
@@ -27,7 +27,7 @@ export class CreateProductComponent implements OnInit, OnDestroy {
     private alertService: AlertService,
   ) { }
 
-  ngOnInit() {
+  ngOnInit(): void {
     window.scroll(0, 0);
     this.form = new FormGroup({
       phoneName: new FormControl(null, [Validators.required]),
@@ -37,33 +37,34 @@ export class CreateProductComponent implements OnInit, OnDestroy {
       pictureUrl: new FormControl(null, [Validators.required]),
       characteristicOfName: new FormArray([]),
       characteristicOfInfo: new FormArray([])
-    })
+    });
 
 
   }
 
-  addFeature() {
+  addFeature(): void {
     const newCharacteristicOfName = new FormControl('', Validators.required);
     const newCharacteristicOfInfo = new FormControl('', Validators.required);
 
     (this.form.get('characteristicOfName') as FormArray).push(newCharacteristicOfName);
     (this.form.get('characteristicOfInfo') as FormArray).push(newCharacteristicOfInfo);
   }
-  getCharacteristicOfName() {
+  getCharacteristicOfName(): Array<any> {
     return (this.form.get('characteristicOfName') as FormArray).controls;
   }
-  getCharacteristicOfInfo() {
+  getCharacteristicOfInfo(): Array<any> {
     return (this.form.get('characteristicOfInfo') as FormArray).controls;
   }
-  remoteCharacteristic(idx: number) {
+  remoteCharacteristic(idx: number): void {
     (this.form.get('characteristicOfName') as FormArray).removeAt(idx);
     (this.form.get('characteristicOfInfo') as FormArray).removeAt(idx);
   }
 
-  arrayFormErrors() {
-    return !!this.getCharacteristicOfName().filter((obj) => obj.errors).length || !!this.getCharacteristicOfInfo().filter((obj) => obj.errors).length
+  arrayFormErrors(): boolean {
+    return !!this.getCharacteristicOfName().filter((obj) => obj.errors).length ||
+      !!this.getCharacteristicOfInfo().filter((obj) => obj.errors).length;
   }
-  arrayFormValid() {
+  arrayFormValid(): boolean {
     return !!this.getCharacteristicOfName()
       .filter(
         (obj) => obj.invalid && obj.touched
@@ -71,52 +72,52 @@ export class CreateProductComponent implements OnInit, OnDestroy {
       || !!this.getCharacteristicOfInfo()
         .filter(
           (obj) => obj.invalid && obj.touched
-        ).length
+        ).length;
   }
 
-  submit() {
+  submit(): void {
     if (this.form.invalid) {
-      return
+      return;
     }
     if (!this.auth.isAuthenticated()) {
       this.router.navigate(['/admin', 'login'], {
         queryParams: {
           authFailed: true
         }
-      })
-      return
+      });
+      return;
     }
-    let newCharacteristic: any = {}
+    const newCharacteristic: any = {};
     if (this.form.value.characteristicOfName && this.form.value.characteristicOfInfo) {
-      this.form.value.characteristicOfName.forEach((key: number, i: number) => newCharacteristic[key] = this.form.value.characteristicOfInfo[i])
+      this.form.value.characteristicOfName
+        .forEach((key: number, i: number) => newCharacteristic[key] = this.form.value.characteristicOfInfo[i]);
     }
-    this.submitted = true
+    this.submitted = true;
     const newProduct: Product = {
       phoneName: this.form.value.phoneName,
-      memory: parseInt(this.form.value.memory),
+      memory: parseInt(this.form.value.memory, 0),
       phoneColor: this.form.value.phoneColor,
-      phonePriceUsd: parseInt(this.form.value.phonePriceUsd),
+      phonePriceUsd: parseInt(this.form.value.phonePriceUsd, 0),
       pictureUrl: this.form.value.pictureUrl,
       characteristic: newCharacteristic,
-    }
+    };
     this.cSub = this.productService.create(newProduct).subscribe(() => {
       this.form.reset();
       (this.form.get('characteristicOfName') as FormArray).clear();
       (this.form.get('characteristicOfInfo') as FormArray).clear();
-      this.testPicture = ''
-      this.submitted = false
-      console.log(newProduct);///////////////////////////////////////////////////////////////////////////////////////////////////////////
-    })
-    this.alertService.success("Product is created")
+      this.testPicture = '';
+      this.submitted = false;
+    });
+    this.alertService.success('Product is created');
 
   }
-  testImg() {
-    this.testPicture = this.form.value.pictureUrl
+  testImg(): void {
+    this.testPicture = this.form.value.pictureUrl;
   }
 
-  ngOnDestroy() {
+  ngOnDestroy(): void {
     if (this.cSub) {
-      this.cSub.unsubscribe
+      this.cSub.unsubscribe();
     }
   }
 

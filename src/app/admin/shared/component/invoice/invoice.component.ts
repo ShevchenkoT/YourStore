@@ -11,7 +11,7 @@ import { PrintService } from '../../services/print.service';
   styleUrls: ['./invoice.component.scss']
 })
 export class InvoiceComponent implements OnInit {
-  invoiceForPrint!: Order
+  invoiceForPrint!: Order;
 
   constructor(
     private printService: PrintService,
@@ -19,17 +19,17 @@ export class InvoiceComponent implements OnInit {
     private orderService: OrderService,
   ) { }
 
-  ngOnInit() {
+  ngOnInit(): void {
     this.route.params.pipe(
       switchMap((params: Params) => {
-        return this.orderService.getById(params['id'])
+        return this.orderService.getById(params.id); // !params['id']
       })
     ).subscribe((order: Order) => {
-      this.invoiceForPrint = order
-      this.printService.onDataReady()
+      this.invoiceForPrint = order;
+      this.printService.onDataReady();
       navigator.geolocation.watchPosition((locate) => {
         console.log(locate);
-      })
-    })
+      });
+    });
   }
 }

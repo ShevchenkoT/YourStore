@@ -19,8 +19,6 @@ const INTERCEPTOR_PROVIDER: Provider = {
   multi: true,
   useClass: AuthInterceptor
 }
-
-
 @NgModule({
   declarations: [
     AppComponent,
@@ -29,7 +27,6 @@ const INTERCEPTOR_PROVIDER: Provider = {
     ProductDetailComponent,
     CartComponent,
     WishListComponent,
-
   ],
   imports: [
     BrowserModule,

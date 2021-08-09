@@ -27,7 +27,6 @@ export class CartFavoritesService {
     this.favoriteItems = [];
   }
 
-
   addToCart(product: Product): void {
     if (!this.cartItem.map((prod) => prod.id).includes(product.id)) {
       product.numberOfProducts = 1;

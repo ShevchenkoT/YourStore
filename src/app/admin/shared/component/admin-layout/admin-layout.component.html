@@ -6,32 +6,30 @@
       <h1><span>Your</span> Store </h1>
     </a>
   </div>
+
   <div class="top-bar_admin">
     <a routerLink="/admin">
       <h2>Admin</h2>
     </a>
   </div>
-  <div class="top-bar_icons" id="top-bar_icons">
 
+  <div class="top-bar_icons" id="top-bar_icons">
     <div routerLinkActive="active-route" class="top-bar_element " *ngIf="auth.isAuthenticated()">
       <a [routerLink]="['/admin', 'product-list']"><img src="assets/img/ico/list.png" alt=""></a>
       <small>Products</small>
     </div>
 
     <div routerLinkActive="active-route" class="top-bar_element" *ngIf="auth.isAuthenticated()">
-
       <a [routerLink]="['/admin', 'create']"><img src="assets/img/ico/add.png" alt=""></a>
       <small>Create</small>
     </div>
 
     <div routerLinkActive="active-route" class="top-bar_element" *ngIf="auth.isAuthenticated()">
-
       <a [routerLink]="['/admin', 'orders']"><img src="assets/img/ico/card.png" alt=""></a>
       <small>Orders</small>
     </div>
 
     <div class="top-bar_element">
-
       <a title="My Cart"><img src="assets/img/ico/logout.png" (click)="exit()"></a>
       <small>Logout</small>
     </div>
@@ -44,12 +42,14 @@
       <small>Theme</small>
     </div>
   </div>
+
   <div class="show-menu-btn" id="burger-btn" (click)="showBurgerMenu($event)">
     <div class="menu-btn_burger"></div>
-
   </div>
 </div>
+
 <div class="main-container">
+
   <router-outlet></router-outlet>
 
   <div class="main-footer">
@@ -95,7 +95,6 @@
           </a>
         </div>
       </div>
-
     </div>
   </div>
 </div>

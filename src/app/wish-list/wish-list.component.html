@@ -2,13 +2,9 @@
   <button class="reset-btn" (click)="previousPage()"> &lt; Back</button>
   <h2 class="wish-title">WISH LIST</h2>
   <button (click)="favoriteService.clearFavoriteList()" class="btn red-btn">Clear</button>
-
 </div>
 
-
 <div class="main-panel">
-
-
   <div *ngIf="!favoriteService.favoriteItems.length;else content " class="list-empty">
     <p>Wish-list is empty &#9785;</p>
     <a routerLink="/">Add some product</a>
@@ -17,7 +13,6 @@
   <ng-template #content>
     <div class="cart-wish_products">
       <div class="cart-wish_products__product" *ngFor="let product of favoriteService.favoriteItems">
-
         <img class="cart-wish_products__product___picture" src={{product.pictureUrl}}>
 
         <div class="cart-wish_products__product___info">
@@ -30,14 +25,12 @@
         </div>
 
         <div class="cart-wish_products__product___buttons">
-
-
           <div class="cart-wish_products__product___buttons___delete-add-button">
-
             <button class="blue-btn btn" title="Add to Cart"
               (click)="favoriteService.addToCart(product); favoriteService.deleteInFavorites(product)">
               Add to Cart
             </button>
+
             <button title="Delete product" class="btn red-btn delete-btn "
               (click)="favoriteService.deleteInFavorites(product)">
               <img src="assets/img/ico/delete.png">
@@ -46,7 +39,5 @@
         </div>
       </div>
     </div>
-
-
   </ng-template>
 </div>

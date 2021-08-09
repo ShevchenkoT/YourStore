@@ -9,19 +9,19 @@ export class PrintService {
 
   constructor(private router: Router) { }
 
-  printDocument(documentData: string | undefined) {
+  printDocument(documentData: string | undefined): void {
     this.isPrinting = true;
     this.router.navigate(['/admin', 'invoice', documentData]
     );
   }
 
-  onDataReady() {
+  onDataReady(): void {
     setTimeout(() => {
       window.print();
       this.isPrinting = false;
       this.router.navigate([{ outlets: { print: null } }]).then(() => {
-        this.router.navigate(['/admin', 'orders'])
-      })
+        this.router.navigate(['/admin', 'orders']);
+      });
     });
   }
 }

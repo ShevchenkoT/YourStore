@@ -2,21 +2,17 @@
   <button class="reset-btn" (click)="previousPage()"> &lt; Back</button>
 </div>
 
-
 <div class="main-panel">
   <div class="product-detail" *ngIf="product; else loading">
     <div class="product-detail_img">
       <img [src]='product?.pictureUrl'>
-
     </div>
 
     <div class="info-about-product">
       <h2>{{product?.phoneName}} <span>{{product?.memory}}GB</span></h2>
       <span>({{product?.phoneColor}})</span>
       <p>{{product?.phonePriceUsd | currency : 'USD':'symbol':'3.0'}}
-
-        <span>
-          {{ product?.phonePriceUsd*28}} Грн </span>
+        <span>{{ product?.phonePriceUsd*28}} Грн </span>
       </p>
       <div class="buttons">
         <button (click)="cartFavoriteService.addToFavorites(product); searchService.wishStateChange()"
