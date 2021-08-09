@@ -186,11 +186,32 @@ body {
   font-size: 15px;
   line-height: 1.2;
   //min-height: 100%;
+
+  ::-webkit-scrollbar {
+    width: 10px;
+  }
+
+
+  ::-webkit-scrollbar-track {
+    background: var(--third-color);
+
+  }
+
+  /* Handle */
+  ::-webkit-scrollbar-thumb {
+    background: #888;
+  }
+
+  ::-webkit-scrollbar-thumb:hover {
+    background: #555;
+  }
 }
 
 body {
   background-color: var(--body-color);
   color: var(--text-color);
+
+
 }
 
 
@@ -563,11 +584,11 @@ button {
     background: transparent;
 
     &::before {
-      transform: rotate(45deg) translate(19px, -19px);
+      transform: rotate(45deg) translate(24px, -24px);
     }
 
     &::after {
-      transform: rotate(-45deg) translate(19px, 19px);
+      transform: rotate(-45deg) translate(24px, 24px);
     }
   }
 }
@@ -576,15 +597,15 @@ button {
 
 .show-menu-btn {
   //display: none;
-  width: 30px; //50px
-  height: 30px; //50px
+  width: 28px; //50px
+  height: 28px; //50px
   margin: 0 10px;
   text-align: center;
   font-size: 17px;
   font-weight: 500;
   position: absolute;
   right: 10px;
-  top: 43px;
+  top: 30px;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -992,25 +1013,7 @@ button {
 
 
 
-      // &::-webkit-scrollbar {
 
-      //   width: 5px;
-      // }
-
-
-      // &::-webkit-scrollbar-track {
-      //   background: var(--first-color);
-
-      // }
-
-      // /* Handle */
-      // &::-webkit-scrollbar-thumb {
-      //   background: #888;
-      // }
-
-      // &::-webkit-scrollbar-thumb:hover {
-      //   background: #555;
-      // }
 
       .active {
         background-color: var(--text-color);
@@ -1957,7 +1960,7 @@ input:checked+.theme-slider:before {
   .main-products_filter {
     transition: all .5s ease;
     transform: translateX(-100%);
-    overflow: scroll;
+    overflow: auto;
     position: fixed;
     z-index: 999;
     top: 0;
@@ -1976,7 +1979,7 @@ input:checked+.theme-slider:before {
 
   .top-bar {
     .show-menu-btn {
-      display: block;
+      display: flex;
 
       .menu-btn_burger {
         display: block;
@@ -2010,7 +2013,7 @@ input:checked+.theme-slider:before {
       width: auto;
       height: auto;
       margin: 0;
-      overflow: scroll;
+      overflow: auto;
       position: absolute;
       z-index: 1000;
       top: 90px;
