@@ -29,6 +29,7 @@ export class EditProductComponent implements OnInit {
   ) { }
 
   ngOnInit() {
+    window.scroll(0, 0);
     this.route.params.pipe(
       switchMap((params: Params) => {
         return this.productService.getById(params['id'])

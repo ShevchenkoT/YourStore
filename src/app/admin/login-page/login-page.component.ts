@@ -24,18 +24,8 @@ export class LoginPageComponent implements OnInit, AfterContentChecked, OnDestro
     private router: Router,
     private route: ActivatedRoute
   ) { }
-
-  ngAfterContentChecked() {
-    if (this.auth.isAuthenticated()) {
-      this.form.get('email')?.disable()
-      this.form.get('password')?.disable()
-    } else {
-      this.form.get('email')?.enable()
-      this.form.get('password')?.enable()
-    }
-  }
-
   ngOnInit() {
+    window.scroll(0, 0);
     this.route.queryParams.subscribe((params: Params) => {
       if (params['loginAgain']) {
         this.message = 'Please enter data'
@@ -50,6 +40,17 @@ export class LoginPageComponent implements OnInit, AfterContentChecked, OnDestro
       password: new FormControl(null, [Validators.minLength(6), Validators.required]),
     })
   }
+  ngAfterContentChecked() {
+    if (this.auth.isAuthenticated()) {
+      this.form.get('email')?.disable()
+      this.form.get('password')?.disable()
+    } else {
+      this.form.get('email')?.enable()
+      this.form.get('password')?.enable()
+    }
+  }
+
+
 
   submit() {
     if (this.form.invalid) {

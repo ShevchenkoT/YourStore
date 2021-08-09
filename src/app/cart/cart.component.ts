@@ -28,6 +28,8 @@ export class CartComponent implements OnInit, OnDestroy {
   ) { }
 
   ngOnInit(): void {
+    window.scroll(0, 0);
+
     this.form = new FormGroup({
       email: new FormControl(null, [Validators.email, Validators.required]),
       phoneNumber: new FormControl(null, [Validators.required, Validators.minLength(10), MyValidators.ifInt]),

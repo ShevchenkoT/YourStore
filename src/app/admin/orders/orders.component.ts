@@ -46,6 +46,7 @@ export class OrdersComponent implements OnInit, OnDestroy {
 
   }
   ngOnInit() {
+    window.scroll(0, 0);
     this.orderService.getAll().subscribe(() => {
       this.orderService.order.map((o) => o.state = 'start')
     }, (error) => {

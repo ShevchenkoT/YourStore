@@ -119,7 +119,10 @@
             class="form_characteristics_characteristicOfName" formGroupName="characteristicOfName"
             *ngFor="let c of getCharacteristicOfName(); let idx = index">
             <label>{{idx + 1 }}:</label>
-            <input type="text" [formControlName]="idx">
+            <input list="characteristic" type="text" [formControlName]="idx">
+            <datalist id="characteristic">
+              <option *ngFor="let photo of productService.characteristicsNameList" [value]="photo"></option>
+            </datalist>
           </div>
 
         </div>

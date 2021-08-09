@@ -30,13 +30,13 @@ export const animateBoxButtons = [
   ]),
 
 
-  trigger('rotate', [
-    state('start', style({
-      transform: 'rotate(0deg)',
-    })),
-    state('end', style({ transform: 'rotate(90deg)' })),
-    transition('start <=> end', animate(450)),
-  ])
+  // trigger('rotate', [
+  //   state('start', style({
+  //     transform: 'rotate(0deg)',
+  //   })),
+  //   state('end', style({ transform: 'rotate(90deg)' })),
+  //   transition('start <=> end', animate(450)),
+  // ])
 ]
 
 export const animateGetProduct = [

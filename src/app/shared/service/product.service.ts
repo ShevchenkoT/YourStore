@@ -20,6 +20,19 @@ export class ProductService {
     "https://stylus.ua/thumbs/378x378/ea/72/1217698.png",
   ]
 
+  characteristicsNameList: Array<string> = [
+    "Battery Type",
+    "Chipset",
+    "Dimensions",
+    "Display Resolution",
+    "Display Size",
+    "Display Type",
+    "Launch",
+    "Platform OS",
+    "Weight",
+  ]
+
+
   constructor(
     private http: HttpClient
   ) { }

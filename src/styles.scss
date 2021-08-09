@@ -680,7 +680,6 @@ button {
       margin: 10px;
       cursor: pointer;
 
-
       .img {
         width: 38px;
         height: 38px;
@@ -713,6 +712,7 @@ button {
       }
 
       &:hover {
+
         width: 160px;
         transition: all 0.4s ease-out;
       }
@@ -749,7 +749,7 @@ button {
 
   & .cart-wish_products__product {
     margin-top: 1rem;
-    max-width: 600px;
+    //max-width: 600px;
     min-height: 250px;
     background: var(--third-color);
     display: flex;
@@ -799,7 +799,7 @@ button {
   align-items: center;
   height: 150px;
   justify-content: space-around;
-  width: 100px;
+  min-width: 100px;
 
   .cart-wish_products__product___buttons___circle-button {
     color: var(--text-color);
@@ -1525,6 +1525,14 @@ input:checked+.theme-slider:before {
           text-align: start;
           color: var(--other-text-color);
 
+          &>a {
+            color: var(--other-text-color);
+
+            &:hover {
+              color: rgb(119, 119, 119);
+            }
+          }
+
         }
       }
     }
@@ -1570,7 +1578,7 @@ input:checked+.theme-slider:before {
     right: 0;
     top: 0;
     width: 180px;
-    height: 76%;
+    height: 180px;
     background-color: rgba($color: rgb(78, 78, 78), $alpha: 0.9);
     overflow: hidden;
   }
@@ -1606,11 +1614,44 @@ input:checked+.theme-slider:before {
   }
 }
 
-
 .errors {
   color: var(--primary-color)
 }
 
+.alert-wrap {
+  z-index: 999;
+  position: fixed;
+  top: 100px;
+  @include adaptive-value('right', 190, 30, 1);
+  //right: 30px; //right: 190px;
+  max-width: 250px;
+  background-color: white;
+  height: 50px;
+  text-align: center;
+  padding: 1rem .5rem;
+  font-size: 1.2rem;
+  color: #ffffff;
+  font-weight: 500;
+  display: flex;
+  padding: .5rem;
+
+  align-items: center;
+
+
+  .alert-wrap_img-circle {
+    border-radius: 50%;
+    width: 25px;
+    height: 25px;
+    background-color: white;
+    margin-right: .5rem;
+
+  }
+
+  &>p {
+    margin: 0;
+  }
+
+}
 
 
 
@@ -1883,7 +1924,14 @@ input:checked+.theme-slider:before {
     flex-wrap: wrap;
 
     .social-circle {
-      pointer-events: none;
+      max-width: 35px;
+      // &:hover {
+      //   pointer-events: none;
+      //   width: 10px;
+      //   //transition: all 0.4s ease-out;
+      // }
+
+      //pointer-events: none;
     }
   }
 

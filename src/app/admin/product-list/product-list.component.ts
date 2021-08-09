@@ -1,4 +1,4 @@
-import { AfterContentChecked, ComponentFactoryResolver, OnDestroy, ViewChild } from '@angular/core';
+import { AfterContentChecked, AfterViewInit, ComponentFactoryResolver, OnDestroy, ViewChild } from '@angular/core';
 import { Component, OnInit } from '@angular/core';
 
 import { Subscription } from 'rxjs';
@@ -17,7 +17,7 @@ import { ModalService } from '../shared/services/modal.service';
   styleUrls: ['./product-list.component.scss'],
   animations: [hideFilters, phoneModShowFilter]
 })
-export class ProductListComponent implements OnInit, OnDestroy, AfterContentChecked {
+export class ProductListComponent implements OnInit, OnDestroy, AfterContentChecked, AfterViewInit {
 
   showAfterProduct = false
 
@@ -48,6 +48,7 @@ export class ProductListComponent implements OnInit, OnDestroy, AfterContentChec
   }
 
   ngOnInit(): void {
+    window.scroll(0, 0);
     this.gSub = this.productService.getAll()
       .subscribe(() => {
         this.maxPrice = this.topPrice = this.getMaxPrice(this.productService.product).toString()
@@ -57,6 +58,13 @@ export class ProductListComponent implements OnInit, OnDestroy, AfterContentChec
 
         }, 0)
       })
+  }
+
+
+  ngAfterViewInit() {
+    setTimeout(() => {
+      this.paginator.changeList(0)
+    }, 500)
   }
 
   changeState(n: number) {

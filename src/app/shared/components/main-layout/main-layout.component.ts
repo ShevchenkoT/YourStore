@@ -68,4 +68,7 @@ export class MainLayoutComponent {
       event.target.parentNode.parentNode.parentNode.classList.add("color-invert")
     }
   }
+  scrollUp() {
+    window.scroll(0, 0);
+  }
 }

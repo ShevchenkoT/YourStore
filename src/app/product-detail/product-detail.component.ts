@@ -29,6 +29,8 @@ export class ProductDetailComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
+    window.scroll(0, 0);
+
     this.route.params.
       pipe(
         switchMap((params: Params) => {

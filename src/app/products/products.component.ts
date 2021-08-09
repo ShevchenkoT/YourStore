@@ -1,4 +1,4 @@
-import { Component, OnDestroy, OnInit } from '@angular/core';
+import { AfterViewInit, Component, OnDestroy, OnInit } from '@angular/core';
 import { Subscription } from 'rxjs';
 import { animateGetProduct, hideFilters, phoneModShowFilter } from '../shared/animations';
 import { Product } from '../shared/interfaces';
@@ -12,7 +12,7 @@ import { SearchProductService } from '../shared/service/search-product.service';
   styleUrls: ['./products.component.scss'],
   animations: [animateGetProduct, hideFilters, phoneModShowFilter]
 })
-export class ProductsComponent implements OnInit, OnDestroy {
+export class ProductsComponent implements OnInit, OnDestroy, AfterViewInit {
 
   showAfterProduct = false
 
@@ -37,14 +37,9 @@ export class ProductsComponent implements OnInit, OnDestroy {
     public searchService: SearchProductService,
     public productService: ProductService,
     public paginator: PaginationService,
-  ) {
-    setTimeout(() => {
-      this.paginator.changeList(0)
-    }, 800)
-
-  }
-
+  ) { }
   ngOnInit(): void {
+    window.scroll(0, 0);
     this.productService.getAll()
       .subscribe(() => {
         this.maxPrice = this.topPrice = this.getMaxPrice(this.productService.product).toString()
@@ -54,11 +49,15 @@ export class ProductsComponent implements OnInit, OnDestroy {
       }, null, () => {
         setTimeout(() => {
           this.showAfterProduct = true
-
         }, 0)
       })
   }
 
+  ngAfterViewInit() {
+    setTimeout(() => {
+      this.paginator.changeList(0)
+    }, 500)
+  }
 
   changeState(n: number) {
     this.filterShow[n] = this.filterShow[n] === "show" ? "hide" : "show"

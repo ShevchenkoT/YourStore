@@ -56,5 +56,8 @@ export class AdminLayoutComponent implements OnInit {
     }
 
   }
+  scrollUp() {
+    window.scroll(0, 0);
+  }
 
 }

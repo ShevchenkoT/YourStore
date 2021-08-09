@@ -28,6 +28,7 @@ export class CreateProductComponent implements OnInit, OnDestroy {
   ) { }
 
   ngOnInit() {
+    window.scroll(0, 0);
     this.form = new FormGroup({
       phoneName: new FormControl(null, [Validators.required]),
       memory: new FormControl(null, [Validators.required]),
