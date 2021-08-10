@@ -556,8 +556,8 @@ button {
 }
 
 .show-menu-btn {
-  width: 28px;
-  height: 28px;
+  width: 30px;
+  height: 30px;
   margin: 0 10px;
   text-align: center;
   font-size: 17px;
@@ -617,8 +617,13 @@ button {
 
   .main-footer_logo {
     width: 350px;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
 
     & a {
+      margin-bottom: .5rem;
+
       & h3 {
         font-size: 30px;
         color: var(--text-color);
@@ -629,6 +634,11 @@ button {
           color: red
         }
       }
+    }
+
+    p {
+      max-width: 200px;
+      text-align: center;
     }
   }
 
@@ -657,10 +667,14 @@ button {
         width: 38px;
         height: 38px;
         transform: translate(-2px, -2px);
+        display: flex;
+        align-items: center;
+        justify-content: center;
 
         img {
-          width: 100%;
-          height: 100%;
+          width: 70%;
+          height: 70%;
+
           display: inline-block;
         }
       }
@@ -1357,10 +1371,13 @@ input:checked+.theme-slider:before {
       &>label {
         margin-top: .8rem;
         font-size: 1.3rem;
+        width: 35px;
+        text-align: end;
       }
 
       &>input {
         margin: .5rem;
+        padding: .4rem 0 .4rem .4rem;
       }
     }
   }
@@ -1368,7 +1385,7 @@ input:checked+.theme-slider:before {
 
 .order {
   background-color: var(--second-color);
-  max-width: 1000px;
+  min-width: 1000px;
   min-height: 250px;
   font-size: 20px;
   margin-bottom: 1rem;
@@ -1944,12 +1961,21 @@ input:checked+.theme-slider:before {
 
       .form_characteristics_characteristicOfInfo,
       .form_characteristics_characteristicOfName {
+
+        &>label {
+          margin-top: .5rem;
+          font-size: 1rem;
+
+        }
+
         &>input {
           margin: .5rem 0.2rem;
+          padding: 0.4rem 0;
         }
       }
     }
   }
+
 
   .order {
     max-width: 98%;
