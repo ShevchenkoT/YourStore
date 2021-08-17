@@ -51,7 +51,6 @@ export class MainLayoutComponent {
 
 
   darkTheme(event: any): void {
-
     // black theme
     if (!this.darkThemeFlag) {
       document.body.style.setProperty('--first-color', '#191919');

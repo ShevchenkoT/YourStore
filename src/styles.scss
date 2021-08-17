@@ -1292,7 +1292,9 @@ input:checked+.theme-slider:before {
 
 .create-form,
 .edit-form {
-  @include adaptive-value('max-width', 700, 290, 1);
+  //@include adaptive-value('max-width', 700, 290, 3);
+  max-width: 700px;
+
   flex-wrap: wrap;
   display: flex;
   margin: 0 auto;
@@ -1643,7 +1645,9 @@ input:checked+.theme-slider:before {
 .filter-show-btn {
   display: none;
   @include adaptive-value('left', 200, -20, 3);
-  @include adaptive-value('width', 200, 100, 3);
+
+
+  width: 135px;
   position: absolute;
   top: 5px;
 }
@@ -1809,7 +1813,7 @@ input:checked+.theme-slider:before {
 
       .filter-show-btn {
         display: block;
-
+        width: 100px;
       }
     }
   }
@@ -1967,7 +1971,7 @@ input:checked+.theme-slider:before {
 
   .create-form,
   .edit-form {
-    box-sizing: border-box;
+    max-width: 99%;
 
     .form_characteristics {
       .form-array-control {
