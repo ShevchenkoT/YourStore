@@ -14,6 +14,7 @@ export class MainLayoutComponent {
   searchState = 'start';
   searchProductStr = '';
 
+  darkThemeFlag = true;
   constructor(
     public cartFavoriteService: CartFavoritesService,
     public searchService: SearchProductService,
@@ -50,8 +51,9 @@ export class MainLayoutComponent {
 
 
   darkTheme(event: any): void {
+
     // black theme
-    if (document.body.style.cssText.includes('--text-color:#000')) {
+    if (!this.darkThemeFlag) {
       document.body.style.setProperty('--first-color', '#191919');
       document.body.style.setProperty('--second-color', '#272727');
       document.body.style.setProperty('--other-text-color', '#999999');
@@ -61,6 +63,7 @@ export class MainLayoutComponent {
       document.body.style.setProperty('--button-lightness', '52%');
 
       event.target.parentNode.parentNode.parentNode.classList.remove('color-invert');
+      this.darkThemeFlag = !this.darkThemeFlag
     }
     // white theme
     else {
@@ -73,6 +76,7 @@ export class MainLayoutComponent {
       document.body.style.setProperty('--button-lightness', '60%');
 
       event.target.parentNode.parentNode.parentNode.classList.add('color-invert');
+      this.darkThemeFlag = !this.darkThemeFlag
     }
   }
   scrollUp(): void {

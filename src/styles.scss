@@ -556,15 +556,13 @@ button {
 }
 
 .show-menu-btn {
-  width: 30px;
-  height: 30px;
   margin: 0 10px;
   text-align: center;
   font-size: 17px;
   font-weight: 500;
   position: absolute;
   right: 10px;
-  top: 30px;
+  top: 40px;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -1486,7 +1484,7 @@ input:checked+.theme-slider:before {
   .show-menu-btn {
     position: absolute;
     right: 0;
-    top: 15px;
+    top: 25px;
   }
 }
 
@@ -1733,6 +1731,7 @@ input:checked+.theme-slider:before {
   }
 
   .main-product_list_header {
+
     .filter-show-btn {
       display: block;
 
@@ -1792,6 +1791,26 @@ input:checked+.theme-slider:before {
 
     .title {
       font-size: 18px;
+    }
+  }
+
+  .main-products_list {
+    .main-product_list_header {
+
+      label {
+        font-size: 15px;
+        margin: 5px .3rem;
+      }
+
+      .list_header_selectCount {
+        width: 80px;
+        padding: 0.4rem 0;
+      }
+
+      .filter-show-btn {
+        display: block;
+
+      }
     }
   }
 
@@ -1948,6 +1967,8 @@ input:checked+.theme-slider:before {
 
   .create-form,
   .edit-form {
+    box-sizing: border-box;
+
     .form_characteristics {
       .form-array-control {
         p {

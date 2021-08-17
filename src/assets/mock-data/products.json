@@ -1,82 +1,595 @@
-[
-  {
-    "id": 1,
-    "phoneName": "Iphone 11",
-    "memory": 128,
-    "phoneColor": "RED",
-    "phonePriceUsd": 699,
-    "pictureUrl": "assets/img/phones/11Red.png"
+{
+  "order" : {
+    "-MggeSf3FWuiVbDWzz6t" : {
+      "address" : "astd",
+      "email" : "tarashevchuk@gmail.com",
+      "fullName" : "1234564654",
+      "id" : "-MggeSf3FWuiVbDWzz6t",
+      "orderDate" : "2021-08-09T20:45:32.806Z",
+      "orderPrice" : 1398,
+      "orderStatus" : "done",
+      "phoneNumber" : "5123512323",
+      "products" : [ {
+        "id" : "-Me4yFB8c9_spe_akYKV",
+        "memory" : 128,
+        "numberOfProducts" : 2,
+        "phoneColor" : "Green",
+        "phoneName" : "Iphone 11 Pro",
+        "phonePriceUsd" : 699,
+        "pictureUrl" : "assets/img/phones/11ProGreen.png"
+      } ],
+      "sendingType" : "Self-pickup",
+      "state" : "end"
+    },
+    "-MglT3n9TIexf8s4vfu7" : {
+      "address" : "Украина  Прилбичи  81062",
+      "email" : "tarashevchuk@gmail.com",
+      "fullName" : "Taras Shevchuk",
+      "id" : "-MglT3n9TIexf8s4vfu7",
+      "orderDate" : "2021-08-10T19:09:32.209Z",
+      "orderPrice" : 5794,
+      "orderStatus" : "cancel",
+      "phoneNumber" : "0976064961",
+      "products" : [ {
+        "characteristic" : {
+          "Battery Type" : "Li-Ion 2815 mAh, non-removable (10.78 Wh)",
+          "Chipset" : "Apple A14 Bionic (5 nm)",
+          "Dimensions" : "146.7 x 71.5 x 7.4 mm (5.78 x 2.81 x 0.29 in)",
+          "Display Resolution" : "1170 x 2532 pixels, 19.5:9 ratio (~460 ppi density)",
+          "Display Size" : "6.1 inches, 90.2 cm2 (~86.0% screen-to-body ratio)",
+          "Display Type" : "Super Retina XDR OLED, HDR10, Dolby Vision, 800 nits (typ), 1200 nits (peak)",
+          "Launch" : "Available. Released 2020, October 23",
+          "Platform OS" : "iOS 14.1, upgradable to iOS 14.7",
+          "Weight" : "189 g (6.67 oz)"
+        },
+        "id" : "-Me4yJvndAsBH2AspNRF",
+        "memory" : 512,
+        "numberOfProducts" : 1,
+        "phoneColor" : "Gold",
+        "phoneName" : "Iphone 12 Pro",
+        "phonePriceUsd" : 1299,
+        "pictureUrl" : "assets/img/phones/12ProGold.png"
+      }, {
+        "characteristic" : {
+          "Battery Type" : "Li-Ion 3046 mAh, non-removable (11.67 Wh)",
+          "Chipset" : "Apple A13 Bionic (7 nm+)",
+          "Dimensions" : "144 x 71.4 x 8.1 mm (5.67 x 2.81 x 0.32 in)",
+          "Display Resolution" : "1125 x 2436 pixels, 19.5:9 ratio (~458 ppi density)",
+          "Display Size" : "5.8 inches, 84.4 cm2 (~82.1% screen-to-body ratio)",
+          "Display Type" : "Super Retina XDR OLED, HDR10, Dolby Vision, 800 nits (typ), 1200 nits (peak)",
+          "Launch" : "Available. Released 2019, September 20",
+          "Platform OS" : "iOS 13, upgradable to iOS 14.7",
+          "Weight" : "188 g (6.63 oz)"
+        },
+        "id" : "-Me4yFB8c9_spe_akYKV",
+        "memory" : 128,
+        "numberOfProducts" : 1,
+        "phoneColor" : "Green",
+        "phoneName" : "Iphone 11 Pro",
+        "phonePriceUsd" : 899,
+        "pictureUrl" : "assets/img/phones/11ProGreen.png"
+      }, {
+        "characteristic" : {
+          "Battery Type" : "Li-Ion 2815 mAh, non-removable (10.78 Wh)",
+          "Chipset" : "Apple A14 Bionic (5 nm)",
+          "Dimensions" : "146.7 x 71.5 x 7.4 mm (5.78 x 2.81 x 0.29 in)",
+          "Display Resolution" : "1170 x 2532 pixels, 19.5:9 ratio (~460 ppi density)",
+          "Display Size" : "6.1 inches, 90.2 cm2 (~86.0% screen-to-body ratio)",
+          "Display Type" : "Super Retina XDR OLED, HDR10, Dolby Vision, 800 nits (typ), 1200 nits (peak)",
+          "Launch" : "Available. Released 2020, October 23",
+          "Platform OS" : "iOS 14.1, upgradable to iOS 14.7",
+          "Weight" : "189 g (6.67 oz)"
+        },
+        "id" : "-Me4y8xG1k43RCBGMNma",
+        "memory" : 256,
+        "numberOfProducts" : 1,
+        "phoneColor" : "Blue",
+        "phoneName" : "Iphone 12 Pro",
+        "phonePriceUsd" : 1199,
+        "pictureUrl" : "assets/img/phones/12ProBlue.png"
+      }, {
+        "characteristic" : {
+          "Battery Type" : "Li-Ion 2815 mAh, non-removable (10.78 Wh)",
+          "Chipset" : "Apple A14 Bionic (5 nm)",
+          "Dimensions" : "146.7 x 71.5 x 7.4 mm (5.78 x 2.81 x 0.29 in)",
+          "Display Resolution" : "1170 x 2532 pixels, 19.5:9 ratio (~460 ppi density)",
+          "Display Size" : "6.1 inches, 90.2 cm2 (~86.0% screen-to-body ratio)",
+          "Display Type" : "Super Retina XDR OLED, HDR10, Dolby Vision, 625 nits (typ), 1200 nits (peak)",
+          "Launch" : "Available. Released 2020, October 23",
+          "Platform OS" : "OS 14.1, upgradable to iOS 14.7",
+          "Weight" : "164 g (5.78 oz)"
+        },
+        "id" : "-Me4y3D85SFj3dxQgiig",
+        "memory" : 64,
+        "numberOfProducts" : 1,
+        "phoneColor" : "Purple",
+        "phoneName" : "Iphone 11",
+        "phonePriceUsd" : 599,
+        "pictureUrl" : "assets/img/phones/11Purple.png"
+      }, {
+        "characteristic" : {
+          "Battery Type" : "Li-Ion 2815 mAh, non-removable (10.78 Wh)",
+          "Chipset" : "Apple A14 Bionic (5 nm)",
+          "Dimensions" : "146.7 x 71.5 x 7.4 mm (5.78 x 2.81 x 0.29 in)",
+          "Display Resolution" : "1170 x 2532 pixels, 19.5:9 ratio (~460 ppi density)",
+          "Display Size" : "6.1 inches, 90.2 cm2 (~86.0% screen-to-body ratio)",
+          "Display Type" : "Super Retina XDR OLED, HDR10, Dolby Vision, 625 nits (typ), 1200 nits (peak)",
+          "Launch" : "Available. Released 2020, October 23",
+          "Platform OS" : "OS 14.1, upgradable to iOS 14.7",
+          "Weight" : "164 g (5.78 oz)"
+        },
+        "id" : "-Me4xz6kwMU-zu4xBRNp",
+        "memory" : 256,
+        "numberOfProducts" : 1,
+        "phoneColor" : "Black",
+        "phoneName" : "Iphone 11",
+        "phonePriceUsd" : 799,
+        "pictureUrl" : "assets/img/phones/11Black.png"
+      }, {
+        "characteristic" : {
+          "Battery Type" : "Li-Ion 2815 mAh, non-removable (10.78 Wh)",
+          "Chipset" : "Apple A14 Bionic (5 nm)",
+          "Dimensions" : "146.7 x 71.5 x 7.4 mm (5.78 x 2.81 x 0.29 in)",
+          "Display Resolution" : "1170 x 2532 pixels, 19.5:9 ratio (~460 ppi density)",
+          "Display Size" : "6.1 inches, 90.2 cm2 (~86.0% screen-to-body ratio)",
+          "Display Type" : "Super Retina XDR OLED, HDR10, Dolby Vision, 625 nits (typ), 1200 nits (peak)",
+          "Launch" : "Available. Released 2020, October 23",
+          "Platform OS" : "iOS 14.1, upgradable to iOS 14.7",
+          "Weight" : "164 g (5.78 oz)"
+        },
+        "id" : "-Me4xrVSAlylVRMLuNyM",
+        "memory" : 128,
+        "numberOfProducts" : 1,
+        "phoneColor" : "Blue",
+        "phoneName" : "Iphone 12",
+        "phonePriceUsd" : 999,
+        "pictureUrl" : "assets/img/phones/12Blue.png"
+      } ],
+      "sendingType" : "Courier",
+      "state" : "end"
+    },
+    "-MglTEeUDjbiDFlTiuFv" : {
+      "address" : "Украина   Прилбичи  81062",
+      "email" : "viktoria@icloud.com",
+      "fullName" : "Vika",
+      "orderDate" : "2021-08-10T19:10:16.714Z",
+      "orderPrice" : 2397,
+      "orderStatus" : "processing",
+      "phoneNumber" : "0975648415",
+      "products" : [ {
+        "characteristic" : {
+          "Battery Type" : "Li-Ion 1821 mAh, non-removable (6.96 Wh)",
+          "Chipset" : "Apple A13 Bionic (7 nm+)",
+          "Dimensions" : "138.4 x 67.3 x 7.3 mm (5.45 x 2.65 x 0.29 in)",
+          "Display Resolution" : "750 x 1334 pixels, 16:9 ratio (~326 ppi density)",
+          "Display Size" : "4.7 inches, 60.9 cm2 (~65.4% screen-to-body ratio)",
+          "Display Type" : "Retina IPS LCD, 625 nits (typ)",
+          "Launch" : "Available. Released 2020, April 24",
+          "Platform OS" : "iOS 13, upgradable to iOS 14.7",
+          "Weight" : "148 g (5.22 oz)"
+        },
+        "id" : "-Me4zFhJ2YKqO4PhA1mM",
+        "memory" : 64,
+        "numberOfProducts" : 1,
+        "phoneColor" : "White",
+        "phoneName" : "Iphone SE",
+        "phonePriceUsd" : 599,
+        "pictureUrl" : "assets/img/phones/SEWhite.png"
+      }, {
+        "characteristic" : {
+          "Battery Type" : "Li-Ion 2815 mAh, non-removable (10.78 Wh)",
+          "Chipset" : "Apple A14 Bionic (5 nm)",
+          "Dimensions" : "146.7 x 71.5 x 7.4 mm (5.78 x 2.81 x 0.29 in)",
+          "Display Resolution" : "1170 x 2532 pixels, 19.5:9 ratio (~460 ppi density)",
+          "Display Size" : "6.1 inches, 90.2 cm2 (~86.0% screen-to-body ratio)",
+          "Display Type" : "Super Retina XDR OLED, HDR10, Dolby Vision, 800 nits (typ), 1200 nits (peak)",
+          "Launch" : "Available. Released 2020, October 23",
+          "Platform OS" : "iOS 14.1, upgradable to iOS 14.7",
+          "Weight" : "189 g (6.67 oz)"
+        },
+        "id" : "-Me4yTDCA8UrelIr4dpf",
+        "memory" : 256,
+        "numberOfProducts" : 1,
+        "phoneColor" : "Black",
+        "phoneName" : "Iphone 12 Pro",
+        "phonePriceUsd" : 1099,
+        "pictureUrl" : "assets/img/phones/12ProBlack.png"
+      }, {
+        "characteristic" : {
+          "Battery Type" : "Li-Ion 2815 mAh, non-removable (10.78 Wh)",
+          "Chipset" : "Apple A14 Bionic (5 nm)",
+          "Dimensions" : "146.7 x 71.5 x 7.4 mm (5.78 x 2.81 x 0.29 in)",
+          "Display Resolution" : "1170 x 2532 pixels, 19.5:9 ratio (~460 ppi density)",
+          "Display Size" : "6.1 inches, 90.2 cm2 (~86.0% screen-to-body ratio)",
+          "Display Type" : "Super Retina XDR OLED, HDR10, Dolby Vision, 625 nits (typ), 1200 nits (peak)",
+          "Launch" : "Available. Released 2020, October 23",
+          "Platform OS" : "OS 14.1, upgradable to iOS 14.7",
+          "Weight" : "164 g (5.78 oz)"
+        },
+        "id" : "-Me4yXQnT4m_sVD9B6FX",
+        "memory" : 128,
+        "numberOfProducts" : 1,
+        "phoneColor" : "RED",
+        "phoneName" : "Iphone 11",
+        "phonePriceUsd" : 699,
+        "pictureUrl" : "assets/img/phones/11Red.png"
+      } ],
+      "sendingType" : "Courier"
+    },
+    "-MglTV5iNh3KWjw9ykwS" : {
+      "address" : "Украина   Прилбичи  81062",
+      "email" : "shevchykorest@gmail.com",
+      "fullName" : "Orest Shevchyk",
+      "id" : "-MglTV5iNh3KWjw9ykwS",
+      "orderDate" : "2021-08-10T19:11:24.058Z",
+      "orderPrice" : 3197,
+      "orderStatus" : "cancel",
+      "phoneNumber" : "0895248108",
+      "products" : [ {
+        "characteristic" : {
+          "Battery Type" : "Li-Ion 2815 mAh, non-removable (10.78 Wh)",
+          "Chipset" : "Apple A14 Bionic (5 nm)",
+          "Dimensions" : "146.7 x 71.5 x 7.4 mm (5.78 x 2.81 x 0.29 in)",
+          "Display Resolution" : "1170 x 2532 pixels, 19.5:9 ratio (~460 ppi density)",
+          "Display Size" : "6.1 inches, 90.2 cm2 (~86.0% screen-to-body ratio)",
+          "Display Type" : "Super Retina XDR OLED, HDR10, Dolby Vision, 800 nits (typ), 1200 nits (peak)",
+          "Launch" : "Available. Released 2020, October 23",
+          "Platform OS" : "iOS 14.1, upgradable to iOS 14.7",
+          "Weight" : "189 g (6.67 oz)"
+        },
+        "id" : "-Me4yOEYngIGrZIn6CR2",
+        "memory" : 128,
+        "numberOfProducts" : 1,
+        "phoneColor" : "Silver",
+        "phoneName" : "Iphone 12 Pro",
+        "phonePriceUsd" : 999,
+        "pictureUrl" : "assets/img/phones/12ProSilver.png"
+      }, {
+        "characteristic" : {
+          "Battery Type" : "Li-Ion 2815 mAh, non-removable (10.78 Wh)",
+          "Chipset" : "Apple A14 Bionic (5 nm)",
+          "Dimensions" : "146.7 x 71.5 x 7.4 mm (5.78 x 2.81 x 0.29 in)",
+          "Display Resolution" : "1170 x 2532 pixels, 19.5:9 ratio (~460 ppi density)",
+          "Display Size" : "6.1 inches, 90.2 cm2 (~86.0% screen-to-body ratio)",
+          "Display Type" : "Super Retina XDR OLED, HDR10, Dolby Vision, 800 nits (typ), 1200 nits (peak)",
+          "Launch" : "Available. Released 2020, October 23",
+          "Platform OS" : "iOS 14.1, upgradable to iOS 14.7",
+          "Weight" : "189 g (6.67 oz)"
+        },
+        "id" : "-Me4y8xG1k43RCBGMNma",
+        "memory" : 256,
+        "numberOfProducts" : 1,
+        "phoneColor" : "Blue",
+        "phoneName" : "Iphone 12 Pro",
+        "phonePriceUsd" : 1199,
+        "pictureUrl" : "assets/img/phones/12ProBlue.png"
+      }, {
+        "characteristic" : {
+          "Battery Type" : "Li-Ion 2815 mAh, non-removable (10.78 Wh)",
+          "Chipset" : "Apple A14 Bionic (5 nm)",
+          "Dimensions" : "146.7 x 71.5 x 7.4 mm (5.78 x 2.81 x 0.29 in)",
+          "Display Resolution" : "1170 x 2532 pixels, 19.5:9 ratio (~460 ppi density)",
+          "Display Size" : "6.1 inches, 90.2 cm2 (~86.0% screen-to-body ratio)",
+          "Display Type" : "Super Retina XDR OLED, HDR10, Dolby Vision, 625 nits (typ), 1200 nits (peak)",
+          "Launch" : "Available. Released 2020, October 23",
+          "Platform OS" : "iOS 14.1, upgradable to iOS 14.7",
+          "Weight" : "164 g (5.78 oz)"
+        },
+        "id" : "-Me4xrVSAlylVRMLuNyM",
+        "memory" : 128,
+        "numberOfProducts" : 1,
+        "phoneColor" : "Blue",
+        "phoneName" : "Iphone 12",
+        "phonePriceUsd" : 999,
+        "pictureUrl" : "assets/img/phones/12Blue.png"
+      } ],
+      "sendingType" : "Mail",
+      "state" : "end"
+    }
   },
-  {
-    "id": 2,
-    "phoneName": "Iphone 12 Pro",
-    "memory": 256,
-    "phoneColor": "Black",
-    "phonePriceUsd": 1099,
-    "pictureUrl": "assets/img/phones/12ProBlack.png"
-  },
-  {
-    "id": 3,
-    "phoneName": "Iphone 12 Pro",
-    "memory": 128,
-    "phoneColor": "Silver",
-    "phonePriceUsd": 999,
-    "pictureUrl": "assets/img/phones/12ProSilver.png"
-  },
-  {
-    "id": 4,
-    "phoneName": "Iphone 12 Pro",
-    "memory": 512,
-    "phoneColor": "Gold",
-    "phonePriceUsd": 1299,
-    "pictureUrl": "assets/img/phones/12ProGold.png"
-  },
-  {
-    "id": 5,
-    "phoneName": "Iphone 11 Pro",
-    "memory": 128,
-    "phoneColor": "Green",
-    "phonePriceUsd": 699,
-    "pictureUrl": "assets/img/phones/11ProGreen.png"
-  },
-  {
-    "id": 6,
-    "phoneName": "Iphone 12 Pro",
-    "memory": 256,
-    "phoneColor": "Blue",
-    "phonePriceUsd": 1199,
-    "pictureUrl": "assets/img/phones/12ProBlue.png"
-  },
-  {
-    "id": 7,
-    "phoneName": "Iphone 11",
-    "memory": 64,
-    "phoneColor": "Purple",
-    "phonePriceUsd": 599,
-    "pictureUrl": "assets/img/phones/11Purple.png"
-  },
-  {
-    "id": 8,
-    "phoneName": "Iphone 11",
-    "memory": 256,
-    "phoneColor": "Black",
-    "phonePriceUsd": 799,
-    "pictureUrl": "assets/img/phones/11Black.png"
-  },
-  {
-    "id": 9,
-    "phoneName": "Iphone 12",
-    "memory": 128,
-    "phoneColor": "Blue",
-    "phonePriceUsd": 899,
-    "pictureUrl": "assets/img/phones/12Blue.png"
-  },
-  {
-    "id": 10,
-    "phoneName": "Iphone SE",
-    "memory": 64,
-    "phoneColor": "White",
-    "phonePriceUsd": 599,
-    "pictureUrl": "assets/img/phones/SEWhite.png"
+  "product" : {
+    "-Me4xrVSAlylVRMLuNyM" : {
+      "characteristic" : {
+        "Battery Type" : "Li-Ion 2815 mAh, non-removable (10.78 Wh)",
+        "Chipset" : "Apple A14 Bionic (5 nm)",
+        "Dimensions" : "146.7 x 71.5 x 7.4 mm (5.78 x 2.81 x 0.29 in)",
+        "Display Resolution" : "1170 x 2532 pixels, 19.5:9 ratio (~460 ppi density)",
+        "Display Size" : "6.1 inches, 90.2 cm2 (~86.0% screen-to-body ratio)",
+        "Display Type" : "Super Retina XDR OLED, HDR10, Dolby Vision, 625 nits (typ), 1200 nits (peak)",
+        "Launch" : "Available. Released 2020, October 23",
+        "Platform OS" : "iOS 14.1, upgradable to iOS 14.7",
+        "Weight" : "164 g (5.78 oz)"
+      },
+      "id" : "-Me4xrVSAlylVRMLuNyM",
+      "memory" : 128,
+      "phoneColor" : "Blue",
+      "phoneName" : "Iphone 12",
+      "phonePriceUsd" : 999,
+      "pictureUrl" : "assets/img/phones/12Blue.png"
+    },
+    "-Me4xz6kwMU-zu4xBRNp" : {
+      "characteristic" : {
+        "Battery Type" : "Li-Ion 2815 mAh, non-removable (10.78 Wh)",
+        "Chipset" : "Apple A14 Bionic (5 nm)",
+        "Dimensions" : "146.7 x 71.5 x 7.4 mm (5.78 x 2.81 x 0.29 in)",
+        "Display Resolution" : "1170 x 2532 pixels, 19.5:9 ratio (~460 ppi density)",
+        "Display Size" : "6.1 inches, 90.2 cm2 (~86.0% screen-to-body ratio)",
+        "Display Type" : "Super Retina XDR OLED, HDR10, Dolby Vision, 625 nits (typ), 1200 nits (peak)",
+        "Launch" : "Available. Released 2020, October 23",
+        "Platform OS" : "OS 14.1, upgradable to iOS 14.7",
+        "Weight" : "164 g (5.78 oz)"
+      },
+      "id" : "-Me4xz6kwMU-zu4xBRNp",
+      "memory" : 256,
+      "phoneColor" : "Black",
+      "phoneName" : "Iphone 11",
+      "phonePriceUsd" : 799,
+      "pictureUrl" : "assets/img/phones/11Black.png"
+    },
+    "-Me4y3D85SFj3dxQgiig" : {
+      "characteristic" : {
+        "Battery Type" : "Li-Ion 2815 mAh, non-removable (10.78 Wh)",
+        "Chipset" : "Apple A14 Bionic (5 nm)",
+        "Dimensions" : "146.7 x 71.5 x 7.4 mm (5.78 x 2.81 x 0.29 in)",
+        "Display Resolution" : "1170 x 2532 pixels, 19.5:9 ratio (~460 ppi density)",
+        "Display Size" : "6.1 inches, 90.2 cm2 (~86.0% screen-to-body ratio)",
+        "Display Type" : "Super Retina XDR OLED, HDR10, Dolby Vision, 625 nits (typ), 1200 nits (peak)",
+        "Launch" : "Available. Released 2020, October 23",
+        "Platform OS" : "OS 14.1, upgradable to iOS 14.7",
+        "Weight" : "164 g (5.78 oz)"
+      },
+      "id" : "-Me4y3D85SFj3dxQgiig",
+      "memory" : 64,
+      "phoneColor" : "Purple",
+      "phoneName" : "Iphone 11",
+      "phonePriceUsd" : 599,
+      "pictureUrl" : "assets/img/phones/11Purple.png"
+    },
+    "-Me4y8xG1k43RCBGMNma" : {
+      "characteristic" : {
+        "Battery Type" : "Li-Ion 2815 mAh, non-removable (10.78 Wh)",
+        "Chipset" : "Apple A14 Bionic (5 nm)",
+        "Dimensions" : "146.7 x 71.5 x 7.4 mm (5.78 x 2.81 x 0.29 in)",
+        "Display Resolution" : "1170 x 2532 pixels, 19.5:9 ratio (~460 ppi density)",
+        "Display Size" : "6.1 inches, 90.2 cm2 (~86.0% screen-to-body ratio)",
+        "Display Type" : "Super Retina XDR OLED, HDR10, Dolby Vision, 800 nits (typ), 1200 nits (peak)",
+        "Launch" : "Available. Released 2020, October 23",
+        "Platform OS" : "iOS 14.1, upgradable to iOS 14.7",
+        "Weight" : "189 g (6.67 oz)"
+      },
+      "id" : "-Me4y8xG1k43RCBGMNma",
+      "memory" : 256,
+      "phoneColor" : "Blue",
+      "phoneName" : "Iphone 12 Pro",
+      "phonePriceUsd" : 1199,
+      "pictureUrl" : "assets/img/phones/12ProBlue.png"
+    },
+    "-Me4yFB8c9_spe_akYKV" : {
+      "characteristic" : {
+        "Battery Type" : "Li-Ion 3046 mAh, non-removable (11.67 Wh)",
+        "Chipset" : "Apple A13 Bionic (7 nm+)",
+        "Dimensions" : "144 x 71.4 x 8.1 mm (5.67 x 2.81 x 0.32 in)",
+        "Display Resolution" : "1125 x 2436 pixels, 19.5:9 ratio (~458 ppi density)",
+        "Display Size" : "5.8 inches, 84.4 cm2 (~82.1% screen-to-body ratio)",
+        "Display Type" : "Super Retina XDR OLED, HDR10, Dolby Vision, 800 nits (typ), 1200 nits (peak)",
+        "Launch" : "Available. Released 2019, September 20",
+        "Platform OS" : "iOS 13, upgradable to iOS 14.7",
+        "Weight" : "188 g (6.63 oz)"
+      },
+      "id" : "-Me4yFB8c9_spe_akYKV",
+      "memory" : 128,
+      "phoneColor" : "Green",
+      "phoneName" : "Iphone 11 Pro",
+      "phonePriceUsd" : 899,
+      "pictureUrl" : "assets/img/phones/11ProGreen.png"
+    },
+    "-Me4yJvndAsBH2AspNRF" : {
+      "characteristic" : {
+        "Battery Type" : "Li-Ion 2815 mAh, non-removable (10.78 Wh)",
+        "Chipset" : "Apple A14 Bionic (5 nm)",
+        "Dimensions" : "146.7 x 71.5 x 7.4 mm (5.78 x 2.81 x 0.29 in)",
+        "Display Resolution" : "1170 x 2532 pixels, 19.5:9 ratio (~460 ppi density)",
+        "Display Size" : "6.1 inches, 90.2 cm2 (~86.0% screen-to-body ratio)",
+        "Display Type" : "Super Retina XDR OLED, HDR10, Dolby Vision, 800 nits (typ), 1200 nits (peak)",
+        "Launch" : "Available. Released 2020, October 23",
+        "Platform OS" : "iOS 14.1, upgradable to iOS 14.7",
+        "Weight" : "189 g (6.67 oz)"
+      },
+      "id" : "-Me4yJvndAsBH2AspNRF",
+      "memory" : 512,
+      "phoneColor" : "Gold",
+      "phoneName" : "Iphone 12 Pro",
+      "phonePriceUsd" : 1299,
+      "pictureUrl" : "assets/img/phones/12ProGold.png"
+    },
+    "-Me4yOEYngIGrZIn6CR2" : {
+      "characteristic" : {
+        "Battery Type" : "Li-Ion 2815 mAh, non-removable (10.78 Wh)",
+        "Chipset" : "Apple A14 Bionic (5 nm)",
+        "Dimensions" : "146.7 x 71.5 x 7.4 mm (5.78 x 2.81 x 0.29 in)",
+        "Display Resolution" : "1170 x 2532 pixels, 19.5:9 ratio (~460 ppi density)",
+        "Display Size" : "6.1 inches, 90.2 cm2 (~86.0% screen-to-body ratio)",
+        "Display Type" : "Super Retina XDR OLED, HDR10, Dolby Vision, 800 nits (typ), 1200 nits (peak)",
+        "Launch" : "Available. Released 2020, October 23",
+        "Platform OS" : "iOS 14.1, upgradable to iOS 14.7",
+        "Weight" : "189 g (6.67 oz)"
+      },
+      "id" : "-Me4yOEYngIGrZIn6CR2",
+      "memory" : 128,
+      "phoneColor" : "Silver",
+      "phoneName" : "Iphone 12 Pro",
+      "phonePriceUsd" : 999,
+      "pictureUrl" : "assets/img/phones/12ProSilver.png"
+    },
+    "-Me4yTDCA8UrelIr4dpf" : {
+      "characteristic" : {
+        "Battery Type" : "Li-Ion 2815 mAh, non-removable (10.78 Wh)",
+        "Chipset" : "Apple A14 Bionic (5 nm)",
+        "Dimensions" : "146.7 x 71.5 x 7.4 mm (5.78 x 2.81 x 0.29 in)",
+        "Display Resolution" : "1170 x 2532 pixels, 19.5:9 ratio (~460 ppi density)",
+        "Display Size" : "6.1 inches, 90.2 cm2 (~86.0% screen-to-body ratio)",
+        "Display Type" : "Super Retina XDR OLED, HDR10, Dolby Vision, 800 nits (typ), 1200 nits (peak)",
+        "Launch" : "Available. Released 2020, October 23",
+        "Platform OS" : "iOS 14.1, upgradable to iOS 14.7",
+        "Weight" : "189 g (6.67 oz)"
+      },
+      "id" : "-Me4yTDCA8UrelIr4dpf",
+      "memory" : 256,
+      "phoneColor" : "Black",
+      "phoneName" : "Iphone 12 Pro",
+      "phonePriceUsd" : 1099,
+      "pictureUrl" : "assets/img/phones/12ProBlack.png"
+    },
+    "-Me4yXQnT4m_sVD9B6FX" : {
+      "characteristic" : {
+        "Battery Type" : "Li-Ion 2815 mAh, non-removable (10.78 Wh)",
+        "Chipset" : "Apple A14 Bionic (5 nm)",
+        "Dimensions" : "146.7 x 71.5 x 7.4 mm (5.78 x 2.81 x 0.29 in)",
+        "Display Resolution" : "1170 x 2532 pixels, 19.5:9 ratio (~460 ppi density)",
+        "Display Size" : "6.1 inches, 90.2 cm2 (~86.0% screen-to-body ratio)",
+        "Display Type" : "Super Retina XDR OLED, HDR10, Dolby Vision, 625 nits (typ), 1200 nits (peak)",
+        "Launch" : "Available. Released 2020, October 23",
+        "Platform OS" : "OS 14.1, upgradable to iOS 14.7",
+        "Weight" : "164 g (5.78 oz)"
+      },
+      "id" : "-Me4yXQnT4m_sVD9B6FX",
+      "memory" : 128,
+      "phoneColor" : "RED",
+      "phoneName" : "Iphone 11",
+      "phonePriceUsd" : 699,
+      "pictureUrl" : "assets/img/phones/11Red.png"
+    },
+    "-Me4zFhJ2YKqO4PhA1mM" : {
+      "characteristic" : {
+        "Battery Type" : "Li-Ion 1821 mAh, non-removable (6.96 Wh)",
+        "Chipset" : "Apple A13 Bionic (7 nm+)",
+        "Dimensions" : "138.4 x 67.3 x 7.3 mm (5.45 x 2.65 x 0.29 in)",
+        "Display Resolution" : "750 x 1334 pixels, 16:9 ratio (~326 ppi density)",
+        "Display Size" : "4.7 inches, 60.9 cm2 (~65.4% screen-to-body ratio)",
+        "Display Type" : "Retina IPS LCD, 625 nits (typ)",
+        "Launch" : "Available. Released 2020, April 24",
+        "Platform OS" : "iOS 13, upgradable to iOS 14.7",
+        "Weight" : "148 g (5.22 oz)"
+      },
+      "id" : "-Me4zFhJ2YKqO4PhA1mM",
+      "memory" : 64,
+      "phoneColor" : "White",
+      "phoneName" : "Iphone SE",
+      "phonePriceUsd" : 599,
+      "pictureUrl" : "assets/img/phones/SEWhite.png"
+    },
+    "-MflVRq_D39w447r2LuK" : {
+      "characteristic" : {
+        "Battery Type" : "Li-Ion 2815 mAh, non-removable (10.78 Wh)",
+        "Chipset" : "Apple A14 Bionic (5 nm)",
+        "Dimensions" : "146.7 x 71.5 x 7.4 mm (5.78 x 2.81 x 0.29 in)",
+        "Display Resolution" : "1170 x 2532 pixels, 19.5:9 ratio (~460 ppi density)",
+        "Display Size" : "6.1 inches, 90.2 cm2 (~86.0% screen-to-body ratio)",
+        "Display Type" : "Super Retina XDR OLED, HDR10, Dolby Vision, 625 nits (typ), 1200 nits (peak)",
+        "Launch" : "Available. Released 2020, October 23",
+        "Platform OS" : "OS 14.1, upgradable to iOS 14.7",
+        "Weight" : "164 g (5.78 oz)"
+      },
+      "id" : "-MflVRq_D39w447r2LuK",
+      "memory" : 256,
+      "phoneColor" : "Yellow",
+      "phoneName" : "Iphone 11",
+      "phonePriceUsd" : 899,
+      "pictureUrl" : "https://stylus.ua/thumbs/378x378/ea/72/1217698.png"
+    },
+    "-Mfm3AQaAseZOClsgj78" : {
+      "characteristic" : {
+        "Battery Type" : "Li-Ion 2815 mAh, non-removable (10.78 Wh)",
+        "Chipset" : "Apple A14 Bionic (5 nm)",
+        "Dimensions" : "146.7 x 71.5 x 7.4 mm (5.78 x 2.81 x 0.29 in)",
+        "Display Resolution" : "1170 x 2532 pixels, 19.5:9 ratio (~460 ppi density)",
+        "Display Size" : "6.1 inches, 90.2 cm2 (~86.0% screen-to-body ratio)",
+        "Display Type" : "Super Retina XDR OLED, HDR10, Dolby Vision, 625 nits (typ), 1200 nits (peak)",
+        "Launch" : "Available. Released 2020, October 23",
+        "Platform OS" : "OS 14.1, upgradable to iOS 14.7",
+        "Weight" : "164 g (5.78 oz)"
+      },
+      "id" : "-Mfm3AQaAseZOClsgj78",
+      "memory" : 512,
+      "phoneColor" : "Green",
+      "phoneName" : "Iphone 11",
+      "phonePriceUsd" : 999,
+      "pictureUrl" : "https://stylus.ua/thumbs/378x378/05/ee/1987044.png"
+    },
+    "-Mfm5KBoq5CpNnPSFm9h" : {
+      "characteristic" : {
+        "Battery Type" : "Li-Ion 2815 mAh, non-removable (10.78 Wh)",
+        "Chipset" : "Apple A14 Bionic (5 nm)",
+        "Dimensions" : "146.7 x 71.5 x 7.4 mm (5.78 x 2.81 x 0.29 in)",
+        "Display Resolution" : "1170 x 2532 pixels, 19.5:9 ratio (~460 ppi density)",
+        "Display Size" : "6.1 inches, 90.2 cm2 (~86.0% screen-to-body ratio)",
+        "Display Type" : "Super Retina XDR OLED, HDR10, Dolby Vision, 625 nits (typ), 1200 nits (peak)",
+        "Launch" : "Available. Released 2020, October 23",
+        "Platform OS" : "OS 14.1, upgradable to iOS 14.7",
+        "Weight" : "164 g (5.78 oz)"
+      },
+      "id" : "-Mfm5KBoq5CpNnPSFm9h",
+      "memory" : 32,
+      "phoneColor" : "Purple",
+      "phoneName" : "Iphone 11",
+      "phonePriceUsd" : 799,
+      "pictureUrl" : "https://stylus.ua/thumbs/378x378/89/27/1217697.png"
+    },
+    "-MfsvxjBZR6lFSgtsR3d" : {
+      "characteristic" : {
+        "Battery Type" : "Li-Ion 3687 mAh, non-removable (14.13 Wh)",
+        "Chipset" : "Apple A14 Bionic (5 nm)",
+        "Dimensions" : "160.8 x 78.1 x 7.4 mm (6.33 x 3.07 x 0.29 in)",
+        "Display Resolution" : "1284 x 2778 pixels, 19.5:9 ratio (~458 ppi density)",
+        "Display Size" : "6.7 inches, 109.8 cm2 (~87.4% screen-to-body ratio)",
+        "Display Type" : "Super Retina XDR OLED, HDR10, Dolby Vision, 800 nits (typ), 1200 nits (peak)",
+        "Launch" : "Available. Released 2020, November 13",
+        "Platform OS" : "iOS 14.1, upgradable to iOS 14.7",
+        "Weight" : "228 g (8.04 oz)"
+      },
+      "id" : "-MfsvxjBZR6lFSgtsR3d",
+      "memory" : 512,
+      "phoneColor" : "Black",
+      "phoneName" : "Iphone 12 Pro Max",
+      "phonePriceUsd" : 1399,
+      "pictureUrl" : "https://stylus.ua/thumbs/378x378/49/4a/1643705.png"
+    },
+    "-Mg1Mz7s3klegBHW2kZI" : {
+      "characteristic" : {
+        "Battery Type" : "Li-Ion 2942 mAh, non-removable (11.16 Wh)",
+        "Chipset" : "Apple A12 Bionic (7 nm)",
+        "Dimensions" : "150.9 x 75.7 x 8.3 mm (5.94 x 2.98 x 0.33 in)",
+        "Display Resolution" : "828 x 1792 pixels, 19.5:9 ratio (~326 ppi density)",
+        "Display Size" : "6.1 inches, 90.3 cm2 (~79.0% screen-to-body ratio)",
+        "Display Type" : "Liquid Retina IPS LCD, 625 nits (typ)",
+        "Launch" : "Available. Released 2018, October 26",
+        "Platform OS" : "iOS 12, upgradable to iOS 14.7",
+        "Weight" : "194 g (6.84 oz)"
+      },
+      "id" : "-Mg1Mz7s3klegBHW2kZI",
+      "memory" : 128,
+      "phoneColor" : "White",
+      "phoneName" : "Iphone XR",
+      "phonePriceUsd" : 680,
+      "pictureUrl" : "https://stylus.ua/thumbs/378x378/89/27/1217697.png"
+    },
+    "-MglJw9V74cG7yIJOopz" : {
+      "characteristic" : {
+        "Battery Type" : "Li-Ion 2227 mAh, non-removable",
+        "Chipset" : "Apple A14 Bionic (5 nm)",
+        "Dimensions" : "131.5 x 64.2 x 7.4 mm (5.18 x 2.53 x 0.29 in)",
+        "Display Resolution" : "1080 x 2340 pixels, 19.5:9 ratio (~476 ppi density)",
+        "Display Size" : "5.4 inches, 71.9 cm2 (~85.1% screen-to-body ratio)",
+        "Display Type" : "Super Retina XDR OLED, HDR10, Dolby Vision, 625 nits (typ), 1200 nits (peak)",
+        "Launch" : "Available. Released 2020, November 13",
+        "Platform OS" : "iOS 14.1, upgradable to iOS 14.7",
+        "Weight" : "135 g (4.76 oz)"
+      },
+      "memory" : 256,
+      "phoneColor" : "Red",
+      "phoneName" : "Iphone 12 mini",
+      "phonePriceUsd" : 949,
+      "pictureUrl" : "https://stylus.ua/thumbs/378x378/d2/31/1643692.png"
+    }
   }
-]
+}
